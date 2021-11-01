@@ -133,6 +133,7 @@ There are few common places where these breadcrumbs start:
 (whatisnew)=
 ## What is new
 
+{% include 'main/introduction/_whatsnew2021.3.inc' %}
 {% include 'main/introduction/_whatsnew2021.1.inc' %}
 {% include 'main/introduction/_whatsnew6.5.inc' %}
 {% include 'main/introduction/_whatsnew6.3.inc' %}
