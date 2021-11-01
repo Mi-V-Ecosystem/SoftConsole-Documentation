@@ -65,11 +65,11 @@ This document uses **\<SoftConsole-install-dir\>** as a placeholder for the actu
 Where this is mentioned substitute the actual SoftConsole install directory name.
 
 {% if windows is defined %}
- - Windows example: `C:\Microchip\SoftConsole_v2021.1`
+ - Windows example: `C:\Microchip\SoftConsole_{{scVersion}}`
 {% endif %}
 
 {% if linux is defined %}
- - Linux example: `$HOME/Microchip/SoftConsole_v2021.1`
+ - Linux example: `$HOME/Microchip/SoftConsole_{{scVersion}}`
 {% endif %}
 
 
