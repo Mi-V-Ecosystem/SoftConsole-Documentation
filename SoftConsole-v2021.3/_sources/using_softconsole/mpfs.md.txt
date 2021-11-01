@@ -1,0 +1,10 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# PolarFire SoC
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+{% include 'main/using_softconsole/mpfs/_mpfs_programming.inc' %}
+
+```````

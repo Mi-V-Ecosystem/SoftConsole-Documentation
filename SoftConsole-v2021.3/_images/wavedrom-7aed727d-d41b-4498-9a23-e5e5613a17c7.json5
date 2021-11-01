@@ -1,0 +1,10 @@
+        {"reg": [
+                {"bits": 2, "name": "Start", "attr": ["0x7F"],                       "type": 5},
+                {"bits": 4, "name": "CRC",   "attr": ["CRC16", "x1041","Bits 13:6"], "type": 2},
+                {"bits": 2, "name": "Ctrl",  "attr": ["ON = x01", "OFF = x00"],      "type": 6},
+                {"bits": 2, "name": "Size",  "attr": "x01",                          "type": 4},
+                {"bits": 2, "name": "Cmd",   "attr": "xAA",                          "type": 4},
+                {"bits": 2, "name": "Req",   "attr": ["Req x01", "Rep x00"],         "type": 4}
+        ], 
+        "config":{"bits": 14}
+        }

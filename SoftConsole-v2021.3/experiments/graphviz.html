@@ -1,0 +1,1457 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Graphviz &mdash; SoftConsole v2021.3-7.0.607 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/arm.html">Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode_networking.html">Renode networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Graphviz</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="graphviz">
+<h1>Graphviz<a class="headerlink" href="#graphviz" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simple">
+<h2>Simple<a class="headerlink" href="#simple" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-21586e6617557cb5198372989e60ed87e622582f.png" alt="digraph {
+        graph [bgcolor=transparent]
+
+        a -&gt; b
+        b -&gt; c
+        c -&gt; a
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="fixed-locations">
+<h2>Fixed locations<a class="headerlink" href="#fixed-locations" title="Permalink to this headline">¶</a></h2>
+<p>Doesn’t look working</p>
+<div class="graphviz"><img src="../_images/graphviz-4c020d65d0eacbf334f0d34a88127c40926f6ca4.png" alt="digraph {
+        splines=true      
+
+        a [pos=&quot;0.0,0.0!&quot;];
+        b [pos=&quot;0.0,1.0!&quot;];
+        c [pos=&quot;0.0,2.0!&quot;];  
+
+        a -&gt; b;
+        a -&gt; c;
+        b -&gt; c;
+    }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-6ac276530fa60ad65cbb38cc019f8b1daac573a4.png" alt="digraph {
+        splines=true; esep=1;
+
+
+        a [pos=&quot;0.0,0.0!&quot;];
+        b [pos=&quot;0.0,1.0!&quot;];
+        c [pos=&quot;0.0,2.0!&quot;];  
+
+        a -&gt; b;
+        a -&gt; c;
+        b -&gt; c;
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="single-line-syntax">
+<h2>Single line syntax:<a class="headerlink" href="#single-line-syntax" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-c9fa6be36ada87480c13ff10b45dddd35ab91afa.png" alt="digraph { graph [bgcolor=transparent]; 1 -&gt; 2; 2 -&gt; 3; 3 -&gt; 1; }" class="graphviz" /></div>
+</div>
+<div class="section" id="clickable-nodes">
+<h2>Clickable nodes<a class="headerlink" href="#clickable-nodes" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-e4240f588db905f469520258979bb0522d9ecded.png" alt="digraph { 
+        graph [bgcolor=transparent]
+        node  [shape=box target=&quot;_blank&quot;]
+
+        Microchip       [style=filled fillcolor=&quot;#FFD9DA&quot; color=&quot;#FF9EA0&quot;   URL=&quot;https://www.microchip.com/&quot;]
+        &quot;SoftConsole v2021.3&quot;        [style=filled fillcolor=&quot;#CCECFF&quot; color=&quot;#6AC0FF&quot;   URL=&quot;https://www.microsemi.com/softconsole&quot;]
+        &quot;Libero SoC v2021.3&quot; [style=filled fillcolor=&quot;#D2ECD2&quot; color=&quot;#96C796&quot;  URL=&quot;https://www.microsemi.com/libero&quot;]
+        FlashPro        [style=filled fillcolor=&quot;#E1E1E1&quot; color=&quot;#777777&quot;   URL=&quot;https://www.microsemi.com/existing-parts/parts/152631&quot;]
+        Icicle          [style=filled fillcolor=&quot;#FFF7C2&quot; color=&quot;#FFDC6D&quot; URL=&quot;https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide&quot;]
+
+        Microchip -&gt; &quot;SoftConsole v2021.3&quot;
+        Microchip -&gt; &quot;Libero SoC v2021.3&quot;
+
+        &quot;SoftConsole v2021.3&quot;        -&gt; FlashPro
+        &quot;Libero SoC v2021.3&quot; -&gt; FlashPro
+
+        FlashPro -&gt; Icicle
+    }" usemap="#grapviz255141cd39" class="graphviz" /></div>
+<map id="grapviz255141cd39" name="grapviz255141cd39">
+<area shape="rect" id="node1" href="https://www.microchip.com/" target="_blank" title="Microchip" alt="" coords="142,5,241,53"/>
+<area shape="rect" id="node2" href="https://www.microsemi.com/softconsole" target="_blank" title="SoftConsole v2021.3" alt="" coords="5,101,180,149"/>
+<area shape="rect" id="node3" href="https://www.microsemi.com/libero" target="_blank" title="Libero SoC v2021.3" alt="" coords="205,101,375,149"/>
+<area shape="rect" id="node4" href="https://www.microsemi.com/existing-parts/parts/152631" target="_blank" title="FlashPro" alt="" coords="148,197,235,245"/>
+<area shape="rect" id="node5" href="https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide" target="_blank" title="Icicle" alt="" coords="155,293,227,341"/>
+</map></div>
+<div class="section" id="breadcrumbs-macros">
+<h2>Breadcrumbs macros<a class="headerlink" href="#breadcrumbs-macros" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-8c0cb1216ea6495485cb93c34d106cd519d1e9cd.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Start button&quot; -&gt; &quot;Type 'Turn Windows features on or off'&quot; -&gt; &quot;Select '.NET Framework 4.8'&quot; -&gt; &quot;Click OK&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="section" id="clusters">
+<h2>Clusters<a class="headerlink" href="#clusters" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-44264016bfd4d304db4220794d94145df2a7fd7c.png" alt="digraph G {
+        graph [bgcolor=transparent]
+
+        subgraph cluster_0 {
+            style=filled;
+            style=filled fillcolor=&quot;#CCECFF&quot; color=&quot;#6AC0FF&quot;;
+            node [style=filled,color=white];
+            a0 -&gt; a1 -&gt; a2 -&gt; a3;
+            label = &quot;SoftConsole&quot;;
+        }
+
+        subgraph cluster_1 {
+            style=filled;
+            style=filled fillcolor=&quot;#D2ECD2&quot; color=&quot;#96C796&quot;
+            node [style=filled];
+            b0 -&gt; b1 -&gt; b2 -&gt; b3;
+            label = &quot;Libero&quot;;
+        }
+        
+        start -&gt; a0;
+        start -&gt; b0;
+        a1    -&gt; b3;
+        b2    -&gt; a3;
+        a3    -&gt; a0;
+        a3    -&gt; end;
+        b3    -&gt; end;
+
+        start [shape=Mdiamond style=filled fillcolor=&quot;#E5D4EB&quot; color=&quot;#C49ED2&quot;];
+        end [shape=Msquare style=filled fillcolor=&quot;#E3D9CF&quot; color=&quot;#BFA891&quot;];
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="breadcrumbs-variants">
+<h2>Breadcrumbs variants<a class="headerlink" href="#breadcrumbs-variants" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-289c6ff735fab247ce7006405d82bcbf0f984c7b.png" alt="digraph {
+         rankdir=&quot;LR&quot;;
+         graph [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, height=.15];
+
+         n0 [label=&quot;File&quot;];
+         n1 [label=&quot;New&quot;];
+         n2 [label=&quot;C Project or C++ Project&quot;];
+
+
+         n0 -&gt; n1 [len=0.1,weight=15];
+         n1 -&gt; n2 [len=0.16,weight=15];
+     }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-71521de741181200d5fc644ae4a5800735c799b2.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;cds&quot;, width=.2, height=.3];
+         edge [arrowhead=none];
+         &quot;File&quot; -&gt; &quot;New&quot; -&gt; &quot;C Project or C++ Project&quot;
+     }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-7897b1bf021282c4119b286582302ebca838c3c2.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;cds&quot;, width=.2, height=.3, margin=&quot;.05,.11&quot;];
+         edge [arrowhead=none];
+         &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Preprocessor&quot; -&gt; &quot;Defined symbols (-D) &quot;
+     }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-a333a4b339ad0601106db97076290638963e4f02.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;];
+         edge [arrowhead=vee, arrowsize=.5];
+         &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Remove unused sections (-Xlinker --gc-sections)&quot;
+     }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-e3619d42caf60b4535a6a07645b4f1f4f7bb9eb8.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;];
+         edge [arrowsize=.7];
+         &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Remove unused sections (-Xlinker --gc-sections)&quot;
+     }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-9da0dd2841aa43804546bde080f8d802a5d27678.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;];
+         edge [arrowsize=.7];
+         &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Remove unused sections (-Xlinker --gc-sections)&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="section" id="inside-tabs">
+<h2>Inside tabs<a class="headerlink" href="#inside-tabs" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>App</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Blue</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-2 docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-9466fdbee11b2c0d0507b32b358eb678ae90327d.png" alt="digraph &quot;strdducts&quot; {
+        graph [bgcolor=transparent]
+        node [shape=record]; 
+        struct1 [shape=Mrecord, label=&quot;&lt;f0&gt; left|&lt;f1&gt; mid&amp;#92; dle|&lt;f2&gt; right&quot;]; 
+        struct2 [label=&quot;&lt;f0&gt; one|&lt;f1&gt; two&quot;]; 
+        struct3 [label=&quot;hello&amp;#92;nworld |{ b |{c|&lt;here&gt; d|e}| f}| g | h&quot;]; 
+        struct1:f1 -&gt; struct2:f0; struct1:f2 -&gt; struct3:here; 
+     }" class="graphviz" /></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Apples are green, or sometimes red.
+</pre></div>
+</div>
+<div class="graphviz"><img src="../_images/graphviz-10eff5a73723658bdb9330a57793b5347b7e16fd.png" alt="digraph {
+        graph [bgcolor=transparent]
+
+        subgraph cluster_0 {
+            label=&quot;Subgraph A&quot;;
+            a -&gt; b;
+            b -&gt; c;
+            c -&gt; d;
+        }
+
+        subgraph cluster_1 {
+            label=&quot;Subgraph B&quot;;
+            a -&gt; f;
+            f -&gt; c;
+        }
+    }" class="graphviz" /></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="hll"><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span>
+</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="different-styles">
+<h2>Different styles<a class="headerlink" href="#different-styles" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-3dd69ab9af8f199e1005f51d7daa9d8b5d51cc0d.png" alt="digraph {
+    graph [fontsize=30 labelloc=&quot;t&quot; label=&quot;&quot; splines=true overlap=false rankdir=&quot;LR&quot; bgcolor=transparent]
+    node [style=&quot;filled&quot; penwidth=1 fillcolor=&quot;white&quot; fontname=&quot;Courier New&quot; shape=&quot;Mrecord&quot;]
+    edge [penwidth=5 fontsize=28 fontcolor=&quot;black&quot;]
+    ratio=auto
+    
+    &quot;state0&quot; [ style = &quot;filled, bold&quot; penwidth = 5 label =&lt;&lt;table border=&quot;0&quot; cellborder=&quot;0&quot; cellpadding=&quot;3&quot; bgcolor=&quot;white&quot;&gt;&lt;tr&gt;&lt;td bgcolor=&quot;black&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;&lt;font color=&quot;white&quot;&gt;State #0&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r0&quot;&gt;&amp;#40;0&amp;#41; s -&amp;gt; &amp;bull;e $ &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r1&quot;&gt;&amp;#40;1&amp;#41; e -&amp;gt; &amp;bull;l '=' r &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r2&quot;&gt;&amp;#40;2&amp;#41; e -&amp;gt; &amp;bull;r &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r3&quot;&gt;&amp;#40;3&amp;#41; l -&amp;gt; &amp;bull;'*' r &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r4&quot;&gt;&amp;#40;4&amp;#41; l -&amp;gt; &amp;bull;'n' &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r5&quot;&gt;&amp;#40;5&amp;#41; r -&amp;gt; &amp;bull;l &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&gt; ];
+    &quot;state1&quot; [ label =&lt;&lt;table border=&quot;0&quot; cellborder=&quot;0&quot; cellpadding=&quot;3&quot; bgcolor=&quot;white&quot;&gt;&lt;tr&gt;&lt;td bgcolor=&quot;black&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;&lt;font color=&quot;white&quot;&gt;State #1&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r3&quot;&gt;&amp;#40;3&amp;#41; l -&amp;gt; &amp;bull;'*' r &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r3&quot;&gt;&amp;#40;3&amp;#41; l -&amp;gt; '*' &amp;bull;r &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r4&quot;&gt;&amp;#40;4&amp;#41; l -&amp;gt; &amp;bull;'n' &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r5&quot;&gt;&amp;#40;5&amp;#41; r -&amp;gt; &amp;bull;l &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&gt; ];
+    &quot;state5&quot; [ fillcolor=&quot;black&quot; label =&lt;&lt;table border=&quot;0&quot; cellborder=&quot;0&quot; cellpadding=&quot;3&quot; bgcolor=&quot;black&quot;&gt;&lt;tr&gt;&lt;td bgcolor=&quot;black&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;&lt;font color=&quot;white&quot;&gt;State #5&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r0&quot;&gt;&lt;font color=&quot;white&quot;&gt;&amp;#40;0&amp;#41; s -&amp;gt; e &amp;bull;$ &lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&gt; ];
+    &quot;state6&quot; [ label =&lt;&lt;table border=&quot;0&quot; cellborder=&quot;0&quot; cellpadding=&quot;3&quot; bgcolor=&quot;white&quot;&gt;&lt;tr&gt;&lt;td bgcolor=&quot;black&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;&lt;font color=&quot;white&quot;&gt;State #6&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r1&quot;&gt;&amp;#40;1&amp;#41; e -&amp;gt; l &amp;bull;'=' r &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r5&quot;&gt;&amp;#40;5&amp;#41; r -&amp;gt; l &amp;bull;&lt;/td&gt;&lt;td bgcolor=&quot;grey&quot; align=&quot;right&quot;&gt;$&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&gt; ];
+    &quot;state7&quot; [ label =&lt;&lt;table border=&quot;0&quot; cellborder=&quot;0&quot; cellpadding=&quot;3&quot; bgcolor=&quot;white&quot;&gt;&lt;tr&gt;&lt;td bgcolor=&quot;black&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;&lt;font color=&quot;white&quot;&gt;State #7&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r1&quot;&gt;&amp;#40;1&amp;#41; e -&amp;gt; l '=' &amp;bull;r &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r3&quot;&gt;&amp;#40;3&amp;#41; l -&amp;gt; &amp;bull;'*' r &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r4&quot;&gt;&amp;#40;4&amp;#41; l -&amp;gt; &amp;bull;'n' &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r5&quot;&gt;&amp;#40;5&amp;#41; r -&amp;gt; &amp;bull;l &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&gt; ];
+    &quot;state8&quot; [ label =&lt;&lt;table border=&quot;0&quot; cellborder=&quot;0&quot; cellpadding=&quot;3&quot; bgcolor=&quot;white&quot;&gt;&lt;tr&gt;&lt;td bgcolor=&quot;black&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;&lt;font color=&quot;white&quot;&gt;State #8&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r1&quot;&gt;&amp;#40;1&amp;#41; e -&amp;gt; l '=' r &amp;bull;&lt;/td&gt;&lt;td bgcolor=&quot;grey&quot; align=&quot;right&quot;&gt;$&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&gt; ];
+    &quot;state9&quot; [ label =&lt;&lt;table border=&quot;0&quot; cellborder=&quot;0&quot; cellpadding=&quot;3&quot; bgcolor=&quot;white&quot;&gt;&lt;tr&gt;&lt;td bgcolor=&quot;black&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;&lt;font color=&quot;white&quot;&gt;State #9&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;left&quot; port=&quot;r2&quot;&gt;&amp;#40;2&amp;#41; e -&amp;gt; r &amp;bull;&lt;/td&gt;&lt;td bgcolor=&quot;grey&quot; align=&quot;right&quot;&gt;$&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&gt; ];
+
+    state0 -&gt; state5 [ label=&quot;e&quot; ];
+    state0 -&gt; state6 [ label=&quot;l&quot; ];
+    state0 -&gt; state9 [ label=&quot;r&quot; ];
+    state0 -&gt; state1 [ penwidth=1 fontsize=20 fontcolor=&quot;grey28&quot; label=&quot;*&quot; ];
+    state1 -&gt; state1 [ penwidth=1 fontsize=20 fontcolor=&quot;grey28&quot; label=&quot;*&quot; ];
+    state6 -&gt; state7 [ penwidth=1 fontsize=20 fontcolor=&quot;grey28&quot; label=&quot;=&quot; ];
+    state7 -&gt; state8 [ label=&quot;r&quot; ];
+    state7 -&gt; state1 [ penwidth=1 fontsize=20 fontcolor=&quot;grey28&quot; label=&quot;*&quot; ];
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="state-machine">
+<h2>State machine<a class="headerlink" href="#state-machine" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-2838863de4c890bf866a3f9a48587ed98d8e401b.png" alt="digraph finite_state_machine {
+        graph [bgcolor=transparent]
+        rankdir=LR
+        edge [fontsize=26]
+        
+        node [shape = doublecircle, width=2.0, fontsize=24, fixedsize=true,style=filled, colorscheme=spectral5]
+        New        [fillcolor=3] 
+        Terminated [fillcolor=5]
+
+        node [shape=circle width=2.0 fontsize=24 fixedsize=true colorscheme=spectral5 fillcolor=2]
+        Runnable         [fillcolor=4]
+        Blocked          [fillcolor=1]
+        Waiting
+        &quot;Timed\nWaiting&quot;
+
+
+        New              -&gt; Runnable         [label=&quot;Thread.start&quot;]
+        Runnable         -&gt; Waiting          [label=&quot;Object.wait&quot;]
+        Runnable         -&gt; Waiting          [label=&quot;Thread.sleep&quot;]
+        Runnable         -&gt; Waiting          [label=&quot;LockSupport.park&quot;]
+        Waiting          -&gt; Blocked          [label=&quot;Reacquire monitor lock after\nleaving Object.wait&quot;]
+        Waiting          -&gt; Blocked          [label=&quot;Spurious wake-up&quot;]
+        &quot;Timed\nWaiting&quot; -&gt; Blocked          [label=&quot;Reaquire monitor lock after\n leaving Object.wait&quot;]
+        &quot;Timed\nWaiting&quot; -&gt; Terminated       [label=&quot;Exception&quot;]
+        &quot;Timed\nWaiting&quot; -&gt; Blocked          [label=&quot;Spurious wake-up&quot;]
+        Runnable         -&gt; &quot;Timed\nWaiting&quot; [label=&quot;Object.wait&quot;]
+        Runnable         -&gt; Blocked          [label=&quot;Contended Monitor\nEnter&quot;]
+        Blocked          -&gt; Runnable         [label=&quot;Contended Monitor\nEntered&quot;]
+        Runnable         -&gt; Terminated       [label=&quot;Thread finishes\nexecution&quot;]
+        Runnable         -&gt; Terminated       [label=&quot;Exception&quot;]
+        Waiting          -&gt; Runnable         [label=&quot;Object.notify\nObject.notifyAll&quot;]
+        Waiting          -&gt; Terminated       [label=&quot;Exception&quot;]
+        &quot;Timed\nWaiting&quot; -&gt; Runnable         [label=&quot;Object.notify\nObject.notifyAll&quot;]
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="horizontal-order">
+<h2>Horizontal order<a class="headerlink" href="#horizontal-order" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-0b7b63db6c9b92e036e28379dc223836c2ec89fa.png" alt="digraph G {
+        graph [bgcolor=transparent]
+        subgraph cluster_sa{
+            edge[weight=1000]
+            subgraph cluster_s1a{ s1a1-&gt;s1a2 }
+            subgraph cluster_s2a{ s2a1-&gt;s2a2 }
+            subgraph cluster_s1a_{ s1a1_-&gt;s1a2_ }
+            subgraph cluster_s2a_{ s2a1_-&gt;s2a2_ }
+            s1a2-&gt;s1a1_
+            s2a2-&gt;s2a1_
+        }
+        {
+            edge[constraint=false]
+            subgraph cluster_ta{
+            subgraph cluster_t1a{ t1a1-&gt;t1a2 }
+            subgraph cluster_t2a{ t2a1-&gt;t2a2 }
+            subgraph cluster_t1a_{ t1a1_-&gt;t1a2_ }
+            subgraph cluster_t2a_{ t2a1_-&gt;t2a2_ }
+            t1a2-&gt;t1a1_
+            t2a2-&gt;t2a1_
+            }
+            edge[tailport=s headport=s]
+            s1a2_-&gt;t1a1
+            s2a2_-&gt;t2a1
+        }
+        edge[color=green]
+        node[color=green]
+        {rank=same s1a0-&gt;s2a0-&gt;t2a0-&gt;t1a0}
+        s1a0-&gt;s1a1
+        s2a0-&gt;s2a1
+        t1a0-&gt;t1a2_
+        t2a0-&gt;t2a2_
+
+        t1a2_-&gt;t1a1_-&gt;t1a2-&gt;t1a1
+        t2a2_-&gt;t2a1_-&gt;t2a2-&gt;t2a1
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="chart">
+<h2>Chart<a class="headerlink" href="#chart" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-c600e1e0ec6012ce6426d6ef9f097ac138513886.png" alt="digraph {
+        graph [bgcolor=transparent]
+        node  [fontname=&quot;Handlee&quot; shape=rect]
+        edge  [fontname=&quot;Handlee&quot;]
+
+        draw  [label=&quot;Search for error&quot;                       style=filled fillcolor=&quot;#FFECCC&quot; color=&quot;#FFE3B3&quot;]
+        win   [label=&quot;You win!&quot; shape=oval                    style=filled fillcolor=&quot;#D4E2F9&quot; color=&quot;#9CBDF2&quot;]
+        guess [label=&quot;Did they\nguess it?&quot; shape=diamond      style=filled fillcolor=&quot;#EAF7DA&quot; color=&quot;#B9E584&quot;]
+        point [label=&quot;Point repeatedly\nto the same picture.&quot; style=filled fillcolor=&quot;#E5D4EB&quot; color=&quot;#C49ED2&quot;]
+
+        draw    -&gt; guess
+        win     -&gt; guess   [label=&quot;Yes&quot; dir=back]
+        point:s -&gt; guess:s
+        guess   -&gt; point   [label=&quot;No&quot;]
+        {
+            rank=same;
+            guess; point; win;
+        }
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="different-layouts">
+<h2>Different layouts<a class="headerlink" href="#different-layouts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dot">
+<h3>Dot<a class="headerlink" href="#dot" title="Permalink to this headline">¶</a></h3>
+<div class="graphviz"><img src="../_images/graphviz-dd20485fa455cc1b9d62c95d0a9adcb93106d850.png" alt="digraph {
+        graph [bgcolor=transparent]
+        node [shape=circle style=filled color=grey label=&quot;&quot;]
+
+
+        node [fillcolor=red]
+        a
+
+        node [fillcolor=green]
+        b c d
+
+        node [fillcolor=orange]
+
+        edge [color = grey]
+        a -&gt; {b c d}
+        b -&gt; {e f g h i j}
+        c -&gt; {k l m n o p}
+        d -&gt; {q r s t u v}
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="dot-rotated">
+<h3>Dot rotated<a class="headerlink" href="#dot-rotated" title="Permalink to this headline">¶</a></h3>
+<div class="graphviz"><img src="../_images/graphviz-4bd13a9d507a126f5c7b0780519ad541e0add66c.png" alt="digraph {
+        graph [layout=dot rankdir=LR bgcolor=transparent]
+        node [shape=circle style=filled color=grey label=&quot;&quot;]
+
+
+        node [fillcolor=red]
+        a
+
+        node [fillcolor=green]
+        b c d
+
+        node [fillcolor=orange]
+
+        edge [color = grey]
+        a -&gt; {b c d}
+        b -&gt; {e f g h i j}
+        c -&gt; {k l m n o p}
+        d -&gt; {q r s t u v}
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="neato">
+<h3>Neato<a class="headerlink" href="#neato" title="Permalink to this headline">¶</a></h3>
+<div class="graphviz"><img src="../_images/graphviz-681c0e9086f1b307c43db795e124611e323b5125.png" alt="digraph {
+        graph [layout=neato bgcolor=transparent]
+        node [shape=circle style=filled color=grey label=&quot;&quot;]
+
+
+        node [fillcolor=red]
+        a
+
+        node [fillcolor=green]
+        b c d
+
+        node [fillcolor=orange]
+
+        edge [color = grey]
+        a -&gt; {b c d}
+        b -&gt; {e f g h i j}
+        c -&gt; {k l m n o p}
+        d -&gt; {q r s t u v}
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="twopi">
+<h3>Twopi<a class="headerlink" href="#twopi" title="Permalink to this headline">¶</a></h3>
+<div class="graphviz"><img src="../_images/graphviz-a79399040e62dc43012e2469f973d090ff477252.png" alt="digraph {
+        graph [layout=twopi bgcolor=transparent]
+        node [shape=circle style=filled color=grey label=&quot;&quot;]
+
+
+        node [fillcolor=red]
+        a
+
+        node [fillcolor=green]
+        b c d
+
+        node [fillcolor=orange]
+
+        edge [color = grey]
+        a -&gt; {b c d}
+        b -&gt; {e f g h i j}
+        c -&gt; {k l m n o p}
+        d -&gt; {q r s t u v}
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="circo">
+<h3>Circo<a class="headerlink" href="#circo" title="Permalink to this headline">¶</a></h3>
+<div class="graphviz"><img src="../_images/graphviz-3cbd4cb03b579a34ee9e28911da99a15145bd49e.png" alt="digraph {
+        graph [layout=circo bgcolor=transparent]
+        node [shape=circle style=filled color=grey label=&quot;&quot;]
+
+
+        node [fillcolor=red]
+        a
+
+        node [fillcolor=green]
+        b c d
+
+        node [fillcolor=orange]
+
+        edge [color = grey]
+        a -&gt; {b c d}
+        b -&gt; {e f g h i j}
+        c -&gt; {k l m n o p}
+        d -&gt; {q r s t u v}
+    }" class="graphviz" /></div>
+</div>
+</div>
+<div class="section" id="generate-graphs-with-python">
+<h2>Generate graphs with python<a class="headerlink" href="#generate-graphs-with-python" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">networkx</span> <span class="kn">import</span> <span class="n">graphviz_layout</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;This example needs Graphviz and either PyGraphviz or Pydot&quot;</span><span class="p">)</span>
+
+
+<span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">balanced_tree</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;twopi&#39;</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;circular_tree.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="Generated result" src="../_images/circular_tree.png" /></p>
+</div>
+<div class="section" id="colored-styles-with-links">
+<h2>Colored styles with links<a class="headerlink" href="#colored-styles-with-links" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="sphinx-ext-graphvizww">
+<div class="graphviz"><img src="../_images/graphviz-d75fefae74ceab9bbc1d7f1f2a3aec024eaab260.png" alt="How Sphinx and GraphViz Render the Final Document" usemap="#sphinx&#45;ext&#45;graphviz" class="graphviz" /></div>
+<map id="sphinx&#45;ext&#45;graphviz" name="sphinx&#45;ext&#45;graphviz">
+<area shape="rect" id="node1" href="https://www.sphinx-doc.org/" target="_blank" title="Sphinx" alt="" coords="249,45,324,93"/>
+<area shape="rect" id="node2" href="https://www.graphviz.org/" target="_blank" title="GraphViz" alt="" coords="401,5,495,53"/>
+</map><p class="caption"><span class="caption-text">Sphinx and GraphViz Data Flow</span><a class="headerlink" href="#sphinx-ext-graphvizww" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="matrix">
+<h2>Matrix<a class="headerlink" href="#matrix" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-2fdca48d930bc40ee991a153e4eb5645565540d1.png" alt="digraph G { bgcolor=&quot;yellow:red&quot; 
+    subgraph cluster1 {fillcolor=&quot;blue:green&quot; style=&quot;filled&quot;
+            node [shape=diamond fillcolor=&quot;gold:brown&quot; style=&quot;radial&quot; gradientangle=180]
+            a0 [label=&lt;
+    &lt;TABLE border=&quot;10&quot; cellspacing=&quot;10&quot; cellpadding=&quot;10&quot; style=&quot;rounded&quot; bgcolor=&quot;/rdylgn11/1:/rdylgn11/11&quot; gradientangle=&quot;315&quot;&gt;
+        &lt;TR&gt;&lt;TD border=&quot;3&quot;  bgcolor=&quot;/rdylgn11/1:/rdylgn11/2&quot;&gt;00&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot;  bgcolor=&quot;/rdylgn11/2:/rdylgn11/3&quot;&gt;01&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot;  bgcolor=&quot;/rdylgn11/3:/rdylgn11/4&quot;&gt;02&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot;  bgcolor=&quot;/rdylgn11/4:/rdylgn11/5&quot;&gt;03&lt;/TD&gt;
+        &lt;/TR&gt;
+    
+        &lt;TR&gt;&lt;TD border=&quot;3&quot; bgcolor=&quot;/rdylgn11/1:/rdylgn11/6&quot; gradientangle=&quot;270&quot;&gt;10&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot; rowspan=&quot;2&quot;  bgcolor=&quot;/rdylgn11/3:/rdylgn11/9&quot; gradientangle=&quot;270&quot;&gt;11&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot;  bgcolor=&quot;/rdylgn11/3:/rdylgn11/8&quot; gradientangle=&quot;270&quot;&gt;12&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot;  bgcolor=&quot;/rdylgn11/4:/rdylgn11/9&quot; gradientangle=&quot;270&quot;&gt;13&lt;/TD&gt;
+        &lt;/TR&gt;
+    
+        &lt;TR&gt;&lt;TD border=&quot;3&quot;  bgcolor=&quot;/rdylgn11/6:/rdylgn11/9&quot; gradientangle=&quot;270&quot;&gt;20&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot; colspan=&quot;2&quot;  bgcolor=&quot;/rdylgn11/9:/rdylgn11/11&quot;&gt;22&lt;/TD&gt;
+        &lt;/TR&gt;
+    
+        &lt;TR&gt;&lt;TD border=&quot;3&quot; style=&quot;radial&quot; bgcolor=&quot;/rdylgn11/1:/rdylgn11/8&quot;&gt;30&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot; style=&quot;radial&quot; bgcolor=&quot;/rdylgn11/1:/rdylgn11/8&quot; gradientangle=&quot;45&quot;&gt;31&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot; style=&quot;radial&quot; bgcolor=&quot;/rdylgn11/1:/rdylgn11/8&quot; gradientangle=&quot;90&quot; &gt;32&lt;/TD&gt;
+        &lt;TD border=&quot;3&quot; style=&quot;radial&quot; bgcolor=&quot;/rdylgn11/1:/rdylgn11/8&quot; gradientangle=&quot;180&quot;&gt;33&lt;/TD&gt;
+        &lt;/TR&gt;
+    
+    &lt;/TABLE&gt;&gt;];
+
+    }
+
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="kernel">
+<h2>Kernel<a class="headerlink" href="#kernel" title="Permalink to this headline">¶</a></h2>
+<div class="graphviz"><img src="../_images/graphviz-fe768ce4b6e067f3bd97dc54351f2c72db3ad800.png" alt="digraph matrix {
+        graph [newrank=true,
+            nodesep=0.1,
+            overlap=true,
+            ranksep=0.1,
+            splines=false,
+            nodesep=0.3,
+            ranksep=0.2,
+            bgcolor=&quot;transparent&quot;
+        ];
+        node [fixedsize=false,
+            fontname=&quot;Ubuntu&quot;
+            fontsize=24,
+            height=1,
+            shape=box,
+            style=&quot;filled,setlinewidth(6)&quot;,
+            width=2.2
+        ];
+        edge [arrowhead=none,
+            arrowsize=0.5,
+            style=invis,
+            labelfontname=&quot;Ubuntu&quot;,
+            weight=10
+        ];
+        {
+            node [color=&quot;#e27dd6ff&quot;];
+            system_		 [color=&quot;#e27dd6ff&quot;,
+                fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            system		 [color=&quot;#e27dd6ff&quot;,
+                fillcolor=white,
+                fixedsize=true,
+                height=0.6,
+                row=func,
+                width=2];
+            system -&gt; system_		 [arrowhead=&quot;&quot;,
+                color=&quot;#e27dd6ff&quot;,
+                row=func,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            SCI		 [color=&quot;#e27dd6ff&quot;,
+                fillcolor=&quot;#d9e7ee&quot;,
+                fixedsize=true,
+                label=&quot;System calls&quot;,
+                row=usr,
+                shape=ellipse];
+            sysfs		 [color=&quot;#e27dd6ff&quot;,
+                fillcolor=&quot;#b2d3e4&quot;,
+                label=&quot;proc, sysfs,\nfile systems&quot;];
+            SCI -&gt; sysfs		 [color=&quot;#e27dd6ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            DM		 [color=&quot;#e27dd6ff&quot;,
+                fillcolor=&quot;#91b5c9&quot;,
+                fixedsize=true,
+                fontsize=20,
+                height=0.8,
+                label=&quot;Device\nModel&quot;,
+                shape=octagon,
+                width=2];
+            sysfs -&gt; DM		 [color=&quot;#e27dd6ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            log_sys		 [color=&quot;#e27dd6ff&quot;,
+                fillcolor=&quot;#6a9ab1&quot;,
+                fontsize=20,
+                label=&quot;system run,\nmodules,\ngeneric\nHW access &quot;];
+            DM -&gt; log_sys		 [color=&quot;#e27dd6ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            bus_drv		 [color=&quot;#e27dd6ff&quot;,
+                fillcolor=&quot;#71809b&quot;,
+                label=&quot;bus drivers&quot;];
+            log_sys -&gt; bus_drv		 [color=&quot;#e27dd6ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            H2		 [color=&quot;#e27dd6ff&quot;,
+                fillcolor=&quot;#777777&quot;,
+                fontcolor=white,
+                fontsize=20,
+                label=&quot;busess:\nPCI, USB ...&quot;,
+                row=chip];
+            bus_drv -&gt; H2		 [color=&quot;#e27dd6ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+        }
+        {
+            node [color=&quot;#61c2c5&quot;];
+            edge [color=&quot;#61c2c5&quot;];
+            networking_		 [color=&quot;#61c2c5&quot;,
+                fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            networking		 [color=&quot;#61c2c5&quot;,
+                fillcolor=white,
+                fixedsize=true,
+                height=0.6,
+                row=func,
+                width=2];
+            networking -&gt; networking_		 [arrowhead=&quot;&quot;,
+                color=&quot;#61c2c5&quot;,
+                row=func,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            sock		 [color=&quot;#61c2c5&quot;,
+                fillcolor=&quot;#d9e7ee&quot;,
+                fixedsize=true,
+                label=Sockets,
+                row=usr,
+                shape=ellipse];
+            prot_fam		 [color=&quot;#61c2c5&quot;,
+                fillcolor=&quot;#b2d3e4&quot;,
+                label=&quot;protocol\nfamilies&quot;];
+            sock -&gt; prot_fam		 [color=&quot;#61c2c5&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            log_prot		 [color=&quot;#61c2c5&quot;,
+                fillcolor=&quot;#6a9ab1&quot;,
+                label=&quot;protocols:\nTCP, UDP, IP&quot;];
+            prot_fam -&gt; log_prot		 [color=&quot;#61c2c5&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            netif		 [color=&quot;#61c2c5&quot;,
+                fillcolor=&quot;#71809b&quot;,
+                fontsize=20,
+                label=&quot;network\ninterfaces\nand drivers&quot;];
+            log_prot -&gt; netif		 [color=&quot;#61c2c5&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            net_hw		 [color=&quot;#61c2c5&quot;,
+                fillcolor=&quot;#777777&quot;,
+                fontcolor=white,
+                fontsize=20,
+                label=&quot;network:\nEthernet, WiFi ...&quot;,
+                row=chip];
+            netif -&gt; net_hw		 [color=&quot;#61c2c5&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            NFS		 [color=&quot;#8383cc&quot;,
+                fillcolor=&quot;#91b5c9&quot;,
+                fixedsize=true,
+                height=0.8,
+                label=NFS,
+                shape=octagon,
+                width=1.2];
+            NFS -&gt; log_prot		 [color=&quot;#61c2c5&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;,
+                weight=0];
+        }
+        {
+            node [color=&quot;#8383cc&quot;];
+            edge [color=&quot;#8383cc&quot;];
+            NFS;
+            storage_		 [color=&quot;#8383cc&quot;,
+                fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            storage		 [color=&quot;#8383cc&quot;,
+                fillcolor=white,
+                fixedsize=true,
+                height=0.6,
+                row=func,
+                width=2];
+            storage -&gt; storage_		 [arrowhead=&quot;&quot;,
+                color=&quot;#8383cc&quot;,
+                row=func,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            FS		 [color=&quot;#8383cc&quot;,
+                fillcolor=&quot;#d9e7ee&quot;,
+                fixedsize=true,
+                label=&quot;files and\ndirectories&quot;,
+                row=usr,
+                shape=ellipse];
+            VFS		 [color=&quot;#8383cc&quot;,
+                fillcolor=&quot;#b2d3e4&quot;,
+                label=&quot;Virtual\nFile System&quot;];
+            FS -&gt; VFS		 [color=&quot;#8383cc&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            VFS -&gt; NFS		 [color=&quot;#8383cc&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;,
+                weight=0];
+            logFS		 [color=&quot;#8383cc&quot;,
+                fillcolor=&quot;#6a9ab1&quot;,
+                fontsize=20,
+                label=&quot;logical\nfilesystems:\next3, xfs ...&quot;];
+            VFS -&gt; logFS		 [color=&quot;#8383cc&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            PC		 [color=&quot;#51bf5b&quot;,
+                fillcolor=&quot;#91b5c9&quot;,
+                fixedsize=true,
+                fontsize=20,
+                height=0.8,
+                label=&quot;page\ncache&quot;,
+                shape=octagon,
+                width=1.2];
+            VFS -&gt; PC		 [color=&quot;#8383cc&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;,
+                weight=0];
+            mmap		 [color=&quot;#51bf5b&quot;,
+                fillcolor=&quot;#91b5c9&quot;,
+                fixedsize=true,
+                fontsize=20,
+                height=0.8,
+                label=&quot;memory\nmapping&quot;,
+                shape=octagon,
+                width=2];
+            VFS -&gt; mmap		 [color=&quot;#8383cc&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;,
+                weight=0];
+            block		 [color=&quot;#8383cc&quot;,
+                fillcolor=&quot;#71809b&quot;,
+                fontsize=20,
+                label=&quot;Block\ndevices\nand drivers&quot;];
+            logFS -&gt; block		 [color=&quot;#8383cc&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            PA		 [color=&quot;#51bf5b&quot;,
+                fillcolor=&quot;#71809b&quot;,
+                label=&quot;Page\nAllocator&quot;];
+            PC -&gt; PA		 [color=&quot;#51bf5b&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;,
+                weight=0];
+            H4		 [color=&quot;#8383cc&quot;,
+                fillcolor=&quot;#777777&quot;,
+                fontcolor=white,
+                fontsize=20,
+                label=&quot;storage devices:\nSCSI, NVMe ...&quot;,
+                row=chip];
+            block -&gt; H4		 [color=&quot;#8383cc&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            SW		 [color=&quot;#8383cc&quot;,
+                fillcolor=&quot;#91b5c9&quot;,
+                fixedsize=true,
+                label=Swap,
+                height=0.8,
+                shape=octagon,
+                width=1.2];
+            SW -&gt; block		 [color=&quot;#8383cc&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;,
+                weight=0];
+        }
+        {
+            node [color=&quot;#c46747&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;
+            ];
+            edge [color=&quot;#c46747&quot;];
+            processing_		 [color=&quot;#c46747&quot;,
+                fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            processing		 [color=&quot;#c46747&quot;,
+                fillcolor=white,
+                fixedsize=true,
+                height=0.6,
+                row=func,
+                width=2];
+            processing -&gt; processing_		 [arrowhead=&quot;&quot;,
+                color=&quot;#c46747&quot;,
+                row=func,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            proc		 [color=&quot;#c46747&quot;,
+                fillcolor=&quot;#d9e7ee&quot;,
+                fixedsize=true,
+                label=Processes,
+                row=usr,
+                shape=ellipse];
+            Tasks		 [color=&quot;#c46747&quot;,
+                fillcolor=&quot;#b2d3e4&quot;];
+            proc -&gt; Tasks		 [color=&quot;#c46747&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            sync		 [color=&quot;#c46747&quot;,
+                fillcolor=&quot;#91b5c9&quot;,
+                fixedsize=true,
+                fontsize=20,
+                fontname=&quot;Ubuntu Condensed&quot;
+                label=synchronization,
+                height=0.7,
+                width=2,
+                shape=octagon];
+            Tasks -&gt; sync		 [color=&quot;#c46747&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            sched		 [color=&quot;#c46747&quot;,
+                fillcolor=&quot;#6a9ab1&quot;,
+                label=Scheduler];
+            sync -&gt; sched		 [color=&quot;#c46747&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            IRQ		 [color=&quot;#c46747&quot;,
+                fillcolor=&quot;#71809b&quot;,
+                fontsize=20,
+                label=&quot;interrupts\ncore,\nCPU arch&quot;];
+            sched -&gt; IRQ		 [color=&quot;#c46747&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            CPU		 [color=&quot;#c46747&quot;,
+                fillcolor=&quot;#777777&quot;,
+                fontcolor=white,
+                fontsize=20,
+                row=chip];
+            IRQ -&gt; CPU		 [color=&quot;#c46747&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+        }
+        {
+            node [color=&quot;#cfbf57ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;
+            ];
+            edge [color=&quot;#cfbf57ff&quot;,
+                weight=10
+            ];
+            HI_		 [color=&quot;#cfbf57ff&quot;,
+                fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            HI		 [color=&quot;#cfbf57ff&quot;,
+                fillcolor=white,
+                fixedsize=true,
+                fontsize=20,
+                height=0.6,
+                label=&quot;human\ninterface&quot;,
+                row=func,
+                width=2];
+            HI -&gt; HI_		 [arrowhead=&quot;&quot;,
+                color=&quot;#cfbf57ff&quot;,
+                row=func,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            char		 [color=&quot;#cfbf57ff&quot;,
+                fillcolor=&quot;#d9e7ee&quot;,
+                fixedsize=true,
+                label=&quot;char\ndevices&quot;,
+                row=usr,
+                shape=ellipse];
+            input		 [color=&quot;#cfbf57ff&quot;,
+                fillcolor=&quot;#b2d3e4&quot;,
+                label=&quot;input\nsubsystem&quot;];
+            char -&gt; input		 [color=&quot;#cfbf57ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            F7		 [color=&quot;#cfbf57ff&quot;,
+                fillcolor=&quot;#6a9ab1&quot;,
+                label=&quot;HI class\ndrivers&quot;];
+            input -&gt; F7		 [color=&quot;#cfbf57ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            HID		 [color=&quot;#cfbf57ff&quot;,
+                fillcolor=&quot;#71809b&quot;,
+                fontsize=20,
+                URL=&quot;https://www.kernel.org/doc/html/latest/hid/&quot;,
+                label=&quot;HI\nperipherals\ndrivers&quot;];
+            F7 -&gt; HID		 [color=&quot;#cfbf57ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            H7		 [color=&quot;#cfbf57ff&quot;,
+                fillcolor=&quot;#777777&quot;,
+                fontcolor=white,
+                fontsize=20,
+                label=&quot;display, keyboard,\nmouse, audio&quot;,
+                row=chip];
+            HID -&gt; H7		 [color=&quot;#cfbf57ff&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+        }
+        {
+            graph [rank=same];
+            edge [style=invis,
+                weight=1
+            ];
+            system;
+            networking;
+            system -&gt; networking		 [weight=1];
+            storage;
+            networking -&gt; storage		 [weight=1];
+            memory		 [color=&quot;#51bf5b&quot;,
+                fillcolor=white,
+                fixedsize=true,
+                height=0.6,
+                row=func,
+                width=2];
+            storage -&gt; memory		 [weight=1];
+            processing;
+            HI;
+            processing -&gt; HI		 [weight=1];
+            memory -&gt; processing		 [weight=1];
+            functions_		 [fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            functions_ -&gt; system		 [weight=1];
+            functions		 [color=gray,
+                tooltip=&quot;Columns represent main functionalities of the kernel&quot;,
+                URL=&quot;http://www.makelinux.net/ldd3/chp-1-sect-2.shtml&quot;,
+                fillcolor=gray,
+                fixedsize=true,
+                height=0.6,
+                row=func,
+                style=dashed,
+                width=1.6];
+            functions -&gt; functions_		 [arrowhead=&quot;&quot;,
+                color=gray,
+                style=&quot;&quot;,
+                weight=&quot;&quot;];
+        }
+        {
+            graph [rank=same];
+            SCI;
+            sock;
+            FS;
+            proc;
+            char;
+            usr_		 [fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0.5];
+            usr		 [fillcolor=&quot;#d9e7eeff&quot;,
+                fixedsize=true,
+                label=&quot;user space\ninterfaces&quot;,
+                row=usr,
+                shape=ellipse,
+                style=&quot;filled,setlinewidth(0)&quot;];
+            MA		 [color=&quot;#51bf5b&quot;,
+                fillcolor=&quot;#d9e7ee&quot;,
+                fixedsize=true,
+                label=&quot;memory\naccess&quot;,
+                row=usr,
+                shape=ellipse];
+        }
+        {
+            edge [style=invis,
+                weight=10
+            ];
+            system_;
+            SCI;
+            system_ -&gt; SCI;
+            networking_;
+            sock;
+            networking_ -&gt; sock;
+            storage_;
+            FS;
+            storage_ -&gt; FS;
+            processing_;
+            proc;
+            processing_ -&gt; proc;
+            HI_;
+            char;
+            HI_ -&gt; char;
+            MA;
+            memory_		 [fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            memory_ -&gt; MA;
+        }
+        {
+            graph [rank=same];
+            sysfs;
+            prot_fam;
+            VFS;
+            Tasks;
+            input;
+            D0		 [fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            virt		 [fillcolor=&quot;#b2d3e4&quot;,
+                label=&quot;virtual\nsubsystems&quot;,
+                style=&quot;filled,setlinewidth(0)&quot;];
+            VM		 [color=&quot;#51bf5b&quot;,
+                fillcolor=&quot;#b2d3e4&quot;,
+                label=&quot;Virtual\nmemory&quot;];
+        }
+        {
+            graph [rank=same];
+            DM;
+            NFS;
+            mmap;
+            sync;
+            E0		 [fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            bridges		 [fillcolor=&quot;#91b5c9&quot;,
+                shape=octagon,
+                style=&quot;filled,setlinewidth(0)&quot;];
+        }
+        {
+            graph [rank=same];
+            log_sys;
+            log_prot;
+            logFS;
+            sched;
+            F7;
+            F0		 [fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            logical		 [fillcolor=&quot;#6a9ab1&quot;,
+                style=&quot;filled,setlinewidth(0)&quot;];
+            log_mem		 [color=&quot;#51bf5b&quot;,
+                fillcolor=&quot;#6a9ab1&quot;,
+                label=&quot;logical\nmemory&quot;];
+        }
+        {
+            graph [rank=same];
+            bus_drv;
+            netif;
+            block;
+            PA;
+            IRQ;
+            HID;
+            G0		 [fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            HWI		 [fillcolor=&quot;#71809b&quot;,
+                label=&quot;hardware\ninterfaces&quot;,
+                style=&quot;filled,setlinewidth(0)&quot;];
+        }
+        {
+            graph [rank=same];
+            H2;
+            net_hw;
+            H4;
+            CPU;
+            H7;
+            H0		 [fixedsize=true,
+                height=0,
+                shape=&quot;&quot;,
+                style=invis,
+                width=0];
+            HW		 [fillcolor=&quot;#777777&quot;,
+                fontcolor=white,
+                label=&quot;electronics,\nhardware&quot;,
+                row=chip,
+                style=&quot;filled,setlinewidth(0)&quot;];
+            H5		 [color=&quot;#51bf5b&quot;,
+                fillcolor=&quot;#777777&quot;,
+                fontcolor=white,
+                fontsize=20,
+                label=&quot;MMU, RAM&quot;,
+                row=chip];
+        }
+        subgraph mem {
+            node [color=&quot;#51bf5b&quot;,
+                height=0.5
+            ];
+            edge [color=&quot;#51bf5b&quot;];
+            PC;
+            mmap;
+            SW;
+            mmap -&gt; SW		 [color=&quot;#51bf5b&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;,
+                weight=0];
+            log_mem;
+            mmap -&gt; log_mem		 [color=&quot;#51bf5b&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            PA;
+            H5;
+            PA -&gt; H5		 [color=&quot;#51bf5b&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            memory;
+            memory_;
+            memory -&gt; memory_		 [arrowhead=&quot;&quot;,
+                color=&quot;#51bf5b&quot;,
+                row=func,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            MA;
+            VM;
+            MA -&gt; VM		 [color=&quot;#51bf5b&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            VM -&gt; mmap		 [color=&quot;#51bf5b&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+            log_mem -&gt; PA		 [color=&quot;#51bf5b&quot;,
+                style=&quot;filled,setlinewidth(6)&quot;];
+        }
+        layers	 [fillcolor=lightgray,
+            tooltip=&quot;Functionalities are divided to common layers. It is approximate division.&quot;,
+            height=0.1,
+            style=&quot;filled,setlinewidth(0)&quot;,
+            width=0.5];
+        functions -&gt; layers;
+        usr -&gt; usr_	 [arrowhead=&quot;&quot;,
+            color=&quot;#d9e7eeff&quot;,
+            minlen=2,
+            style=&quot;filled,setlinewidth(6)&quot;];
+        usr -&gt; virt	 [color=&quot;#d9e7eeff&quot;,
+            style=&quot;filled,setlinewidth(6)&quot;];
+        virt -&gt; D0	 [arrowhead=&quot;&quot;,
+            color=&quot;#b2d3e4&quot;,
+            minlen=2,
+            style=&quot;filled,setlinewidth(6)&quot;];
+        virt -&gt; bridges	 [color=&quot;#b2d3e4&quot;,
+            style=&quot;filled,setlinewidth(6)&quot;];
+        bridges -&gt; E0	 [arrowhead=&quot;&quot;,
+            color=&quot;#91b5c9&quot;,
+            minlen=2,
+            style=&quot;filled,setlinewidth(6)&quot;,
+            weight=&quot;&quot;];
+        bridges -&gt; logical	 [color=&quot;#91b5c9&quot;,
+            style=&quot;filled,setlinewidth(6)&quot;];
+        logical -&gt; F0	 [arrowhead=&quot;&quot;,
+            color=&quot;#6a9ab1&quot;,
+            minlen=2,
+            row=logical,
+            style=&quot;filled,setlinewidth(6)&quot;,
+            weight=&quot;&quot;];
+        logical -&gt; HWI	 [color=&quot;#6a9ab1&quot;,
+            row=logical,
+            style=&quot;filled,setlinewidth(6)&quot;];
+        HWI -&gt; G0	 [arrowhead=&quot;&quot;,
+            color=&quot;#71809b&quot;,
+            minlen=2,
+            row=HWI,
+            style=&quot;filled,setlinewidth(6)&quot;,
+            weight=&quot;&quot;];
+        HWI -&gt; HW	 [color=&quot;#71809b&quot;,
+            row=HWI,
+            style=&quot;filled,setlinewidth(6)&quot;];
+        HW -&gt; H0	 [arrowhead=&quot;&quot;,
+            color=&quot;#777777&quot;,
+            minlen=2,
+            row=chip,
+            style=&quot;filled,setlinewidth(6)&quot;,
+            weight=&quot;&quot;];
+        layers -&gt; usr	 [arrowhead=&quot;&quot;,
+            color=gray,
+            style=&quot;filled,setlinewidth(1)&quot;];
+    }" usemap="#matrix" class="graphviz" /></div>
+<map id="matrix" name="matrix">
+<area shape="rect" id="node41" href="https://www.kernel.org/doc/html/latest/hid/" title="HI\nperipherals\ndrivers" alt="" coords="1848,636,2059,735"/>
+<area shape="rect" id="node45" href="http://www.makelinux.net/ldd3/chp-1-sect-2.shtml" title="Columns represent main functionalities of the kernel" alt="" coords="35,5,189,63"/>
+</map></div>
+<div class="section" id="large-graphs">
+<h2>Large graphs<a class="headerlink" href="#large-graphs" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://yifanhu.net/GALLERY/GRAPHS/index.html">http://yifanhu.net/GALLERY/GRAPHS/index.html</a></p>
+<p><a class="reference external" href="http://yifanhu.net/GALLERY/GRAPHS/index7.html">http://yifanhu.net/GALLERY/GRAPHS/index7.html</a></p>
+<p><a class="reference external" href="http://yifanhu.net/GALLERY/GRAPHS/index57.html">http://yifanhu.net/GALLERY/GRAPHS/index57.html</a></p>
+<p><a class="reference external" href="http://yifanhu.net/GALLERY/GRAPHS/index105.html">http://yifanhu.net/GALLERY/GRAPHS/index105.html</a></p>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Microchip.
+
+    </p>
+  </div> 
+<!-- <center>
+
+    <a id=githubIssue target="_blank">
+        <img src=" data:image/png;base64,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" 
+        width="102px">
+        </a>
+    
+    <a id=feeedbackLink target="_blank">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA/CAMAAACSEXcNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAP//94TFSu/v5nO9MZzOa0Kt3iml5hCl1pzOe+/394TFWr29tXO9Qmu9IVqtGZSte+be5lqtKbXejMXmrebWtYR7a5zmpa3OhGNaQuat5t7vtXN7c5TeQu+1EOattcW1EGu95mutGUKlGTqcCN7vzozF5jrOGRCUShDOWhDOGVrOlJxjEGutQmtaY4zOWmsZvSkZvUoZvQgZvZS9WmOl5u/mEMXmEL3WnO+1QmOMKcW1QpTmY5Te70KM3hCEEGvm5mPmKRClGQgpOmtavSlavUrm5mPmCEpavQhavYyElCGl1muUjJS1SkKUlJSlrVK95u86Wu863jqUazrvWq06Wq063jrvGe86Ge86nK06Ga06nGsZ7ykZ72sZlCkZlBCUaxDvWhDvGe8QWu8Q3q0QWq0Q3u8QGe8QnK0QGa0QnGsZaykZa1rOtZxjMa1jnO9j3u9jWinO3q1j3u9jnO9jGSnOnFrvlJyEEM46Ws463ow6Wow63s46Gc46nIw6GYw6nEoZ7wgZ70oZlAgZlM4QWs4Q3owQWowQ3s4QGc4QnIwQGYwQnEoZawgZa4xjnM5j3s5jWgjO3oxj3s5jnM5jGQjOnLXm973mzoS1Sr3mnGOMCO/mQsXmQpS9rTFjOubmhGPmawhaOjEpOpStKWMpEL3ma+bmY2PmSjEIOpStCGMIEGNKEJTWEAgpCBmlvUpaYxmEvWta72talCla7ylalK2EY++1hK1jYxmllClaa8W1hGuE5pSl5kpa70palAha7whalO+1Y4xjYxmElAhaa8W1Y72l5kKUtTFjEL3F3mOEUu+E3u+EWinv3q2E3lrvtZyEMa2EnO+EnO+EGSnvnM6E3s6EWgjv3oyE3s6EnM6EGQjvnDqEEJTmhCGM5giM5jEpEAhaCGOla2MpQpTmzjEIEGMIQt7v3r2lrWO9Y9bW3jFKOmNrEJT3EDFKEGOErWultTqlSjrOazqESjrOSmO9MRCl5ggAKVq9EIStWkKt7xAAAP/v9wAIAAAAACLG1lgAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAK5klEQVRo3u2aS2+jyBaAUxSPUIAdA2rRsje+uLyz2aQlFMl/wB6N+XeeeDOL+2c6nd+QPRYjpWdjS53F3HNOFRg7Tm7uqG88r1OYR1UZzsc5px7AxW9/Ebn4O4EItpc6j/3ZQBSEECsUITQMY38ui3BkmA3t3WUtO3u4QprqzwQCCq+GDiiP4jzZT0+Os9tdOpDf8/9wNrl4xRor+3KHGE4xns1m5Fyr2Rg4xOdi9UcjeQHkC2A4CAEoxRhkhiwIg0GyXEAuAvXeX6rem0GEqHpMFJdEARoPxyQzIsEA2azI5cbt1uz9hFdV9RYQ0A44VguigMUZoow1DOruj9HHhrudfR4SCNEvFf9vIFDtS4/NlFfhokA0C2reW6pwmdmXC3A0wd9RmjtX+dWrINSyVsChzQHJKYYNChaL5UxHy6rYAYkI0/eU0IpVz+Z/eQWEzOazFbW4NYtd1Cgq0JtwWa2edgvB5CR4P5mEozTMCcX3ey+BEOmVEIvLhgKAFgVKzeH/Om5ifzVzdjZjZf8dJc69NA34c5KLQw52tWSqvdqzOGCTT0Uxpibj1zryqT0e7i4hO35n8dJQPiO5OBxVuXfoWNoiexJ0LyqftyIfYaASONf7cuSxm6aSwtU/BYJ65g8/sKKh2HsYGIU4/E9N4BMLWARMIvJ3lXWeJ92wxHZpWT0HQT1leleJy8VugYsDq32iAOl9LYp9IwYo9gLaZ+CP3lvcdIIKbTbVMQjd8En6EbsQ0G6xK4T/ddFwDCmA5kVRRz5JgRUvBYujRKd6g6J26nW0L292m2r/e/JGCTrX3D8GIccaTe7ZcKcsUqAnfdUcjnKsz7aN4aJZCgcqAsiKyQSE50kiYS/niRQgKnONaxEluejDjozx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" 
+    width="200px">
+    </a>
+
+</center>
+
+<script>
+    var pageName = "experiments/graphviz.md.txt".replace(/\.txt/g,'');
+    var uri = "feedback/com?document=SoftConsole&release=v2021.3-7.0.607&page=" + pageName;
+    var res = encodeURI(uri);
+    document.getElementById("feeedbackLink").href = res;
+
+    var body  = "Document: SoftConsole\nVersion: v2021.3-7.0.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
+    var title = "I have problem with the " + pageName + " page";
+    var ghuri = "https://github.com/AntonKrug/scdocs/issues/new?title="+title+"&body="+body+"&labels=help wanted";
+    document.getElementById("githubIssue").href = encodeURI(ghuri);
+
+</script> -->
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2021.3
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/scdocs/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+       <strong> 
+      <dd><a href="/scdocs/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

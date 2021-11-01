@@ -1,0 +1,18 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Renode troubleshooting
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+![Renode logo](renode/images/renode_logo.png)
+
+{% include 'main/troubleshooting/renode/_cant_open_port.inc' %}
+{% include 'main/troubleshooting/renode/_license.inc' %}
+{% include 'main/troubleshooting/renode/_mono.inc' %}
+{% include 'main/troubleshooting/renode/_stack.inc' %}
+{% include 'main/troubleshooting/renode/_robot.inc' %}
+{% include 'main/troubleshooting/renode/_crash_on_startup.inc' %}
+
+
+```````

@@ -1,0 +1,944 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Product Support &mdash; SoftConsole v2021.3-7.0.607 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Eclipse" href="eclipse.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arm.html">Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode_networking.html">Renode networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">Eclipse</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Product Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-microchip-website">The Microchip Website</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#product-change-notification-service">Product Change Notification Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customer-support">Customer Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#microchip-devices-code-protection-feature">Microchip Devices Code Protection Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#legal-notice">Legal Notice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trademarks">Trademarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quality-management-system">Quality Management System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#worldwide-sales-and-service">Worldwide Sales and Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#americas">AMERICAS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#corporate-office">Corporate Office</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atlanta">Atlanta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#austin-tx">Austin, TX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boston">Boston</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chicago">Chicago</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dallas">Dallas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#detroit">Detroit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#houston-tx">Houston, TX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indianapolis">Indianapolis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#los-angeles">Los Angeles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raleigh-nc">Raleigh, NC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#new-york-ny">New York, NY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#san-jose-ca">San Jose, CA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#canada-toronto">Canada - Toronto</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#asia-pacific">ASIA/PACIFIC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#australia-sydney">Australia - Sydney</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-beijing">China - Beijing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-chengdu">China - Chengdu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-chongqing">China - Chongqing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-dongguan">China - Dongguan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-guangzhou">China - Guangzhou</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-hangzhou">China - Hangzhou</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-hong-kong-sar">China - Hong Kong SAR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-nanjing">China - Nanjing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-qingdao">China - Qingdao</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-shanghai">China - Shanghai</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-shenyang">China - Shenyang</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-shenzhen">China - Shenzhen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-suzhou">China - Suzhou</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-wuhan">China - Wuhan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-xian">China - Xian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-xiamen">China - Xiamen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#china-zhuhai">China - Zhuhai</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#india-bangalore">India - Bangalore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#india-new-delhi">India - New Delhi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#india-pune">India - Pune</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#japan-osaka">Japan - Osaka</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#japan-tokyo">Japan - Tokyo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#korea-daegu">Korea - Daegu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#korea-seoul">Korea - Seoul</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#malaysia-kuala-lumpur">Malaysia - Kuala Lumpur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#malaysia-penang">Malaysia - Penang</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#philippines-manila">Philippines - Manila</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#singapore">Singapore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#taiwan-hsin-chu">Taiwan - Hsin Chu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#taiwan-kaohsiung">Taiwan - Kaohsiung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#taiwan-taipei">Taiwan - Taipei</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thailand-bangkok">Thailand - Bangkok</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vietnam-ho-chi-minh">Vietnam - Ho Chi Minh</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#europe">EUROPE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#austria-wels">Austria - Wels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#denmark-copenhagen">Denmark - Copenhagen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finland-espoo">Finland - Espoo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#france-paris">France - Paris</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#germany-garching">Germany - Garching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#germany-haan">Germany - Haan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#germany-heilbronn">Germany - Heilbronn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#germany-karlsruhe">Germany - Karlsruhe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#germany-munich">Germany - Munich</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#germany-rosenheim">Germany - Rosenheim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#israel-raanana">Israel - Ra’anana</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#italy-milan">Italy - Milan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#italy-padova">Italy - Padova</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#netherlands-drunen">Netherlands - Drunen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#norway-trondheim">Norway - Trondheim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#poland-warsaw">Poland - Warsaw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#romania-bucharest">Romania - Bucharest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spain-madrid">Spain - Madrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sweden-gothenberg">Sweden - Gothenberg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sweden-stockholm">Sweden - Stockholm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uk-wokingham">UK - Wokingham</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Product Support</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="product-support">
+<h1>Product Support<a class="headerlink" href="#product-support" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-microchip-website">
+<h2>The Microchip Website<a class="headerlink" href="#the-microchip-website" title="Permalink to this headline">¶</a></h2>
+<p>Microchip provides online support via our website at <a class="reference external" href="https://www.microchip.com/">https://www.microchip.com/</a>. This website is used to make files and information easily available to customers. Some of the content available includes:</p>
+<ul class="simple">
+<li><p><strong>Product Support</strong> – Data sheets and errata, application notes and sample programs, design resources, user’s
+guides and hardware support documents, latest software releases and archived software</p></li>
+<li><p><strong>General Technical Support</strong> – Frequently Asked Questions (FAQs), technical support requests, online
+discussion groups, Microchip design partner program member listing</p></li>
+<li><p><strong>Business of Microchip</strong> – Product selector and ordering guides, latest Microchip press releases, listing of
+seminars and events, listings of Microchip sales offices, distributors and factory representatives</p></li>
+</ul>
+</div>
+<div class="section" id="product-change-notification-service">
+<h2>Product Change Notification Service<a class="headerlink" href="#product-change-notification-service" title="Permalink to this headline">¶</a></h2>
+<p>Microchip’s product change notification service helps keep customers current on Microchip products. Subscribers will
+receive email notification whenever there are changes, updates, revisions or errata related to a specified product
+family or development tool of interest.</p>
+<p>To register, go to <a class="reference external" href="https://www.microchip.com/pcn">https://www.microchip.com/pcn</a> and follow the registration instructions.</p>
+</div>
+<div class="section" id="customer-support">
+<h2>Customer Support<a class="headerlink" href="#customer-support" title="Permalink to this headline">¶</a></h2>
+<p>Users of Microchip products can receive assistance through several channels:</p>
+<ul class="simple">
+<li><p>Distributor or Representative</p></li>
+<li><p>Local Sales Office</p></li>
+<li><p>Embedded Solutions Engineer (ESE)</p></li>
+<li><p>Technical Support
+Customers should contact their distributor, representative or ESE for support. Local sales offices are also available to
+help customers. A listing of sales offices and locations is included in this document.
+Technical support is available through the website at: <a class="reference external" href="https://www.microchip.com/support">https://www.microchip.com/support</a></p></li>
+</ul>
+</div>
+<div class="section" id="microchip-devices-code-protection-feature">
+<h2>Microchip Devices Code Protection Feature<a class="headerlink" href="#microchip-devices-code-protection-feature" title="Permalink to this headline">¶</a></h2>
+<p>Note the following details of the code protection feature on Microchip devices:</p>
+<ul class="simple">
+<li><p>Microchip products meet the specifications contained in their particular Microchip Data Sheet.</p></li>
+<li><p>Microchip believes that its family of products is secure when used in the intended manner and under normal
+conditions.</p></li>
+<li><p>There are dishonest and possibly illegal methods being used in attempts to breach the code protection features
+of the Microchip devices. We believe that these methods require using the Microchip products in a manner
+outside the operating specifications contained in Microchip’s Data Sheets. Attempts to breach these code
+protection features, most likely, cannot be accomplished without violating Microchip’s intellectual property rights.</p></li>
+<li><p>Microchip is willing to work with any customer who is concerned about the integrity of its code.</p></li>
+<li><p>Neither Microchip nor any other semiconductor manufacturer can guarantee the security of its code. Code
+protection does not mean that we are guaranteeing the product is “unbreakable.” Code protection is constantly
+evolving. We at Microchip are committed to continuously improving the code protection features of our products.
+Attempts to break Microchip’s code protection feature may be a violation of the Digital Millennium Copyright Act.
+If such acts allow unauthorized access to your software or other copyrighted work, you may have a right to sue
+for relief under that Act.</p></li>
+</ul>
+</div>
+<div class="section" id="legal-notice">
+<h2>Legal Notice<a class="headerlink" href="#legal-notice" title="Permalink to this headline">¶</a></h2>
+<p>Information contained in this publication is provided for the sole purpose of designing with and using Microchip
+products. Information regarding device applications and the like is provided only for your convenience and may be
+superseded by updates. It is your responsibility to ensure that your application meets with your specifications.</p>
+<p>THIS INFORMATION IS PROVIDED BY MICROCHIP “AS IS”. MICROCHIP MAKES NO REPRESENTATIONS OR
+WARRANTIES OF ANY KIND WHETHER EXPRESS OR IMPLIED, WRITTEN OR ORAL, STATUTORY OR
+OTHERWISE, RELATED TO THE INFORMATION INCLUDING BUT NOT LIMITED TO ANY IMPLIED
+WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE
+OR WARRANTIES RELATED TO ITS CONDITION, QUALITY, OR PERFORMANCE.</p>
+<p>IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL OR
+CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND WHATSOEVER RELATED TO THE
+INFORMATION OR ITS USE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS BEEN ADVISED OF THE
+POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE FULLEST EXTENT ALLOWED BY LAW,
+MICROCHIP’S TOTAL LIABILITY ON ALL CLAIMS IN ANY WAY RELATED TO THE INFORMATION OR ITS USE
+WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR
+THE INFORMATION. Use of Microchip devices in life support and/or safety applications is entirely at the buyer’s risk,
+and the buyer agrees to defend, indemnify and hold harmless Microchip from any and all damages, claims, suits, or
+expenses resulting from such use. No licenses are conveyed, implicitly or otherwise, under any Microchip intellectual
+property rights unless otherwise stated.</p>
+</div>
+<div class="section" id="trademarks">
+<h2>Trademarks<a class="headerlink" href="#trademarks" title="Permalink to this headline">¶</a></h2>
+<p>The Microchip name and logo, the Microchip logo, Adaptec, AnyRate, AVR, AVR logo, AVR Freaks, BesTime,
+BitCloud, chipKIT, chipKIT logo, CryptoMemory, CryptoRF, dsPIC, FlashFlex, flexPWR, HELDO, IGLOO, JukeBlox,
+KeeLoq, Kleer, LANCheck, LinkMD, maXStylus, maXTouch, MediaLB, megaAVR, Microsemi, Microsemi logo, MOST,
+MOST logo, MPLAB, OptoLyzer, PackeTime, PIC, picoPower, PICSTART, PIC32 logo, PolarFire, Prochip Designer,
+QTouch, SAM-BA, SenGenuity, SpyNIC, SST, SST Logo, SuperFlash, Symmetricom, SyncServer, Tachyon,
+TempTrackr, TimeSource, tinyAVR, UNI/O, Vectron, and XMEGA are registered trademarks of Microchip Technology
+Incorporated in the U.S.A. and other countries.</p>
+<p>APT, ClockWorks, The Embedded Control Solutions Company, EtherSynch, FlashTec, Hyper Speed Control,
+HyperLight Load, IntelliMOS, Libero, motorBench, mTouch, Powermite 3, Precision Edge, ProASIC, ProASIC Plus,
+ProASIC Plus logo, Quiet-Wire, SmartFusion, SyncWorld, Temux, TimeCesium, TimeHub, TimePictra, TimeProvider,
+Vite, WinPath, and ZL are registered trademarks of Microchip Technology Incorporated in the U.S.A.</p>
+<p>Adjacent Key Suppression, AKS, Analog-for-the-Digital Age, Any Capacitor, AnyIn, AnyOut, BlueSky, BodyCom,
+CodeGuard, CryptoAuthentication, CryptoAutomotive, CryptoCompanion, CryptoController, dsPICDEM,
+dsPICDEM.net, Dynamic Average Matching, DAM, ECAN, EtherGREEN, In-Circuit Serial Programming, ICSP,
+INICnet, Inter-Chip Connectivity, JitterBlocker, KleerNet, KleerNet logo, memBrain, Mindi, MiWi, MPASM, MPF,
+MPLAB Certified logo, MPLIB, MPLINK, MultiTRAK, NetDetach, Omniscient Code Generation, PICDEM,
+PICDEM.net, PICkit, PICtail, PowerSmart, PureSilicon, QMatrix, REAL ICE, Ripple Blocker, SAM-ICE, Serial Quad
+I/O, SMART-I.S., SQI, SuperSwitcher, SuperSwitcher II, Total Endurance, TSHARC, USBCheck, VariSense,
+ViewSpan, WiperLock, Wireless DNA, and ZENA are trademarks of Microchip Technology Incorporated in the U.S.A.
+and other countries.</p>
+<p>SQTP is a service mark of Microchip Technology Incorporated in the U.S.A.</p>
+<p>The Adaptec logo, Frequency on Demand, Silicon Storage Technology, and Symmcom are registered trademarks of
+Microchip Technology Inc. in other countries.</p>
+<p>GestIC is a registered trademark of Microchip Technology Germany II GmbH &amp; Co. KG, a subsidiary of Microchip
+Technology Inc., in other countries.</p>
+<p>All other trademarks mentioned herein are property of their respective companies.</p>
+<p>© 2020, Microchip Technology Incorporated, Printed in the U.S.A., All Rights Reserved.
+ISBN: 978-1-5224-7047-2</p>
+</div>
+<div class="section" id="quality-management-system">
+<h2>Quality Management System<a class="headerlink" href="#quality-management-system" title="Permalink to this headline">¶</a></h2>
+<p>For information regarding Microchip’s Quality Management Systems, please visit <a class="reference external" href="https://www.microchip.com/quality">https://www.microchip.com/quality</a>.</p>
+</div>
+<div class="section" id="worldwide-sales-and-service">
+<h2>Worldwide Sales and Service<a class="headerlink" href="#worldwide-sales-and-service" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="americas">
+<h3>AMERICAS<a class="headerlink" href="#americas" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="corporate-office">
+<h4>Corporate Office<a class="headerlink" href="#corporate-office" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>2355 West Chandler Blvd.</p></li>
+<li><p>Chandler, AZ 85224-6199</p></li>
+<li><p>Tel: 480-792-7200</p></li>
+<li><p>Fax: 480-792-7277</p></li>
+<li><p>Technical Support: <a class="reference external" href="https://www.microchip.com/support">https://www.microchip.com/support</a></p></li>
+<li><p>Web Address: <a class="reference external" href="https://www.microchip.com">https://www.microchip.com</a></p></li>
+</ul>
+</div>
+<div class="section" id="atlanta">
+<h4>Atlanta<a class="headerlink" href="#atlanta" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Duluth, GA</p></li>
+<li><p>Tel: 678-957-9614</p></li>
+<li><p>Fax: 678-957-1455</p></li>
+</ul>
+</div>
+<div class="section" id="austin-tx">
+<h4>Austin, TX<a class="headerlink" href="#austin-tx" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 512-257-3370</p></li>
+</ul>
+</div>
+<div class="section" id="boston">
+<h4>Boston<a class="headerlink" href="#boston" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Westborough, MA</p></li>
+<li><p>Tel: 774-760-0087</p></li>
+<li><p>Fax: 774-760-0088</p></li>
+</ul>
+</div>
+<div class="section" id="chicago">
+<h4>Chicago<a class="headerlink" href="#chicago" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Itasca, IL</p></li>
+<li><p>Tel: 630-285-0071</p></li>
+<li><p>Fax: 630-285-0075</p></li>
+</ul>
+</div>
+<div class="section" id="dallas">
+<h4>Dallas<a class="headerlink" href="#dallas" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Addison, TX</p></li>
+<li><p>Tel: 972-818-7423</p></li>
+<li><p>Fax: 972-818-2924</p></li>
+</ul>
+</div>
+<div class="section" id="detroit">
+<h4>Detroit<a class="headerlink" href="#detroit" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Novi, MI</p></li>
+<li><p>Tel: 248-848-4000</p></li>
+</ul>
+</div>
+<div class="section" id="houston-tx">
+<h4>Houston, TX<a class="headerlink" href="#houston-tx" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 281-894-5983</p></li>
+</ul>
+</div>
+<div class="section" id="indianapolis">
+<h4>Indianapolis<a class="headerlink" href="#indianapolis" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Noblesville, IN</p></li>
+<li><p>Tel: 317-773-8323</p></li>
+<li><p>Fax: 317-773-5453</p></li>
+<li><p>Tel: 317-536-2380</p></li>
+</ul>
+</div>
+<div class="section" id="los-angeles">
+<h4>Los Angeles<a class="headerlink" href="#los-angeles" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Mission Viejo, CA</p></li>
+<li><p>Tel: 949-462-9523</p></li>
+<li><p>Fax: 949-462-9608</p></li>
+<li><p>Tel: 951-273-7800</p></li>
+</ul>
+</div>
+<div class="section" id="raleigh-nc">
+<h4>Raleigh, NC<a class="headerlink" href="#raleigh-nc" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 919-844-7510</p></li>
+</ul>
+</div>
+<div class="section" id="new-york-ny">
+<h4>New York, NY<a class="headerlink" href="#new-york-ny" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 631-435-6000</p></li>
+</ul>
+</div>
+<div class="section" id="san-jose-ca">
+<h4>San Jose, CA<a class="headerlink" href="#san-jose-ca" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 408-735-9110</p></li>
+<li><p>Tel: 408-436-4270</p></li>
+</ul>
+</div>
+<div class="section" id="canada-toronto">
+<h4>Canada - Toronto<a class="headerlink" href="#canada-toronto" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 905-695-1980</p></li>
+<li><p>Fax: 905-695-2078</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="asia-pacific">
+<h3>ASIA/PACIFIC<a class="headerlink" href="#asia-pacific" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="australia-sydney">
+<h4>Australia - Sydney<a class="headerlink" href="#australia-sydney" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 61-2-9868-6733</p></li>
+</ul>
+</div>
+<div class="section" id="china-beijing">
+<h4>China - Beijing<a class="headerlink" href="#china-beijing" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-10-8569-7000</p></li>
+</ul>
+</div>
+<div class="section" id="china-chengdu">
+<h4>China - Chengdu<a class="headerlink" href="#china-chengdu" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-28-8665-5511</p></li>
+</ul>
+</div>
+<div class="section" id="china-chongqing">
+<h4>China - Chongqing<a class="headerlink" href="#china-chongqing" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-23-8980-9588</p></li>
+</ul>
+</div>
+<div class="section" id="china-dongguan">
+<h4>China - Dongguan<a class="headerlink" href="#china-dongguan" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-769-8702-9880</p></li>
+</ul>
+</div>
+<div class="section" id="china-guangzhou">
+<h4>China - Guangzhou<a class="headerlink" href="#china-guangzhou" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-20-8755-8029</p></li>
+</ul>
+</div>
+<div class="section" id="china-hangzhou">
+<h4>China - Hangzhou<a class="headerlink" href="#china-hangzhou" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-571-8792-8115</p></li>
+</ul>
+</div>
+<div class="section" id="china-hong-kong-sar">
+<h4>China - Hong Kong SAR<a class="headerlink" href="#china-hong-kong-sar" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 852-2943-5100</p></li>
+</ul>
+</div>
+<div class="section" id="china-nanjing">
+<h4>China - Nanjing<a class="headerlink" href="#china-nanjing" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-25-8473-2460</p></li>
+</ul>
+</div>
+<div class="section" id="china-qingdao">
+<h4>China - Qingdao<a class="headerlink" href="#china-qingdao" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-532-8502-7355</p></li>
+</ul>
+</div>
+<div class="section" id="china-shanghai">
+<h4>China - Shanghai<a class="headerlink" href="#china-shanghai" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-21-3326-8000</p></li>
+</ul>
+</div>
+<div class="section" id="china-shenyang">
+<h4>China - Shenyang<a class="headerlink" href="#china-shenyang" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-24-2334-2829</p></li>
+</ul>
+</div>
+<div class="section" id="china-shenzhen">
+<h4>China - Shenzhen<a class="headerlink" href="#china-shenzhen" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-755-8864-2200</p></li>
+</ul>
+</div>
+<div class="section" id="china-suzhou">
+<h4>China - Suzhou<a class="headerlink" href="#china-suzhou" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-186-6233-1526</p></li>
+</ul>
+</div>
+<div class="section" id="china-wuhan">
+<h4>China - Wuhan<a class="headerlink" href="#china-wuhan" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-27-5980-5300</p></li>
+</ul>
+</div>
+<div class="section" id="china-xian">
+<h4>China - Xian<a class="headerlink" href="#china-xian" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-29-8833-7252</p></li>
+</ul>
+</div>
+<div class="section" id="china-xiamen">
+<h4>China - Xiamen<a class="headerlink" href="#china-xiamen" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-592-2388138</p></li>
+</ul>
+</div>
+<div class="section" id="china-zhuhai">
+<h4>China - Zhuhai<a class="headerlink" href="#china-zhuhai" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 86-756-3210040</p></li>
+</ul>
+</div>
+<div class="section" id="india-bangalore">
+<h4>India - Bangalore<a class="headerlink" href="#india-bangalore" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 91-80-3090-4444</p></li>
+</ul>
+</div>
+<div class="section" id="india-new-delhi">
+<h4>India - New Delhi<a class="headerlink" href="#india-new-delhi" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 91-11-4160-8631</p></li>
+</ul>
+</div>
+<div class="section" id="india-pune">
+<h4>India - Pune<a class="headerlink" href="#india-pune" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 91-20-4121-0141</p></li>
+</ul>
+</div>
+<div class="section" id="japan-osaka">
+<h4>Japan - Osaka<a class="headerlink" href="#japan-osaka" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 81-6-6152-7160</p></li>
+</ul>
+</div>
+<div class="section" id="japan-tokyo">
+<h4>Japan - Tokyo<a class="headerlink" href="#japan-tokyo" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 81-3-6880- 3770</p></li>
+</ul>
+</div>
+<div class="section" id="korea-daegu">
+<h4>Korea - Daegu<a class="headerlink" href="#korea-daegu" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 82-53-744-4301</p></li>
+</ul>
+</div>
+<div class="section" id="korea-seoul">
+<h4>Korea - Seoul<a class="headerlink" href="#korea-seoul" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 82-2-554-7200</p></li>
+</ul>
+</div>
+<div class="section" id="malaysia-kuala-lumpur">
+<h4>Malaysia - Kuala Lumpur<a class="headerlink" href="#malaysia-kuala-lumpur" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 60-3-7651-7906</p></li>
+</ul>
+</div>
+<div class="section" id="malaysia-penang">
+<h4>Malaysia - Penang<a class="headerlink" href="#malaysia-penang" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 60-4-227-8870</p></li>
+</ul>
+</div>
+<div class="section" id="philippines-manila">
+<h4>Philippines - Manila<a class="headerlink" href="#philippines-manila" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 63-2-634-9065</p></li>
+</ul>
+</div>
+<div class="section" id="singapore">
+<h4>Singapore<a class="headerlink" href="#singapore" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 65-6334-8870</p></li>
+</ul>
+</div>
+<div class="section" id="taiwan-hsin-chu">
+<h4>Taiwan - Hsin Chu<a class="headerlink" href="#taiwan-hsin-chu" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 886-3-577-8366</p></li>
+</ul>
+</div>
+<div class="section" id="taiwan-kaohsiung">
+<h4>Taiwan - Kaohsiung<a class="headerlink" href="#taiwan-kaohsiung" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 886-7-213-7830</p></li>
+</ul>
+</div>
+<div class="section" id="taiwan-taipei">
+<h4>Taiwan - Taipei<a class="headerlink" href="#taiwan-taipei" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 886-2-2508-8600</p></li>
+</ul>
+</div>
+<div class="section" id="thailand-bangkok">
+<h4>Thailand - Bangkok<a class="headerlink" href="#thailand-bangkok" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 66-2-694-1351</p></li>
+</ul>
+</div>
+<div class="section" id="vietnam-ho-chi-minh">
+<h4>Vietnam - Ho Chi Minh<a class="headerlink" href="#vietnam-ho-chi-minh" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 84-28-5448-2100</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="europe">
+<h3>EUROPE<a class="headerlink" href="#europe" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="austria-wels">
+<h4>Austria - Wels<a class="headerlink" href="#austria-wels" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 43-7242-2244-39</p></li>
+<li><p>Fax: 43-7242-2244-393</p></li>
+</ul>
+</div>
+<div class="section" id="denmark-copenhagen">
+<h4>Denmark - Copenhagen<a class="headerlink" href="#denmark-copenhagen" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 45-4485-5910</p></li>
+<li><p>Fax: 45-4485-2829</p></li>
+</ul>
+</div>
+<div class="section" id="finland-espoo">
+<h4>Finland - Espoo<a class="headerlink" href="#finland-espoo" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 358-9-4520-820</p></li>
+</ul>
+</div>
+<div class="section" id="france-paris">
+<h4>France - Paris<a class="headerlink" href="#france-paris" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 33-1-69-53-63-20</p></li>
+<li><p>Fax: 33-1-69-30-90-79</p></li>
+</ul>
+</div>
+<div class="section" id="germany-garching">
+<h4>Germany - Garching<a class="headerlink" href="#germany-garching" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 49-8931-9700</p></li>
+</ul>
+</div>
+<div class="section" id="germany-haan">
+<h4>Germany - Haan<a class="headerlink" href="#germany-haan" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 49-2129-3766400</p></li>
+</ul>
+</div>
+<div class="section" id="germany-heilbronn">
+<h4>Germany - Heilbronn<a class="headerlink" href="#germany-heilbronn" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 49-7131-72400</p></li>
+</ul>
+</div>
+<div class="section" id="germany-karlsruhe">
+<h4>Germany - Karlsruhe<a class="headerlink" href="#germany-karlsruhe" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 49-721-625370</p></li>
+</ul>
+</div>
+<div class="section" id="germany-munich">
+<h4>Germany - Munich<a class="headerlink" href="#germany-munich" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 49-89-627-144-0</p></li>
+<li><p>Fax: 49-89-627-144-44</p></li>
+</ul>
+</div>
+<div class="section" id="germany-rosenheim">
+<h4>Germany - Rosenheim<a class="headerlink" href="#germany-rosenheim" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 49-8031-354-560</p></li>
+</ul>
+</div>
+<div class="section" id="israel-raanana">
+<h4>Israel - Ra’anana<a class="headerlink" href="#israel-raanana" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 972-9-744-7705</p></li>
+</ul>
+</div>
+<div class="section" id="italy-milan">
+<h4>Italy - Milan<a class="headerlink" href="#italy-milan" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 39-0331-742611</p></li>
+<li><p>Fax: 39-0331-466781</p></li>
+</ul>
+</div>
+<div class="section" id="italy-padova">
+<h4>Italy - Padova<a class="headerlink" href="#italy-padova" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 39-049-7625286</p></li>
+</ul>
+</div>
+<div class="section" id="netherlands-drunen">
+<h4>Netherlands - Drunen<a class="headerlink" href="#netherlands-drunen" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 31-416-690399</p></li>
+<li><p>Fax: 31-416-690340</p></li>
+</ul>
+</div>
+<div class="section" id="norway-trondheim">
+<h4>Norway - Trondheim<a class="headerlink" href="#norway-trondheim" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 47-72884388</p></li>
+</ul>
+</div>
+<div class="section" id="poland-warsaw">
+<h4>Poland - Warsaw<a class="headerlink" href="#poland-warsaw" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 48-22-3325737</p></li>
+</ul>
+</div>
+<div class="section" id="romania-bucharest">
+<h4>Romania - Bucharest<a class="headerlink" href="#romania-bucharest" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 40-21-407-87-50</p></li>
+</ul>
+</div>
+<div class="section" id="spain-madrid">
+<h4>Spain - Madrid<a class="headerlink" href="#spain-madrid" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 34-91-708-08-90</p></li>
+<li><p>Fax: 34-91-708-08-91</p></li>
+</ul>
+</div>
+<div class="section" id="sweden-gothenberg">
+<h4>Sweden - Gothenberg<a class="headerlink" href="#sweden-gothenberg" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 46-31-704-60-40</p></li>
+</ul>
+</div>
+<div class="section" id="sweden-stockholm">
+<h4>Sweden - Stockholm<a class="headerlink" href="#sweden-stockholm" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 46-8-5090-4654</p></li>
+</ul>
+</div>
+<div class="section" id="uk-wokingham">
+<h4>UK - Wokingham<a class="headerlink" href="#uk-wokingham" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Tel: 44-118-921-5800</p></li>
+<li><p>Fax: 44-118-921-5820</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="eclipse.html" class="btn btn-neutral float-left" title="Eclipse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Microchip.
+
+    </p>
+  </div> 
+<!-- <center>
+
+    <a id=githubIssue target="_blank">
+        <img src=" data:image/png;base64,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" 
+        width="102px">
+        </a>
+    
+    <a id=feeedbackLink target="_blank">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA/CAMAAACSEXcNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAP//94TFSu/v5nO9MZzOa0Kt3iml5hCl1pzOe+/394TFWr29tXO9Qmu9IVqtGZSte+be5lqtKbXejMXmrebWtYR7a5zmpa3OhGNaQuat5t7vtXN7c5TeQu+1EOattcW1EGu95mutGUKlGTqcCN7vzozF5jrOGRCUShDOWhDOGVrOlJxjEGutQmtaY4zOWmsZvSkZvUoZvQgZvZS9WmOl5u/mEMXmEL3WnO+1QmOMKcW1QpTmY5Te70KM3hCEEGvm5mPmKRClGQgpOmtavSlavUrm5mPmCEpavQhavYyElCGl1muUjJS1SkKUlJSlrVK95u86Wu863jqUazrvWq06Wq063jrvGe86Ge86nK06Ga06nGsZ7ykZ72sZlCkZlBCUaxDvWhDvGe8QWu8Q3q0QWq0Q3u8QGe8QnK0QGa0QnGsZaykZa1rOtZxjMa1jnO9j3u9jWinO3q1j3u9jnO9jGSnOnFrvlJyEEM46Ws463ow6Wow63s46Gc46nIw6GYw6nEoZ7wgZ70oZlAgZlM4QWs4Q3owQWowQ3s4QGc4QnIwQGYwQnEoZawgZa4xjnM5j3s5jWgjO3oxj3s5jnM5jGQjOnLXm973mzoS1Sr3mnGOMCO/mQsXmQpS9rTFjOubmhGPmawhaOjEpOpStKWMpEL3ma+bmY2PmSjEIOpStCGMIEGNKEJTWEAgpCBmlvUpaYxmEvWta72talCla7ylalK2EY++1hK1jYxmllClaa8W1hGuE5pSl5kpa70palAha7whalO+1Y4xjYxmElAhaa8W1Y72l5kKUtTFjEL3F3mOEUu+E3u+EWinv3q2E3lrvtZyEMa2EnO+EnO+EGSnvnM6E3s6EWgjv3oyE3s6EnM6EGQjvnDqEEJTmhCGM5giM5jEpEAhaCGOla2MpQpTmzjEIEGMIQt7v3r2lrWO9Y9bW3jFKOmNrEJT3EDFKEGOErWultTqlSjrOazqESjrOSmO9MRCl5ggAKVq9EIStWkKt7xAAAP/v9wAIAAAAACLG1lgAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAK5klEQVRo3u2aS2+jyBaAUxSPUIAdA2rRsje+uLyz2aQlFMl/wB6N+XeeeDOL+2c6nd+QPRYjpWdjS53F3HNOFRg7Tm7uqG88r1OYR1UZzsc5px7AxW9/Ebn4O4EItpc6j/3ZQBSEECsUITQMY38ui3BkmA3t3WUtO3u4QprqzwQCCq+GDiiP4jzZT0+Os9tdOpDf8/9wNrl4xRor+3KHGE4xns1m5Fyr2Rg4xOdi9UcjeQHkC2A4CAEoxRhkhiwIg0GyXEAuAvXeX6rem0GEqHpMFJdEARoPxyQzIsEA2azI5cbt1uz9hFdV9RYQ0A44VguigMUZoow1DOruj9HHhrudfR4SCNEvFf9vIFDtS4/NlFfhokA0C2reW6pwmdmXC3A0wd9RmjtX+dWrINSyVsChzQHJKYYNChaL5UxHy6rYAYkI0/eU0IpVz+Z/eQWEzOazFbW4NYtd1Cgq0JtwWa2edgvB5CR4P5mEozTMCcX3ey+BEOmVEIvLhgKAFgVKzeH/Om5ifzVzdjZjZf8dJc69NA34c5KLQw52tWSqvdqzOGCTT0Uxpibj1zryqT0e7i4hO35n8dJQPiO5OBxVuXfoWNoiexJ0LyqftyIfYaASONf7cuSxm6aSwtU/BYJ65g8/sKKh2HsYGIU4/E9N4BMLWARMIvJ3lXWeJ92wxHZpWT0HQT1leleJy8VugYsDq32iAOl9LYp9IwYo9gLaZ+CP3lvcdIIKbTbVMQjd8En6EbsQ0G6xK4T/ddFwDCmA5kVRRz5JgRUvBYujRKd6g6J26nW0L292m2r/e/JGCTrX3D8GIccaTe7ZcKcsUqAnfdUcjnKsz7aN4aJZCgcqAsiKyQSE50kiYS/niRQgKnONaxEluejDjozx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" 
+    width="200px">
+    </a>
+
+</center>
+
+<script>
+    var pageName = "troubleshooting/support.md.txt".replace(/\.txt/g,'');
+    var uri = "feedback/com?document=SoftConsole&release=v2021.3-7.0.607&page=" + pageName;
+    var res = encodeURI(uri);
+    document.getElementById("feeedbackLink").href = res;
+
+    var body  = "Document: SoftConsole\nVersion: v2021.3-7.0.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
+    var title = "I have problem with the " + pageName + " page";
+    var ghuri = "https://github.com/AntonKrug/scdocs/issues/new?title="+title+"&body="+body+"&labels=help wanted";
+    document.getElementById("githubIssue").href = encodeURI(ghuri);
+
+</script> -->
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2021.3
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/scdocs/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+       <strong> 
+      <dd><a href="/scdocs/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
