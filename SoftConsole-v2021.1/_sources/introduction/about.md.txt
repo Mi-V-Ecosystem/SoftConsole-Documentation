@@ -1,0 +1,140 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# About SoftConsole and this document
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+
+This is manual for Microchip {{sc}}.
+
+For first-time users the manual is strongly recommended to be read in full at least once. The installation might require extra manual steps. 
+
+And it is recommended to search for the error messages in the troubleshooting section when encountering a issue:
+
+{doc}`/troubleshooting/flashpro`
+
+{doc}`/troubleshooting/project`
+
+{doc}`/troubleshooting/riscv`
+
+{doc}`/troubleshooting/riscv_trap`
+
+{doc}`/troubleshooting/arm`
+
+{doc}`/troubleshooting/renode`
+
+{% if linux is defined %}
+{doc}`/troubleshooting/renode_networking`
+{% endif %}  % End of Linux
+
+{doc}`/troubleshooting/eclipse`
+
+```{note}
+Users of previous releases should watch for changes and in the {ref}`What is new<whatisnew>` chapter and re-read all affected chapters.
+```
+
+## Variants
+
+The SoftConsole manual is distributed in three variants:
+
+ - Containing information relevant to both Windows and Linux users
+ - Containing information relevant to only Windows users
+ - Containing information relevant to only Linux users
+
+The online documentation contains both OSs, while documentation installed with specific SoftConsole contains only information relevant to its host OS.
+
+Currently you are reading the: **{{os_human}}** variant.
+
+{% if is_offline_document == false %}
+## Download offline versions
+
+The documentation can be downloaded for 'offline' use. Because various versions are generated, there is an option to download variant which covers only the user's host operating system and doesn't include irrelevant information. Or download variant which covers both operating systems.
+
+ {download}`Both Windows and Linux</_static/offline/sc-doc-all.zip>`
+
+ {download}`Only Windows</_static/offline/sc-doc-win.zip>`
+
+ {download}`Only Linux</_static/offline/sc-doc-linux.zip>`
+
+{% endif %}
+
+## Used terms
+
+This document uses **\<SoftConsole-install-dir\>** as a placeholder for the actual SoftConsole install directory.
+Where this is mentioned substitute the actual SoftConsole install directory name.
+
+{% if windows is defined %}
+ - Windows example: `C:\Microchip\SoftConsole_v2021.1`
+{% endif %}
+
+{% if linux is defined %}
+ - Linux example: `$HOME/Microchip/SoftConsole_v2021.1`
+{% endif %}
+
+
+## Breadcrumbs
+
+Often in this document, there are steps described in 'breadcrumbs' form such as this:
+
+{{ macros.breadcrumb_square('"Do A first" -> "Then do B" -> "Finally do C"') }}
+<br/>
+
+Usually these breadcrumbs reference a GUI location where to click or how to navigate the menus, submenus, their tabs/dialogs.
+There are few common places where these breadcrumbs start:
+
+
+
+ - The `SoftConsole Menu toolbar` as starting location, example:
+
+   {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations"', '   ') }}
+
+   Which is located under the Window's title: 
+
+   ![board image](images/breadcrumbs/menu_toolbar.png)
+
+
+
+ - The `Project's properties` as starting location, example:
+
+   {{ macros.breadcrumb_indent('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
+
+   Which requires the user to first go into Project's settings/properties by following these steps:
+
+   {{ macros.breadcrumb_indent('"Right click on <your_project> in the Project Explorer" -> "Properties"', '   ') }}
+
+   ![board image](images/breadcrumbs/project_properties.png)
+
+   This opens the following menu and can be navigated with the breadcrumbs:
+
+   {{ macros.breadcrumb_indent('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
+
+   ![board image](images/breadcrumbs/project_properties_menu.png)
+
+
+
+ - The launchers `Debug configuration` as starting location, example:
+
+   {{ macros.breadcrumb_indent('"Debug Configuration" -> "Debugger" -> "GDB Client Setup" -> "Commands"', '   ') }}
+
+   Which requires the user to open the corresponding debug launcher associated with your project:
+
+   {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations" -> "Launcher for \<YOUR_PROJECT\>"', '   ') }}
+
+   ```{note}
+   Each project might have multiple Debug Launchers associated with the project, for example one `hw` for Hardware targets and one `Renode` for Renode emulated targets. User needs to select the coresponding launcher within the context of the SoftConsole chapter. Renode troubleshooting guide will expect users to select the Renode variants of the launchers.
+   ```
+
+   This will open the following dialog menu:
+
+   ![board image](images/breadcrumbs/debug_launcher.png)
+
+
+(whatisnew)=
+## What is new
+
+{% include 'main/introduction/_whatsnew2021.1.inc' %}
+{% include 'main/introduction/_whatsnew6.5.inc' %}
+{% include 'main/introduction/_whatsnew6.3.inc' %}
+
+```````

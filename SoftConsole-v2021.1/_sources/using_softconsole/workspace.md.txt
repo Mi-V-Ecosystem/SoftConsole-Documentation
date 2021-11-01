@@ -1,0 +1,86 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Workspaces
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+Workspace is a concept of a Eclipse based IDEs which is used to 'hold' all the projects. Some settings can be set globally in the product however some aspects need to be saved either on a project level, or on workspace level. Many features which SoftConsole depends on are saved on the workspace level (for example: MPFS boot mode programmers, Renode launchers, settings which make the UX more pleasant, tweaked keyboard shortcuts...)
+
+## Example workspace
+
+SoftConsole includes an example workspace which is opened by default when you run SoftConsole. This example
+workspace is located at:
+
+`<SoftConsole-install-dir>/extras/workspace.examples`
+
+This workspace contains several simple example projects and debug launch configurations that are ready to use
+once the relevant projects have been updated to match the target hardware – for example by copying the Libero
+SoC generated **drivers_config** folder into the project where applicable. It is also advisable to update these
+example projects with the relevant CMSIS/HAL and firmware drivers generated from the Firmware Catalog.
+It is advisable to make a copy of this example workspace and use the copy for experimentation. Workspaces were
+not designed nor intended to be shared between machines nor operating systems. Do not make your own empty
+workspaces and do not transfer workspaces between machines or OSes.
+
+```{note}
+The SoftConsole uninstaller will delete some or all of this workspace in which case any changes made
+may be lost.
+```
+
+Refer to the README.txt (or .md/.html) for each example project for more information.
+
+
+### Example projects
+
+The workspace is shipped with blinky projects for various targets (see their READMEs). However few projects have special reasons why they are bundled:
+
+ - **mpfs-mustein-julia:** A Renode-only example showcasing a simple graphical peripheral and own platform
+ - **mpfs-freertos-lwip:** Demonstration of a FreeRTOS implementation running a LwIP and a Webserver.
+ - **miv-rv32iamf-mandelbrot-uart:** Displaying Mandelbrot fractals with ASCII art through UART while using the RISC-V F extension
+ - **miv-rv32iamf-raytracer-uart-cpp:** ASCII art raytraced rendering of a sphere while using C++ and RISC-V F extension. Output is displayed over UART, extra attention needs to be paid to the readme and get the UART clocked correctly. The terminal window most likely must be resized to fit the content without any artifacts.
+
+```{note}
+All the Mi-V (including mpfs) projects can be run and debugged without target hardware on the Renode emulation platform. All the projects have enabled cppcheck on each build.
+```
+
+
+### Example debug launch configurations
+
+Debug launch configurations for each of the above projects. Remember to ensure that the OpenOCD command
+lines parameters used in the debug launch configuration:
+
+{{ macros.breadcrumb_square('"Debug Configuration" -> "Debugger tab" -> "Other options" ') }}
+<br/>
+
+matches the target hardware/board used. Also, remember to configure the target hardware for FlashPro debugging (e.g. `JTAG_SEL`
+tied high and, if applicable, FlashPro/USB rather than RVI debug access enabled).
+
+```{warning}
+Be aware of the differences in debug launch configuration settings between Cortex-M1, SmartFusion Cortex-M3,
+SmartFusion2 Cortex-M3, MPFS and Mi-V RISC-V targets. On top the real hardware launchers differ from the Renode launchers.
+```
+
+When creating new debug launch configurations for other systems use the example debug launch configurations as a guide or else copy the one that most closely matches the target system and reconfigure it as needed.
+
+## Empty workspace
+
+SoftConsole includes an empty workspace which has the new integrated `develop and debug` perspective and identical settings to the example workspace. This workspace is located at:
+
+`../extras/workspace.empty.zip`
+
+This workspace can be used if the bundled example projects are not desired, but still contains the Renode platform, MPFS boot mode programer launchers and all other necessary settings. This empty workspace is ideal for importing user’s projects into as a clean slate.
+
+```{note}
+With the current SoftConsole no extra steps are needed to use the pre-configured empty workspace. Just in the SoftConsole launcher select a empty directory and the workspace will get populated.
+```
+
+All documentation assumes that only the bundled empty/examples (or cloned) workspaces are used. Because the workspaces change between the releases it’s **not** supported to re-use older workspace from previous SoftConsole. 
+
+Trying to circumvent this constrain and creating own ad-hoc workspaces might on the surface seem as working but it will eventually cause various problems. These issues might not seem to be relevant to the workspace and might be non-trivial to resolve.
+
+```{warning}
+Copying workspaces between hosts and especially different OSs is not supported and can cause various and hard to debug problems as well.
+```
+
+
+```````

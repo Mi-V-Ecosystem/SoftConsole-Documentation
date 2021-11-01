@@ -1,0 +1,670 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Navigating the IDE &mdash; SoftConsole v2021.2-6.7.607 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Workspaces" href="workspace.html" />
+    <link rel="prev" title="Post Installation" href="post_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Navigating the IDE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#access-commands-and-other-items">Access commands and other items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#toolbar-icons">Toolbar icons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#save-all">Save all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-current-project">Build the current project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#skip-all-breakpoints">Skip all breakpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-actions-icons">Debugging actions/icons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#resume">Resume</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#suspend">Suspend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#terminate">Terminate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-into">Step Into</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-over">Step Over</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-return">Step Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-to-line">Run to Line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#instruction-stepping">Instruction stepping</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#git">Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debug-and-run-launchers">Debug and Run launchers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#run-launchers">Run Launchers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#external-launchers">External launchers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-element">Open Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search">Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mark-occurrences">Mark occurrences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#back-and-forward">Back and Forward</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/arm.html">Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode_networking.html">Renode networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Navigating the IDE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="navigating-the-ide">
+<h1>Navigating the IDE<a class="headerlink" href="#navigating-the-ide" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This documentation is deprecated and it’s not recommended to be used on new projects.</p>
+<p>Visit <a class="reference external" href="https://microsemi.com/softconsole">https://microsemi.com/softconsole</a> instead.</p>
+</div>
+<p>Through the document there are references to various actions, it’s good to know how to efficiently navigate through them.</p>
+<p>Often there multiple ways to achieve the same results and this section will highlight few, so then can find whichever way is most comfortable to him.</p>
+<div class="section" id="access-commands-and-other-items">
+<h2>Access commands and other items<a class="headerlink" href="#access-commands-and-other-items" title="Permalink to this headline">¶</a></h2>
+<p>“Access commands and other items” was formerly “Find Action”, it’s SoftConsole’s feature to find quickly GUI and various other entities.</p>
+<p>Other IDEs have similar feature and they name it slightly differently:</p>
+<ul class="simple">
+<li><p>Visual Studio Code calls it ‘Command Pallet’</p></li>
+<li><p>CLion ‘Find action’</p></li>
+<li><p>Sublime Text ‘Command Prompt’</p></li>
+</ul>
+<p>There are multiple ways to trigger this feature:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">P</span></code> keyboard shortcut (same as Visual Studio Code)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">3</span></code> keyboard shortcut (similar to other Eclipse based IDEs)</p></li>
+<li><p>By clicking the icon in the toolbar (top right corner):
+<img alt="icon" src="../_images/find_actions.png" /></p></li>
+</ul>
+<p>The search terms can be just partials and just initials, “<strong>R</strong>un <strong>T</strong>o <strong>L</strong>ine” can be searched just by typing <strong>rtl</strong></p>
+<p><img alt="dialog" src="../_images/rtl.png" /></p>
+<p>If the “Run To Line” action will be selected, then the next time its recommendation will have priority as recently used command.</p>
+<p>It can search inside the dialogs as well, not just to trigger “Preferences” dialog, but to find content inside it. For example searching “keys” will find a subsection in the Preferences dialog where user can customize the keyboard shortcuts.</p>
+<p><img alt="dialog" src="../_images/keys.png" /></p>
+<p>The search can be used to ‘select’ the editor tab from the current opened tabs, if the user has many files opened at the same time, it can be useful. And if the file is not opened in the editor, it will find the files in the project (even partial matches). Searching “http” in the <code class="docutils literal notranslate"><span class="pre">mpfs-freertos-lwip</span></code> project:</p>
+<p><img alt="dialog" src="../_images/http.png" /></p>
+<p>It can be activated to search even the content of the files, however this will slow down the indexing and has to be explicitly enabled with <code class="docutils literal notranslate"><span class="pre">Activate</span> <span class="pre">bundle</span> <span class="pre">for</span> <span class="pre">'File</span> <span class="pre">Content'</span> <span class="pre">proposals</span></code></p>
+<p><img alt="dialog" src="../_images/activate.png" /></p>
+<p>Another useful feature is <code class="docutils literal notranslate"><span class="pre">Toggle</span> <span class="pre">Show</span> <span class="pre">Key</span> <span class="pre">Bindings</span></code>, triggering the action will first enable it and then activating it later again will disables it (Toggle). When having remote meetings frequently, it’s nice to show popups what keyboard shortcuts  the user pressed and their purpose/action is and should make it easier for person on the other side to follow.</p>
+<p>Searching <code class="docutils literal notranslate"><span class="pre">tskb</span></code> will find the action:</p>
+<p><img alt="dialog" src="../_images/tskb.png" /></p>
+<p>After the is <code class="docutils literal notranslate"><span class="pre">Toggle</span> <span class="pre">Show</span> <span class="pre">Key</span> <span class="pre">Bindings</span></code> activated, a transparent popup is shown on the bottom of the screen when some shortcut is invoked:</p>
+<p><img alt="dialog" src="../_images/popup.png" /></p>
+</div>
+<div class="section" id="toolbar-icons">
+<h2>Toolbar icons<a class="headerlink" href="#toolbar-icons" title="Permalink to this headline">¶</a></h2>
+<p><img alt="toolbar" src="../_images/generic.png" /></p>
+<p>Toolbar icons can be seen as visual shortcuts for specific actions under the menu bar, these actions can be triggered by using the submenus, ‘Find Action’ and keyboard shortcuts as well. Some icons get disabled depending on their state and their relevance, if using non-git project then the Git icons are grayed out, if no changes were made to any files, the “Save All” will be disabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Above icons are showcasing our combined <code class="docutils literal notranslate"><span class="pre">Develop</span> <span class="pre">and</span> <span class="pre">debug</span></code> perspective which we recomend to users. However if the user needs to use different perspective the icons will differ.</p>
+</div>
+<div class="section" id="save-all">
+<h3>Save all<a class="headerlink" href="#save-all" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/save_all.png" /></p>
+<p>Will save all changes in all editors/tabs. Can be triggered with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">S</span></code> keyboard shortcut or with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-4f2ca6b5a5b13e53889e182be44355ff241240c8.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Save All&quot;
+     }" class="graphviz" /></div>
+<br/></div>
+<div class="section" id="build-the-current-project">
+<span id="toolbarbuild"></span><h3>Build the current project<a class="headerlink" href="#build-the-current-project" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/hammer.png" /></p>
+<p>The ‘hammer’ icon will build the currently selected project with its active configuration. The dropdown arrow can be used to quickly switch between configurations and triggering a build in one action. The build can be triggered with <code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">B</span></code> keyboard shortcut or with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-c5df6283f4ff65b5380db87553564f3eec223293.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Project&quot; -&gt; &quot;Build Project&quot;
+     }" class="graphviz" /></div>
+<br/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Similar shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">B</span></code> will compile all opened projects in the workspace.</p>
+</div>
+<p>If it’s necessary to switch the build configuration without triggering a build, then this can be achieved with:</p>
+<div class="graphviz"><img src="../_images/graphviz-703fb496213e1204330dc354130857ca52033064.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;select the required configuration&quot;
+     }" class="graphviz" /></div>
+<br/></div>
+<div class="section" id="skip-all-breakpoints">
+<h3>Skip all breakpoints<a class="headerlink" href="#skip-all-breakpoints" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/skip_breakpoints.png" /></p>
+<p>It’s very useful when troubleshooting code and requiring to something similar to a <code class="docutils literal notranslate"><span class="pre">Run</span></code> launcher without having to make the <code class="docutils literal notranslate"><span class="pre">Run</span></code> launcher. This will disable all breakpoints without removing them (so they can be used later). It can be triggered with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">B</span></code> keyboard shortcut or with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-3d76f94acf7dfe405b8fb3edce43fa8586638fc9.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Skip All Breakpoints&quot;
+     }" class="graphviz" /></div>
+<br/><p>Even when it’s not explicitly named as a ‘Toggle’ this feature is a toggle.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Forgetting about this feature and leaving it activated, might make the user wonder why are his breakpoints not working</p>
+</div>
+</div>
+<div class="section" id="debugging-actions-icons">
+<span id="toolbardebugging"></span><h3>Debugging actions/icons<a class="headerlink" href="#debugging-actions-icons" title="Permalink to this headline">¶</a></h3>
+<p>Collection of Debugging actions/icons are invoked in context of the active hart/core. In single-core targets this doesn’t matter, but for multi-core (multi-hart) targets it’s important to have the desired core/hart selected in the <code class="docutils literal notranslate"><span class="pre">Debugger</span></code> tab when invoking the actions:</p>
+<p><img alt="toolbar" src="../_images/call_stack.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These cores/harts are in the GUI represented as Threads.</p>
+</div>
+<div class="section" id="resume">
+<h4>Resume<a class="headerlink" href="#resume" title="Permalink to this headline">¶</a></h4>
+<p><img alt="toolbar" src="../_images/resume.png" /></p>
+<p>When debugging the target which is halted, then Resume will continue the execution (until the next breakpoint). It can be triggered with <code class="docutils literal notranslate"><span class="pre">F8</span></code> keyboard shortcut or with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-595f4898ec89755b76bb78dde8de6be878269c19.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Resume&quot;
+     }" class="graphviz" /></div>
+<br/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a debug launcher is invoked and the target is initialising the ‘Resume’ icon might show as colored (active/enabled), however the UX is more reliable when waiting slightly for the target to break a main and not invoke the ‘Resume’ while the target is initialising for the debug session.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Except few edge cases the Resume will resume whole target with all harts, regardless what hart is selected.</p>
+</div>
+</div>
+<div class="section" id="suspend">
+<h4>Suspend<a class="headerlink" href="#suspend" title="Permalink to this headline">¶</a></h4>
+<p><img alt="toolbar" src="../_images/suspend.png" /></p>
+<p>When there are no breakpoints and the target is running, the debugger can halt the target. Because of the ad-hoc nature of the Suspend, the target might be in various location and very deeply nested inside the firmware, often Step out (shown below) can be used to get outside deeply nested functions.</p>
+<p>It has no keyboard shortcut but can be invoked with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-4afbc7d33de1ef8c216ccd01db12e6d4ad4f8b10.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Suspend&quot;
+     }" class="graphviz" /></div>
+<br/></div>
+<div class="section" id="terminate">
+<h4>Terminate<a class="headerlink" href="#terminate" title="Permalink to this headline">¶</a></h4>
+<p><img alt="toolbar" src="../_images/terminate.png" /></p>
+<p>It will terminate currently selected session, in case of Renode sessions, it’s important to select the group launcher so the whole Renode is terminated, and not just the GDB connection. It can be triggered with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">F2</span></code> keyboard shortcut and with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-fb07395296e433730c1106e6b30c03b16b9b3251.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Terminate&quot;
+     }" class="graphviz" /></div>
+<br/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are other “Red Stop” buttons in the GUI and some might act in a similar manner (terminating GDB console will terminate the GDB which terminate the debug sessions). However, user should use the toolbar terminate button to properly terminate the sessions, because in some cases there are differences (such as Renode group launchers).</p>
+</div>
+</div>
+<div class="section" id="step-into">
+<h4>Step Into<a class="headerlink" href="#step-into" title="Permalink to this headline">¶</a></h4>
+<p><img alt="toolbar" src="../_images/step_in.png" /></p>
+<p>Will step inside a function and go deeper in the call-stack. It can be triggered with <code class="docutils literal notranslate"><span class="pre">F5</span></code> keyboard shortcut and with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-c6dde12469d31d2de91c184c0f0ef2dac6f98c17.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Step Into&quot;
+     }" class="graphviz" /></div>
+<br/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The functionality can change depending on the “Instruction Stepping Mode” which will be explained below.
+In the “Instruction Stepping Mode” it will go deeper into the callstack and follow the call instructions such as <code class="docutils literal notranslate"><span class="pre">jal</span></code>.</p>
+</div>
+</div>
+<div class="section" id="step-over">
+<h4>Step Over<a class="headerlink" href="#step-over" title="Permalink to this headline">¶</a></h4>
+<p><img alt="toolbar" src="../_images/step_over.png" /></p>
+<p>Will step over the function and continue debugging after the function finishes. It can be triggered with <code class="docutils literal notranslate"><span class="pre">F6</span></code> keyboard shortcut and with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-70551fd4825b749f68796aaf0b87d28612716502.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Step Over&quot;
+     }" class="graphviz" /></div>
+<br/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The functionality can change depending on the “Instruction Stepping Mode” which will be explained below.
+In the “Instruction Stepping Mode” when call instruction such as <code class="docutils literal notranslate"><span class="pre">jal</span></code> is encountered, the CPU will execute all the instructions inside the call and the stepping mode will continue after the call returned back.</p>
+</div>
+</div>
+<div class="section" id="step-return">
+<h4>Step Return<a class="headerlink" href="#step-return" title="Permalink to this headline">¶</a></h4>
+<p><img alt="toolbar" src="../_images/step_out.png" /></p>
+<p>Will return back out from the function. It can be triggered with <code class="docutils literal notranslate"><span class="pre">F7</span></code> keyboard shortcut and with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-e1da9dfec00dcbdf51d5570c7ffa856968b2602c.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Step Return&quot;
+     }" class="graphviz" /></div>
+<br/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The functionality can change depending on the “Instruction Stepping Mode” which will be explained below.
+In the “Instruction Stepping Mode” the CPU will execute all the instructions inside until return from a call instruction is reached, such as <code class="docutils literal notranslate"><span class="pre">ret</span></code>, then it will return from the call and continue the stepping mode.</p>
+</div>
+</div>
+<div class="section" id="run-to-line">
+<h4>Run to Line<a class="headerlink" href="#run-to-line" title="Permalink to this headline">¶</a></h4>
+<p><img alt="toolbar" src="../_images/run_to_line.png" /></p>
+<p>It can be seen as making a temporary one-off breakpoint and the invoking “Resume”. Some users out of habit might still create breakpoints and resume to them, just to delete them later, however this is a faster way to achieve the same. It has no direct keyboard shortcut, but can triggered with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">P</span></code> and then typing <code class="docutils literal notranslate"><span class="pre">rtl</span></code> or with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-a3278d3a619f8c2ff3397b7f7592126a77c23648.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Run to Line&quot;
+     }" class="graphviz" /></div>
+<br/></div>
+<div class="section" id="instruction-stepping">
+<h4>Instruction stepping<a class="headerlink" href="#instruction-stepping" title="Permalink to this headline">¶</a></h4>
+<p><img alt="toolbar" src="../_images/instruction_stepping.png" /></p>
+<p>It will switch to instruction stepping mode, and the step action will go over a single instruction instead of going over the whole C functions. It has no direct keyboard shortcut, but can be used with the menu:</p>
+<div class="graphviz"><img src="../_images/graphviz-765bf2ce3a1fb291722e65d3c6dfef1155ba6460.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Instruction Stepping&quot;
+     }" class="graphviz" /></div>
+<br/></div>
+</div>
+<div class="section" id="git">
+<h3>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/git.png" /></p>
+<p>Git functionality is provided in the SoftConsole by EGit plugin, which is Eclipse GUI integration of a JGit plugin. JGit is a full and stand-alone implementation of the Git protocol, which allows SoftConsole users to use Git repositories without a need to install any git command line client binary or any other dependencies on their host.</p>
+<p>See <a class="reference external" href="https://wiki.eclipse.org/EGit/User_Guide">https://wiki.eclipse.org/EGit/User_Guide</a> to know more about the EGit plugin.</p>
+<p>The icons are:</p>
+<ul class="simple">
+<li><p>Git Push</p></li>
+<li><p>Git Pull</p></li>
+<li><p>Git Add</p></li>
+<li><p>Git Commit</p></li>
+</ul>
+<p>All of these and many more can be accessed via:</p>
+<div class="graphviz"><img src="../_images/graphviz-9ee8b1f2dc38a356bb636e49dba58e30c7d06a76.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Git&quot; 
+     }" class="graphviz" /></div>
+<br/></div>
+<div class="section" id="debug-and-run-launchers">
+<h3>Debug and Run launchers<a class="headerlink" href="#debug-and-run-launchers" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/debug_run.png" /></p>
+<p>Debug launchers are used to initiate a debug session with a target. Clicking on the icon will activate the last launcher, however with Renode (which need group launchers) it might trying to run wrong launcher. Better alternative is to use <code class="docutils literal notranslate"><span class="pre">F11</span></code> which will try terminate the existing sessions and re-launch it (which should save time as it’s not needed to terminate the session by hand). Sometimes the issue might be that the target doesn’t terminate fast enough and re-launch might fail, pressing the <code class="docutils literal notranslate"><span class="pre">F11</span></code> yet again should resolve this issue. With combination of <code class="docutils literal notranslate"><span class="pre">Incremental</span> <span class="pre">Builds</span></code>, <code class="docutils literal notranslate"><span class="pre">auto</span> <span class="pre">build</span></code> the user can develop much more rapidly, doing small changes, and <code class="docutils literal notranslate"><span class="pre">F11</span></code> then will terminate the session, build the project and re-launch the last launcher quickly.</p>
+<p>Click the drop-down arrow shows Debug launcher configuration of all opened projects. If there the amount of launcher is confusing then closing all other unrelated projects will help.</p>
+<p><img alt="toolbar" src="../_images/debug_configurations.png" /></p>
+<div class="graphviz"><img src="../_images/graphviz-41ec00cd8ec7fe5cbe8eb4278ab6ba6a13cec27a.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Close Unrelated Projects&quot;
+     }" class="graphviz" /></div>
+<br/><p>And it should decrease the amount of noise/distractions in the Debug Launcher Configuration dialog:</p>
+<p><img alt="toolbar" src="../_images/debug_configurations_closed.png" /></p>
+<p>Other way to close projects selectively, one by one, can be done with:</p>
+<div class="graphviz"><img src="../_images/graphviz-da58179eddf5dd2eae9b2e652e4d984c684c9249.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Close Project&quot;
+     }" class="graphviz" /></div>
+<br/><p>Or even faster with:</p>
+<div class="graphviz"><img src="../_images/graphviz-42d68b6bcb2004bfd1b84c14503d7769946cf9ec.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Middle click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot;
+     }" class="graphviz" /></div>
+<br/><p>To open the closed projects, just double-click on their name in the Project Explorer.</p>
+<div class="section" id="run-launchers">
+<h4>Run Launchers<a class="headerlink" href="#run-launchers" title="Permalink to this headline">¶</a></h4>
+<p>Similar to Debug launchers are the Run launchers, usually our examples are not shipping with Run launchers. They could be used to run applications locally (not useful in embedded IDE), however they can be used on remote/embedded targets like the Debug launchers do, in fact the logic behind Run and Debug launchers is the same, only difference between the Debug and Run launchers is that they have separate ‘favorites’ and ‘history’ so they can trigger their own ‘run most recent launcher’ and the Run launchers have implied <code class="docutils literal notranslate"><span class="pre">Skip</span> <span class="pre">all</span> <span class="pre">breakpoints</span></code>. Users can feel free to make their own Run launchers by duplicating the Debug launcher, renaming it to Run Launcher and then:</p>
+<div class="graphviz"><img src="../_images/graphviz-b5a54387cb9b70567d1448dec25d4983c2b57bf0.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Run/Restart Commands&quot; -&gt; &quot;Uncheck 'Set breakpoint at'&quot;
+     }" class="graphviz" /></div>
+<br/><p><img alt="toolbar" src="../_images/run_launcher.png" /></p>
+<p>It will make the launcher to NOT break at main function and together with the <code class="docutils literal notranslate"><span class="pre">Run</span></code> launchers implied <code class="docutils literal notranslate"><span class="pre">Skip</span> <span class="pre">all</span> <span class="pre">breakpoints</span></code> will allow user to just run the applications on the target without debugger halting it.</p>
+</div>
+</div>
+<div class="section" id="external-launchers">
+<h3>External launchers<a class="headerlink" href="#external-launchers" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/external_launchers.png" /></p>
+<p>Are used to store launchers to external tools, usually Renode platforms reside here and all our MPFS boot mode programmers.</p>
+</div>
+<div class="section" id="open-element">
+<h3>Open Element<a class="headerlink" href="#open-element" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/open_element.png" /></p>
+<p>Can be considered as search which understands code, searching <code class="docutils literal notranslate"><span class="pre">main</span></code> can give this result:</p>
+<p><img alt="toolbar" src="../_images/open_element_main.png" /></p>
+</div>
+<div class="section" id="search">
+<h3>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/search.png" /></p>
+<p>Search opens a the generic search dialog, the drop-down arrow can be used to go directly to a specific tab.</p>
+<p><img alt="toolbar" src="../_images/search_dialog.png" /></p>
+<p>Common uses are to do <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">Search</span></code> where it can look into comments, text files, READMEs as well.</p>
+<p>Interesting setting is scopes which enable specific behaviors:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Workspace</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Enclosing project</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-2 docutils container">
+<div class="docutils container">
+<p>Selected resource in ‘Project Explorer’</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<p>Will search inside the whole workspace, that means all opened projects.</p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<p>Will search only within a single project, where ever the currently selected file in the Project Explorer belongs to.</p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
+<p>Will search within the selected file, or the selected folder (and its sub-folders/sub-files).</p>
+</div>
+</div>
+</div>
+<div class="section" id="mark-occurrences">
+<h3>Mark occurrences<a class="headerlink" href="#mark-occurrences" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/mark.png" /></p>
+<p>Will highlight in the code whatever element is selected, selecting <code class="docutils literal notranslate"><span class="pre">i</span></code> in the example below marked all occurrences of <code class="docutils literal notranslate"><span class="pre">i</span></code> in the code:</p>
+<p><img alt="toolbar" src="../_images/mark_code.png" /></p>
+</div>
+<div class="section" id="back-and-forward">
+<h3>Back and Forward<a class="headerlink" href="#back-and-forward" title="Permalink to this headline">¶</a></h3>
+<p><img alt="toolbar" src="../_images/back_forward.png" /></p>
+<ul class="simple">
+<li><p>Last edit location <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Q</span></code> will jump to a editor and location which was edited as last</p></li>
+<li><p>Back <code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">Left</span> <span class="pre">cursor</span></code> will move to previous editor and location even when it was not edited</p></li>
+<li><p>Forward <code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">Right</span> <span class="pre">cursor</span></code> undo action for the <code class="docutils literal notranslate"><span class="pre">Back</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Back</span></code> function is useful when navigating the source code and using <code class="docutils literal notranslate"><span class="pre">F3</span></code> or <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Left</span> <span class="pre">click</span></code> on various symbols to open to their Declaration and the <code class="docutils literal notranslate"><span class="pre">Back</span></code> function can be used to navigate back to the parent.</p>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="workspace.html" class="btn btn-neutral float-right" title="Workspaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="post_installation.html" class="btn btn-neutral float-left" title="Post Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Microchip.
+
+    </p>
+  </div> 
+<!-- <center>
+
+    <a id=githubIssue target="_blank">
+        <img src=" data:image/png;base64,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" 
+        width="102px">
+        </a>
+    
+    <a id=feeedbackLink target="_blank">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA/CAMAAACSEXcNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAP//94TFSu/v5nO9MZzOa0Kt3iml5hCl1pzOe+/394TFWr29tXO9Qmu9IVqtGZSte+be5lqtKbXejMXmrebWtYR7a5zmpa3OhGNaQuat5t7vtXN7c5TeQu+1EOattcW1EGu95mutGUKlGTqcCN7vzozF5jrOGRCUShDOWhDOGVrOlJxjEGutQmtaY4zOWmsZvSkZvUoZvQgZvZS9WmOl5u/mEMXmEL3WnO+1QmOMKcW1QpTmY5Te70KM3hCEEGvm5mPmKRClGQgpOmtavSlavUrm5mPmCEpavQhavYyElCGl1muUjJS1SkKUlJSlrVK95u86Wu863jqUazrvWq06Wq063jrvGe86Ge86nK06Ga06nGsZ7ykZ72sZlCkZlBCUaxDvWhDvGe8QWu8Q3q0QWq0Q3u8QGe8QnK0QGa0QnGsZaykZa1rOtZxjMa1jnO9j3u9jWinO3q1j3u9jnO9jGSnOnFrvlJyEEM46Ws463ow6Wow63s46Gc46nIw6GYw6nEoZ7wgZ70oZlAgZlM4QWs4Q3owQWowQ3s4QGc4QnIwQGYwQnEoZawgZa4xjnM5j3s5jWgjO3oxj3s5jnM5jGQjOnLXm973mzoS1Sr3mnGOMCO/mQsXmQpS9rTFjOubmhGPmawhaOjEpOpStKWMpEL3ma+bmY2PmSjEIOpStCGMIEGNKEJTWEAgpCBmlvUpaYxmEvWta72talCla7ylalK2EY++1hK1jYxmllClaa8W1hGuE5pSl5kpa70palAha7whalO+1Y4xjYxmElAhaa8W1Y72l5kKUtTFjEL3F3mOEUu+E3u+EWinv3q2E3lrvtZyEMa2EnO+EnO+EGSnvnM6E3s6EWgjv3oyE3s6EnM6EGQjvnDqEEJTmhCGM5giM5jEpEAhaCGOla2MpQpTmzjEIEGMIQt7v3r2lrWO9Y9bW3jFKOmNrEJT3EDFKEGOErWultTqlSjrOazqESjrOSmO9MRCl5ggAKVq9EIStWkKt7xAAAP/v9wAIAAAAACLG1lgAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAK5klEQVRo3u2aS2+jyBaAUxSPUIAdA2rRsje+uLyz2aQlFMl/wB6N+XeeeDOL+2c6nd+QPRYjpWdjS53F3HNOFRg7Tm7uqG88r1OYR1UZzsc5px7AxW9/Ebn4O4EItpc6j/3ZQBSEECsUITQMY38ui3BkmA3t3WUtO3u4QprqzwQCCq+GDiiP4jzZT0+Os9tdOpDf8/9wNrl4xRor+3KHGE4xns1m5Fyr2Rg4xOdi9UcjeQHkC2A4CAEoxRhkhiwIg0GyXEAuAvXeX6rem0GEqHpMFJdEARoPxyQzIsEA2azI5cbt1uz9hFdV9RYQ0A44VguigMUZoow1DOruj9HHhrudfR4SCNEvFf9vIFDtS4/NlFfhokA0C2reW6pwmdmXC3A0wd9RmjtX+dWrINSyVsChzQHJKYYNChaL5UxHy6rYAYkI0/eU0IpVz+Z/eQWEzOazFbW4NYtd1Cgq0JtwWa2edgvB5CR4P5mEozTMCcX3ey+BEOmVEIvLhgKAFgVKzeH/Om5ifzVzdjZjZf8dJc69NA34c5KLQw52tWSqvdqzOGCTT0Uxpibj1zryqT0e7i4hO35n8dJQPiO5OBxVuXfoWNoiexJ0LyqftyIfYaASONf7cuSxm6aSwtU/BYJ65g8/sKKh2HsYGIU4/E9N4BMLWARMIvJ3lXWeJ92wxHZpWT0HQT1leleJy8VugYsDq32iAOl9LYp9IwYo9gLaZ+CP3lvcdIIKbTbVMQjd8En6EbsQ0G6xK4T/ddFwDCmA5kVRRz5JgRUvBYujRKd6g6J26nW0L292m2r/e/JGCTrX3D8GIccaTe7ZcKcsUqAnfdUcjnKsz7aN4aJZCgcqAsiKyQSE50kiYS/niRQgKnONaxEluejDjozxsIzV7r7a75BJik3XpnGui5ZBwvDbgBWLBXnWDp1JbD6TVcix+I/gR45jK3GcuuKYSRdExq4rhOvG0pWodIKZfSxacyiVQtdxXb5WuwRE1d4k1uFRah2Y5KJtkAxAbAeiAxc1kqrAv7RjLRdKdhQ+WEexAIgFEksrkTyx5NqSsaUlYa6Fh64Ai1m6oFxbtLuv9hYxJl7rKDO6KSq4rE3SApmE1rd7sIj2rZ1Sny0/K8fqfSbdEYNYVGMAxxokYRY2jhaoLnlZln26IF9bLuTkJYLWILkGwWpvhgmkZ9RMwbbTCUfYw1cf/DYIalqOguvJRzYkHSmt9ACtUpGuLVVbYrHQFlkxpQzERhLJhGeW7GMQW9pOuSIA0BZIRhZpqr0FpBRWYGVeYHaUqIZroHvFPUieAuUjm+0akoNhevVZ5Tp67dAeCLRaSXadZVl/DQx8HcMe/LRYzJIRrOHeszyTa8yTOa5itX2zBNBzuCEhhJS6FO5z7VsXjWd5ANJ9hH5EawsybIH8UDMcJ+hHAAOWiMssK3mUeQhCedeoMMuyHEqytfTk+jrzsrjvZRlPAOQ6e2vyDOoC8y4iKAlHOBDe6HC/2LdZXSi7w2hX+rWciwziqMz2j9ZjVt56KBaLPQ/U9ry+QOenTC9ifc8rIyq3sIBHFpdxKT1PxYj3usDpjMAEd+oiCIu7nUZSFxUbtEDosU+KVR4exerSaWTvXD84LwiMtRLDo+RmhpdZsEcNpaVyPRfupuvhvpXpgizJ3aaaZ7ycDMVAokBYHIYNiIedwtTnByDlCEG6jzD6bak5bhnkpIBBxMT4f8ge4QCEyYakS9E+XfYOQOSIyh8euVi0FNXONX/JIDAfcW+/M8ExwiEIKyfavbqhAqkOQH4aqcK7e7ZaHDvXywYRrJp8J/VB/5MExyCMB91XQLRFOik412zh2Dop55o3x4cJBsX8Bi6v5qG/S3tS/xX9T4Aw4XVbIPM9SK8F8q+HRzBJo6uNztX78TQHlImJ9lilDKrlZcaeLaj1bUhNrb4yQEPR2lEbwwv0gcppgbDkFZBSg3S6MAKuR4Y02oVRin1K0O34fd0cGhyua5RmIGW/jM1OFEGmG3cSLqU0qIqHrbI0BS95mRkCG9/AxeIIgISU+LdOR3JcZ3ga2Yld+FtpHIG43XawH4Go5hfGMA/37FDhGf96CsMZC1be7Jv1dQxKWB0JAKbMO1GOIP1OFHfMdV+BcHIjRrYw6ABrmIaEOgyOuIX3Ak7SCQSszMSME7hD2ZFreSEpWje/rRipVIe4JZMCSGE/tZI9PjhUycHH2P5NCGdUqWPyLOl3DEH3U5hRvq1BOlZJV85KugAzlQXpvrkSs4SBuSb34H5EmBUp9E6cBKWlzl+DCI9cZ1t3iM9AvBROtTU7N3dsfHDvn05YAzF63x7glCYulNySG1vQAh2fBdEaduAoiuGOR1QjY+BGlolrmXm0CQAVVJKJyfrgSggDTEEnjrbmFv7Sj0pXn1+DcAhKVBRWaogy3ez7kR6n6ciWLB/CeMsp6jtfQJDY+wPIhyYZHznyq4eueSgyN00EIffJ4cB0+2YkSpGr8ozDGCswmYVDQE/AQQb1oWDbTwIYkcEgzLTKIACsOKJ/bPtCxvrsCqScdOrLhTQhmQ9aPTuZBKJdVYCeZOYUz8RW/Yp+Y3X1cLM94gCHBmUF7nnMjFCBJMZtwgMN0ooRHTAJgoBXBhgjsIoh+MEyuVY/joIyb4HIcH85NYyftsdayrcmqapw8+izsSb51HA4s9WqVC8Rq6v7u5vQfCZ0G0tc9WO4tbiNCGgtgz1IwFoHBBKAJSjX5YHAplt4HstgawX9BFqFRBmgxIFW63JqYqUbrRpE+Zau8fBYgk3sTwrjE6XCGdKbHX95/7OmCFRXcASSlTIG3zeDPm0DBAlkjFWJDVSGZre0MtoY2DrzGDoWDJnSQk8LzDgHK/ZjWQJIAMiWBsnD1iW1Z+mhlgbhut3ST4rvHismoDNpPcPChyaC+Xd3NzcvPrT2VM9nuVZrS92hkakKtKZpkqE2UJKpv8GBp2sHBu65bqZP6dH/wjIJ21cbudT4Dg6mur/5QoW7rvTweCWYWA1tu40CA0QvOJtsvQMONT/c1J5Vg1RfVJTQQPbWuL25++UKusnhgdgrlhtnk+BgcDpJE2WQTe/wAZ1P4620a+AUCBZAebxiB741LGY4BzTOtKhpml4C1WTNp8fPtX6rfHq0lYb7SeY9DLrql4ck0Avm3h9CbtOQU5M1aN4sNA+xfSJJRmH9GOz6GwyD7TaIjW8Qcuv8cqteK/DpdPnl2dP4nk8tV5Kmt6q2e/3zhg2LFoeaLQrpnpljol70iAE4Fn/+fqTaVGpyPwpv1WPW+19KNn4a0hvD8fBpJWbgavgi9+3Pa7+/XE/S0Td6WjKHSK9OvXqrluRdwk1HaTdEufsF+pMxjbWGMzFe0PsfnIVMwnMJ6Dah97pHHAcvQ/3lhoYgIvfUO+eHu8cl9uc0Mhnv6om6YG56Jgkn7k/qm4HBdLCsXno97S/nVTMvRuH+HKpz2BFi0Qzix7r0DFIrt5ke2uP4g4FqM9+jqL9g1of5AIb2emLyhJPfs4rwB1OI8+q1TzgqfzkA1IOPTNAecwBp+sUxE+ejACeZgjmWx99wHH+L0gOUD1CxJR8gfRywcd3NQ4xsBueSKVLMn2Gc+swJUDbL+fzo//+uYAKM/XwB3QkfnE/m8+XGP/HR1skPz6rKP5bBR44tcYEfcoilf045/enZy980Hn5gVM2nfv1AG9qxs8n3+IAZWmK4H5vlX+FL7M3mn0/K/wH5u4H8ByqJpUXJw7IZAAAAAElFTkSuQmCC" 
+    width="200px">
+    </a>
+
+</center>
+
+<script>
+    var pageName = "using_softconsole/navigating.md.txt".replace(/\.txt/g,'');
+    var uri = "feedback/com?document=SoftConsole&release=v2021.2-6.7.607&page=" + pageName;
+    var res = encodeURI(uri);
+    document.getElementById("feeedbackLink").href = res;
+
+    var body  = "Document: SoftConsole\nVersion: v2021.2-6.7.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
+    var title = "I have problem with the " + pageName + " page";
+    var ghuri = "https://github.com/AntonKrug/scdocs/issues/new?title="+title+"&body="+body+"&labels=help wanted";
+    document.getElementById("githubIssue").href = encodeURI(ghuri);
+
+</script> -->
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2021.2
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+       <strong> 
+      <dd><a href="/scdocs/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

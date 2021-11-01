@@ -1,0 +1,18 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Debugging
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+{% include 'main/using_softconsole/debugging/_launchers.inc' %}
+{% include 'main/using_softconsole/debugging/_openocd_options.inc' %}
+{% include 'main/using_softconsole/debugging/_using_debug_session.inc' %}
+{% include 'main/using_softconsole/debugging/_callstack.inc' %}
+{% include 'main/using_softconsole/debugging/_conditional_breakpoints.inc' %}
+
+## Troubleshooting
+{% include 'main/using_softconsole/debugging/_troubleshooting.inc' %}
+
+
+```````

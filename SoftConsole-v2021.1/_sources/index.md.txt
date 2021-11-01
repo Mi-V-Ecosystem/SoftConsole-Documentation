@@ -1,0 +1,66 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# SoftConsole documentation
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+![Microchip Logo](/_static/mhcp-full.png)
+
+![SoftConsole](/_static/softconsole-big.png)
+
+
+```{toctree}
+:caption: Introduction
+:maxdepth: 1
+
+introduction/about
+introduction/supported_platforms
+introduction/tools_resources
+```
+
+```{toctree}
+:caption: Using SoftConsole
+:maxdepth: 1
+
+using_softconsole/installation
+using_softconsole/post_installation
+using_softconsole/navigating
+using_softconsole/workspace
+using_softconsole/projects
+using_softconsole/debugging
+using_softconsole/mpfs
+using_softconsole/renode
+using_softconsole/other
+```
+
+
+```{toctree}
+:caption: Tips, Tricks and Troubleshooting
+:maxdepth: 1
+
+troubleshooting/flashpro
+troubleshooting/project
+troubleshooting/riscv
+troubleshooting/riscv_trap
+troubleshooting/arm
+troubleshooting/renode
+troubleshooting/renode_networking
+troubleshooting/eclipse
+troubleshooting/support
+```
+
+
+```````
+
+
+```````{jinja}
+{% if versions %}
+<h3>{{ _('Versions') }}</h3>
+<ul>
+  {%- for item in versions %}
+  <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+  {%- endfor %}
+</ul>
+{% endif %}
+```````

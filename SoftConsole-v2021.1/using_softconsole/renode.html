@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Renode simulation platform &mdash; SoftConsole v2021.2-6.7.607 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Other features" href="other.html" />
+    <link rel="prev" title="PolarFire SoC" href="mpfs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Renode simulation platform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#useful-links">Useful Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-firewall">Windows firewall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-troubleshooting">Other troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#macros">Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#symbols-and-simple-trace-functionality">Symbols and simple trace functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-bridge-tunnel-to-the-emulation">Creating bridge/tunnel to the emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-wireshark-to-monitor-the-network-traffic-inside-the-emulation">Using Wireshark to monitor the network traffic inside the emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#emulation-time">Emulation time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tweaking-the-emulation-performance">Tweaking the emulation performance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#web-content-of-the-pse-freertos-lwip-example">Web content of the pse-freertos-lwip example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/arm.html">Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode_networking.html">Renode networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Renode simulation platform</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="renode-simulation-platform">
+<h1>Renode simulation platform<a class="headerlink" href="#renode-simulation-platform" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This documentation is deprecated and it’s not recommended to be used on new projects.</p>
+<p>Visit <a class="reference external" href="https://microsemi.com/softconsole">https://microsemi.com/softconsole</a> instead.</p>
+</div>
+<p><img alt="Renode logo" src="../_images/renode_logo1.png" /></p>
+<p>Renode™ is an open-source software development framework with commercial support from Antmicro that lets you develop, debug and test multi-node device systems reliably, scalably and effectively. If all installation dependencies are met (see installation section), then the RISC-V examples can be run in the emulator.</p>
+<p>To debug an example in the emulator Renode must be run with the Mi-V model (external tool launcher called Mi-V-Renodeemulation-platform) or PolarFire SoC MPFS (previously known as PSE, see MPFS HAL manual for more details) model and a debug launcher attaches to the running Renode (for example miv-rv32im-systick-blinky Attach-to-Renode). The debug launchers for Renode are almost identical to the launchers for real 32-bit RISC-V hardware targets except:</p>
+<ul>
+<li><p>Disabled/uncheck “Start OpenOCD locally” as Renode debugging does not use OpenOCD/JTAG but connects GDB directly to the Renode GDB Remote Serial Protocol interface.</p>
+<div class="graphviz"><img src="../_images/graphviz-cc07c7dcc6ceebb08add3cf1500011b81e0078fd.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Start OpenOCD locally&quot;; }" class="graphviz" /></div>
+</li>
+<li><p>RISC-V 32-bit targets need the following commands:</p>
+<div class="graphviz"><img src="../_images/graphviz-83839a180d94385294ded83427d951661e1e541a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<p>Have set the architecture and symbols:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>set arch riscv:rv32
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Add symbol file command and explain the macro</p>
+</div>
+</li>
+<li><p>For PolarFire SoC targets the launcher must be changed (this changed in SoftConsole 6.1).</p>
+<ul>
+<li><p>The Startup -&gt; Run/Restart Commands needs to contain the following code:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>monitor $COMMON_PC=`sysbus.e51 PC`
+monitor runMacro $SetAllPCs
+monitor start
+</pre></div>
+</div>
+</li>
+<li><p>Change the <em>e51</em> to <em>u54_1</em> in the code above if the connection is made to <em>u54_1</em>, change accordingly for <em>u54_2</em>, <em>u54_3</em>, and <em>u54_4</em>.</p></li>
+<li><p>The SoftConsole v2021.2 platform script needs to be used (it’s not compatible with SoftConsole 6.1). The scripts now start the servers with the auto-start feature disabled (no “true” appended on each line)</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>e51 StartGdbServer 3333
+u54_1 StartGdbServer 3334
+u54_2 StartGdbServer 3335
+u54_3 StartGdbServer 3336
+u54_4 StartGdbServer 3337
+</pre></div>
+</div>
+</li>
+<li><p>Connect to port with the correct hart, check the Port number value:</p>
+<div class="graphviz"><img src="../_images/graphviz-59da6a7d87af8a3988aebeae726c77321763810a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;Remote Target&quot; -&gt; &quot;Port number&quot;; }" class="graphviz" /></div>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">Hart</th>
+<th class="head">Port Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>e51</td>
+<td>3333</td>
+</tr>
+<tr class="row-odd"><td>u54_1</td>
+<td>3334</td>
+</tr>
+<tr class="row-even"><td>u54_2</td>
+<td>3335</td>
+</tr>
+<tr class="row-odd"><td>u54_3</td>
+<td>3336</td>
+</tr>
+<tr class="row-even"><td>u54_4</td>
+<td>3337</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>The very first launcher will configure the platform, PCs and start execution of the code. If a second connection is required to debug another hart, then extra steps need to be followed</p>
+<ul class="simple">
+<li><p>Base the second launcher by making a duplicate of the first launcher</p></li>
+<li><p>In the Debugger tab:</p>
+<ul>
+<li><p>Leave the <strong>Start OpenOCD locally</strong> unchecked</p></li>
+<li><p>Select a new port to connect to (3333 to 3337 depending what hart is targeted)</p></li>
+</ul>
+</li>
+<li><p>In the Startup tab:</p>
+<ul>
+<li><p>Uncheck <strong>Initial Reset</strong></p></li>
+<li><p>Check <strong>Load symbols</strong></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="useful-links">
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://renode.readthedocs.io/en/latest/">Renode’s documentation</a></p></li>
+<li><p><a class="reference external" href="https://antmicro.com/blog/tags/renode/">Antmicro’s blog</a></p></li>
+</ul>
+</div>
+<div class="section" id="windows-firewall">
+<h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Permalink to this headline">¶</a></h2>
+<p>On Windows if there is a firewall in use then the first time that a debug session is run the firewall may prompt that it is blocking
+OpenOCD, <code class="docutils literal notranslate"><span class="pre">fpServer.exe</span></code> and/or <code class="docutils literal notranslate"><span class="pre">renode.exe</span></code>. Allow the firewall to unblock these and save this as the default setting if
+necessary.</p>
+</div>
+<div class="section" id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
+<h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Permalink to this headline">¶</a></h2>
+<p>Something is keeping the port <code class="docutils literal notranslate"><span class="pre">3333</span></code> opened, it could be some other application, but in most cases it’s just a previous instance
+of the Renode. Close it by pressing X on the window or stop the group launcher which should stop the Renode and the gdb
+client as well.</p>
+</div>
+<div class="section" id="other-troubleshooting">
+<h2>Other troubleshooting<a class="headerlink" href="#other-troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>See sections:</p>
+<p><a class="reference internal" href="../troubleshooting/renode.html"><span class="doc">Renode troubleshooting</span></a></p>
+<p><a class="reference internal" href="../troubleshooting/renode_networking.html"><span class="doc">Renode networking</span></a></p>
+</div>
+<div class="section" id="macros">
+<span id="macrosrenode"></span><h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<p>Macros are useful in many scenarios:</p>
+<ul class="simple">
+<li><p>When using common and frequently used calls to remove code duplication (maintaining one macro is easier than maintaining all instances where it is used)</p></li>
+<li><p>When simplifying launchers, it is easier to invoke one macro than few commands</p></li>
+<li><p>When renaming actions, a command can be encapsulated into a macro in a case the original command is hard to remember.</p></li>
+<li><p>When a watch command is invoking few commands.</p></li>
+<li><p>When using ‘monitor’ with longer commands, at the moment the monitor command length is limited and might cause problems when invoking longer commands (they will get truncated and then they will misbehave). Macro can contain long commands and then it can be invoked with a short name.</p></li>
+</ul>
+<p>SoftConsole v2021.2 has bundled a few macros, to get them listed run any PolarFire SoC platform (at the moment no Mi-V macros bundled) and type runMacro in the Renode’s monitor window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Available</span> <span class="n">macros</span><span class="p">:</span>
+<span class="k">global</span><span class="o">.</span><span class="n">BridgeNetworkMac0</span>
+<span class="k">global</span><span class="o">.</span><span class="n">WiresharkRun</span>
+<span class="k">global</span><span class="o">.</span><span class="n">MCsrLegend</span>
+<span class="k">global</span><span class="o">.</span><span class="n">MCsrAll</span>
+<span class="k">global</span><span class="o">.</span><span class="n">TraceAll</span>
+<span class="k">global</span><span class="o">.</span><span class="n">LoadSymbols</span>
+<span class="k">global</span><span class="o">.</span><span class="n">SetAllPCs</span>
+</pre></div>
+</div>
+<p>To invoke one of these the following syntax must be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>runMacro $MCsrLegend
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>runMacro $MCsrAll
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">MCsrAll</span></code> macro can be used to troubleshoot trap related CSRs quickly on all harts without a need to use IDE. To see how they are made open the macro file:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/renode-microchip-mods/script/macros-pfsoc.resc</span></code></p>
+<p>Any project including this file inherits the macros and it is possible for users to create their own. When there is a need to trigger a command once per second, for example pressing a GPIO button, then a watch command can be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">watch</span> <span class="s2">&quot;gpio0.button0 PressAndRelease&quot;</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<p>This will invoke the <code class="docutils literal notranslate"><span class="pre">gpio0.button0</span> <span class="pre">PressAndRelease</span></code> command each 1000ms. If a CSRs needs to be fetched and monitored, then the watch command can just invoke a macro which can contain much more involved commands. Combination of nested commands can be sometimes useful as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sysbus.u54_1 PC `sysbus.e51 PC`
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">sysbus.e51</span> <span class="pre">PC</span></code> will be evaluated first, which will GET the value of the PC, it acts as GET because no second parameter with the value given after the PC property. Then this value is used as SET for the u54_1’s PC, it acts as SET because after PC property there is a value given (the PC of the e51).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be aware when tracking MCAUSE and the IRQ is triggered (not a trap exception) that the mcause values can be greater than 0x8000000000000000 on 64-bit platforms and greater than 0x80000000 on 32-bit platforms.</p>
+</div>
+</div>
+<div class="section" id="symbols-and-simple-trace-functionality">
+<h2>Symbols and simple trace functionality<a class="headerlink" href="#symbols-and-simple-trace-functionality" title="Permalink to this headline">¶</a></h2>
+<p>When debugging the debugging-client connects to debugging-server which then talks to the target. With HW targets the GDB-client connects to OpenOCD (which implements and behaves as GDB server) and with FlasPro programmer talks through JTAG with the target.</p>
+<p>However, Renode is overlapping slightly with the debugging-client task even when SoftConsole treats Renode only as
+the GDB server and target.</p>
+<p>Typically, the symbol information is used only by the debugger-client, while the debugger-server nor the target do not
+need this information. Renode has some debugger-client features, but there is no automated mechanism to transfer
+these symbols from within SoftConsole as Renode is treated as regular GDB server (which typically doesn’t need
+symbol information). This means that the following commands can’t be automated in a generic manner.
+The Renode must be launched, this is demonstrated on <code class="docutils literal notranslate"><span class="pre">mpfs-blinky</span></code> example, but can be applied to other projects.
+Use the <code class="docutils literal notranslate"><span class="pre">mpfs-blinky</span> <span class="pre">Renode</span> <span class="pre">all-harts</span> <span class="pre">Start-platform-and-debug</span></code> group launcher, wait for it to break on
+main and load symbols into Renode by typing the following into Renode’s monitor window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sysbus</span> <span class="n">LoadSymbolsFrom</span> <span class="o">@../../</span><span class="n">extras</span><span class="o">/</span><span class="n">workspace</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="n">mpfs</span><span class="o">-</span><span class="n">blinky</span><span class="o">/</span><span class="n">Debug</span><span class="o">/</span><span class="n">mpfsblinky</span><span class="o">.</span><span class="n">elf</span>
+</pre></div>
+</div>
+<p>The path to the symbols is referenced relative to Renode’s binary and needs to contain correct path to workspace,
+correct project, correct configuration (Debug/Release) and then correct binary name. Problem is that this is not generic
+and even when using macros, the path could be different depending on what workspace or what project name user’s
+use. For PolarFireSoC users there is LoadSymbols macro, but requires users to set the SYMBOLS variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>set SYMBOLS @../../extras/workspace.examples/mpfs-blinky/Debug/mpfs-blinky.elf
+runMacro $LoadSymbols
+</pre></div>
+</div>
+<p>These might be added to the debug launcher in some cases (with monitor prefix), but it’s not a reliable way to load the
+symbols as the path might change and because monitor command has string length limitation (see section Macros ).
+Now the runMacro $McsrAll can resolve symbols and can tell the user where the PC of each hart is and what it’s
+symbol. This can be used to resolve to what symbol some memory locations belong, for example (use backtick symbol):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sysbus FindSymbolAt `sysbus.u54_1 PC`
+sysbus FindSymbolAt `sysbus.e51 MEPC`
+</pre></div>
+</div>
+<p>The MEPC on target’s boot-up is not populated and therefore not resolved, but when it is invoked later (when the
+emulation was started) it should get populated on the first interrupt or the first trap exception and then the resolution
+should work, this should be useful when troubleshooting traps as it can tell the user where the application had trap
+without a need to open the listing/assembly file and searching for the MEPC’s value. See the section about trap
+exceptions:</p>
+<p><a class="reference internal" href="../troubleshooting/riscv_trap.html#riscvtrapexception"><span class="std std-ref">RISC-V trap handling</span></a></p>
+<p>It is possible to resolve all the PCs to symbols as the application runs. To enable it on e51 CPU, use the following
+command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sysbus</span><span class="o">.</span><span class="n">e51</span> <span class="n">LogFunctionNames</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>The LogLevel on the platform might be set to ‘error’ only and this is an ‘info’ level, therefore execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logLevel</span> <span class="mi">1</span> <span class="n">sysbus</span><span class="o">.</span><span class="n">e51</span>
+</pre></div>
+</div>
+<p>On PolarFireSoC targets, there is ‘TraceAll’ macro which enables this trace feature on all CPUs, or ‘TraceE51’ macro
+if just E51 trace is needed (macros for all other harts exist as well). However, enabling too much of debug/trace
+information might cause unnecessary verbosity and make the debugging harder, therefore it’s good to enable as little
+as needed.</p>
+<p>Now running the <code class="docutils literal notranslate"><span class="pre">mpfs-blinky</span></code> application by:</p>
+<ul>
+<li><p>pressing <code class="docutils literal notranslate"><span class="pre">Resume</span></code> icon button in the main toolbar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F8</span></code> key shortcut</p></li>
+<li><div class="graphviz"><img src="../_images/graphviz-e2175bd303c5c89939e0f3a55c64e165aeace2c7.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Resume&quot;; }" class="graphviz" /></div>
+</li>
+</ul>
+<p>And it should start outputting simplified trace information. The SoftConsole’s Console tab should show when and what parts of the code was the CPU
+executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">04.7767</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">MSS_UART_polled_tx_string</span> <span class="n">at</span> <span class="mh">0x80024D8</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">04.7767</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler</span> <span class="n">at</span> <span class="mh">0x8003A1A</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9247</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler</span> <span class="n">at</span> <span class="mh">0x8003A1A</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9378</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler</span> <span class="n">at</span> <span class="mh">0x8003A1C</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9488</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler</span> <span class="n">at</span> <span class="mh">0x8003A1E</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9603</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler</span> <span class="n">at</span> <span class="mh">0x8003A22</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">MSS_GPIO_set_output</span> <span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x80032FE</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio_number_validate</span> <span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="n">at</span> <span class="mh">0x80034B8</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio_number_validate</span> <span class="n">at</span> <span class="mh">0x80034D4</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio_number_validate</span> <span class="n">at</span> <span class="mh">0x80034F6</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio_number_validate</span> <span class="n">at</span> <span class="mh">0x800350E</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio_number_validate</span> <span class="n">at</span> <span class="mh">0x8003524</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio_number_validate</span> <span class="n">at</span> <span class="mh">0x8003530</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio_number_validate</span> <span class="n">at</span> <span class="mh">0x8003552</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">MSS_GPIO_set_output</span> <span class="n">at</span> <span class="mh">0x8003326</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">MSS_GPIO_set_output</span> <span class="n">at</span> <span class="mh">0x800332A</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">MSS_GPIO_set_output</span> <span class="n">at</span> <span class="mh">0x8003334</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">MSS_GPIO_set_output</span> <span class="n">at</span> <span class="mh">0x8003362</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">15.9749</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">e51</span><span class="p">:</span> <span class="n">Entering</span> <span class="n">function</span> <span class="n">gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler</span> <span class="n">at</span> <span class="mh">0x8003A26</span>
+</pre></div>
+</div>
+<p>With the current release there is no way to use this data in a more visualized manner, but even in the text-form it can
+be extremely useful.
+Sometimes it’s useful to build watch commands, for example to see what symbol the MEPC is when the IRQ/trap
+happened. It’s good to start building the commands in steps, first fetch the value of MEPC:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sysbus</span><span class="o">.</span><span class="n">e51</span> <span class="n">MEPC</span>
+</pre></div>
+</div>
+<p>Then resolving this address into a symbol (warping it with backtick character):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sysbus FindSymbolAt `sysbus.e51 MEPC`
+</pre></div>
+</div>
+<p>And as last wrapping it into the watch command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">watch</span> <span class="s2">&quot;sysbus FindSymbolAt `sysbus.e51 MEPC`&quot;</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p>This should keep updating the symbol where MEPC is pointing 5 times per second until <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> is pressed. If nothing is
+displayed then <code class="docutils literal notranslate"><span class="pre">Resume</span></code> the application in the SoftConsole and trigger an IRQ by typing in Renode’s monitor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpio0</span><span class="o">.</span><span class="n">button0</span> <span class="n">PressAndRelease</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The user can make their own macros for Mi-V targets and use this feature however there are no macros bundled. Or use the commands directly without encapsulating them into macros.</p>
+</div>
+</div>
+<div class="section" id="creating-bridge-tunnel-to-the-emulation">
+<h2>Creating bridge/tunnel to the emulation<a class="headerlink" href="#creating-bridge-tunnel-to-the-emulation" title="Permalink to this headline">¶</a></h2>
+<p>The following section will cover necessary steps to access the emulated network from within host OS, however in
+SoftConsole v2021.1 this feature is accessible only from Linux hosts.</p>
+<p>Currently the <code class="docutils literal notranslate"><span class="pre">mpfs-freertos-lwip</span></code> example is only SoftConsole’s example where this feature can be demonstrated. To access the emulated network the following macro must be added (there might be already preexisting monitor commands) to the debug launcher’s (in this case <code class="docutils literal notranslate"><span class="pre">mpfs-freertos-lwip</span> <span class="pre">Renode</span> <span class="pre">all-harts</span> <span class="pre">Debug</span></code>) section</p>
+<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
+     }" class="graphviz" /></div>
+<br/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>monitor runMacro $BridgeNetworkMac0
+</pre></div>
+</div>
+<p>The bridge is sensitive if it was invoked before or after the emulation started and therefore keeping it in section</p>
+<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
+     }" class="graphviz" /></div>
+<br/><p>will be the most reliable way to use it:</p>
+<p><img alt="monitor bridge" src="../_images/monitor-bridge.png" /></p>
+<p>When creating the bridge for the first time it might display error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Could</span> <span class="ow">not</span> <span class="nb">set</span> <span class="n">TUNSETIFF</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Renode is trying to probe user’s privileges, which should be safe to ignore. If the polkit and sudo are set to be passwordless, then the bridge should be created correctly without any other user’s interaction.
+See the chapter:</p>
+<p><a class="reference internal" href="../troubleshooting/renode_networking.html#renodecantcreatetap"><span class="std std-ref">Could not set TUNSETIFF, error: 2</span></a></p>
+<p>Then as superuser (<code class="docutils literal notranslate"><span class="pre">root</span></code> user, or regular user with <code class="docutils literal notranslate"><span class="pre">sudo</span></code> privileges) invoke on a Linux terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ifconfig</span> <span class="n">renode</span><span class="o">-</span><span class="n">tap0</span> <span class="mf">172.16.0.1</span><span class="o">/</span><span class="mi">24</span> <span class="n">up</span>
+</pre></div>
+</div>
+<p>For best experience copy/paste this command from the example’s UART output as it is updated dynamically depending
+on how the network is set up, while the command above only covers the default settings.</p>
+<p>Make sure that the renode-tap0 network is not overlapping with any other network on the user’s host. Including the
+virtual networks and bridges like docker’s network. When targeting real HW it is desired to make it part of an existing
+network (overlap with existing networks) and just keeping the IP unique (do not create conflicts on the network).</p>
+<p>However, for the way how Renode is making the tunnel it is best to have completely unique and separate networks
+while the host’s IP will be the targets gateway. If this is not satisfactory and overlapping is required then to make it work
+might require other extra steps which are not covered in this document (setting up routes, gateway, firewall, software
+bridge …)
+By default, the target’s IP address and mask are <code class="docutils literal notranslate"><span class="pre">172.16.0.3</span> <span class="pre">/</span> <span class="pre">255.255.255.0</span></code></p>
+<p>These settings can be change from within this file:
+<code class="docutils literal notranslate"><span class="pre">/src/modules/config/lwip-2.0.0-wip/network_interface_settings.h</span></code></p>
+<p>Now running ping <code class="docutils literal notranslate"><span class="pre">172.16.0.3</span></code> should start responding, however this might not be true for other applications, as
+they might have ICMP or even ARP disabled (see all troubleshooting sections related to networking). If ping support
+is undesired then it can be disabled easily from:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/src/modules/config/lwip-2.0.0-wip/lwipopts.h</span></code></p>
+<p>By changing LWIP_ICMP define value the ping can be disabled, other networking features and debugging verbosity
+can be tweaked from this file as well.
+The emulation is not as fast as the real hardware therefore the ping response times might vary:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ping 172.16.0.3</span>
+PING <span class="m">172</span>.16.0.3 <span class="o">(</span><span class="m">172</span>.16.0.3<span class="o">)</span> <span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from <span class="m">172</span>.16.0.3: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">255</span> <span class="nv">time</span><span class="o">=</span><span class="m">202</span> ms
+<span class="m">64</span> bytes from <span class="m">172</span>.16.0.3: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">255</span> <span class="nv">time</span><span class="o">=</span><span class="m">3</span>.13 ms
+<span class="m">64</span> bytes from <span class="m">172</span>.16.0.3: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">255</span> <span class="nv">time</span><span class="o">=</span><span class="m">2</span>.43 ms
+<span class="m">64</span> bytes from <span class="m">172</span>.16.0.3: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">255</span> <span class="nv">time</span><span class="o">=</span><span class="m">4</span>.74 ms
+^C
+--- <span class="m">172</span>.16.0.3 ping statistics ---
+<span class="m">4</span> packets transmitted, <span class="m">4</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> 3004ms
+rtt min/avg/max/mdev <span class="o">=</span> <span class="m">2</span>.432/53.206/202.517/86.208 ms
+</pre></div>
+</div>
+<p>The first ping might be extra long as other tasks had to be finished first (such as ARP address exchange)
+Then with a generic webserver browser opening the location: <a class="reference external" href="http://172.16.0.3">http://172.16.0.3</a></p>
+<p>Should open the demo website running from within target. Scrolling down to the page to the section <code class="docutils literal notranslate"><span class="pre">Send</span> <span class="pre">text</span> <span class="pre">to</span> <span class="pre">UART</span></code>, entering text into the HTML form and pressing <code class="docutils literal notranslate"><span class="pre">Send</span></code> button:</p>
+<p><img alt="send text button" src="../_images/send-text.png" /></p>
+<p>Then the firmware should get the text displayed within the UART’s output:</p>
+<p><img alt="send text" src="../_images/send-text-uart.png" /></p>
+<p>Feel free to experiment with the current example but note that currently bundled HAL is not most up-to-date with the
+recent HAL release, the GEM driver required few changes to be made on top of HAL so it is not straight forward to port
+to the newest HAL. This will be addressed in a forthcoming release, however in the meantime use the bundled mpfsblinky, mpfs-mustein-julia or firmware catalog examples which use the most recent HAL.</p>
+<p>Related sections:
+Using Wireshark to monitor the network traffic inside the
+Web content of the mpfs-freertos-lwip example
+How do I delete Renode’s bridge TAP networking interface?
+Can’t see the interface after invoking BridgeNetworkMac0 macro
+Wireshark shows a significant amount of traffic and overloads my target</p>
+</div>
+<div class="section" id="using-wireshark-to-monitor-the-network-traffic-inside-the-emulation">
+<h2>Using Wireshark to monitor the network traffic inside the emulation<a class="headerlink" href="#using-wireshark-to-monitor-the-network-traffic-inside-the-emulation" title="Permalink to this headline">¶</a></h2>
+<p>In SoftConsole v2021.2 release this feature is accessible only from Linux hosts. The following steps are mainly covered
+from Ubuntu perspective, for other distributions contact your system administrator or execute the equivalent steps for
+your distribution yourself.</p>
+<p>To startup Wireshark with each debug session open the <code class="docutils literal notranslate"><span class="pre">mpfs-freertos-lwip</span></code> example, edit the <code class="docutils literal notranslate"><span class="pre">mpfs-freertos-lwip</span> <span class="pre">Renode</span> <span class="pre">all-harts</span> <span class="pre">Debug</span></code> launcher and in the <code class="docutils literal notranslate"><span class="pre">Initialization</span> <span class="pre">Commands</span></code> text-box area:</p>
+<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
+     }" class="graphviz" /></div>
+<br/><p>Append the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>monitor runMacro $WiresharkRun
+</pre></div>
+</div>
+<p>Launching the group launcher now should open Wireshark windows. If this is not happening, try to invoke runMacro
+$WiresharkRun command from within Renode’s monitor window. If Renode prints error “Wireshark is not installed or
+is not available in the default path”, if the Wireshark is installed by the package manager (and not built from source)
+then it should be in the path already. Double-check if Wireshark is installed on the system and where it is by typing on
+the Linux console terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>whereis wireshark
+</pre></div>
+</div>
+<p>If Wireshark is found but it’s not in the path, then add it to the path temporary with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>&lt;WIRESHARK_PATH&gt;:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>And then start SoftConsole from the same terminal. If it’s not installed, then type the following to install it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install wireshark
+</pre></div>
+</div>
+<p>Answer <strong>YES</strong>, if user will be asked if <code class="docutils literal notranslate"><span class="pre">Should</span> <span class="pre">non-superusers</span> <span class="pre">be</span> <span class="pre">able</span> <span class="pre">to</span> <span class="pre">capture</span> <span class="pre">packets?</span></code>.</p>
+<p>If this dialog was not shown it’s possible that the package already was installed once and configured and then
+uninstalled. Proceed to completely remove the package with its settings. The ‘remove’ option only removes the
+application and leaves configurations files untouched, while the ‘purge’ option removes configuration as well. Invoke
+the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get purge wireshark
+</pre></div>
+</div>
+<p>After a complete removal, proceed to install it back again, now the dialog question should be displayed.
+If Wireshark now when launching the launcher opens but displays popup error</p>
+<p><code class="docutils literal notranslate"><span class="pre">Couldn’t</span> <span class="pre">run</span> <span class="pre">/usr/bin/dumpcap</span> <span class="pre">in</span> <span class="pre">child</span> <span class="pre">process:</span> <span class="pre">Permission</span> <span class="pre">denied</span></code></p>
+<p>Then verify the file privileges:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -la /usr/bin/dumpcap
+</pre></div>
+</div>
+<p>If it is accessible to root user and Wireshark group, then most likely the current user is not added inside the Wireshark
+group. The following command should add user to Wireshark group:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo usermod -a -G wireshark &lt;YOUR_USER&gt;
+</pre></div>
+</div>
+<p>For the group changes to take effect typically logging out and logging back to the user’s account should be enough,
+however sometimes reboot is necessary.</p>
+<p>If everything is configured properly now the Wireshark should work and run automatically on each launch. The
+Wireshark is sensitive if it was invoked before or after the emulation started and therefore keeping it in section <code class="docutils literal notranslate"><span class="pre">Initialization</span></code> will be most reliable.</p>
+<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
+     }" class="graphviz" /></div>
+<br/><p>As mention in other sections, the emulation is not running at full speed of real hardware and under heavy load, some
+packets might be dropped/timeout. Depending on the application/protocols (and firmware’s IP stack) the packets might
+get retransmitted transparently</p>
+</div>
+<div class="section" id="emulation-time">
+<h2>Emulation time<a class="headerlink" href="#emulation-time" title="Permalink to this headline">¶</a></h2>
+<p>The host’s real time and the emulation time might not be passing at the same speed, read more about it in the “Time framework” chapter of Renode’s documentation.</p>
+<p>How many instructions per second can be emulated depends on the host’s performance, OS, target application and the settings. The emulation time speed is mostly depending on the performance of the host and the guest’s MIPS rating. There are other factors such as the amount of the cores the emulated platform has. A very significant factor is how the application is written and how much time cores spend in sleep or are halted (See chapter Tweaking the emulation performance). In a case where emulator can spend most of the time in sleep will not require as many instructions to emulate for given time to pass, it’s easier to wait for the next interrupt instead of looping inside an infinite loop. The RISC-V CPUs (32-bit and 64-bit) have default 64MIPS rating, if required this can be changed from Renode’s platform script or SoftConsole debug launcher (in launcher scrip the commands need monitor prefix).</p>
+<p>See: <tweakrenodeperf></p>
+<p>To set 20MIPS rating on PFSoC’s CPUs add the following to your platform script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sysbus</span><span class="o">.</span><span class="n">e51</span> <span class="n">PerformanceInMips</span> <span class="mi">20</span>
+<span class="n">sysbus</span><span class="o">.</span><span class="n">u54_1</span> <span class="n">PerformanceInMips</span> <span class="mi">20</span>
+<span class="n">sysbus</span><span class="o">.</span><span class="n">u54_2</span> <span class="n">PerformanceInMips</span> <span class="mi">20</span>
+<span class="n">sysbus</span><span class="o">.</span><span class="n">u54_3</span> <span class="n">PerformanceInMips</span> <span class="mi">20</span>
+<span class="n">sysbus</span><span class="o">.</span><span class="n">u54_4</span> <span class="n">PerformanceInMips</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>Note: If editing the &lt;SOFTCONSOLE_DIR&gt;/renode-microchip-mods/scripts/polarfire-soc-multiple-servers.resc file then be aware these changes will be applied on all projects which are using this platform and in general is not recommended. Recommended way is to change platform script files when the project has its own dedicated platform script file. It is possible to copy existing scripts, or even include existing platforms and only do changes on top of the included generic platform (see files in the /renode-microchip-mods/scripts/). When adjusting settings for a single project while using existing bundled platform, then changing the debug launcher is the preferred method (commands need monitor prefix).</p>
+<p>If a higher MIPS rating is given to the platform than the host can handle in real-time will cause the emulation time to pass at slower rate than the time is passing on the host.</p>
+<p>To check what MIPS settings are se to e51 CPU (e51 is used just as example):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sysbus</span><span class="o">.</span><span class="n">e51</span> <span class="n">PerformanceInMips</span>
+</pre></div>
+</div>
+<p>To check how much instructions e51 are executed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sysbus</span><span class="o">.</span><span class="n">e51</span> <span class="n">ExecutedInstructions</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This value might be misleading, preferable is to have as many MIPS executed as possible but wasting these MIPS on infinite loops is not a gaining any performance and on contrary might cause the virtual time to pass at slower rate. Spending as much time as possible in the sleep will enable the emulator to be more efficient and emulate more of the emulation time than it would be able to when all harts would be too busy cycling in infinite loops. Therefore, sometimes a lower ExecutedInstructions can achieve better performance. Having a host capable to handle as many MIPS as possible is good, but as important is to not waste these MIPS emulating unnecessary and wasteful instructions.</p>
+</div>
+<p>To see how much of emulation time passed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">machine</span> <span class="n">ElapsedVirtualTime</span>
+</pre></div>
+</div>
+<p>To check every second how much of the emulation passed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">watch</span> <span class="s2">&quot;machine ElapsedVirtualTime&quot;</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If any of these needs to be part of a debug launcher then be aware of the monitor command string length limitation. If there is need to invoke longer commands from the launcher then using variables and making custom macros could be a workaround. See section: <macrosrenode></p>
+</div>
+</div>
+<div class="section" id="tweaking-the-emulation-performance">
+<span id="tweakrenodeperf"></span><h2>Tweaking the emulation performance<a class="headerlink" href="#tweaking-the-emulation-performance" title="Permalink to this headline">¶</a></h2>
+<p>If emulating multi-node (multi-board) platform then the time ratio between the nodes will not be affected. When there are server and client set up in the platform and a network request with a 1second timeout is sent. Then the timeout in the emulation will be timed as expected no matter if that took on the host 5seconds or 0.5 seconds to emulate it.</p>
+<p>If there is the need to run real-time communication with host’s network then some tweaks to the platform and application need to be made. When overloading the slower emulated target with many requests then the target might not be able to respond within the required time, however few steps could improve this situation:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Tweaking the emulation performance
+</pre></div>
+</div>
+<p>If emulating multi-node (multi-board) platform then the time ratio between the nodes will not be affected. When there are server and client set up in the platform and a network request with a 1second timeout is sent. Then the timeout in the emulation will be timed as expected no matter if that took on the host 5seconds or 0.5 seconds to emulate it.</p>
+<p>If there is the need to run real-time communication with host’s network then some tweaks to the platform and application need to be made. When overloading the slower emulated target with many requests then the target might not be able to respond within the required time, however few steps could improve this situation:</p>
+<ul>
+<li><p>Do not send unnecessary traffic, monitor with wireshark and remove sources of any traffic which is undesired</p></li>
+<li><p>If latencies are not critical then do not pool peripherals constantly in a loop, give it a delay or put the core into the sleep (if there will be timer interrupt happening soon).</p></li>
+<li><p>If using custom models, do refactor them and apply good coding guidelines to make them more efficient. For example, do not use many “if” conditions on register reads/writes, instead use the DoubleWordRegisterCollection lookup table.</p></li>
+<li><p>Spend as much time as possible in a wait-for-irq state, put CPU into with WFI instruction, use inline assembly:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;wfi&quot;</span><span class="p">);</span>  
+</pre></div>
+</div>
+</li>
+<li><p>Completely halt unneeded harts (revise the HAL’s constrains of this approach mentioned in sections above). They can be halted from within the platform as done in the pse-mustein-julia demo (as the demo has its own customized platform bundled with the project):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sysbus</span><span class="o">.</span><span class="n">u54_4</span> <span class="n">IsHalted</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>Or they can be halted from the debug launcher as done in the pse-blinky or pse-freertos-lwip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">sysbus</span><span class="o">.</span><span class="n">u54_4</span> <span class="n">IsHalted</span> <span class="n">true</span>
+</pre></div>
+</div>
+</li>
+<li><p>Optimize the firmware itself. When targeting 64-bit systems there are common mistakes which developers are more likely to introduce to their code. One of which is not using native size of the platform. Using 32-bit loop counter still can occupy whole 64-bit register but it will do extra instructions to make it behave as 32-bit register. While using 64-bit integer on a 64-bit will translate directly and natively to a single register without any unnecessary instructions. Use static code analysis tools and refactor problematic code sections.</p></li>
+</ul>
+<p>For example, by default the FreeRTOS idle task is just a infinite loop, but there is a way to implement own idle task:
+<a class="reference external" href="https://www.freertos.org/RTOS-idle-task.html">https://www.freertos.org/RTOS-idle-task.html</a></p>
+<p>Set config <code class="docutils literal notranslate"><span class="pre">USE_IDLE_HOOK</span></code> to 1 in <code class="docutils literal notranslate"><span class="pre">FreeRTOSConfig.h</span></code> and implement sleep in the idle hook:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">vApplicationIdleHook</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span>
+<span class="p">{</span>
+   <span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;wfi&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This change can show even 20-fold difference between the FreeRTOS with sleep and without sleep. Meaning that fewer instructions were needed to be emulated for the same time on the guess to pass.</p>
+<div class="section" id="web-content-of-the-pse-freertos-lwip-example">
+<h3>Web content of the pse-freertos-lwip example<a class="headerlink" href="#web-content-of-the-pse-freertos-lwip-example" title="Permalink to this headline">¶</a></h3>
+<p>This bundled example is showcasing how to implement a FreeRTOS with a LwIP networking stack running a webserver on the PolarFireSoC Icicle kit emulation platform. This is just an example, has only minimal implementation of a webserver and shouldn’t be used for production code.</p>
+<p>Previous sections covered how to bridge the network and interact with the target, when these steps are executed correctly on the Linux host, then the webserver should be accessible from a generic web-browser:</p>
+<p><img alt="webserver" src="../_images/web-server.png" /></p>
+<p>When changing content of the webserver the routes need to be bonded to the new page callback handlers, see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">application</span><span class="o">/</span><span class="n">web</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">routes</span><span class="o">.</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>The callbacks (route handlers) themselves are typically stored in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">application</span><span class="o">/</span><span class="n">web</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">route_handlers</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>To respond differently depending on the URL’s query, a <code class="docutils literal notranslate"><span class="pre">http_request_get_query_value(req,</span> <span class="pre">&quot;query_key&quot;)</span></code> call can be used and in this example it is used to send messages to UART (see route_static function).</p>
+<p>Callbacks can produce the response directly, use simple string replacement template engine (see: route_template_index function) or read the content from the embedded payload (see: route_static function).</p>
+<p>To change the embedded payload data these three steps must be followed:</p>
+<ol class="simple">
+<li><p>Edit the content in the <code class="docutils literal notranslate"><span class="pre">/src/application/embedded_autogenerated_data/data_root_raw</span></code> folder only (all other files in the <code class="docutils literal notranslate"><span class="pre">/src/application/embedded_autogenerated_data</span></code> are autogenerated)</p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">pse-freertos-lwip</span> <span class="pre">Embed-the-web-content</span></code> external launcher to generate the <code class="docutils literal notranslate"><span class="pre">hexdumps</span></code> and metadata required for the payload to be bundled. The tool can be used from Windows/Linux command line, can be part of Continuous Integration or be part of a Makefile projects.</p></li>
+<li><p>Rebuild the project (partial/incremental build should be sufficient)</p></li>
+</ol>
+<p>The external launcher will compress html/htm/js/css/xml/json/wasm files and they can’t be used directly without decompression, this example webserver is only capable of passing through the compressed data. However the GZIP compression is used and virtually all browser from the past decade support transparent decompression feature (<a class="reference external" href="https://webmasters.stackexchange.com/questions/22217">https://webmasters.stackexchange.com/questions/22217</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/HTTP_compression">https://en.wikipedia.org/wiki/HTTP_compression</a>). On embedded targets with restrained storage capacities it is useful feature as it can reduce the static content size to 10-20% of its original size. Just remove the <code class="docutils literal notranslate"><span class="pre">-compress_web=true</span></code> argument from the external launcher in cases where this feature needs to be disabled. The <code class="docutils literal notranslate"><span class="pre">route_template_index</span></code> function uses <code class="docutils literal notranslate"><span class="pre">.tpl</span></code> file extension postfix to avoid compression on that single specific file only. For more information and argument options see:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;SOFTCONSOLE_DIR&gt;/extras/ead/README.pdf</span></code></p>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="other.html" class="btn btn-neutral float-right" title="Other features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mpfs.html" class="btn btn-neutral float-left" title="PolarFire SoC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Microchip.
+
+    </p>
+  </div> 
+<!-- <center>
+
+    <a id=githubIssue target="_blank">
+        <img src=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABkCAMAAABDybVbAAACo1BMVEUAAABZs4Nluoxht4Y1o2clmlxgtooOk0kNkkgXl08Xl04voV8toF8dmlUlnVk3pGkuoGAxoWJhuIqExqIJkUUSlUsOlEgTlUwSlUwWl04RlEsamVEjm1cdmlQUlU0Vlk0fmlYbmFENk0oGkEMfmlQ3pGconl5ctoJBrHEJkUQOk0kKkUYKkkYbmFIWlk0Zl08lnVocmVIfm1UbmVMXlU8rn10Zl042pGc5pmlDq3F1wZVOsXs/pm1KrHcfmlg1o2YMkkYzo2MWl04SlUsknVgNk0cRlUsKkkYhmlUgm1UmnVkjnFcYl08mnloGkEMpn14toF4Ulkwlnlg0pGMsn148qGwGkUMtomEnnVpRsXsXl1AtoWAlnFpPsXsamlNFrXRSsX4mnFyJy6QpnlsmnFodmVE4pGYQk0kKkkc6pmcMkUcYl04nnlo2pGkTlU5VsX4jmlYyomIMlEpMsHhVtIF0wZcRkEoKkUiS0KlYsoFyw5UJkUX///8KkUUIkUb///7//v4IkkX9/v0QlErZ7uMKkkbr9u8IkUQIkEUIkET7/v1YtIEuoWAHkEOFx6Kw28MinFcKkkUuoF684c2i1rgNk0cLkke64crz+vZpu41luosKkUfQ6tqs28AcmVUZl1D6/fvw+PROsHn9/v/t9/Ln9e0Vlk74/PpSsnsdmlP2+/nJ59a438mIyaQUlk0SlUsOk0n//v/y+fXC49Ct28CSz61ovIw2pWYroF/p9e/m8+vh8ejb7+PW7ODF5dNzwZVjuYlWs345p2konlsjnFkamVH1+vfk8uvi8unf8eey3MWv28Ol17uX0LCEyKF+xZ0vomHS692o2b2Nyqd5xJpqvZA/qm4ypGUmnVnM6dqc07OFyKRvvZBdtoNHrXRFrHJCqm+YIP57AAAAe3RSTlMAAgUdEgsJ8OfmzbqOfG0/NykPC/75+fXr4NrTzsu7s5qTj412XFYuIfr29vLx0L+1sqONjXtTTkVAPzsuKh8X/fTy8e7t08vFv7ytq6imo5yaknRzb25pXVhMSUQ/PzEmGxTb0cO1pqajooSAem5sZWBYTz82Li0aFRLwDfSKAAAHPElEQVRo3uXZZbvTMBiA4eLu7u7u7u7u7u7OyxuajFLO0AEb7u7u7u7u/BSyQdd2bQPZ4BMPH7BznftKk7Y5mfL/NmvwtIw1i5fg1czYa3D95H8dSJa9dNEqaZoGKJgF0xSo3jdFsr9nzMyUPphEgVKwFgj/HfPVyJr6byBNelYOIbiE/Fc4PX/GRokiDTOkQR1+V4WOMxJBhlRrSuH3UYCcherGuyJSdjqO8KeRTdWyxYMkz5yXIvw5Q0n5jPOllWGFEaRrnUVyDdfOhSCf5psoM0PZi4XkFHONt0v153NfEOKO5Gv4h0qZNjR+BbS0s/9IaVCJIiQQtqrzJ0pzQiCRKO7t91tlaCUCFBIs7ZzfzX4bSiDhMK34iZC6ECUUEg/TCdd1TWLOPh8WauARUrFDiuTwVkqFqPU7bdu51Ksb537jBDJ5Ko3yWAYD9NwedYFX6vobqAkdXxavZ3JbCpaSDnPFq13+kzc2gbD82d2ZHptsDFnEmYXuqbwd+xFFDHZ3VVKkBbAzC9jdI09XuPT01d0FC9j6nZrQye26qotBLHNCvXBMc23bbj49bP1+IlAoFHJ5KzTOTRyjWbDY575cOcNTdwgdDLk83LoBlWAWRxi2YyeKnPTJHYOpSD1Gs0SHJWYQ2Z39Go2qCh0MDIhligLPlaFvDq+zdPh1EChnfsbHI1rXI2MfmXm8GO3oXb6AzXbtW0bw6AWD4Q4RjCdmsfUknqPRDvMbxbz92aG9BMhppi4wrtsBAVPMzqTXPBkIbT2wNdqBA8cpUHrn8aU94Q76mX81eJd3uFUpi+DBuO1e+GjC20wenmYLtwsYfVMpK1OSohcjbMlpVRWOBjtYmUII/4ah+VKbyryKIGBQp0CMkAJFk9myUMwA1jOZgSBigqts+QJUggHL622CiAk83HHy5HqjkydPHZVhSDuTKShg8OjBhZaYuu85kWHSRScnRzrRaJa8WWPrWUjqooVSRu8an+bN8JZbSkrSAWSY5dEtaFZdNBp7/EvlGDrdYHr9hrFuqgmRZLRxBjMZxIw9Waa6wfRGEYOAMUkxONZgRhMqYOj56xstXbfuN/XTbNfvmM4GkyEgGs3xi6pqfd/svm0dzcF928VMYITBtCcixndfVa0bwcWrwOz8+ZsbDohXWrPoaDQBg3TZ2bMbop09e5Oag6dkuY7wN5jYNxGxXuHbTw8/vLZXzIwymK4ajWtBb9q/mPHJuvyOiJjO0QVNIS7m+W6Vx9iVbSBojMFkhngYio+Z+nPxXRMo2Mlgpuhxjca3++dCX8iuii5ayejGNhDXaN4zroRT74W8Z2d5aYNJkUeGQYpa5EG9ihm37IMgjWytAoBOpoxi1JpIMHTnkVVA+O+3Dho73EV7EXjnXr0DR0fNH92ryizobRfZ7iPnQ4Fz9/g18/tV/64FCw4doMGbaw/6T4GjAuZJdS2ZixZc6Wds34cnl9iJBQsPnnm5XeXjObR2Ef/X7Z+ci6moEi1rUIIhvg2LGC+yf1+pBy//3LIz5r+6U3Ne/b4mkzyvzEpDemz/2ovqgnBrYfnmhT/n58zb4y5TfKysYlZVakEjoL6W/WSSkn4xnzV0O4dLbztFSZK8b4J7fjH6Es6EW5MELmFJK5NjL8ox57cvtDMLF6ObUi6b/edoTY75ylQ7o/q3uf4srdiqG5BjdnLlJxOZG952t5eoPinmWKgySjHfmf2iccbt7ZYm9nioD9VQgrkdOzfqfbfjlK6Og/R0ck/oRbFz8xLBUa4ySmyZkTqOhna5MRg5dTkSWdAnwnMT8dgNAo66KI5ypHOOZtcFX5Kj5cCjt3b8YvTNuxbwrhxzjqZVWbeDTj32ujB138NHK+09evTkPYFj+88sjgziFG67GGEWHfkW1O0Suh53Jmsbc9muuB1CskN3tFtPdjNVZXyxLfS/eMDCf+b5Lz27Y1sA+Ye7f1yXy36PPt7lxrwNXdvBVP++B6cOhd8A4dTtp67e266q/vvW85vQQMW9WiH7oj3kVxfGtm/vtj2Mvbj23Kf7Xl9gKo9d/qLB0ZtHLjF2VTeGglA0mQeTrKB9g3T81jJngdCZK9d9iBA+ubn+cd3hM/sjs49k77PLZ43RoJYvpfdHqc3RDoEjJJq+PPp/SJKWI9Gj2wuIVj6r4t2ACjr8lbCHIipz6O8wNRRhyWoEtMQRbP/bj8OLY+JM4VS//8izOEkQ0k1F6CR22WgVUxE6GcsloOTMkFr5w/qXp/EZhAQzKX9evfwYF6S16K/IlKJDTnkEoeAwRbLSaWXHo+eqpciXopgPZZRyHYcocVWviPaH0CYNCtRR4i1Z1io5/wjCAqWTK4nUoHqeyFG994xsgtzV6ioJl2Jq4dw6ujkR/XjlkkOVv1OTPlUrJQH+/MaEB0CBoK7nLZK5UTLlL5Y8Re3u41u2qBgMcA2DFdK0LNKldhmJCZEqR/1BWbJkGVR/rvIf9wPpwJjBz0kzLgAAAABJRU5ErkJggg==" 
+        width="102px">
+        </a>
+    
+    <a id=feeedbackLink target="_blank">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA/CAMAAACSEXcNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAP//94TFSu/v5nO9MZzOa0Kt3iml5hCl1pzOe+/394TFWr29tXO9Qmu9IVqtGZSte+be5lqtKbXejMXmrebWtYR7a5zmpa3OhGNaQuat5t7vtXN7c5TeQu+1EOattcW1EGu95mutGUKlGTqcCN7vzozF5jrOGRCUShDOWhDOGVrOlJxjEGutQmtaY4zOWmsZvSkZvUoZvQgZvZS9WmOl5u/mEMXmEL3WnO+1QmOMKcW1QpTmY5Te70KM3hCEEGvm5mPmKRClGQgpOmtavSlavUrm5mPmCEpavQhavYyElCGl1muUjJS1SkKUlJSlrVK95u86Wu863jqUazrvWq06Wq063jrvGe86Ge86nK06Ga06nGsZ7ykZ72sZlCkZlBCUaxDvWhDvGe8QWu8Q3q0QWq0Q3u8QGe8QnK0QGa0QnGsZaykZa1rOtZxjMa1jnO9j3u9jWinO3q1j3u9jnO9jGSnOnFrvlJyEEM46Ws463ow6Wow63s46Gc46nIw6GYw6nEoZ7wgZ70oZlAgZlM4QWs4Q3owQWowQ3s4QGc4QnIwQGYwQnEoZawgZa4xjnM5j3s5jWgjO3oxj3s5jnM5jGQjOnLXm973mzoS1Sr3mnGOMCO/mQsXmQpS9rTFjOubmhGPmawhaOjEpOpStKWMpEL3ma+bmY2PmSjEIOpStCGMIEGNKEJTWEAgpCBmlvUpaYxmEvWta72talCla7ylalK2EY++1hK1jYxmllClaa8W1hGuE5pSl5kpa70palAha7whalO+1Y4xjYxmElAhaa8W1Y72l5kKUtTFjEL3F3mOEUu+E3u+EWinv3q2E3lrvtZyEMa2EnO+EnO+EGSnvnM6E3s6EWgjv3oyE3s6EnM6EGQjvnDqEEJTmhCGM5giM5jEpEAhaCGOla2MpQpTmzjEIEGMIQt7v3r2lrWO9Y9bW3jFKOmNrEJT3EDFKEGOErWultTqlSjrOazqESjrOSmO9MRCl5ggAKVq9EIStWkKt7xAAAP/v9wAIAAAAACLG1lgAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAK5klEQVRo3u2aS2+jyBaAUxSPUIAdA2rRsje+uLyz2aQlFMl/wB6N+XeeeDOL+2c6nd+QPRYjpWdjS53F3HNOFRg7Tm7uqG88r1OYR1UZzsc5px7AxW9/Ebn4O4EItpc6j/3ZQBSEECsUITQMY38ui3BkmA3t3WUtO3u4QprqzwQCCq+GDiiP4jzZT0+Os9tdOpDf8/9wNrl4xRor+3KHGE4xns1m5Fyr2Rg4xOdi9UcjeQHkC2A4CAEoxRhkhiwIg0GyXEAuAvXeX6rem0GEqHpMFJdEARoPxyQzIsEA2azI5cbt1uz9hFdV9RYQ0A44VguigMUZoow1DOruj9HHhrudfR4SCNEvFf9vIFDtS4/NlFfhokA0C2reW6pwmdmXC3A0wd9RmjtX+dWrINSyVsChzQHJKYYNChaL5UxHy6rYAYkI0/eU0IpVz+Z/eQWEzOazFbW4NYtd1Cgq0JtwWa2edgvB5CR4P5mEozTMCcX3ey+BEOmVEIvLhgKAFgVKzeH/Om5ifzVzdjZjZf8dJc69NA34c5KLQw52tWSqvdqzOGCTT0Uxpibj1zryqT0e7i4hO35n8dJQPiO5OBxVuXfoWNoiexJ0LyqftyIfYaASONf7cuSxm6aSwtU/BYJ65g8/sKKh2HsYGIU4/E9N4BMLWARMIvJ3lXWeJ92wxHZpWT0HQT1leleJy8VugYsDq32iAOl9LYp9IwYo9gLaZ+CP3lvcdIIKbTbVMQjd8En6EbsQ0G6xK4T/ddFwDCmA5kVRRz5JgRUvBYujRKd6g6J26nW0L292m2r/e/JGCTrX3D8GIccaTe7ZcKcsUqAnfdUcjnKsz7aN4aJZCgcqAsiKyQSE50kiYS/niRQgKnONaxEluejDjozx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" 
+    width="200px">
+    </a>
+
+</center>
+
+<script>
+    var pageName = "using_softconsole/renode.md.txt".replace(/\.txt/g,'');
+    var uri = "feedback/com?document=SoftConsole&release=v2021.2-6.7.607&page=" + pageName;
+    var res = encodeURI(uri);
+    document.getElementById("feeedbackLink").href = res;
+
+    var body  = "Document: SoftConsole\nVersion: v2021.2-6.7.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
+    var title = "I have problem with the " + pageName + " page";
+    var ghuri = "https://github.com/AntonKrug/scdocs/issues/new?title="+title+"&body="+body+"&labels=help wanted";
+    document.getElementById("githubIssue").href = encodeURI(ghuri);
+
+</script> -->
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2021.2
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+       <strong> 
+      <dd><a href="/scdocs/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

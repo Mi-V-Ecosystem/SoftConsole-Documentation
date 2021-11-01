@@ -1,0 +1,30 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Renode networking
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+![Renode logo](renode/images/renode_logo.png)
+
+
+{% if windows is defined %}
+```{note}
+Bridging the Renode's emulated and host network adapters is only supported under Linux.
+Windows users who need to use the tunel/bridge networking under Renode can use Linux in a VM.
+```
+{% endif %}  % End of Windows
+
+
+{% if linux is defined %}
+{% include 'main/troubleshooting/renode_networking/_unsaved_wireshark.inc' %}
+{% include 'main/troubleshooting/renode_networking/_wireshark_traffic.inc' %}
+{% include 'main/troubleshooting/renode_networking/_tunsetiff.inc' %}
+{% include 'main/troubleshooting/renode_networking/_delete_tap.inc' %}
+{% include 'main/troubleshooting/renode_networking/_cant_see_interface.inc' %}
+{% include 'main/troubleshooting/renode_networking/_cant_ping.inc' %}
+{% include 'main/troubleshooting/renode_networking/_no_packet_response.inc' %}
+{% endif %}  % End of Linux
+
+
+```````
