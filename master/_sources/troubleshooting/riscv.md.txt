@@ -1,0 +1,22 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# RISC-V
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+{% include 'main/troubleshooting/riscv/_cpp.inc' %}
+{% include 'main/troubleshooting/riscv/_power_cycle.inc' %}
+{% include 'main/troubleshooting/riscv/_fpgenprog-1073741819.inc' %}
+{% include 'main/troubleshooting/riscv/_memory_view.inc' %}
+{% include 'main/troubleshooting/riscv/_nostartfiles.inc' %}
+{% include 'main/troubleshooting/riscv/_exception_registers.inc' %}
+{% include 'main/troubleshooting/riscv/_cant_link_hard_float.inc' %}
+{% include 'main/troubleshooting/riscv/_wrong_register_size.inc' %}
+{% include 'main/troubleshooting/riscv/_launchers_differs.inc' %}
+{% include 'main/troubleshooting/riscv/_openocd_crash.inc' %}
+{% include 'main/troubleshooting/riscv/_truncated_register_16.inc' %}
+{% include 'main/troubleshooting/riscv/_stuck_first_hart.inc' %}
+{% include 'main/troubleshooting/riscv/_abi.inc' %}
+
+```````

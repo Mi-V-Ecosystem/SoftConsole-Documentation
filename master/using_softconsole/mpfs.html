@@ -1,0 +1,763 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>PolarFire SoC &mdash; SoftConsole v2021.2-6.7.607 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Renode simulation platform" href="renode.html" />
+    <link rel="prev" title="Debugging" href="debugging.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PolarFire SoC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#polarfire-soc-boot-mode-programming-support-in-softconsole">PolarFire SoC boot mode programming support in SoftConsole</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-tools">Required tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polarfire-soc-boot-modes">PolarFire SoC Boot Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fpgenprog">fpgenprog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mpfsbootmodeprogrammer">mpfsBootmodeProgrammer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#boot-mode-programming-external-launch-configurations">Boot mode programming external launch configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#boot-program-link-requirements">Boot program link requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generated-artifacts">Generated artifacts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues-limitations">Known issues/limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mpfsbootmodeprogrammer-usage-help">mpfsBootmodeProgrammer usage/help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fpgenprog-fails-to-program-the-board">fpgenprog fails to program the board</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/arm.html">Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode_networking.html">Renode networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>PolarFire SoC</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="polarfire-soc">
+<h1>PolarFire SoC<a class="headerlink" href="#polarfire-soc" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This documentation is deprecated and it’s not recommended to be used on new projects.</p>
+<p>Visit <a class="reference external" href="https://microsemi.com/softconsole">https://microsemi.com/softconsole</a> instead.</p>
+</div>
+<div class="section" id="polarfire-soc-boot-mode-programming-support-in-softconsole">
+<h2>PolarFire SoC boot mode programming support in SoftConsole<a class="headerlink" href="#polarfire-soc-boot-mode-programming-support-in-softconsole" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="required-tools">
+<h3>Required tools<a class="headerlink" href="#required-tools" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>SoftConsole v2021.1</p></li>
+<li><p>Libero SoC v2021.1 or Programming and Debug Tools v2021.1</p></li>
+</ul>
+</div>
+<div class="section" id="polarfire-soc-boot-modes">
+<h3>PolarFire SoC Boot Modes<a class="headerlink" href="#polarfire-soc-boot-modes" title="Permalink to this headline">¶</a></h3>
+<p>PolarFire SoC supports four boot modes which determine what happens when
+the device is powered on/reset. In particular, what exactly the RISC-V
+multi-core CPU Core Complex part of PolarFire SoC’s Microcontroller Subsystem
+(MSS) does out of reset:</p>
+<ul class="simple">
+<li><p>Boot mode 0 “idle boot”: boots and simply waits for a debugger connection.</p></li>
+<li><p>Boot mode 1 “non-secure boot”: boots and executes a program stored in eNVM which has been linked for storage in and execution from eNVM.</p></li>
+<li><p>Boot mode 2 “user secure boot”: boots, checks the integrity of an encrypted and/or authenticated program stored in sNVM and, if it is correct, copies it to LIM (Loosely Integrated Memory) RAM and starts executing it from there. The program executed may be a secure boot loader implemented by the user. The program is linked for execution from LIM.</p></li>
+<li><p>Boot mode 3 “factory secure boot”: boots, verifies a program image stored in eNVM using an Elliptic Curve Digital Signature Algorithm (ECDSA) and, if correct, starts executing the program from eNVM. The program is linked for storage in and execution from eNVM.</p></li>
+</ul>
+<p>Refer to the PolarFire SoC documentation for more detailed information about
+these boot modes.</p>
+<p><a class="reference external" href="https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga#documentation">https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga#documentation</a></p>
+</div>
+<div class="section" id="fpgenprog">
+<h3>fpgenprog<a class="headerlink" href="#fpgenprog" title="Permalink to this headline">¶</a></h3>
+<p>fpgenprog is the tool provided by Libero SoC and Programming and Debug Tools
+for programming PolarFire SoC boot modes and storing the associated programs
+in NVM (eNVM or sNVM). fpgenprog calls other programming file generation and
+programming tools (for example FlashPro Express) in order to perform boot mode
+programming. fpgenprog and related tools are NOT bundled with SoftConsole so
+Libero SoC or Programming and Debug Tools must be installed in order to make
+them available to SoftConsole.</p>
+<p>Refer to the website for more information about these tools:</p>
+<p>Libero SoC v12.0 and later:
+<a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1750-libero-soc">https://www.microsemi.com/product-directory/design-resources/1750-libero-soc</a></p>
+<p>Programming and Debug Tools:
+<a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/5592-programming-and-debug#downloads">https://www.microsemi.com/product-directory/dev-tools/5592-programming-and-debug#downloads</a></p>
+<p>By default Libero SoC and Programming and Debug tools v2021.1 install into the
+following locations:</p>
+<ul class="simple">
+<li><p>Windows</p>
+<ul>
+<li><p>C:\Microsemi\Libero_SoC_v2021.1</p></li>
+<li><p>C:\Microsemi\Program_Debug_v2021.1</p></li>
+</ul>
+</li>
+<li><p>Linux</p>
+<ul>
+<li><p>/usr/local/microsemi/Libero_SoC_v2021.1</p></li>
+<li><p>/usr/local/microsemi/Program_Debug_v2021.1</p></li>
+</ul>
+</li>
+</ul>
+<p>So the possible default locations for the fpgenprog tool are:</p>
+<ul class="simple">
+<li><p>Windows</p>
+<ul>
+<li><p>C:\Microsemi\Libero_SoC_v2021.1\Designer\bin64\fpgenprog.exe</p></li>
+<li><p>C:\Microsemi\Program_Debug_v2021.1\Program_Debug_Tool\bin64\fpgenprog.exe</p></li>
+</ul>
+</li>
+<li><p>Linux</p>
+<ul>
+<li><p>/usr/local/microsemi/Libero_SoC_v2021.1/Designer/bin64/fpgenprog</p></li>
+<li><p>/usr/local/microsemi/Program_Debug_v2021.1/Program_Debug_Tool/bin64/fpgenprog</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These are the default locations and the actual location will differ if a non-default install location is specified at install time.</p>
+</div>
+</div>
+<div class="section" id="mpfsbootmodeprogrammer">
+<h3>mpfsBootmodeProgrammer<a class="headerlink" href="#mpfsbootmodeprogrammer" title="Permalink to this headline">¶</a></h3>
+<p>In order to simplify boot mode programming, SoftConsole bundles the
+mpfsBootmodeProgrammer Java program utility:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">softconsole</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;/</span><span class="n">extras</span><span class="o">/</span><span class="n">mpfs</span><span class="o">/</span><span class="n">mpfsBootmodeProgrammer</span><span class="o">.</span><span class="n">jar</span>
+</pre></div>
+</div>
+<p>mpfsBootmodeProgrammer takes care of the details of converting a program
+executable ELF file for use with the selected boot mode and calling fpgenprog
+to program target with the relevant boot mode data and store the boot program
+image in NVM (eNVM or sNVM).</p>
+<p>Full sources for  mpfsBootmodeProgrammer and instructions on how to build it
+are also bundled with SoftConsole (in the same folder as the JAR file).</p>
+</div>
+</div>
+<div class="section" id="boot-mode-programming-external-launch-configurations">
+<h2>Boot mode programming external launch configurations<a class="headerlink" href="#boot-mode-programming-external-launch-configurations" title="Permalink to this headline">¶</a></h2>
+<p>The SoftConsole workspace comes preconfigured with four external tool launch
+configurations, one for each of the four boot modes, which are accessible from
+the External Tools toolbar button or Main Menu &gt; External Tools.</p>
+<ul class="simple">
+<li><p>PolarFire SoC program idle boot mode 0</p></li>
+<li><p>PolarFire SoC program non-secure boot mode 1</p></li>
+<li><p>PolarFire SoC program user secure boot mode 2</p></li>
+<li><p>PolarFire SoC program factory secure boot mode 3</p></li>
+</ul>
+<p>Each of these external tool launch configurations passes a default set of
+command line options to the mpfsBootmodeProgrammer utility for the relevant
+boot mode. These command line options can be adjusted if needed. See below for
+the mpfsBootmodeProgrammer usage/help text which describes all options.</p>
+<p>By default, with the exception of boot mode 0, these external tool launch use,
+as their working directory, the selected project’s active build configuration
+directory and attempts to process the ELF file found there.</p>
+<p>The project to be used for boot mode programming must be selected in the
+Project Explorer and the relevant build configuration must be built and the ELF
+file exist in order for the boot mode 1, 2 and 3 external tool launch
+configurations to work.</p>
+<p>Boot mode 0 does not require a project to be selected/built and, by default,
+works in the <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/extras/mpfs/bootmode0</span></code> directory.</p>
+<p>A project can be selected in the Project Explorer by clicking on any folder in
+the project hierarchy. If no project is selected then a message of the
+following form will be displayed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Problem</span> <span class="n">Occurred</span>
+<span class="s1">&#39;Launching PolarFire SoC program ... boot mode ...&#39;</span> <span class="n">has</span> <span class="n">encountered</span> <span class="n">a</span> <span class="n">problem</span><span class="o">.</span>
+<span class="n">Variable</span> <span class="n">references</span> <span class="n">empty</span> <span class="n">selection</span> <span class="s1">&#39;$</span><span class="si">{project_loc}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>The active build configuration can be selected in SoftConsole in different ways
+including by using the “Hammer” build toolbar button dropdown list of available
+build configurations or by:</p>
+<div class="graphviz"><img src="../_images/graphviz-6d869669a16372b7771b99a9901c73e7d4bb422b.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on &lt;your_project&gt; in the Project Explorer&quot; -&gt; &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;&lt;build-configuration&gt;&quot;
+     }" class="graphviz" /></div>
+<br/><p>If the selected build configuration’s directory does not exist then a message
+of the following form will be displayed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Problem</span> <span class="n">Occurred</span>
+<span class="s1">&#39;Launching PolarFire SoC program ... boot mode ...&#39;</span> <span class="n">has</span> <span class="n">encountered</span> <span class="n">a</span> <span class="n">problem</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">working</span> <span class="n">directory</span> <span class="o">...</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span> <span class="k">for</span> <span class="n">the</span> <span class="n">external</span> <span class="n">tool</span> <span class="n">named</span> <span class="n">PolarFire</span> <span class="n">SoC</span> <span class="n">program</span> <span class="o">...</span> <span class="n">boot</span> <span class="n">mode</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>If no ELF file exists or other validation checks fail then the
+mpfsBootmodeProgrammer utility will emit an appropriate warning or error
+message to the output log.</p>
+<p>mpfsBootmodeProgrammer always generated a <code class="docutils literal notranslate"><span class="pre">&lt;workdir&gt;/bootmode&lt;n&gt;/debugLog.txt</span></code>
+log file which contains detailed information about the tasks carried out.</p>
+<div class="section" id="boot-program-link-requirements">
+<h3>Boot program link requirements<a class="headerlink" href="#boot-program-link-requirements" title="Permalink to this headline">¶</a></h3>
+<p>A boot mode 1 or 3 program must be linked for storage in and execution from
+PolarFire SoC’s eNVM. The program can be linked for anywhere in the eNVM
+address range 0x20220100-0x2023FFFF (128KiB - 256 bytes). Because an eNVM
+page (256 bytes) is required before the program image in order to store the
+boot mode 1 header or boot mode 3 SBIC (Secure Boot Image Certificate) the
+program cannot be linked for eNVM page 0 = address 0x20220000. The linker
+script used to link the program should define eNVM as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Boot</span> <span class="n">modes</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">3</span> <span class="n">need</span> <span class="n">an</span> <span class="n">eNVM</span> <span class="n">page</span> <span class="n">before</span> <span class="n">the</span> <span class="n">program</span> <span class="n">image</span> <span class="n">so</span> <span class="n">start</span> <span class="n">eNVM</span> <span class="n">at</span> <span class="n">page</span> <span class="mi">1</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">*/</span>
+<span class="n">eNVM</span> <span class="p">(</span><span class="n">rx</span><span class="p">)</span> <span class="p">:</span> <span class="n">ORIGIN</span> <span class="o">=</span> <span class="mh">0x20220100</span><span class="p">,</span> <span class="n">LENGTH</span> <span class="o">=</span> <span class="mi">128</span><span class="n">k</span><span class="o">-</span><span class="mi">256</span>
+</pre></div>
+</div>
+<p>Boot mode 1/3 programs must also be linked on an eNVM 256 byte page boundary.</p>
+<p>SoftConsole/mpfsBootmodeProgrammer cater for boot mode 1/3 programs linked at
+eNVM pages/addresses higher than 1/0x20220100 but Libero only supports those
+that are linked for 0x20220100.</p>
+<p>Boot mode 2 programs must be linked for LIM (Loosely Integrated Memory) RAM at
+address range 0x08000000-0x081dffff (1920KiB) and aligned to a 32-bit word
+address. The program is stored in PolarFire SoC’s sNVM. The theoretical
+maximum sNVM storage space available is &lt; 56KiB. The actual sNVM storage space
+available and sNVM start page will be dictated by the Libero designed with
+which the target is programmed. For example, depending on the MSS configuration
+and Libero design contents some sNVM clients will be automatically generated
+precluding the relevant pages from being used for a boot mode 2 program
+image.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It is critical, when programming boot mode 2 from SoftConsole, that
+the available sNVM space and relevant start page are checked in the Libero
+project first. Not doing so could cause corruption of sNVM content required for
+correct functioning of the target design.</p>
+</div>
+<p>mpfsBootmodeProgrammer does validation checking on the boot program ELF file to
+ensure that it matches the selected boot mode requirements.</p>
+</div>
+<div class="section" id="generated-artifacts">
+<h3>Generated artifacts<a class="headerlink" href="#generated-artifacts" title="Permalink to this headline">¶</a></h3>
+<p>mpfsBootmodeProgrammer works in the specified workdir and generates artifacts
+into a bootmodeN (0 &lt;= N &lt;= 3) directory below this.</p>
+<p>By default, the preconfigured boot mode 0 external tool launch configuration
+works in <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/extras/mpfs</span></code> and generates aretefacts into
+the bootmode0 directory below this.</p>
+<p>By default, the preconfigured boot mode 1-3 external tool launch configurations
+use the selected project’s active build configuration directory as the workdir
+and generates artifacts into a bootmodeN (1 &lt;= N &lt;= 3) directory below this.</p>
+<p>mpfsBootmodeProgrammer generates a <code class="docutils literal notranslate"><span class="pre">&lt;workdir&gt;/bootmodeN/debugLog.txt</span></code> (0 &lt;= N &lt;=
+3) log file which can be useful for checking what operations were carried out
+especially in the case of a programming failure.</p>
+<p>For boot modes 1-3 mpfsBootmodeProgrammer generates the boot mode program image
+Intel Hex file that can be used in Libero:</p>
+<div class="graphviz"><img src="../_images/graphviz-6140ce83a648b520ed6a7ff2ccdea95eed81cce9.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Design Flow&quot; -&gt; &quot;Program Design&quot; -&gt; &quot;Configure Design Initialization Data and Memories&quot; -&gt; &quot;eNVM/sNVM configurators&quot;
+     }" class="graphviz" /></div>
+<br/><p>The name of this file includes</p>
+<ol class="simple">
+<li><p>the ELF file basename - for example “mpfs-blinky” for “mpfs-blinky.elf”</p></li>
+<li><p>“bmN” (1 &lt;= N &lt;= 3) indicating the boot mode</p></li>
+<li><p>“pM” (where M is an NVM page number) indicating the NVM (eNVM or sNVM) page  at which the boot mode program image (including prepended “header” data) is stored.</p></li>
+</ol>
+<p>For boot mode 2 the filename also contains <code class="docutils literal notranslate"><span class="pre">ap</span></code> or <code class="docutils literal notranslate"><span class="pre">ac</span></code> indicating whether the
+boot program is stored in <code class="docutils literal notranslate"><span class="pre">authenticated</span> <span class="pre">plaintext</span></code> or <code class="docutils literal notranslate"><span class="pre">authenticated</span> <span class="pre">ciphertext</span></code>
+sNVM pages respectively.</p>
+<p>Examples of boot mode program image Intel Hex file names include:</p>
+<ul class="simple">
+<li><p>Boot mode 1: mpfs-blinky-bm1-p0.hex</p></li>
+<li><p>Boot mode 2: mpfs-blinky-bm2-ap-p20.hex (authenticated plaintext)</p></li>
+<li><p>Boot mode 2: mpfs-blinky-bm2-ac-p32.hex (authenticated encrypted ciphertext)</p></li>
+<li><p>Boot mode 3: mpfs-blinky-bm3-p0.hex</p></li>
+</ul>
+<p>For boot mode 2 the USK (User sNVM/Secret Key) used is stored in
+<code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm2-usk.txt</span></code>. This or another USK is required when
+configuring the boot mode 2 program image sNVM client in Libero.</p>
+<p>For boot mode 3 the ECC (Elliptic Curve Cryptography) public key x and y values
+are stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> and these details are
+required when configuring the boot mode 3 program image eNVM client in Libero.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
+<p>If boot mode programming fails then the Console log should indicate the nature
+of the problem. If necessary also check the debugLog.txt log file that
+mpfsBootmodeProgrammer generates for more details.</p>
+<p>If mpfsBootmodeProgrammer cannot find fpgenprog or the required
+RISC-V GCC/binutils tools then check that the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> and <code class="docutils literal notranslate"><span class="pre">SC_INSTALL_DIR</span></code>
+environment variables are configured correctly. Both environment variables are
+set from the <code class="docutils literal notranslate"><span class="pre">softconsole.{cmd|sh}</span></code> start script but the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> variable may
+require adjustment depending on where Libero SoC or Programming and Debug Tools
+are installed. This can be set by configuring the variable in the OS
+environment, by editing the softconsole.{cmd|sh} script itself or in the
+Environment tab of the boot mode programming external tool launch
+configurations.</p>
+<p>If boot mode programming succeeds but the program does not execute as expected
+from reset then check that the program itself executes correctly under debug
+from RAM (LIM) with the same optimization and debug options.</p>
+<p>If boot mode 2 is programmed from Libero, necessitating the enabling of
+security options including debug locking, then debugging and boot mode
+programming from SoftConsole will not be possible. Boot mode programming will
+fail with messages similar to those below. Debugging and boot mode programming
+will only be possible by erasing the device and reprogramming it with security
+disabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The boot mode 2 can be programmed from SoftConsole only with
+security disabled and only from Libero with security enabled.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">JTAG</span> <span class="n">TCK</span> <span class="n">frequency</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">MHz</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">read</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">eFP6</span> <span class="n">USB</span> <span class="n">buffer</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span> <span class="n">to</span> <span class="n">eFP6</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">eFP6</span> <span class="n">connection</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;MPFS250T_ES&#39;</span> <span class="p">:</span> <span class="n">Executing</span> <span class="n">action</span> <span class="n">PROGRAM</span> <span class="n">FAILED</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span> <span class="n">to</span> <span class="n">eFP6</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">Error</span><span class="p">:</span> <span class="n">eFP6</span> <span class="n">connection</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span> <span class="n">to</span> <span class="n">eFP6</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">eFP6</span> <span class="n">programmer</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">Chain</span> <span class="n">programming</span> <span class="n">FAILED</span><span class="o">.</span>
+<span class="n">Chain</span> <span class="n">Programming</span> <span class="n">Finished</span><span class="p">:</span> <span class="n">Mon</span> <span class="n">Mar</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">54</span> <span class="mi">2021</span> <span class="p">(</span><span class="n">Elapsed</span> <span class="n">time</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">06</span><span class="p">)</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">run</span> <span class="n">Action</span><span class="o">.</span>
+<span class="n">Exported</span> <span class="n">log</span> <span class="n">file</span> <span class="n">D</span><span class="p">:</span>\<span class="n">sandbox</span>\<span class="n">icicle</span><span class="o">-</span><span class="n">kit</span>\<span class="n">MPFS_ICICLE_eMMC</span>\<span class="n">designer</span>\<span class="n">MPFS_ICICLE_eMMC</span>\<span class="n">MPFS_ICICLE_eMMC_fp</span>\<span class="n">MPFS_ICICLE_eMMC</span><span class="o">.</span><span class="n">log</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">The</span> <span class="n">command</span> <span class="s1">&#39;run_selected_actions&#39;</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failure</span> <span class="n">when</span> <span class="n">executing</span> <span class="n">Tcl</span> <span class="n">script</span><span class="o">.</span> <span class="p">[</span> <span class="n">Line</span> <span class="mi">5</span> <span class="p">]</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">The</span> <span class="n">Execute</span> <span class="n">Script</span> <span class="n">command</span> <span class="n">failed</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="known-issues-limitations">
+<h3>Known issues/limitations<a class="headerlink" href="#known-issues-limitations" title="Permalink to this headline">¶</a></h3>
+<p>The following known issues and limitations will be addressed in a future
+release.</p>
+<p>There is no facility to select a specific FlashPro programmer when there is
+more than one connected. For best results ensure that only one FlashPro
+programmer is connected.</p>
+<p>Boot mode 0 overwrites page 0 of eNVM because the boot mode cannot be changed
+without at least one NVM (eNVM or sNVM) client being specified at the moment.</p>
+<p>mpfsBootmodeProgrammer does not initialize or reset the SMK (sNVM Master Key)
+and assumes that this has been previously configured appropriately. If this is
+not the case (for example, for a new device) then an attempt to program boot
+mode 2 from SoftConsole will result in messages similar to the following and
+the SMK will need to be configured/initialized from Libero by programming an
+appropriate design that causes the SMK to be (re)generated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">BITS</span> <span class="n">component</span> <span class="n">bitstream</span> <span class="n">digest</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25295</span><span class="n">f0d1d592a90b333e26e85149708208e9f8e8bc18f6c77bd62f8ad7a6866</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Programming</span> <span class="n">Error</span><span class="o">.</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Bitstream</span> <span class="ow">or</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">corrupted</span> <span class="ow">or</span> <span class="n">noisy</span><span class="o">.</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">componentNo</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">blockNo</span><span class="p">:</span> <span class="mi">155</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">DATA_STATUS_RESULT</span><span class="p">:</span> <span class="p">[</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0002000900008407</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">READ_DEBUG_INFO</span><span class="p">[</span><span class="mi">752</span><span class="p">]</span> <span class="o">=</span> <span class="o">&gt;</span>  <span class="mi">0000000000030003017</span><span class="n">f00000080040001000000000000000000000000000000001a0000001e000000db000003000002000900008400fc5e52012dd402010000000000000000000000000084071309c709c709c700280028002824000000</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">ERROR_CODE</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="mi">801</span><span class="n">f</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="o">===================================================================================</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">DSN</span><span class="p">[</span><span class="mi">128</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4883</span><span class="n">b6958cf34738ba77807d1bb91b7f</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="o">===================================================================================</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Finished</span><span class="p">:</span> <span class="n">Sat</span> <span class="n">Mar</span> <span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2021</span> <span class="p">(</span><span class="n">Elapsed</span> <span class="n">time</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span><span class="p">)</span>
+<span class="n">Error</span><span class="p">:</span> <span class="p">[</span><span class="mi">80609294</span><span class="p">]:</span>  <span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Executing</span> <span class="n">action</span> <span class="n">PROGRAM</span> <span class="n">FAILED</span><span class="p">,</span> <span class="n">EXIT</span> <span class="o">-</span><span class="mi">22</span><span class="p">,</span> <span class="n">refer</span> <span class="n">to</span> <span class="n">FlashPro</span> <span class="n">online</span> <span class="n">help</span> <span class="k">for</span> <span class="n">details</span><span class="o">.</span>
+<span class="o">@</span><span class="nd">@ACTIVITY</span> <span class="mi">101</span>
+<span class="n">Error</span><span class="p">:</span>  <span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">Chain</span> <span class="n">programming</span> <span class="n">FAILED</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Elliptic Curve Cryptography private and public keys for boot mode 3 are
+automatically generated and there is no facility to pass an external key file
+yet.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Support for “advanced” options such as U_MSS_BOOTCFG:U_MSS_REVOCATION_ENABLE,
+SBIC:OPTIONS[7:0], SBIC:VERSION and SBIC:DSN is not yet available.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Boot mode programming assumes that the full capacity of eNVM and sNVM is
+available for storing the boot loader program and <strong>does not</strong> have any knowledge
+of any eNVM/sNVM clients configured via other tools (e.g. PolarFire SoC MSS
+Configurator, Libero SoC etc.). It is important, especially for boot mode 2,
+to check that only unused/available NVM is used from SoftConsole when
+programming boot modes.</p>
+</div>
+<p>mpfsBootmodeProgrammer assumes that the base address of the program image is
+identical to the program start address (<code class="docutils literal notranslate"><span class="pre">_start</span></code>) which is true when using the
+PolarFire SoC HAL example linker scripts but may not be so in the general case.</p>
+</div>
+<div class="section" id="mpfsbootmodeprogrammer-usage-help">
+<h3>mpfsBootmodeProgrammer usage/help<a class="headerlink" href="#mpfsbootmodeprogrammer-usage-help" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">44</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">mpfsBootmodeProgrammer</span> <span class="n">v3</span><span class="mf">.2</span> <span class="n">started</span><span class="o">.</span>
+<span class="n">Usage</span><span class="p">:</span> <span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">mpfsBootmodeProgrammer</span><span class="o">.</span><span class="n">jar</span> <span class="p">[</span><span class="o">--</span><span class="n">workdir</span> <span class="n">directory</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">die</span> <span class="n">device</span><span class="o">-</span><span class="n">die</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">package</span> <span class="n">device</span><span class="o">-</span><span class="n">package</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">bootmode</span> <span class="n">mode</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">snvm_page</span> <span class="n">page</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">usk</span> <span class="n">key</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">encrypt</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">dryrun</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verify</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="n">elf</span><span class="o">-</span><span class="n">file</span><span class="p">]</span>
+
+  <span class="o">--</span><span class="n">workdir</span> <span class="n">directory</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Working</span> <span class="n">directory</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="n">Current</span> <span class="n">working</span> <span class="n">directory</span>
+
+  <span class="o">--</span><span class="n">die</span> <span class="n">device</span><span class="o">-</span><span class="n">die</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">device</span><span class="o">-</span><span class="n">die</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">target</span> <span class="n">device</span> <span class="n">die</span> <span class="n">designator</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="n">MPFS025T</span>
+      <span class="n">MPFS095T</span>
+      <span class="n">MPFS160T</span>
+      <span class="n">MPFS250T</span>
+      <span class="n">MPFS460T</span>
+      <span class="n">MPFS025T_ES</span>
+      <span class="n">MPFS095T_ES</span>
+      <span class="n">MPFS160T_ES</span>
+      <span class="n">MPFS250T_ES</span>
+      <span class="n">MPFS460T_ES</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="n">MPFS250T_ES</span>
+
+  <span class="o">--</span><span class="n">package</span> <span class="n">device</span><span class="o">-</span><span class="n">package</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">device</span><span class="o">-</span><span class="n">package</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">target</span> <span class="n">device</span> <span class="n">package</span> <span class="n">designator</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="n">FCG1152</span>
+      <span class="n">FCSG325</span>
+      <span class="n">FCSG536</span>
+      <span class="n">FCVG484</span>
+      <span class="n">FCVG784</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="n">FCVG484</span>
+
+  <span class="o">--</span><span class="n">bootmode</span> <span class="n">mode</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">mode</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">boot</span> <span class="n">mode</span> <span class="n">to</span> <span class="n">be</span> <span class="n">programmed</span>
+      <span class="mi">0</span> <span class="o">=</span> <span class="n">idle</span> <span class="n">boot</span>
+      <span class="mi">1</span> <span class="o">=</span> <span class="n">non</span><span class="o">-</span><span class="n">secure</span> <span class="n">boot</span> <span class="kn">from</span> <span class="nn">eNVM</span>
+      <span class="mi">2</span> <span class="o">=</span> <span class="n">user</span> <span class="n">secure</span> <span class="n">boot</span> <span class="kn">from</span> <span class="nn">sNVM</span>
+      <span class="mi">3</span> <span class="o">=</span> <span class="n">factory</span> <span class="n">secure</span> <span class="n">boot</span> <span class="kn">from</span> <span class="nn">eNVM</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="mi">0</span> <span class="n">to</span> <span class="mi">3</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="mi">0</span> <span class="o">=</span> <span class="n">idle</span> <span class="n">boot</span> 
+
+  <span class="o">--</span><span class="n">snvm_page</span> <span class="n">page</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">page</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">sNVM</span> <span class="n">page</span> <span class="n">number</span> <span class="n">starting</span> <span class="kn">from</span> <span class="nn">which</span> <span class="n">the</span> <span class="n">program</span> <span class="n">image</span> <span class="n">will</span> <span class="n">be</span> <span class="n">stored</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="mi">0</span> <span class="n">to</span> <span class="mi">211</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="mi">0</span>
+
+  <span class="o">--</span><span class="n">usk</span> <span class="n">key</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">key</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">User</span> <span class="n">sNVM</span> <span class="n">Key</span> <span class="n">specified</span> <span class="k">as</span> <span class="n">a</span> <span class="mi">12</span> <span class="n">byte</span> <span class="nb">hex</span> <span class="n">string</span><span class="p">;</span> <span class="k">if</span> <span class="mi">0</span> <span class="n">then</span> <span class="n">a</span> <span class="n">random</span> <span class="n">USK</span> <span class="ow">is</span> <span class="n">generated</span> <span class="ow">and</span> <span class="n">used</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="nb">any</span> <span class="mi">12</span> <span class="n">byte</span> <span class="nb">hex</span> <span class="n">string</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="p">:</span> <span class="mh">0x0b841d7a16f5542cda541eeb</span> <span class="ow">or</span> <span class="mi">0</span><span class="n">b841d7a16f5542cda541eeb</span> <span class="ow">or</span> <span class="mi">0</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="mi">0</span>
+
+  <span class="o">--</span><span class="n">encrypt</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">use</span> <span class="n">sNVM</span> <span class="n">encryption</span> <span class="n">to</span> <span class="n">store</span> <span class="n">the</span> <span class="n">image</span> <span class="k">as</span> <span class="n">authenticated</span> <span class="n">ciphertext</span> <span class="n">rather</span> <span class="n">than</span> <span class="k">as</span> <span class="n">authenticated</span> <span class="n">plaintext</span>
+
+  <span class="o">--</span><span class="n">dryrun</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Perform</span> <span class="nb">all</span> <span class="n">tasks</span> <span class="k">except</span> <span class="n">target</span> <span class="n">programming</span><span class="o">/</span><span class="n">verification</span>
+
+  <span class="o">--</span><span class="n">verify</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Verify</span> <span class="n">the</span> <span class="n">target</span> <span class="n">after</span> <span class="n">programming</span>
+
+  <span class="o">--</span><span class="n">help</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Print</span> <span class="n">this</span> <span class="n">help</span>
+
+  <span class="n">elf</span><span class="o">-</span><span class="n">file</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Boot</span> <span class="n">program</span> <span class="n">ELF</span> <span class="n">file</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="n">Any</span> <span class="n">valid</span> <span class="n">ELF</span> <span class="n">file</span> <span class="n">matching</span> <span class="n">the</span> <span class="n">selected</span> <span class="n">boot</span> <span class="n">mode</span> <span class="n">linkage</span> <span class="n">requirements</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="n">If</span> <span class="ow">not</span> <span class="n">specified</span> <span class="n">then</span> <span class="n">the</span> <span class="n">working</span> <span class="n">directory</span> <span class="ow">is</span> <span class="n">searched</span> <span class="k">for</span> <span class="n">an</span> <span class="n">ELF</span> <span class="n">file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fpgenprog-fails-to-program-the-board">
+<h2>fpgenprog fails to program the board<a class="headerlink" href="#fpgenprog-fails-to-program-the-board" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes user can experience program failures even when running <code class="docutils literal notranslate"><span class="pre">PolarFire</span> <span class="pre">SoC</span> <span class="pre">program</span> <span class="pre">idle</span> <span class="pre">boot</span> <span class="pre">mode</span> <span class="pre">0</span></code> external launcher:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">Warning</span><span class="p">:</span>  <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">file</span><span class="p">:</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
+<span class="ne">Warning</span><span class="p">:</span> <span class="p">[</span><span class="mi">80609481</span><span class="p">]:</span>  <span class="n">Using</span> <span class="n">local</span> <span class="n">backup</span> <span class="n">copy</span><span class="p">:</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
+<span class="n">PDB</span> <span class="n">file</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
+<span class="n">DESIGN</span> <span class="p">:</span> <span class="n">TOP</span><span class="p">;</span>  <span class="n">CHECKSUM</span> <span class="p">:</span> <span class="mi">0000</span><span class="p">;</span>  <span class="n">PDB_VERSION</span> <span class="p">:</span> <span class="mf">1.9</span>
+<span class="o">===============================================================</span>
+<span class="n">Programmer</span><span class="p">:</span> <span class="n">Embedded</span> <span class="n">FP6</span> <span class="s1">&#39;082D3559&#39;</span> <span class="p">:</span> <span class="n">Version</span> <span class="o">=</span> <span class="n">EF9B</span>
+<span class="o">===============================================================</span>
+<span class="n">programmer</span> <span class="s1">&#39;082D3559&#39;</span> <span class="p">:</span> <span class="n">Embedded</span> <span class="n">FlashPro6</span>
+<span class="n">Opened</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\proj_fp.pro&#39;</span>
+<span class="n">The</span> <span class="s1">&#39;open_project&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
+<span class="n">Info</span><span class="p">:</span>  <span class="n">Programming</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">enabled</span> <span class="k">for</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span><span class="o">.</span>
+<span class="n">The</span> <span class="s1">&#39;enable_device&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
+<span class="n">PPD</span> <span class="n">file</span> <span class="s1">&#39;C:/Microchip/SoftConsole-v2021.1/extras/mpfs/bootmode0/fpgenprogProject/proj_fp/target.ppd&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
+<span class="n">DESIGN</span> <span class="p">:</span> <span class="n">TOP</span><span class="p">;</span>  <span class="n">CHECKSUM</span> <span class="p">:</span> <span class="mi">0000</span><span class="p">;</span>  <span class="n">PDB_VERSION</span> <span class="p">:</span> <span class="mf">1.0</span>
+<span class="n">The</span> <span class="s1">&#39;set_programming_file&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
+<span class="n">The</span> <span class="s1">&#39;set_programming_action&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
+<span class="n">programmer</span> <span class="s1">&#39;082D3559&#39;</span> <span class="p">:</span> <span class="n">Scan</span> <span class="n">Chain</span><span class="o">...</span>
+<span class="n">programmer</span> <span class="s1">&#39;082D3559&#39;</span> <span class="p">:</span> <span class="n">Check</span> <span class="n">Chain</span><span class="o">...</span>
+<span class="n">programmer</span> <span class="s1">&#39;082D3559&#39;</span> <span class="p">:</span> <span class="n">Scan</span> <span class="ow">and</span> <span class="n">Check</span> <span class="n">Chain</span> <span class="n">PASSED</span><span class="o">.</span>
+<span class="o">@</span><span class="nd">@ACTIVITY</span> <span class="mi">1</span>
+<span class="n">programmer</span> <span class="s1">&#39;082D3559&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Executing</span> <span class="n">action</span> <span class="n">PROGRAM</span>
+<span class="n">Performing</span> <span class="n">FPGA</span> <span class="n">action</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">eFP6</span> <span class="n">acceleration</span> <span class="n">mode</span> <span class="n">enabled</span> <span class="k">with</span> <span class="n">PPD</span> <span class="n">file</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="o">@</span><span class="nd">@ACTIVITY</span> <span class="mi">2</span>
+ 
+<span class="hll"><span class="mi">16</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">46</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Running</span> <span class="n">the</span> <span class="n">fpgenprog</span><span class="o">.</span><span class="n">exe</span> <span class="n">PROGRAM</span> <span class="n">action</span> <span class="n">failed</span><span class="o">.</span>
+</span></pre></div>
+</div>
+<p>To see more verbose errors it’s good to run the last fpgenprog invocation again from the command line. To see the log file, for example for boot mode 0 it’s in the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/mpfs/bootmode0/debugLog.txt</span></code>. The last fpgenprog invocation should look similar like to: <code class="docutils literal notranslate"><span class="pre">c:\microchip\libero\Program_Debug_v2021.2\Program_Debug_Tool\bin64\fpgenprog.exe</span> <span class="pre">run_action</span> <span class="pre">--location</span> <span class="pre">c:/microchip/SoftConsole-2021.1/extras\mpfs/bootmode0/fpgenprogProject</span> <span class="pre">--action</span> <span class="pre">PROGRAM</span></code></p>
+<p>If invoking the fpgenprog from command line shows the following error: <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">run</span> <span class="pre">action.</span> <span class="pre">Return</span> <span class="pre">code</span> <span class="pre">=</span> <span class="pre">-1073741819</span></code>. Then contact support for Libero or Program and Debug tolls as this issue is outside SoftConsole’s scope.</p>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="renode.html" class="btn btn-neutral float-right" title="Renode simulation platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="debugging.html" class="btn btn-neutral float-left" title="Debugging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Microchip.
+
+    </p>
+  </div> 
+<!-- <center>
+
+    <a id=githubIssue target="_blank">
+        <img src=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABkCAMAAABDybVbAAACo1BMVEUAAABZs4Nluoxht4Y1o2clmlxgtooOk0kNkkgXl08Xl04voV8toF8dmlUlnVk3pGkuoGAxoWJhuIqExqIJkUUSlUsOlEgTlUwSlUwWl04RlEsamVEjm1cdmlQUlU0Vlk0fmlYbmFENk0oGkEMfmlQ3pGconl5ctoJBrHEJkUQOk0kKkUYKkkYbmFIWlk0Zl08lnVocmVIfm1UbmVMXlU8rn10Zl042pGc5pmlDq3F1wZVOsXs/pm1KrHcfmlg1o2YMkkYzo2MWl04SlUsknVgNk0cRlUsKkkYhmlUgm1UmnVkjnFcYl08mnloGkEMpn14toF4Ulkwlnlg0pGMsn148qGwGkUMtomEnnVpRsXsXl1AtoWAlnFpPsXsamlNFrXRSsX4mnFyJy6QpnlsmnFodmVE4pGYQk0kKkkc6pmcMkUcYl04nnlo2pGkTlU5VsX4jmlYyomIMlEpMsHhVtIF0wZcRkEoKkUiS0KlYsoFyw5UJkUX///8KkUUIkUb///7//v4IkkX9/v0QlErZ7uMKkkbr9u8IkUQIkEUIkET7/v1YtIEuoWAHkEOFx6Kw28MinFcKkkUuoF684c2i1rgNk0cLkke64crz+vZpu41luosKkUfQ6tqs28AcmVUZl1D6/fvw+PROsHn9/v/t9/Ln9e0Vlk74/PpSsnsdmlP2+/nJ59a438mIyaQUlk0SlUsOk0n//v/y+fXC49Ct28CSz61ovIw2pWYroF/p9e/m8+vh8ejb7+PW7ODF5dNzwZVjuYlWs345p2konlsjnFkamVH1+vfk8uvi8unf8eey3MWv28Ol17uX0LCEyKF+xZ0vomHS692o2b2Nyqd5xJpqvZA/qm4ypGUmnVnM6dqc07OFyKRvvZBdtoNHrXRFrHJCqm+YIP57AAAAe3RSTlMAAgUdEgsJ8OfmzbqOfG0/NykPC/75+fXr4NrTzsu7s5qTj412XFYuIfr29vLx0L+1sqONjXtTTkVAPzsuKh8X/fTy8e7t08vFv7ytq6imo5yaknRzb25pXVhMSUQ/PzEmGxTb0cO1pqajooSAem5sZWBYTz82Li0aFRLwDfSKAAAHPElEQVRo3uXZZbvTMBiA4eLu7u7u7u7u7u7OyxuajFLO0AEb7u7u7u7u/BSyQdd2bQPZ4BMPH7BznftKk7Y5mfL/NmvwtIw1i5fg1czYa3D95H8dSJa9dNEqaZoGKJgF0xSo3jdFsr9nzMyUPphEgVKwFgj/HfPVyJr6byBNelYOIbiE/Fc4PX/GRokiDTOkQR1+V4WOMxJBhlRrSuH3UYCcherGuyJSdjqO8KeRTdWyxYMkz5yXIvw5Q0n5jPOllWGFEaRrnUVyDdfOhSCf5psoM0PZi4XkFHONt0v153NfEOKO5Gv4h0qZNjR+BbS0s/9IaVCJIiQQtqrzJ0pzQiCRKO7t91tlaCUCFBIs7ZzfzX4bSiDhMK34iZC6ECUUEg/TCdd1TWLOPh8WauARUrFDiuTwVkqFqPU7bdu51Ksb537jBDJ5Ko3yWAYD9NwedYFX6vobqAkdXxavZ3JbCpaSDnPFq13+kzc2gbD82d2ZHptsDFnEmYXuqbwd+xFFDHZ3VVKkBbAzC9jdI09XuPT01d0FC9j6nZrQye26qotBLHNCvXBMc23bbj49bP1+IlAoFHJ5KzTOTRyjWbDY575cOcNTdwgdDLk83LoBlWAWRxi2YyeKnPTJHYOpSD1Gs0SHJWYQ2Z39Go2qCh0MDIhligLPlaFvDq+zdPh1EChnfsbHI1rXI2MfmXm8GO3oXb6AzXbtW0bw6AWD4Q4RjCdmsfUknqPRDvMbxbz92aG9BMhppi4wrtsBAVPMzqTXPBkIbT2wNdqBA8cpUHrn8aU94Q76mX81eJd3uFUpi+DBuO1e+GjC20wenmYLtwsYfVMpK1OSohcjbMlpVRWOBjtYmUII/4ah+VKbyryKIGBQp0CMkAJFk9myUMwA1jOZgSBigqts+QJUggHL622CiAk83HHy5HqjkydPHZVhSDuTKShg8OjBhZaYuu85kWHSRScnRzrRaJa8WWPrWUjqooVSRu8an+bN8JZbSkrSAWSY5dEtaFZdNBp7/EvlGDrdYHr9hrFuqgmRZLRxBjMZxIw9Waa6wfRGEYOAMUkxONZgRhMqYOj56xstXbfuN/XTbNfvmM4GkyEgGs3xi6pqfd/svm0dzcF928VMYITBtCcixndfVa0bwcWrwOz8+ZsbDohXWrPoaDQBg3TZ2bMbop09e5Oag6dkuY7wN5jYNxGxXuHbTw8/vLZXzIwymK4ajWtBb9q/mPHJuvyOiJjO0QVNIS7m+W6Vx9iVbSBojMFkhngYio+Z+nPxXRMo2Mlgpuhxjca3++dCX8iuii5ayejGNhDXaN4zroRT74W8Z2d5aYNJkUeGQYpa5EG9ihm37IMgjWytAoBOpoxi1JpIMHTnkVVA+O+3Dho73EV7EXjnXr0DR0fNH92ryizobRfZ7iPnQ4Fz9/g18/tV/64FCw4doMGbaw/6T4GjAuZJdS2ZixZc6Wds34cnl9iJBQsPnnm5XeXjObR2Ef/X7Z+ci6moEi1rUIIhvg2LGC+yf1+pBy//3LIz5r+6U3Ne/b4mkzyvzEpDemz/2ovqgnBrYfnmhT/n58zb4y5TfKysYlZVakEjoL6W/WSSkn4xnzV0O4dLbztFSZK8b4J7fjH6Es6EW5MELmFJK5NjL8ox57cvtDMLF6ObUi6b/edoTY75ylQ7o/q3uf4srdiqG5BjdnLlJxOZG952t5eoPinmWKgySjHfmf2iccbt7ZYm9nioD9VQgrkdOzfqfbfjlK6Og/R0ck/oRbFz8xLBUa4ySmyZkTqOhna5MRg5dTkSWdAnwnMT8dgNAo66KI5ypHOOZtcFX5Kj5cCjt3b8YvTNuxbwrhxzjqZVWbeDTj32ujB138NHK+09evTkPYFj+88sjgziFG67GGEWHfkW1O0Suh53Jmsbc9muuB1CskN3tFtPdjNVZXyxLfS/eMDCf+b5Lz27Y1sA+Ye7f1yXy36PPt7lxrwNXdvBVP++B6cOhd8A4dTtp67e266q/vvW85vQQMW9WiH7oj3kVxfGtm/vtj2Mvbj23Kf7Xl9gKo9d/qLB0ZtHLjF2VTeGglA0mQeTrKB9g3T81jJngdCZK9d9iBA+ubn+cd3hM/sjs49k77PLZ43RoJYvpfdHqc3RDoEjJJq+PPp/SJKWI9Gj2wuIVj6r4t2ACjr8lbCHIipz6O8wNRRhyWoEtMQRbP/bj8OLY+JM4VS//8izOEkQ0k1F6CR22WgVUxE6GcsloOTMkFr5w/qXp/EZhAQzKX9evfwYF6S16K/IlKJDTnkEoeAwRbLSaWXHo+eqpciXopgPZZRyHYcocVWviPaH0CYNCtRR4i1Z1io5/wjCAqWTK4nUoHqeyFG994xsgtzV6ioJl2Jq4dw6ujkR/XjlkkOVv1OTPlUrJQH+/MaEB0CBoK7nLZK5UTLlL5Y8Re3u41u2qBgMcA2DFdK0LNKldhmJCZEqR/1BWbJkGVR/rvIf9wPpwJjBz0kzLgAAAABJRU5ErkJggg==" 
+        width="102px">
+        </a>
+    
+    <a id=feeedbackLink target="_blank">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA/CAMAAACSEXcNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAP//94TFSu/v5nO9MZzOa0Kt3iml5hCl1pzOe+/394TFWr29tXO9Qmu9IVqtGZSte+be5lqtKbXejMXmrebWtYR7a5zmpa3OhGNaQuat5t7vtXN7c5TeQu+1EOattcW1EGu95mutGUKlGTqcCN7vzozF5jrOGRCUShDOWhDOGVrOlJxjEGutQmtaY4zOWmsZvSkZvUoZvQgZvZS9WmOl5u/mEMXmEL3WnO+1QmOMKcW1QpTmY5Te70KM3hCEEGvm5mPmKRClGQgpOmtavSlavUrm5mPmCEpavQhavYyElCGl1muUjJS1SkKUlJSlrVK95u86Wu863jqUazrvWq06Wq063jrvGe86Ge86nK06Ga06nGsZ7ykZ72sZlCkZlBCUaxDvWhDvGe8QWu8Q3q0QWq0Q3u8QGe8QnK0QGa0QnGsZaykZa1rOtZxjMa1jnO9j3u9jWinO3q1j3u9jnO9jGSnOnFrvlJyEEM46Ws463ow6Wow63s46Gc46nIw6GYw6nEoZ7wgZ70oZlAgZlM4QWs4Q3owQWowQ3s4QGc4QnIwQGYwQnEoZawgZa4xjnM5j3s5jWgjO3oxj3s5jnM5jGQjOnLXm973mzoS1Sr3mnGOMCO/mQsXmQpS9rTFjOubmhGPmawhaOjEpOpStKWMpEL3ma+bmY2PmSjEIOpStCGMIEGNKEJTWEAgpCBmlvUpaYxmEvWta72talCla7ylalK2EY++1hK1jYxmllClaa8W1hGuE5pSl5kpa70palAha7whalO+1Y4xjYxmElAhaa8W1Y72l5kKUtTFjEL3F3mOEUu+E3u+EWinv3q2E3lrvtZyEMa2EnO+EnO+EGSnvnM6E3s6EWgjv3oyE3s6EnM6EGQjvnDqEEJTmhCGM5giM5jEpEAhaCGOla2MpQpTmzjEIEGMIQt7v3r2lrWO9Y9bW3jFKOmNrEJT3EDFKEGOErWultTqlSjrOazqESjrOSmO9MRCl5ggAKVq9EIStWkKt7xAAAP/v9wAIAAAAACLG1lgAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAK5klEQVRo3u2aS2+jyBaAUxSPUIAdA2rRsje+uLyz2aQlFMl/wB6N+XeeeDOL+2c6nd+QPRYjpWdjS53F3HNOFRg7Tm7uqG88r1OYR1UZzsc5px7AxW9/Ebn4O4EItpc6j/3ZQBSEECsUITQMY38ui3BkmA3t3WUtO3u4QprqzwQCCq+GDiiP4jzZT0+Os9tdOpDf8/9wNrl4xRor+3KHGE4xns1m5Fyr2Rg4xOdi9UcjeQHkC2A4CAEoxRhkhiwIg0GyXEAuAvXeX6rem0GEqHpMFJdEARoPxyQzIsEA2azI5cbt1uz9hFdV9RYQ0A44VguigMUZoow1DOruj9HHhrudfR4SCNEvFf9vIFDtS4/NlFfhokA0C2reW6pwmdmXC3A0wd9RmjtX+dWrINSyVsChzQHJKYYNChaL5UxHy6rYAYkI0/eU0IpVz+Z/eQWEzOazFbW4NYtd1Cgq0JtwWa2edgvB5CR4P5mEozTMCcX3ey+BEOmVEIvLhgKAFgVKzeH/Om5ifzVzdjZjZf8dJc69NA34c5KLQw52tWSqvdqzOGCTT0Uxpibj1zryqT0e7i4hO35n8dJQPiO5OBxVuXfoWNoiexJ0LyqftyIfYaASONf7cuSxm6aSwtU/BYJ65g8/sKKh2HsYGIU4/E9N4BMLWARMIvJ3lXWeJ92wxHZpWT0HQT1leleJy8VugYsDq32iAOl9LYp9IwYo9gLaZ+CP3lvcdIIKbTbVMQjd8En6EbsQ0G6xK4T/ddFwDCmA5kVRRz5JgRUvBYujRKd6g6J26nW0L292m2r/e/JGCTrX3D8GIccaTe7ZcKcsUqAnfdUcjnKsz7aN4aJZCgcqAsiKyQSE50kiYS/niRQgKnONaxEluejDjozx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" 
+    width="200px">
+    </a>
+
+</center>
+
+<script>
+    var pageName = "using_softconsole/mpfs.md.txt".replace(/\.txt/g,'');
+    var uri = "feedback/com?document=SoftConsole&release=v2021.2-6.7.607&page=" + pageName;
+    var res = encodeURI(uri);
+    document.getElementById("feeedbackLink").href = res;
+
+    var body  = "Document: SoftConsole\nVersion: v2021.2-6.7.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
+    var title = "I have problem with the " + pageName + " page";
+    var ghuri = "https://github.com/AntonKrug/scdocs/issues/new?title="+title+"&body="+body+"&labels=help wanted";
+    document.getElementById("githubIssue").href = encodeURI(ghuri);
+
+</script> -->
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2021.2
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/scdocs/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

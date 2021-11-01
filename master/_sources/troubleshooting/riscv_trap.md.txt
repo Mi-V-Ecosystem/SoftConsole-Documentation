@@ -1,0 +1,17 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+(riscvtrapexception)=
+# RISC-V Trap Exceptions
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+{% include 'main/troubleshooting/riscv_trap/_exit_code.inc' %}
+{% include 'main/troubleshooting/riscv_trap/_csrs.inc' %}
+{% include 'main/troubleshooting/riscv_trap/_mcause2.inc' %}
+{% include 'main/troubleshooting/riscv_trap/_floating_point_trap.inc' %}
+
+{% include 'main/troubleshooting/riscv_trap/_misaligned.inc' %}
+
+
+```````

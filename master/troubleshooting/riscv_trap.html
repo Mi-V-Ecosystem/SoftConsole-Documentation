@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>RISC-V Trap Exceptions &mdash; SoftConsole v2021.2-6.7.607 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Arm" href="arm.html" />
+    <link rel="prev" title="RISC-V" href="riscv.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv.html">RISC-V</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RISC-V Trap Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mi-v-hal-exit-codes">Mi-V HAL Exit codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#csrs-relevant-to-troubleshooting">CSRs relevant to troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mcause">mcause</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mepc">mepc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mtval-mbadaddr">mtval/mbadaddr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mip">mip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mie">mie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mtvec">mtvec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mscratch">mscratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mstatus">mstatus</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#typical-causes-of-mcause-2">Typical causes of mcause==2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-flow-for-mcause-2">Troubleshooting flow for mcause==2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#real-life-example-of-mcause-2-on-a-non-f-target">Real-life example of mcause==2 on a non-F target</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#typical-causes-of-mcause-0-4-or-6">Typical causes of mcause==0,4 or 6</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arm.html">Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode_networking.html">Renode networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>RISC-V Trap Exceptions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="risc-v-trap-exceptions">
+<h1>RISC-V Trap Exceptions<a class="headerlink" href="#risc-v-trap-exceptions" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This documentation is deprecated and it’s not recommended to be used on new projects.</p>
+<p>Visit <a class="reference external" href="https://microsemi.com/softconsole">https://microsemi.com/softconsole</a> instead.</p>
+</div>
+<div class="section" id="mi-v-hal-exit-codes">
+<h2>Mi-V HAL Exit codes<a class="headerlink" href="#mi-v-hal-exit-codes" title="Permalink to this headline">¶</a></h2>
+<p>If UART displays message such as these:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Progam</span> <span class="n">has</span> <span class="n">exited</span> <span class="k">with</span> <span class="n">code</span><span class="p">:</span><span class="mh">0x00000003</span> <span class="p">(</span><span class="n">got</span> <span class="n">into</span> <span class="n">a</span> <span class="n">trap</span> <span class="n">exception</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It means that it reached to a unhandled exception and decided to stop the execution voluntary as it could cause unexpected behaviors.</p>
+<p>This section applies to any other exit codes as well because it deals with <strong>unhandled trap exceptions</strong> in general. And this section can be used on other trap exceptions as well (they do not have to display a error on the UART). Possibly the code got into unhandled exception/trap state.</p>
+<p>Troubleshoot as a trap, the Mi-V HAL exit code meanings are:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">Mi-V HAL Exit code</th>
+<th class="head">mcause</th>
+<th class="head">Cause of the exit code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>0x00000001</td>
+<td>0x00000000</td>
+<td>Instruction address misaligned</td>
+</tr>
+<tr class="row-odd"><td>0x00000002</td>
+<td>0x00000001</td>
+<td>Instruction access fault</td>
+</tr>
+<tr class="row-even"><td>0x00000003</td>
+<td>0x00000002</td>
+<td>Illegal instruction</td>
+</tr>
+<tr class="row-odd"><td>0x00000004</td>
+<td>0x00000003</td>
+<td>Breakpoint</td>
+</tr>
+<tr class="row-even"><td>0x00000005</td>
+<td>0x00000004</td>
+<td>Load address misaligned</td>
+</tr>
+<tr class="row-odd"><td>0x00000006</td>
+<td>0x00000005</td>
+<td>Load access fault</td>
+</tr>
+<tr class="row-even"><td>0x00000007</td>
+<td>0x00000006</td>
+<td>Store/AMO address misaligned</td>
+</tr>
+<tr class="row-odd"><td>0x00000008</td>
+<td>0x00000007</td>
+<td>Store/AMO access fault</td>
+</tr>
+<tr class="row-even"><td>0x00000009</td>
+<td>0x00000008</td>
+<td>Environment call from U-mode</td>
+</tr>
+<tr class="row-odd"><td>0x0000000A</td>
+<td>0x00000009</td>
+<td>Environment call from S-mode</td>
+</tr>
+<tr class="row-even"><td>0x0000000C</td>
+<td>0x0000000B</td>
+<td>Environment call from M-mode</td>
+</tr>
+<tr class="row-odd"><td>0x0000000D</td>
+<td>0x0000000C</td>
+<td>Instruction page fault</td>
+</tr>
+<tr class="row-even"><td>0x0000000E</td>
+<td>0x0000000D</td>
+<td>Load page fault</td>
+</tr>
+<tr class="row-odd"><td>0x00000010</td>
+<td>0x0000000F</td>
+<td>Store/AMO page fault</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The exit code is the <code class="docutils literal notranslate"><span class="pre">mcause</span></code> register value from RISC-V Privilege Specification plus literal 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit_code</span> <span class="o">=</span> <span class="n">mcause</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">mcause</span> <span class="o">=</span> <span class="n">exit_code</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The exit code table above can be used to troubleshoot <code class="docutils literal notranslate"><span class="pre">mcause</span></code> values as well, just <strong>subtract 1</strong> from the exit_code value.</p>
+</div>
+<p>For full information refer to the draft RISC-V Privileged ISA Specification:</p>
+<p><a class="reference external" href="https://riscv.org/technical/specifications/privileged-isa/">https://riscv.org/technical/specifications/privileged-isa/</a></p>
+<p>Get the value of <code class="docutils literal notranslate"><span class="pre">mepc</span></code> CSR register, it points to memory where the trap happened. Create breakpoint on this location. Single-step (if needed) to the moment right before the trap happens, note the current state of the CPU, then let the trap happen and get values from the following CSRs: <code class="docutils literal notranslate"><span class="pre">mcause</span></code>, <code class="docutils literal notranslate"><span class="pre">mip</span></code>, <code class="docutils literal notranslate"><span class="pre">mie</span></code>, <code class="docutils literal notranslate"><span class="pre">mtval/mbadaddr</span></code>, <code class="docutils literal notranslate"><span class="pre">mtvec</span></code>, <code class="docutils literal notranslate"><span class="pre">mepc</span></code>, <code class="docutils literal notranslate"><span class="pre">mscratch</span></code> and <code class="docutils literal notranslate"><span class="pre">mstatus</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When asking for assistance, all these CSRs can give vital information to troubleshoot your problem, <strong>do not ask for trap troubleshooting help without supplying this vital information!</strong></p>
+</div>
+</div>
+<div class="section" id="csrs-relevant-to-troubleshooting">
+<h2>CSRs relevant to troubleshooting<a class="headerlink" href="#csrs-relevant-to-troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>Our Mi-V verbose trap handler when running Debug build (Release builds do have it disabled) should show the values as local variables in the bottom right corner (however it’s not the only method how to fetch them):</p>
+<p><img alt="CSRs" src="../_images/trap-csrs.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Converting these values to HEX should give more meaningful representation:</p>
+<div class="graphviz"><img src="../_images/graphviz-fcaa503b59aebaa113bbbfb92137b9432017c3c9.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right-click&quot; -&gt; &quot;Format Number&quot; -&gt; &quot;Hex&quot;
+     }" class="graphviz" /></div>
+</div>
+<p>These CSRs have the following meanings which should help troubleshoot the cause of why the exception happened:</p>
+<div class="section" id="mcause">
+<h3>mcause<a class="headerlink" href="#mcause" title="Permalink to this headline">¶</a></h3>
+<p>Should be the same as <code class="docutils literal notranslate"><span class="pre">Mi-V</span> <span class="pre">HAL</span> <span class="pre">exit</span> <span class="pre">code</span> <span class="pre">-</span> <span class="pre">1</span></code>, if it’s not then different trap happened in middle of the trap debug session.</p>
+</div>
+<div class="section" id="mepc">
+<h3>mepc<a class="headerlink" href="#mepc" title="Permalink to this headline">¶</a></h3>
+<p>Is the value of Program Counter at the moment when the exception happened (address to code which caused the trap).</p>
+</div>
+<div class="section" id="mtval-mbadaddr">
+<h3>mtval/mbadaddr<a class="headerlink" href="#mtval-mbadaddr" title="Permalink to this headline">¶</a></h3>
+<p>Depending on the assembler version the name of this CSR might be either <code class="docutils literal notranslate"><span class="pre">mtval</span></code> or <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code>. In the current SoftConsole v2021.2 these can be freely interchanged, however the <code class="docutils literal notranslate"><span class="pre">mtval</span></code> is the newer <strong>correct</strong> name. If the exit code is 1,2, 5, 6, 7, 8, 0xE or 0x10 (mcause 0,1,4,5,6,7,0xD,0xF) then this CSR points to the memory address which caused this fault. If the exit code is 3 (mcause=2) then this CSR contains the opcode of the instruction which triggered the trap. Together with the exit code (mcause+1) and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> this can point to what happened and where it happened.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">mcause</span></code> and exit code are almost identical except the exit code is offset by 1.</p>
+</div>
+</div>
+<div class="section" id="mip">
+<h3>mip<a class="headerlink" href="#mip" title="Permalink to this headline">¶</a></h3>
+<p>Displays any pending interrupts.</p>
+</div>
+<div class="section" id="mie">
+<h3>mie<a class="headerlink" href="#mie" title="Permalink to this headline">¶</a></h3>
+<p>Displays what interrupts are enabled.</p>
+</div>
+<div class="section" id="mtvec">
+<h3>mtvec<a class="headerlink" href="#mtvec" title="Permalink to this headline">¶</a></h3>
+<p>Is trap handler vector, address where to jump when the trap happens.</p>
+</div>
+<div class="section" id="mscratch">
+<h3>mscratch<a class="headerlink" href="#mscratch" title="Permalink to this headline">¶</a></h3>
+<p>Temporary values, sometimes it can hold value of the A0 register which is used for arguments passing or return values from the functions.</p>
+</div>
+<div class="section" id="mstatus">
+<h3>mstatus<a class="headerlink" href="#mstatus" title="Permalink to this headline">¶</a></h3>
+<p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
+<img alt="../_images/wavedrom-679e1682-6515-4bd9-b9e1-5a27448bfed0.svg" height="300px" src="../_images/wavedrom-679e1682-6515-4bd9-b9e1-5a27448bfed0.svg" width="840px" /><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
+</div>
+</div>
+</div>
+<div class="section" id="typical-causes-of-mcause-2">
+<h2>Typical causes of mcause==2<a class="headerlink" href="#typical-causes-of-mcause-2" title="Permalink to this headline">¶</a></h2>
+<p>Just few of possible situations and causes. Often this is caused by non matching SW and HW (using wrong extensions, or using more memory than target has), or SW bugs (overflows). Knowing how to read code listing (.lst file) and being able to read CSR values is cruitial in the troubleshooting. Often the symptoms and cause are not in the same place, unhandled trap exception happens after the damage was done and user needs to traverse back the callstack what caused it. Often placing breakpoints to the aseembly just before the issue then single stepping and verifying values of stack and registers can pin point to the real cause of the problem.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mtval</span></code> opcode of valid instruction, <code class="docutils literal notranslate"><span class="pre">mepc</span></code> pointing to valid location in the code. Check if the instruction is supported by HW. Can be caused by enabling F or C extensions in the project settings while running on HW which can’t execute these instructions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mepc</span></code> pointing which should be valid range of memory, but <code class="docutils literal notranslate"><span class="pre">mtval</span></code> contains 0s or 1s. Your target might have less memory than your software, check your linker scripts that they match your HW. Check the section on shrinking the application and on the misleading use of ‘word’ in the Libero GUI. In case of having half of the memory than expected and using linker script with stack pointing to the end of the RAM and depending on the application it might cause issues with stacks even before it will get to executing outside the region, it might different symptoms. The issue might play out differently depending on the linker script, for example if the application is running from eNVM and have data in SRAM (and various things can happen if there is not enough eNVM or SRAM).  However corrupting stack no matter what caused it, often corrupts RA (return address) register, which then causes wrong jump and issue mentioned below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mepc</span></code> pointing to obscure location which for sure is not where valid code resides. Can be caused by SW bug corrupting a stack in a function can cause odd jumps. Inside a function a buffer overflow, heap overflow or writing to a wrong pointer can cause corrupting stack, the return address from the function is store in the stack. Ending the function might then lead jumping to ad-hoc locations and then failing on invalid opcode (if that unimplemented memory contains 0s or 1s).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">mtval</span></code> opcode of the instruction is full of zeroes or ones, then that indicates the code went executing in a wrong region of memory. Troubleshoot why it might have jumped there, corrupted RA return pointer in a stack, stack getting overwritten by buffer overflow or some other SW bug. Design not matching the SW is frequent cause, for example having non-matching linker script and using more memory than your target really has, see:</p>
+<p><a class="reference internal" href="../using_softconsole/projects.html#liberoword"><span class="std std-ref">Libero's Word is 16-bit</span></a></p>
+<p><a class="reference internal" href="project.html#shrinking"><span class="std std-ref">Application shrinking</span></a></p>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">mtval</span></code> is valid opcode and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> valid range, then open the listing file (<code class="docutils literal notranslate"><span class="pre">.lst</span></code>) and search for <code class="docutils literal notranslate"><span class="pre">mepc</span></code> address, this should point a specific instruction, validate if the instruction is valid. If it has compressed syntax (instructions have c. prefix and the opcodes are only 16-bit), then check if your HW has support for the C extension and if the project settings have correctly configured the CPU/arch/ABI. A similar situation is with F and D floating-point extensions. The listing file will show symbol to which C function the instructions belongs and opening the function from the C editor might reveal a potential issue or narrow down the scope of potential causes. <strong>It is easier to ask for assistance when the possible causes are narrowed down.</strong></p>
+<div class="section" id="troubleshooting-flow-for-mcause-2">
+<h3>Troubleshooting flow for mcause==2<a class="headerlink" href="#troubleshooting-flow-for-mcause-2" title="Permalink to this headline">¶</a></h3>
+<div class="graphviz"><img src="../_images/graphviz-a2801c224efb439f87b1431dbc8952fc1de5ba02.png" alt="digraph {
+        graph [bgcolor=transparent]
+        node  [fontname=&quot;Handlee&quot; shape=rect]
+        edge  [fontname=&quot;Handlee&quot;]
+
+        start       [ style=filled fillcolor=&quot;#FFECCC&quot; color=&quot;#FFE3B3&quot; label=&quot;mcause==2&quot;]
+        opcode      [ style=filled fillcolor=&quot;#EAF7DA&quot; color=&quot;#B9E584&quot;   label=&quot;Is mtval full\nof 0s or 1s?&quot; shape=diamond]
+        
+        opcodeYes   [ style=filled fillcolor=&quot;#D4E2F9&quot; color=&quot;#9CBDF2&quot;   label=&quot;CPU went executing a\nwrong region of memory\n(not initialized or not implemented)&quot;]
+        mepc1       [ style=filled fillcolor=&quot;#D4E2F9&quot; color=&quot;#9CBDF2&quot;   label=&quot;mepc is pointing to\nmemory address where\nthe problem occurred&quot;]
+        rangeValid  [ style=filled fillcolor=&quot;#EAF7DA&quot; color=&quot;#B9E584&quot;   label=&quot;Is the mepc\nin a valid\nmemory range?&quot; shape=diamond]
+        rangeNo     [ style=filled fillcolor=&quot;#E5D4EB&quot; color=&quot;#C49ED2&quot; label=&quot;Not implemneted memory.\nWhat made it to jumped there?\nSee the content of the call stack.\nCheck target memory size matching linker script&quot;]
+        rangeYes    [ style=filled fillcolor=&quot;#E5D4EB&quot; color=&quot;#C49ED2&quot; label=&quot;Not initialized memory.\nCheck for SW bugs:\nbuffer/stack overflows...\nCheck for Libero design:\nLibero's word is 16-bit&quot;]
+
+        
+        mepc2       [ style=filled fillcolor=&quot;#D4E2F9&quot; color=&quot;#9CBDF2&quot;   label=&quot;mepc is pointing to\nmemory address where\nthe problem occurred&quot;]
+        listing     [ style=filled fillcolor=&quot;#D4E2F9&quot; color=&quot;#9CBDF2&quot;   label=&quot;Open .lst and find that address&quot;]
+        validIns    [ style=filled fillcolor=&quot;#EAF7DA&quot; color=&quot;#B9E584&quot;   label=&quot;Is the instruction\na valid opcode?&quot; shape=diamond]
+        validInsYes [ style=filled fillcolor=&quot;#E5D4EB&quot; color=&quot;#C49ED2&quot; label=&quot;HW might not match SW.\nCheck C, F and other extensions.\nDoes the HW is supporting them?&quot;]
+        validInsNo  [ style=filled fillcolor=&quot;#E5D4EB&quot; color=&quot;#C49ED2&quot; label=&quot;Unlikely a toolchain bug.\nPossibly any other cause,\camouflaged as a toolchain bug.\nDid any SW/HW bug cause to\n jump in a wrong part of the code?&quot;]
+
+        start      -&gt; opcode
+        
+        opcode     -&gt; opcodeYes   [label=&quot;Yes&quot;]
+        opcodeYes  -&gt; mepc1
+        mepc1      -&gt; rangeValid
+        rangeValid -&gt; rangeYes    [label=&quot;Yes&quot;]
+        rangeValid -&gt; rangeNo     [label=&quot;No&quot;]
+
+        opcode     -&gt; mepc2       [label=&quot;No&quot;]
+        mepc2      -&gt; listing
+        listing    -&gt; validIns
+        validIns   -&gt; validInsYes [label=&quot;Yes&quot;]
+        validIns   -&gt; validInsNo  [label=&quot;No&quot;]
+        {
+            rank=same;
+            opcodeYes; opcode; start
+        }
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="real-life-example-of-mcause-2-on-a-non-f-target">
+<h3>Real-life example of mcause==2 on a non-F target<a class="headerlink" href="#real-life-example-of-mcause-2-on-a-non-f-target" title="Permalink to this headline">¶</a></h3>
+<p>Application halted in a trap handler:</p>
+<p><img alt="screenshot" src="../_images/step0010.png" /></p>
+<p><img alt="screenshot" src="../_images/step0020.png" /></p>
+<p>The local variable tab should contain the content of the CSRs:</p>
+<p><img alt="screenshot" src="../_images/step0030.png" /></p>
+<p>Usually the CSRs are most useful when they are formatted to the hex format:</p>
+<div class="graphviz"><img src="../_images/graphviz-fcaa503b59aebaa113bbbfb92137b9432017c3c9.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right-click&quot; -&gt; &quot;Format Number&quot; -&gt; &quot;Hex&quot;
+     }" class="graphviz" /></div>
+<br/><p><img alt="screenshot" src="../_images/step0040.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mcause</span></code> CSR is 2, the table below shows that it means a <code class="docutils literal notranslate"><span class="pre">Illegal</span> <span class="pre">instruction</span></code>:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">Mi-V HAL Exit code</th>
+<th class="head">mcause</th>
+<th class="head">Cause of the exit code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>0x00000001</td>
+<td>0x00000000</td>
+<td>Instruction address misaligned</td>
+</tr>
+<tr class="row-odd"><td>0x00000002</td>
+<td>0x00000001</td>
+<td>Instruction access fault</td>
+</tr>
+<tr class="row-even"><td>0x00000003</td>
+<td>0x00000002</td>
+<td>Illegal instruction</td>
+</tr>
+<tr class="row-odd"><td>0x00000004</td>
+<td>0x00000003</td>
+<td>Breakpoint</td>
+</tr>
+<tr class="row-even"><td>0x00000005</td>
+<td>0x00000004</td>
+<td>Load address misaligned</td>
+</tr>
+<tr class="row-odd"><td>0x00000006</td>
+<td>0x00000005</td>
+<td>Load access fault</td>
+</tr>
+<tr class="row-even"><td>0x00000007</td>
+<td>0x00000006</td>
+<td>Store/AMO address misaligned</td>
+</tr>
+<tr class="row-odd"><td>0x00000008</td>
+<td>0x00000007</td>
+<td>Store/AMO access fault</td>
+</tr>
+<tr class="row-even"><td>0x00000009</td>
+<td>0x00000008</td>
+<td>Environment call from U-mode</td>
+</tr>
+<tr class="row-odd"><td>0x0000000A</td>
+<td>0x00000009</td>
+<td>Environment call from S-mode</td>
+</tr>
+<tr class="row-even"><td>0x0000000C</td>
+<td>0x0000000B</td>
+<td>Environment call from M-mode</td>
+</tr>
+<tr class="row-odd"><td>0x0000000D</td>
+<td>0x0000000C</td>
+<td>Instruction page fault</td>
+</tr>
+<tr class="row-even"><td>0x0000000E</td>
+<td>0x0000000D</td>
+<td>Load page fault</td>
+</tr>
+<tr class="row-odd"><td>0x00000010</td>
+<td>0x0000000F</td>
+<td>Store/AMO page fault</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">mepc</span></code> CSR points to the memory location where this exception happened <code class="docutils literal notranslate"><span class="pre">0x80001f98</span></code>:</p>
+<p><img alt="screenshot" src="../_images/step0050.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the value of the <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code> CSR which will be mentioned later below.</p>
+</div>
+<p>Find and open the listing <code class="docutils literal notranslate"><span class="pre">lst</span></code> file:</p>
+<p><img alt="screenshot" src="../_images/step0060.png" /></p>
+<p>Within the listing file search for the address <code class="docutils literal notranslate"><span class="pre">80001f98</span></code> (Note: the <strong>0x</strong> prefix is removed):</p>
+<p><img alt="screenshot" src="../_images/step0070.png" /></p>
+<p>And it found the assembly line where the exception happened and it’s the <code class="docutils literal notranslate"><span class="pre">fsw</span> <span class="pre">fs0,188(sp)</span></code> instruction:</p>
+<p><img alt="screenshot" src="../_images/step0080.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">mcause</span></code> CSR is 2 then the content of the <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code> CSR is exactly the opcode <code class="docutils literal notranslate"><span class="pre">0xa812e27</span></code> of the <code class="docutils literal notranslate"><span class="pre">fsw</span> <span class="pre">fs0,188(sp)</span></code> instruction. And therefore it’s possible to decode the instruction without having access to the listing file.</p>
+</div>
+<p>Looking at the RISC-V reference card shows that the <code class="docutils literal notranslate"><span class="pre">fsw</span> <span class="pre">fs0,188(sp)</span></code> belongs to the floating-point instructions of the <code class="docutils literal notranslate"><span class="pre">F</span></code> extension:</p>
+<p><img alt="screenshot" src="../_images/reference_card_1.png" />
+<img alt="screenshot" src="../_images/reference_card_2.png" /></p>
+<p>These steps can be used on real HW, however when using Renode as a target, then it might sometimes give hints to the user as well:</p>
+<p><img alt="screenshot" src="../_images/step0090.png" /></p>
+<p>In this example it means that the application is using floating-point instructions (<code class="docutils literal notranslate"><span class="pre">F</span></code> extension) on a target that doesn’t support it.
+This issue can be solved by any of the following:</p>
+<ul>
+<li><p>Remove the floating-point math and replace it with <strong>fixed-point</strong> arithmetic (if that is viable)</p></li>
+<li><p>Switch to <strong>soft-float</strong> implementation, this will increase the code size and decrease the performance significantly as all IEEE754 functionality will be emulated in software.
+To switch to soft-float <strong>both</strong> <code class="docutils literal notranslate"><span class="pre">Floating</span> <span class="pre">point</span></code> and <code class="docutils literal notranslate"><span class="pre">Floating</span> <span class="pre">point</span> <span class="pre">ABI</span></code> have to be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> in the following:</p>
+<div class="graphviz"><img src="../_images/graphviz-b2ecfc868eaba1d6ed77ad8abc7c789ee961a654.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;; }" class="graphviz" /></div>
+<p><img alt="F ABI matching" src="../_images/float-match-abi-rv32ima.png" /></p>
+</li>
+<li><p>Switch to a target that has <strong>hardware</strong> <code class="docutils literal notranslate"><span class="pre">F</span></code> support.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="typical-causes-of-mcause-0-4-or-6">
+<h2>Typical causes of mcause==0,4 or 6<a class="headerlink" href="#typical-causes-of-mcause-0-4-or-6" title="Permalink to this headline">¶</a></h2>
+<p>When mcause==0, 4, or 6, then this might indicate <strong>misaligned</strong> address access, the <code class="docutils literal notranslate"><span class="pre">mtval/mbadaddr</span></code> show the address itself (if it’s not aligned to 32-bit alignment then it’s misaligned) and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> should point to the location in the code where this misalignment happened, evaluate the listing file to confirm the issue. Double-check project settings: Use strict alignment If the target is Renode, then it is possible to use symbols to resolve the addresses such as MEPC which can sometimes help
+troubleshoot a trap without even opening the listing file, see Symbols and simple trace functionality</p>
+<p>See: <a class="reference internal" href="../using_softconsole/projects.html#alignstrict"><span class="std std-ref">Use strict alignment</span></a></p>
+</div>
+</div>
+<span class="target" id="riscvtrapexception"></span>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="arm.html" class="btn btn-neutral float-right" title="Arm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="riscv.html" class="btn btn-neutral float-left" title="RISC-V" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Microchip.
+
+    </p>
+  </div> 
+<!-- <center>
+
+    <a id=githubIssue target="_blank">
+        <img src=" data:image/png;base64,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" 
+        width="102px">
+        </a>
+    
+    <a id=feeedbackLink target="_blank">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA/CAMAAACSEXcNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAP//94TFSu/v5nO9MZzOa0Kt3iml5hCl1pzOe+/394TFWr29tXO9Qmu9IVqtGZSte+be5lqtKbXejMXmrebWtYR7a5zmpa3OhGNaQuat5t7vtXN7c5TeQu+1EOattcW1EGu95mutGUKlGTqcCN7vzozF5jrOGRCUShDOWhDOGVrOlJxjEGutQmtaY4zOWmsZvSkZvUoZvQgZvZS9WmOl5u/mEMXmEL3WnO+1QmOMKcW1QpTmY5Te70KM3hCEEGvm5mPmKRClGQgpOmtavSlavUrm5mPmCEpavQhavYyElCGl1muUjJS1SkKUlJSlrVK95u86Wu863jqUazrvWq06Wq063jrvGe86Ge86nK06Ga06nGsZ7ykZ72sZlCkZlBCUaxDvWhDvGe8QWu8Q3q0QWq0Q3u8QGe8QnK0QGa0QnGsZaykZa1rOtZxjMa1jnO9j3u9jWinO3q1j3u9jnO9jGSnOnFrvlJyEEM46Ws463ow6Wow63s46Gc46nIw6GYw6nEoZ7wgZ70oZlAgZlM4QWs4Q3owQWowQ3s4QGc4QnIwQGYwQnEoZawgZa4xjnM5j3s5jWgjO3oxj3s5jnM5jGQjOnLXm973mzoS1Sr3mnGOMCO/mQsXmQpS9rTFjOubmhGPmawhaOjEpOpStKWMpEL3ma+bmY2PmSjEIOpStCGMIEGNKEJTWEAgpCBmlvUpaYxmEvWta72talCla7ylalK2EY++1hK1jYxmllClaa8W1hGuE5pSl5kpa70palAha7whalO+1Y4xjYxmElAhaa8W1Y72l5kKUtTFjEL3F3mOEUu+E3u+EWinv3q2E3lrvtZyEMa2EnO+EnO+EGSnvnM6E3s6EWgjv3oyE3s6EnM6EGQjvnDqEEJTmhCGM5giM5jEpEAhaCGOla2MpQpTmzjEIEGMIQt7v3r2lrWO9Y9bW3jFKOmNrEJT3EDFKEGOErWultTqlSjrOazqESjrOSmO9MRCl5ggAKVq9EIStWkKt7xAAAP/v9wAIAAAAACLG1lgAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAK5klEQVRo3u2aS2+jyBaAUxSPUIAdA2rRsje+uLyz2aQlFMl/wB6N+XeeeDOL+2c6nd+QPRYjpWdjS53F3HNOFRg7Tm7uqG88r1OYR1UZzsc5px7AxW9/Ebn4O4EItpc6j/3ZQBSEECsUITQMY38ui3BkmA3t3WUtO3u4QprqzwQCCq+GDiiP4jzZT0+Os9tdOpDf8/9wNrl4xRor+3KHGE4xns1m5Fyr2Rg4xOdi9UcjeQHkC2A4CAEoxRhkhiwIg0GyXEAuAvXeX6rem0GEqHpMFJdEARoPxyQzIsEA2azI5cbt1uz9hFdV9RYQ0A44VguigMUZoow1DOruj9HHhrudfR4SCNEvFf9vIFDtS4/NlFfhokA0C2reW6pwmdmXC3A0wd9RmjtX+dWrINSyVsChzQHJKYYNChaL5UxHy6rYAYkI0/eU0IpVz+Z/eQWEzOazFbW4NYtd1Cgq0JtwWa2edgvB5CR4P5mEozTMCcX3ey+BEOmVEIvLhgKAFgVKzeH/Om5ifzVzdjZjZf8dJc69NA34c5KLQw52tWSqvdqzOGCTT0Uxpibj1zryqT0e7i4hO35n8dJQPiO5OBxVuXfoWNoiexJ0LyqftyIfYaASONf7cuSxm6aSwtU/BYJ65g8/sKKh2HsYGIU4/E9N4BMLWARMIvJ3lXWeJ92wxHZpWT0HQT1leleJy8VugYsDq32iAOl9LYp9IwYo9gLaZ+CP3lvcdIIKbTbVMQjd8En6EbsQ0G6xK4T/ddFwDCmA5kVRRz5JgRUvBYujRKd6g6J26nW0L292m2r/e/JGCTrX3D8GIccaTe7ZcKcsUqAnfdUcjnKsz7aN4aJZCgcqAsiKyQSE50kiYS/niRQgKnONaxEluejDjozxsIzV7r7a75BJik3XpnGui5ZBwvDbgBWLBXnWDp1JbD6TVcix+I/gR45jK3GcuuKYSRdExq4rhOvG0pWodIKZfSxacyiVQtdxXb5WuwRE1d4k1uFRah2Y5KJtkAxAbAeiAxc1kqrAv7RjLRdKdhQ+WEexAIgFEksrkTyx5NqSsaUlYa6Fh64Ai1m6oFxbtLuv9hYxJl7rKDO6KSq4rE3SApmE1rd7sIj2rZ1Sny0/K8fqfSbdEYNYVGMAxxokYRY2jhaoLnlZln26IF9bLuTkJYLWILkGwWpvhgmkZ9RMwbbTCUfYw1cf/DYIalqOguvJRzYkHSmt9ACtUpGuLVVbYrHQFlkxpQzERhLJhGeW7GMQW9pOuSIA0BZIRhZpqr0FpBRWYGVeYHaUqIZroHvFPUieAuUjm+0akoNhevVZ5Tp67dAeCLRaSXadZVl/DQx8HcMe/LRYzJIRrOHeszyTa8yTOa5itX2zBNBzuCEhhJS6FO5z7VsXjWd5ANJ9hH5EawsybIH8UDMcJ+hHAAOWiMssK3mUeQhCedeoMMuyHEqytfTk+jrzsrjvZRlPAOQ6e2vyDOoC8y4iKAlHOBDe6HC/2LdZXSi7w2hX+rWciwziqMz2j9ZjVt56KBaLPQ/U9ry+QOenTC9ifc8rIyq3sIBHFpdxKT1PxYj3usDpjMAEd+oiCIu7nUZSFxUbtEDosU+KVR4exerSaWTvXD84LwiMtRLDo+RmhpdZsEcNpaVyPRfupuvhvpXpgizJ3aaaZ7ycDMVAokBYHIYNiIedwtTnByDlCEG6jzD6bak5bhnkpIBBxMT4f8ge4QCEyYakS9E+XfYOQOSIyh8euVi0FNXONX/JIDAfcW+/M8ExwiEIKyfavbqhAqkOQH4aqcK7e7ZaHDvXywYRrJp8J/VB/5MExyCMB91XQLRFOik412zh2Dop55o3x4cJBsX8Bi6v5qG/S3tS/xX9T4Aw4XVbIPM9SK8F8q+HRzBJo6uNztX78TQHlImJ9lilDKrlZcaeLaj1bUhNrb4yQEPR2lEbwwv0gcppgbDkFZBSg3S6MAKuR4Y02oVRin1K0O34fd0cGhyua5RmIGW/jM1OFEGmG3cSLqU0qIqHrbI0BS95mRkCG9/AxeIIgISU+LdOR3JcZ3ga2Yld+FtpHIG43XawH4Go5hfGMA/37FDhGf96CsMZC1be7Jv1dQxKWB0JAKbMO1GOIP1OFHfMdV+BcHIjRrYw6ABrmIaEOgyOuIX3Ak7SCQSszMSME7hD2ZFreSEpWje/rRipVIe4JZMCSGE/tZI9PjhUycHH2P5NCGdUqWPyLOl3DEH3U5hRvq1BOlZJV85KugAzlQXpvrkSs4SBuSb34H5EmBUp9E6cBKWlzl+DCI9cZ1t3iM9AvBROtTU7N3dsfHDvn05YAzF63x7glCYulNySG1vQAh2fBdEaduAoiuGOR1QjY+BGlolrmXm0CQAVVJKJyfrgSggDTEEnjrbmFv7Sj0pXn1+DcAhKVBRWaogy3ez7kR6n6ciWLB/CeMsp6jtfQJDY+wPIhyYZHznyq4eueSgyN00EIffJ4cB0+2YkSpGr8ozDGCswmYVDQE/AQQb1oWDbTwIYkcEgzLTKIACsOKJ/bPtCxvrsCqScdOrLhTQhmQ9aPTuZBKJdVYCeZOYUz8RW/Yp+Y3X1cLM94gCHBmUF7nnMjFCBJMZtwgMN0ooRHTAJgoBXBhgjsIoh+MEyuVY/joIyb4HIcH85NYyftsdayrcmqapw8+izsSb51HA4s9WqVC8Rq6v7u5vQfCZ0G0tc9WO4tbiNCGgtgz1IwFoHBBKAJSjX5YHAplt4HstgawX9BFqFRBmgxIFW63JqYqUbrRpE+Zau8fBYgk3sTwrjE6XCGdKbHX95/7OmCFRXcASSlTIG3zeDPm0DBAlkjFWJDVSGZre0MtoY2DrzGDoWDJnSQk8LzDgHK/ZjWQJIAMiWBsnD1iW1Z+mhlgbhut3ST4rvHismoDNpPcPChyaC+Xd3NzcvPrT2VM9nuVZrS92hkakKtKZpkqE2UJKpv8GBp2sHBu65bqZP6dH/wjIJ21cbudT4Dg6mur/5QoW7rvTweCWYWA1tu40CA0QvOJtsvQMONT/c1J5Vg1RfVJTQQPbWuL25++UKusnhgdgrlhtnk+BgcDpJE2WQTe/wAZ1P4620a+AUCBZAebxiB741LGY4BzTOtKhpml4C1WTNp8fPtX6rfHq0lYb7SeY9DLrql4ck0Avm3h9CbtOQU5M1aN4sNA+xfSJJRmH9GOz6GwyD7TaIjW8Qcuv8cqteK/DpdPnl2dP4nk8tV5Kmt6q2e/3zhg2LFoeaLQrpnpljol70iAE4Fn/+fqTaVGpyPwpv1WPW+19KNn4a0hvD8fBpJWbgavgi9+3Pa7+/XE/S0Td6WjKHSK9OvXqrluRdwk1HaTdEufsF+pMxjbWGMzFe0PsfnIVMwnMJ6Dah97pHHAcvQ/3lhoYgIvfUO+eHu8cl9uc0Mhnv6om6YG56Jgkn7k/qm4HBdLCsXno97S/nVTMvRuH+HKpz2BFi0Qzix7r0DFIrt5ke2uP4g4FqM9+jqL9g1of5AIb2emLyhJPfs4rwB1OI8+q1TzgqfzkA1IOPTNAecwBp+sUxE+ejACeZgjmWx99wHH+L0gOUD1CxJR8gfRywcd3NQ4xsBueSKVLMn2Gc+swJUDbL+fzo//+uYAKM/XwB3QkfnE/m8+XGP/HR1skPz6rKP5bBR44tcYEfcoilf045/enZy980Hn5gVM2nfv1AG9qxs8n3+IAZWmK4H5vlX+FL7M3mn0/K/wH5u4H8ByqJpUXJw7IZAAAAAElFTkSuQmCC" 
+    width="200px">
+    </a>
+
+</center>
+
+<script>
+    var pageName = "troubleshooting/riscv_trap.md.txt".replace(/\.txt/g,'');
+    var uri = "feedback/com?document=SoftConsole&release=v2021.2-6.7.607&page=" + pageName;
+    var res = encodeURI(uri);
+    document.getElementById("feeedbackLink").href = res;
+
+    var body  = "Document: SoftConsole\nVersion: v2021.2-6.7.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
+    var title = "I have problem with the " + pageName + " page";
+    var ghuri = "https://github.com/AntonKrug/scdocs/issues/new?title="+title+"&body="+body+"&labels=help wanted";
+    document.getElementById("githubIssue").href = encodeURI(ghuri);
+
+</script> -->
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2021.2
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/scdocs/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

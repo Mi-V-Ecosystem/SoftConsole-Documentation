@@ -1,0 +1,1093 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Projects &mdash; SoftConsole v2021.2-6.7.607 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Debugging" href="debugging.html" />
+    <link rel="prev" title="Workspaces" href="workspace.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-new-project">Creating a new project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-settings">Project Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#all-cpu-targets">All CPU targets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#target-processor">Target Processor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#architecture">Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#abi">ABI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multilibs">Multilibs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#linker-script">Linker Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#newlib-nano">Newlib-Nano</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-extended-listing">Create Extended Listing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessor-defines-and-includes">Preprocessor Defines and Includes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimization-options">Optimization Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#library-dependencies">Library Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#print-size">Print Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-options">Other Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specifying-options-for-all-build-configurations">Specifying Options for All Build Configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#risc-v-targets">RISC-V targets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#do-not-use-standard-start-files-nostartfiles">Do not use standard start files (-nostartfiles)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-strict-alignment">Use strict alignment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cortex-m-targets">Cortex-M targets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cmsis">CMSIS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#considerations-around-libero-designs">Considerations around Libero designs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#production-smartfusion2-relocate-to-external-ram-ld">Production-Smartfusion2-Relocate-to-External-Ram.ld</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generic-information-on-objcopy-and-normalization">Generic information on objcopy and normalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#libero-s-word-is-16-bit">Libero’s word is 16-bit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-source-files-to-a-project">Adding source files to a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-a-project">Building a project</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/arm.html">Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode_networking.html">Renode networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Projects</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="projects">
+<h1>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This documentation is deprecated and it’s not recommended to be used on new projects.</p>
+<p>Visit <a class="reference external" href="https://microsemi.com/softconsole">https://microsemi.com/softconsole</a> instead.</p>
+</div>
+<div class="section" id="creating-a-new-project">
+<h2>Creating a new project<a class="headerlink" href="#creating-a-new-project" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Depending on the type of project required select:</p>
+<div class="graphviz"><img src="../_images/graphviz-b2ac91da8acb2b55f5d446a1c6590490cce9293f.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;New&quot; -&gt; &quot;'C Project' or 'C++ Project'&quot;; }" class="graphviz" /></div>
+</li>
+<li><p>In the C/C++ Project page of the wizard enter the Project name, select</p>
+<div class="graphviz"><img src="../_images/graphviz-91fed47afd7ab74de4c8a92dde7af910df6f5c92.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project type = Executable&quot; -&gt; &quot;Empty Project (or Static Library)&quot; -&gt; &quot;Empty Project for a library project)&quot;; }" class="graphviz" /></div>
+</li>
+<li><p>Select the appropriate toolchain.</p>
+<ul class="simple">
+<li><p>For a Cortex-M project select Toolchains = Arm Cross GCC.</p></li>
+<li><p>For a RISC-V project select Toolchains = RISC-V Cross GCC.</p></li>
+</ul>
+</li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> to go to the next wizard page, Select Configurations:
+<img alt="New project wizzard" src="../_images/wizzard-new-project.png" /></p></li>
+<li><p>The Select Configurations page of the wizard allows the configurations or build targets that the project will
+support to be configured. By default, two configurations are created – Debug and Release. Should other
+configurations be required these can be created using the Advanced settings… button which launches the
+project Properties dialog in which additional configurations can be specified or properties for any or all
+configurations can be changed. Normally the default Debug and Release configurations are sufficient. When
+finished click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button to go to the next wizard page, <code class="docutils literal notranslate"><span class="pre">GNU</span> <span class="pre">Arm</span> <span class="pre">Cross</span> <span class="pre">Toolchain</span></code> or <code class="docutils literal notranslate"><span class="pre">GNU</span> <span class="pre">RISC-V</span> <span class="pre">Cross</span> <span class="pre">Toolchain</span></code>.</p></li>
+<li><p>The GNU Arm Cross Toolchain or GNU RISC-V Cross Toolchain wizard page specifies the name and path
+of the toolchain to be used to build the project. These should be correct by default but double check that the
+values are as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<ul class="simple">
+<li><p>Toolchain name = RISC-V GCC/Newlib (riscv64-unknown-elf-gcc)</p></li>
+<li><p>Toolchain path = ${eclipse_home}/../riscv-unknown-elf-gcc/bin</p></li>
+</ul>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<ul class="simple">
+<li><p>Toolchain name = GNU Tools for Arm Embedded Processors (arm-none-eabi-gcc)</p></li>
+<li><p>Toolchain path = ${eclipse_home}/../arm-none-eabi-gcc/bin</p></li>
+</ul>
+</div>
+</div>
+</li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code> to complete the creation of the new project.</p></li>
+</ol>
+</div>
+<div class="section" id="project-settings">
+<h2>Project Settings<a class="headerlink" href="#project-settings" title="Permalink to this headline">¶</a></h2>
+<p>Most of the project settings default to usable values. However, some project settings must be modified manually
+depending on the target device/CPU. Use the example projects as a guide to creating new project while bearing in
+mind that these are just simple functional examples and a real application may benefit from the use of some of the
+many other configuration options and command line options that the underlying GCC tools support.</p>
+<p>To modify the project settings right click on the project in the Project Explorer and select Properties from the context
+menu. Then navigate to:</p>
+<div class="graphviz"><img src="../_images/graphviz-007b45d025b7d99fbc9ef69b8cad07c4ae40c202.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; 
+     }" class="graphviz" /></div>
+<br/><p>Select Configuration = <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">configurations</span></code> to configure settings applicable to all build targets (by default Debug and
+Release) or else select a specific configuration (e.g. Configuration = Debug or Configuration = Release) to configure
+settings applicable only to that build target.</p>
+<p>Except where noted the settings below can be configured for all [All Configurations].</p>
+</div>
+<div class="section" id="all-cpu-targets">
+<h2>All CPU targets<a class="headerlink" href="#all-cpu-targets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="target-processor">
+<h3>Target Processor<a class="headerlink" href="#target-processor" title="Permalink to this headline">¶</a></h3>
+<p>The characteristics of the target CPU are configured in the:</p>
+<div class="graphviz"><img src="../_images/graphviz-8b505d07ba4f3eed615bcbefb86c5d6ba767c3ff.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot;
+     }" class="graphviz" /></div>
+<br/><p>For Cortex-M projects these will default to Arm Family = cortex-m3 which is correct for SmartFusion2 and
+SmartFusion2. For Cortex-M1 projects this should be changed to cortex-m1.</p>
+<p>For RISC-V projects the settings must be configured to match the target CPU characteristics so that the underlying
+compiler tools are passed the correct <code class="docutils literal notranslate"><span class="pre">-march=&lt;arch&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">-mabi=&lt;abi&gt;</span></code> options, code is generated in line with
+the supported and used extensions and the appropriate multilibs are linked. Note that the RISC-V toolchain defaults
+to targeting rv64gc which may not be appropriate for all RISC-V target designs. Architecture and ABI settings affect all platforms, but it’s very important with RISC-V because of all the possible extensions and their possible combinations.</p>
+<p>The main options of relevance here are:</p>
+<ul class="simple">
+<li><p>Architecture: specifies the base architecture – e.g. RV32* for Mi-V 32-bit soft cores or RV64* for PolarFire SoC 64-
+bit multi-processor</p></li>
+<li><p>Multiply extension (RVM): check if the target supports the M (hardware multiply/divide) extension</p></li>
+<li><p>Atomic extension (RVA): check if the target supports the A extension</p></li>
+<li><p>Floating point: specifies what hardware floating point extension the target supports</p></li>
+<li><p>Compressed extension (RVC): check if the target supports the C extension</p></li>
+<li><p>Integer ABI: specifies the integer ABI to be used – usually set to LP32 (<code class="docutils literal notranslate"><span class="pre">-mabi=ilp32</span></code>) for Mi-V or LP64 (<code class="docutils literal notranslate"><span class="pre">-mabi=lp64</span></code>) for PolarFire SoC</p></li>
+<li><p>Floating point ABI: specifies the floating-point ABI to be used</p></li>
+<li><p>Code model: specifies the code model to be used</p></li>
+<li><p>Align: specifies the alignment policy – should be set to Strict (<code class="docutils literal notranslate"><span class="pre">-mstrict-align</span></code>) to avoid unaligned memory access
+exceptions when using the Microsemi (Mi-V) RISC-V Hardware Abstraction Layer (HAL) or PolarFire SoC
+PSE_HAL and <code class="docutils literal notranslate"><span class="pre">-Os</span></code> to optimize the program for size</p></li>
+</ul>
+<div class="section" id="architecture">
+<h4>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h4>
+<p>Architecture is configured with the following settings, it describes what the target HW is capable of:</p>
+<p><img alt="board image" src="../_images/arch.png" /></p>
+</div>
+<div class="section" id="abi">
+<h4>ABI<a class="headerlink" href="#abi" title="Permalink to this headline">¶</a></h4>
+<p>ABI describes how many and what registers are used and available on the target, which ones are used to pass variable arguments to functions, which one are return variables. Which registers get saved by callee and which one by caller. The ABI can’t use more than the HW is capable of. ABI can be configured with following:</p>
+<p><img alt="board image" src="../_images/abi.png" /></p>
+<p>For more information see the SiFive’s blog: <a class="reference external" href="https://www.sifive.com/blog/all-aboard-part-1-compiler-args">https://www.sifive.com/blog/all-aboard-part-1-compiler-args</a></p>
+</div>
+<div class="section" id="multilibs">
+<h4>Multilibs<a class="headerlink" href="#multilibs" title="Permalink to this headline">¶</a></h4>
+<p>Are build for specific combinations of Architecture and ABI. Because these increase the size of the toolchain, not every combination is supported. Currently supported combinations are:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">march</th>
+<th class="head">mabi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>rv32i</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32ia</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32iac</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32iaf</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv32iafc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32ic</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32if</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32ifc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv32im</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32ima</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32imac</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32imaf</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv32imafc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32imc</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32imf</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32imfc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv64i</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64ia</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64iac</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64iaf</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64iafc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64iafd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-even"><td>rv64iafdc</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64ic</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64if</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64ifc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64ifd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64ifdc</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-even"><td>rv64im</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64ima</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64imac</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64imaf</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64imafc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64imafd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-even"><td>rv64imafdc</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64imc</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64imf</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64imfc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64imfd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64imfdc</td>
+<td>lp64d</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Be specific. Avoid using <code class="docutils literal notranslate"><span class="pre">Toolchain</span> <span class="pre">default</span></code> settings which will revert to RV64GC and on RV32 targets will give obscure errors.</p></li>
+<li><p>Double check if your combincation of Architecture/ABI is supported, if not it will revert to the default (RV64GC) and cause problems.</p></li>
+<li><p>SoftConsole supports only native ABIs, <code class="docutils literal notranslate"><span class="pre">RV64IMAFD</span></code> architecture is supporting only the ABI which contains the <code class="docutils literal notranslate"><span class="pre">D</span></code> extension. However it is possible to change the architecture to <code class="docutils literal notranslate"><span class="pre">RV64IMAF</span></code> and then the <code class="docutils literal notranslate"><span class="pre">F</span></code> ABI will work. If it’s needed to use some subset of ABI, change the Architecture first. It’s OK to compile for less capable Architecture</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="linker-script">
+<h3>Linker Script<a class="headerlink" href="#linker-script" title="Permalink to this headline">¶</a></h3>
+<p>It is essential that the appropriate linker script is configured for the project. This will often be one of the example
+linker scripts bundled with the relevant CMSIS/HAL firmware core which has been generated and imported/copied
+into the project.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-15637dc4124400098b704823a91b356241d9b0c6.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
+<div class="graphviz"><img src="../_images/graphviz-32e4a0b531fc4418085be3b0318b06089dc91782.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Linker&quot; -&gt; &quot;General&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<p>Then:</p>
+<div class="graphviz"><img src="../_images/graphviz-e80763f06b6c2d7c456c3b8edc8756bdbb2c4971.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Script files (-T)&quot; -&gt; &quot;Add...&quot;
+     }" class="graphviz" /></div>
+<br/><p>and enter the linker script name into the Add file path dialog – e.g.:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2-0 docutils container">
+<div class="docutils container">
+<p>PolarFire SoC</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-1 docutils container">
+<div class="docutils container">
+<p>Mi-V RISC-V</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-2 docutils container">
+<div class="docutils container">
+<p>SF2 Cortex-M3</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-3 docutils container">
+<div class="docutils container">
+<p>SF Cortex-M3</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-4 docutils container">
+<div class="docutils container">
+<p>Cortex-M1</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
+<p>Please refer to the PolarFire SoC PSE_HAL documentation and PolarFire SoC/PSE example project(s)
+bundled with SoftConsole for guidance on how to configure this option.</p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
+<p><code class="docutils literal notranslate"><span class="pre">${workspace_loc:/${ProjName}/riscv_hal/microsemi-riscv-ram.ld}</span></code></p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
+<p><code class="docutils literal notranslate"><span class="pre">${workspace_loc:/${ProjName}/CMSIS/startup_gcc/debug-in-microsemismartfusion2-esram.ld}</span></code></p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-3 docutils container">
+<p><code class="docutils literal notranslate"><span class="pre">${workspace_loc:/${ProjName}/CMSIS/startup_gcc/debug-in-actel-smartfusionenvm.ld}</span></code></p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-4 docutils container">
+<p><code class="docutils literal notranslate"><span class="pre">${workspace_loc:/${ProjName}/blinky_linker_config.ld}</span></code></p>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Refer to the relevant CMSIS/HAL documentation for more information about what example linker scripts are available and the circumstances in which they are used.</p></li>
+<li><p>CMSIS/HAL bundled linker scripts are just examples that can usually be used as-is in simple cases but should generally be adapted as required to match the requirements of a specific target/application.</p></li>
+<li><p>In some cases, different configurations/build targets will use different linker scripts.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="newlib-nano">
+<h3>Newlib-Nano<a class="headerlink" href="#newlib-nano" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">newlib</span></code> is the standard library bundled with SoftConsole and it is optimized for use in resource/memory constrained
+bare metal embedded firmware environments. newlib also comes with a “nano” version which is even smaller at the
+cost of omitting some functionality which may be rarely used in such environments (e.g. the full range of *printf
+formatting options etc.). In many cases it makes sense to use newlib-nano and only switch to the full blown newlib if
+necessary because using newlib-nano can significantly reduce the compiled and linked programs which use
+standard library features.</p>
+<p>To use newlib-nano check the following option:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-3-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-3-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-2dde41363230a5e8f1edd13967d1a5e2a6272b90.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Use newlib-nano (--specs=nano.specs)&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-1 docutils container">
+<div class="graphviz"><img src="../_images/graphviz-eb42eaeb1e9a06173659c2d3ab227e614dd010d6.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Use newlib-nano (--specs=nano.specs)&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-extended-listing">
+<h3>Create Extended Listing<a class="headerlink" href="#create-extended-listing" title="Permalink to this headline">¶</a></h3>
+<p>An extended listing file (e.g. Debug/<project-name>.lst) is often useful for understanding the structure and layout of the linked executable.
+To enable generation of this file, check the Toolchains &gt; Create extended listing checkbox.</p>
+</div>
+<div class="section" id="preprocessor-defines-and-includes">
+<h3>Preprocessor Defines and Includes<a class="headerlink" href="#preprocessor-defines-and-includes" title="Permalink to this headline">¶</a></h3>
+<p>If any preprocessor defines/symbols or includes are needed, then they can be specified under:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-4-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-796d9db065e7e11a252e86cd8dc92acec3061f94.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Preprocessor&quot; -&gt; &quot;Defined symbols (-D)&quot;
+     }" class="graphviz" /></div>
+<br/><div class="graphviz"><img src="../_images/graphviz-81ba498db370e6366f32060c69350b3c6ac62e67.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Include paths (-I) or Include files (-include)&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-1 docutils container">
+<div class="graphviz"><img src="../_images/graphviz-6e53e38bec8d2dfe92529c60bbe7bd6bdd8f2bda.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Compiler&quot; -&gt; &quot;Preprocessor&quot; -&gt; &quot;Defined symbols (-D)&quot;
+     }" class="graphviz" /></div>
+<br/><div class="graphviz"><img src="../_images/graphviz-ef55d1857e9d508160790ef901b28e3e053ae680.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Compiler&quot; -&gt; &quot;Include paths (-I) or Include files (-include)&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<p>Depending on the target CPU and CMSIS/HAL used additional CMSIS/HAL related include paths may be required.
+Refer to the relevant CMSIS/HAL documentation for more information.</p>
+</div>
+<div class="section" id="optimization-options">
+<h3>Optimization Options<a class="headerlink" href="#optimization-options" title="Permalink to this headline">¶</a></h3>
+<p>Most optimization options can be set at the project top level under Tool Settings &gt; Optimization.
+Other optimization settings, including Language standard (which defaults to GNU ISO C11 (<code class="docutils literal notranslate"><span class="pre">-std=gnu11</span></code>) or GNU
+ISO 2011 C++ (<code class="docutils literal notranslate"><span class="pre">-std=gnu++11</span></code>), can be specified under</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-5-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-5-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-26732c9e0526e65b51e9a62097005bc227448749.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Optimization&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-1 docutils container">
+<div class="graphviz"><img src="../_images/graphviz-164cce9fe0e2176b4dbd804f27b3dc682e05ff94.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Compiler&quot; -&gt; &quot;Optimization&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<p>“Fine grained” linking using <code class="docutils literal notranslate"><span class="pre">-fdata-sections</span></code> <code class="docutils literal notranslate"><span class="pre">-ffunction-sections</span></code> and <code class="docutils literal notranslate"><span class="pre">-gc-sections</span></code> is enabled by default here and under</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-6-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-6-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-749d8a27965b85fb1d00c13a1dc89e804c887905.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Remove unused sections (-Xlinker --gc-sections)&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6-1 docutils container">
+<div class="graphviz"><img src="../_images/graphviz-26df8f4bac916c54c45a69251d17f70c7f60fcae.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Remove unused sections (-Xlinker --gc-sections)&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="library-dependencies">
+<h3>Library Dependencies<a class="headerlink" href="#library-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Where an application project depends on a static library project this dependency can be configured in the
+application project’s properties so that building the application will ensure that the static library project is also built
+and up to date if necessary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For this to work the same configuration/build target (e.g. Debug or Release) must be selected for both projects: e.g.</p>
+<div class="graphviz"><img src="../_images/graphviz-3a333bcc61155c99dca14dc17a075c4ac5fc98f8.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;select the required configuration&quot;
+     }" class="graphviz" /></div>
+</div>
+<p>To configure such an application/library project dependency right click on the application project in Project Explorer
+and from the context menu select Properties then Project References and check the library project(s) on which the
+application project depends.</p>
+</div>
+<div class="section" id="print-size">
+<h3>Print Size<a class="headerlink" href="#print-size" title="Permalink to this headline">¶</a></h3>
+<p>By default, the Print Size build step is configured to output size information in “Berkeley” format. The alternative,
+“SysV” format is often more informative and useful. To change this option right click on the project in Project
+Explorer and from the context menu select</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-7-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-7-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-21587c1825edc5b65b9e38de63825f11ed305b86.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross Print Size&quot; -&gt; &quot;General&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7-1 docutils container">
+<div class="graphviz"><img src="../_images/graphviz-b298ac1357ba9478346e2ad687a24c89bdf00fc1.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU Print Size&quot; -&gt; &quot;General&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<p>and select <code class="docutils literal notranslate"><span class="pre">Size</span> <span class="pre">format</span> <span class="pre">=</span> <span class="pre">SysV</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Berkeley</span></code>.</p>
+</div>
+<div class="section" id="other-options">
+<h3>Other Options<a class="headerlink" href="#other-options" title="Permalink to this headline">¶</a></h3>
+<p>There are many other options that can be set if needed. Explore the SoftConsole project properties dialog and refer
+to the relevant GNU/GCC tool documentation for more information on these.</p>
+</div>
+<div class="section" id="specifying-options-for-all-build-configurations">
+<h3>Specifying Options for All Build Configurations<a class="headerlink" href="#specifying-options-for-all-build-configurations" title="Permalink to this headline">¶</a></h3>
+<p>Some project settings can be set once for all configurations/build targets (e.g. Debug and Release). To do this
+select Configuration = [ All Configurations] before specifying the relevant options and applying/saving them.</p>
+</div>
+</div>
+<div class="section" id="risc-v-targets">
+<h2>RISC-V targets<a class="headerlink" href="#risc-v-targets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="do-not-use-standard-start-files-nostartfiles">
+<h3>Do not use standard start files (-nostartfiles)<a class="headerlink" href="#do-not-use-standard-start-files-nostartfiles" title="Permalink to this headline">¶</a></h3>
+<p>For RISC-V targets this option must be checked when using the Microsemi Mi-V RISC-V HAL (Hardware
+Abstraction Layer) to avoid link errors:</p>
+<div class="graphviz"><img src="../_images/graphviz-6f9e1ee02172c67c6322fc3e684ce88a5bc9f931.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Do not use
+standard start files (-nostartfiles)&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="section" id="use-strict-alignment">
+<span id="alignstrict"></span><h3>Use strict alignment<a class="headerlink" href="#use-strict-alignment" title="Permalink to this headline">¶</a></h3>
+<p>Generally, and particularly when using the Microsemi RISC-V Hardware Abstraction Layer (HAL) strict alignment
+should be used to avoid unaligned memory access trap exceptions (mcause = 4 or 6) when the program is
+optimized for size using <code class="docutils literal notranslate"><span class="pre">-Os</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-7d464a0a33b98182ecd64b007a1377dd929cf822.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Align = Strict (-mstrict-align)&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<div class="section" id="cortex-m-targets">
+<h2>Cortex-M targets<a class="headerlink" href="#cortex-m-targets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cmsis">
+<h3>CMSIS<a class="headerlink" href="#cmsis" title="Permalink to this headline">¶</a></h3>
+<p>Cortex-M projects require an additional setting for the preprocessor to find the toolchain CMSIS header files
+otherwise compilation will fail to find certain CMSIS header files. Set <code class="docutils literal notranslate"><span class="pre">--specs=cmsis.specs</span></code> to the:</p>
+<div class="graphviz"><img src="../_images/graphviz-afa3319c4db7e8b29bbf24e07eec0773644ee08f.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Compiler&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Other compiler flags&quot;
+     }" class="graphviz" /></div>
+<br/><p>From SoftConsole v5.3 onwards the softconsole.cmd (Windows) or softconsole.sh (Linux) script used to
+run SoftConsole configures the <code class="docutils literal notranslate"><span class="pre">SC_INSTALL_DIR</span></code> environment variable which is then referenced in the
+<code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/arm-none-eabi-gcc/arm-none-eabi/lib/cmsis.specs</span></code> file. If
+SoftConsole is not run from the script (usually via a menu/desktop shortcut) or the Arm GCC tools are run from the
+command line or a Makefile then the <code class="docutils literal notranslate"><span class="pre">SC_INSTALL_DIR</span></code> environment variable will need to</p>
+</div>
+</div>
+<div class="section" id="considerations-around-libero-designs">
+<h2>Considerations around Libero designs<a class="headerlink" href="#considerations-around-libero-designs" title="Permalink to this headline">¶</a></h2>
+<p>For demonstration a SmartFusion2 was chosen, however similar steps can be applied to all other targets and other types of
+memories.</p>
+<div class="section" id="production-smartfusion2-relocate-to-external-ram-ld">
+<h3>Production-Smartfusion2-Relocate-to-External-Ram.ld<a class="headerlink" href="#production-smartfusion2-relocate-to-external-ram-ld" title="Permalink to this headline">¶</a></h3>
+<p>For a SmartFusion2 Cortex-M3 program linked using the SmartFusion2 CMSIS Hardware Abstraction Layer example
+linker script <code class="docutils literal notranslate"><span class="pre">production-smartfusion2-relocate-to-external-ram.ld</span></code> some additional settings must be
+specified.
+When this linker script is used the hex (Intel HEX or Motorola S-record) file generated by SoftConsole is normally
+used as the input file to a Libero SoC eNVM Data Storage client which is used to program the production firmware
+into eNVM.
+If the following project settings are not configured then the eNVM Data Storage client will reject the hex file as invalid.</p>
+<div class="graphviz"><img src="../_images/graphviz-02b2b97d811cd424f446ec56d817020fc5e1d129.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU Create Flash Image&quot; -&gt; &quot;General&quot; -&gt; &quot;Other flags enter&quot;
+     }" class="graphviz" /></div>
+<br/><p>And copy this section:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="hll">--change-section-lma *-0x60000000
+</span></pre></div>
+</div>
+<p>This has the effect of <code class="docutils literal notranslate"><span class="pre">normalising</span></code> addresses in the Cortex-M3 memory map view of eNVM (based at 0x60000000)
+to the more restricted view of memory of the eNVM Data Storage client which only sees eNVM based at 0x00000000.</p>
+</div>
+<div class="section" id="generic-information-on-objcopy-and-normalization">
+<h3>Generic information on objcopy and normalization<a class="headerlink" href="#generic-information-on-objcopy-and-normalization" title="Permalink to this headline">¶</a></h3>
+<p>For more on this and other <code class="docutils literal notranslate"><span class="pre">objcopy</span></code> options see here: <a class="reference external" href="https://sourceware.org/binutils/docs/binutils/objcopy.html">https://sourceware.org/binutils/docs/binutils/objcopy.html</a>.
+Previously some users deleted the first line of the HEX file, even it might seem like a working solution, but it’s flawed on multiple
+levels and is <strong>strongly not recommended nor supported</strong>. There is a high risk of the data getting malformed and causing various
+other issues in the deployment. Making new launcher “Deploy” and adding this as the permanent flag will allow users to regenerate the file as frequently as they need without a need of any extra manual steps (and not modify the data beyond the tool’s
+back). And because the Intel HEX format is based on 16-bit blocks, the bigger applications will not work at all with the ‘delete
+the first line’ workaround (especially the error around the line 4097). This might falsely indicate that there is something wrong
+with the application, code or the compilation settings/features or something wrong between Debug/Release configurations
+because with different code/settings/configuration the issue is not observed, however it still might be caused by not “normalizing”
+the file properly.</p>
+<p>The error messages differ depending on what core/memory the hex file is getting stored into. For example, the error from
+PF_SRAM_AHBL_AXI module might be different than error from PF_uPROM or eNVM module, however all might be pointing
+to the same issue. Here is a list (not extensive) of some error messages which might be related to this issue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">Memory</span> <span class="n">File</span> <span class="n">Content</span><span class="p">:</span> <span class="n">Errors</span> <span class="n">encountered</span> <span class="k">while</span> <span class="n">parsing</span> <span class="n">the</span> <span class="n">Memory</span> <span class="n">file</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>IHX006: Intel Hex Address record error. Address extension specified in the record is more than the maximum possible address
+for the destination, when reading file “&lt;YOUR_HEX&gt;” at line 1.
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>IHX006: Intel Hex Address record error. Address extension specified in the record is more than the maximum possible address
+for the destination, when reading file “&lt;YOUR_HEX&gt;” at line 4097.
+</pre></div>
+</div>
+</div>
+<div class="section" id="libero-s-word-is-16-bit">
+<span id="liberoword"></span><h3>Libero’s word is 16-bit<a class="headerlink" href="#libero-s-word-is-16-bit" title="Permalink to this headline">¶</a></h3>
+<p>There might be other independent but overlapping issues which make it harder for the users to debug this issue. Very common
+and easy to make mistake is having the physical memory smaller than the application requirements, make sure the memory is
+sized properly. The meaning of “word” in Libero design might not mean what users could expect and might not correlate with
+the Data Width settings, users should verify its meaning with the core’s documentation. It’s possible to set the SRAM block to
+64KiB size (<strong>word meaning 16-bits no matter what is the Data Bus Width</strong>) while users expecting it to be 128KiB size:</p>
+<p><img alt="word" src="../_images/libero-word.png" /></p>
+</div>
+</div>
+<div class="section" id="adding-source-files-to-a-project">
+<h2>Adding source files to a project<a class="headerlink" href="#adding-source-files-to-a-project" title="Permalink to this headline">¶</a></h2>
+<p>Once the project has been created the required source files should be added.</p>
+<p>In most cases the best way to do this is to use Libero SoC to select the relevant firmware cores (including
+CMSIS/HAL, SmartFusion/SmartFusion2 MSS peripheral drivers, DirectCore drivers etc.), generate these, export
+the firmware files and then import or copy them into the SoftConsole project.</p>
+<p>In fact, for SmartFusion and SmartFusion2 is it essential that at least the <code class="docutils literal notranslate"><span class="pre">drivers_config</span></code> folder is generated
+by/exported from Libero SoC and imported/copied into the SoftConsole project every time that the hardware project
+is changed. This is because the files in this folder contain information about the target platform that is essential to
+the correct functioning on firmware on that hardware platform.</p>
+<p>It is also possible to generate specific firmware cores/drivers from the Firmware Catalog and then import/copy them
+into the SoftConsole project.</p>
+<p>Refer to the Libero SoC and Firmware Catalog tools and documentation for more information on
+generating/exporting firmware cores from these tools.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember that any SoftConsole v3.4 workspaces or projects or SoftConsole v5.1 RISC-V projects
+generated by Libero SoC or the Firmware Catalog cannot be used with SoftConsole v5.2 or later.</p>
+</div>
+<p>When importing/copying firmware files generated by/exported from Libero SoC or the Firmware Catalog it is safest to first manually delete all relevant folders from the SoftConsole project (e.g. <code class="docutils literal notranslate"><span class="pre">CMSIS</span></code>, <code class="docutils literal notranslate"><span class="pre">hal</span></code>, <code class="docutils literal notranslate"><span class="pre">pse_hal</span></code>, <code class="docutils literal notranslate"><span class="pre">drivers</span></code>, <code class="docutils literal notranslate"><span class="pre">drivers_config</span></code>) and retain only the custom source files created for the project itself.</p>
+<p>Firmware folders/files can be copied by dragging and dropping from a file manager on Windows or Linux or by using
+the SoftConsole import facility:</p>
+<div class="graphviz"><img src="../_images/graphviz-d09d901e916b248814ef9586c316f2e7d30abd31.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;File System&quot; -&gt; &quot;click 'Next'&quot; -&gt; &quot;Browse&quot;
+     }" class="graphviz" /></div>
+<br/><p>And select the directory from which the firmware files are to be imported (e.g. the firmware directory below a Libero SoC project directory), select the
+required folders/files and click Finish to import the files.</p>
+</div>
+<div class="section" id="building-a-project">
+<h2>Building a project<a class="headerlink" href="#building-a-project" title="Permalink to this headline">¶</a></h2>
+<p>Once a project has been correctly configured and populated with the required firmware it can be built.
+The quickest way to build a project is to click the ‘Hammer’ icon in the SoftConsole menu toolbar.</p>
+<div class="graphviz"><img src="../_images/graphviz-3a333bcc61155c99dca14dc17a075c4ac5fc98f8.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;select the required configuration&quot;
+     }" class="graphviz" /></div>
+<br/><p>Typical build configurations are Debug and Release, but projects can have many other configurations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is big difference between the <code class="docutils literal notranslate"><span class="pre">Debug</span></code> configuration to build unoptimized binary and the <code class="docutils literal notranslate"><span class="pre">Debug</span></code> launcher to be debugging whatever the active configuration is. It’s the difference between noun and verb.</p>
+<p>It is possible:</p>
+<ul class="simple">
+<li><p>To be Debugging your Debug configuraion</p></li>
+<li><p>To be Running your Debug configuration</p></li>
+<li><p>To be Debugging your Release configuraion</p></li>
+<li><p>To be Running your Release configuration</p></li>
+</ul>
+<p>All combinations have valid use cases. It’s upto the users and their projects, but typically the Debug configuration has no optimalizations enabled, is linked to SRAM, can have some <code class="docutils literal notranslate"><span class="pre">#defines</span></code> enabled to increase verbosity of the logging features, possibly enabling some other helper features which are not required for production.</p>
+<p>While the Release configuration can be seen as production release, linked to eNVM, enabled size/speed optimalizations and disabled all non-production features.</p>
+<p>However there is still need to sometimes just to Run the Debug configuraion (no need to change how it’s linked/oprimised), but no need to break at main and other breakpoints.</p>
+<p>Other case is that sometimes a edge-case bug is happening and the optimised Release build has to be Debugged, which makes stepping thorugh the code not as straight forward as non-optimized variant.</p>
+<p>Therefore the <code class="docutils literal notranslate"><span class="pre">Debug</span></code> build configuration and <code class="docutils literal notranslate"><span class="pre">Debug</span></code> launchers have to be considered as two separate concepts, which they are.</p>
+</div>
+<p>With the project still selected in the:</p>
+<div class="graphviz"><img src="../_images/graphviz-d24cbdb1c1c15a5add448f40eac3c8109c283140.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for &lt;YOUR_PROJECT&gt;&quot;; }" class="graphviz" /></div>
+<br/><p>Project Explorer select Project &gt; Build Project. The results of the build process
+can be viewed in the Console view and the Problems view if there are any problems (e.g. errors or warnings)</p>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="debugging.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="workspace.html" class="btn btn-neutral float-left" title="Workspaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Microchip.
+
+    </p>
+  </div> 
+<!-- <center>
+
+    <a id=githubIssue target="_blank">
+        <img src=" data:image/png;base64,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" 
+        width="102px">
+        </a>
+    
+    <a id=feeedbackLink target="_blank">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA/CAMAAACSEXcNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAP//94TFSu/v5nO9MZzOa0Kt3iml5hCl1pzOe+/394TFWr29tXO9Qmu9IVqtGZSte+be5lqtKbXejMXmrebWtYR7a5zmpa3OhGNaQuat5t7vtXN7c5TeQu+1EOattcW1EGu95mutGUKlGTqcCN7vzozF5jrOGRCUShDOWhDOGVrOlJxjEGutQmtaY4zOWmsZvSkZvUoZvQgZvZS9WmOl5u/mEMXmEL3WnO+1QmOMKcW1QpTmY5Te70KM3hCEEGvm5mPmKRClGQgpOmtavSlavUrm5mPmCEpavQhavYyElCGl1muUjJS1SkKUlJSlrVK95u86Wu863jqUazrvWq06Wq063jrvGe86Ge86nK06Ga06nGsZ7ykZ72sZlCkZlBCUaxDvWhDvGe8QWu8Q3q0QWq0Q3u8QGe8QnK0QGa0QnGsZaykZa1rOtZxjMa1jnO9j3u9jWinO3q1j3u9jnO9jGSnOnFrvlJyEEM46Ws463ow6Wow63s46Gc46nIw6GYw6nEoZ7wgZ70oZlAgZlM4QWs4Q3owQWowQ3s4QGc4QnIwQGYwQnEoZawgZa4xjnM5j3s5jWgjO3oxj3s5jnM5jGQjOnLXm973mzoS1Sr3mnGOMCO/mQsXmQpS9rTFjOubmhGPmawhaOjEpOpStKWMpEL3ma+bmY2PmSjEIOpStCGMIEGNKEJTWEAgpCBmlvUpaYxmEvWta72talCla7ylalK2EY++1hK1jYxmllClaa8W1hGuE5pSl5kpa70palAha7whalO+1Y4xjYxmElAhaa8W1Y72l5kKUtTFjEL3F3mOEUu+E3u+EWinv3q2E3lrvtZyEMa2EnO+EnO+EGSnvnM6E3s6EWgjv3oyE3s6EnM6EGQjvnDqEEJTmhCGM5giM5jEpEAhaCGOla2MpQpTmzjEIEGMIQt7v3r2lrWO9Y9bW3jFKOmNrEJT3EDFKEGOErWultTqlSjrOazqESjrOSmO9MRCl5ggAKVq9EIStWkKt7xAAAP/v9wAIAAAAACLG1lgAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAK5klEQVRo3u2aS2+jyBaAUxSPUIAdA2rRsje+uLyz2aQlFMl/wB6N+XeeeDOL+2c6nd+QPRYjpWdjS53F3HNOFRg7Tm7uqG88r1OYR1UZzsc5px7AxW9/Ebn4O4EItpc6j/3ZQBSEECsUITQMY38ui3BkmA3t3WUtO3u4QprqzwQCCq+GDiiP4jzZT0+Os9tdOpDf8/9wNrl4xRor+3KHGE4xns1m5Fyr2Rg4xOdi9UcjeQHkC2A4CAEoxRhkhiwIg0GyXEAuAvXeX6rem0GEqHpMFJdEARoPxyQzIsEA2azI5cbt1uz9hFdV9RYQ0A44VguigMUZoow1DOruj9HHhrudfR4SCNEvFf9vIFDtS4/NlFfhokA0C2reW6pwmdmXC3A0wd9RmjtX+dWrINSyVsChzQHJKYYNChaL5UxHy6rYAYkI0/eU0IpVz+Z/eQWEzOazFbW4NYtd1Cgq0JtwWa2edgvB5CR4P5mEozTMCcX3ey+BEOmVEIvLhgKAFgVKzeH/Om5ifzVzdjZjZf8dJc69NA34c5KLQw52tWSqvdqzOGCTT0Uxpibj1zryqT0e7i4hO35n8dJQPiO5OBxVuXfoWNoiexJ0LyqftyIfYaASONf7cuSxm6aSwtU/BYJ65g8/sKKh2HsYGIU4/E9N4BMLWARMIvJ3lXWeJ92wxHZpWT0HQT1leleJy8VugYsDq32iAOl9LYp9IwYo9gLaZ+CP3lvcdIIKbTbVMQjd8En6EbsQ0G6xK4T/ddFwDCmA5kVRRz5JgRUvBYujRKd6g6J26nW0L292m2r/e/JGCTrX3D8GIccaTe7ZcKcsUqAnfdUcjnKsz7aN4aJZCgcqAsiKyQSE50kiYS/niRQgKnONaxEluejDjozx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" 
+    width="200px">
+    </a>
+
+</center>
+
+<script>
+    var pageName = "using_softconsole/projects.md.txt".replace(/\.txt/g,'');
+    var uri = "feedback/com?document=SoftConsole&release=v2021.2-6.7.607&page=" + pageName;
+    var res = encodeURI(uri);
+    document.getElementById("feeedbackLink").href = res;
+
+    var body  = "Document: SoftConsole\nVersion: v2021.2-6.7.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
+    var title = "I have problem with the " + pageName + " page";
+    var ghuri = "https://github.com/AntonKrug/scdocs/issues/new?title="+title+"&body="+body+"&labels=help wanted";
+    document.getElementById("githubIssue").href = encodeURI(ghuri);
+
+</script> -->
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2021.2
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/scdocs/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
