@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Post Installation &mdash; SoftConsole v2021.2-6.7.607 documentation</title>
+  <title>Post Installation &mdash; SoftConsole v2021.3-7.0.607 documentation</title>
   
 
   
@@ -207,11 +207,6 @@
 
   <div class="section" id="post-installation">
 <h1>Post Installation<a class="headerlink" href="#post-installation" title="Permalink to this headline">¶</a></h1>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>This documentation is deprecated and it’s not recommended to be used on new projects.</p>
-<p>Visit <a class="reference external" href="https://microsemi.com/softconsole">https://microsemi.com/softconsole</a> instead.</p>
-</div>
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="polarfire-soc-boot-mode-programming">
@@ -444,31 +439,41 @@ Bus <span class="m">002</span> Device <span class="m">002</span>: ID <span class
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-3-0 docutils container">
 <div class="docutils container">
-<p>Cortex-M1</p>
+<p>PolarFire SoC</p>
 </div>
 </div>
 <div class="item sphinx-data-tab-3-1 docutils container">
 <div class="docutils container">
-<p>Cortex-M3</p>
+<p>Mi-V RISCV</p>
 </div>
 </div>
 <div class="item sphinx-data-tab-3-2 docutils container">
 <div class="docutils container">
-<p>Mi-V RISCV</p>
+<p>Cortex-M1</p>
 </div>
 </div>
 <div class="item sphinx-data-tab-3-3 docutils container">
 <div class="docutils container">
-<p>PolarFire SoC</p>
+<p>Cortex-M3</p>
 </div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-cortex-m1.cfg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -c <span class="s2">&quot;set DEVICE MPFS&quot;</span> -f board/microsemi-riscv.cfg
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-1 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-riscv.cfg
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-2 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-cortex-m1.cfg
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-3 docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -c <span class="s2">&quot;set DEVICE M2S090&quot;</span> -f board/microsemi-cortex-m3.cfg
 </pre></div>
 </div>
@@ -479,37 +484,60 @@ Bus <span class="m">002</span> Device <span class="m">002</span>: ID <span class
 <p>The command <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">DEVICE</span> <span class="pre">M2S090</span></code> needs to be changed to match the target.</p>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-2 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-riscv.cfg
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-3 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -c <span class="s2">&quot;set DEVICE MPFS&quot;</span> -f board/microsemi-riscv.cfg
-</pre></div>
-</div>
-</div>
 </div>
 <p>The output should be similar to the following:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-4-0 docutils container">
 <div class="docutils container">
-<p>Cortex-M1</p>
+<p>Mi-V RISC-V</p>
 </div>
 </div>
 <div class="item sphinx-data-tab-4-1 docutils container">
 <div class="docutils container">
-<p>Cortex-M3</p>
+<p>Cortex-M1</p>
 </div>
 </div>
 <div class="item sphinx-data-tab-4-2 docutils container">
 <div class="docutils container">
-<p>Mi-V RISC-V</p>
+<p>Cortex-M3</p>
 </div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 active docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
+Licensed under GNU GPL v2
+For bug reports, read
+http://openocd.org/doc/doxygen/bugs.html
+Info : only one transport option; autoselect &#39;jtag&#39;
+adapter speed: 6000 kHz
+microsemi_flashpro tunnel_jtag_via_ujtag off
+trst_only separate trst_push_pull
+do_board_reset_init
+<span class="hll">Info : FlashPro ports available: S201Z7LB20, E200X3ID7
+</span>Info : FlashPro port used: S201Z7LB20
+Info : clock speed 6000 kHz
+<span class="hll">Info : JTAG tap: FPGA.tap tap/device found: 0x1f8071cf (mfg: 0x0e7
+</span><span class="hll">(GateField), part: 0xf807, ver: 0x1)
+</span>microsemi_flashpro tunnel_jtag_via_ujtag on
+Info : JTAG tap: FPGA.tap disabled
+Info : JTAG tap: FPGA.dap enabled
+<span class="hll">Info : RISC-V IDCODE = 0x10e31913
+</span>Info : Examined RISCV core; XLEN=32, misa=0x40902223
+halted at 0x80000b60 due to debug interrupt
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice from the log above, the following was recognized correctly</p>
+<ul class="simple">
+<li><p>The FlashPro ports</p></li>
+<li><p>The ID code of the JTAG tap</p></li>
+<li><p>And the RISC-V IDCODE</p></li>
+</ul>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-1 docutils container">
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
 Licensed under GNU GPL v2
 For bug reports, read
@@ -543,7 +571,7 @@ cortex_m auto_bp_type off
 </ul>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-1 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-2 docutils container">
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
 Licensed under GNU GPL v2
 For bug reports, read
@@ -572,39 +600,6 @@ Info : JTAG tap: M2S090.dap enabled
 <li><p>The FlashPro ports</p></li>
 <li><p>The ID code of the JTAG tap</p></li>
 <li><p>And the Cortex-M3 IDCODE</p></li>
-</ul>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-2 docutils container">
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
-Licensed under GNU GPL v2
-For bug reports, read
-http://openocd.org/doc/doxygen/bugs.html
-Info : only one transport option; autoselect &#39;jtag&#39;
-adapter speed: 6000 kHz
-microsemi_flashpro tunnel_jtag_via_ujtag off
-trst_only separate trst_push_pull
-do_board_reset_init
-<span class="hll">Info : FlashPro ports available: S201Z7LB20, E200X3ID7
-</span>Info : FlashPro port used: S201Z7LB20
-Info : clock speed 6000 kHz
-<span class="hll">Info : JTAG tap: FPGA.tap tap/device found: 0x1f8071cf (mfg: 0x0e7
-</span><span class="hll">(GateField), part: 0xf807, ver: 0x1)
-</span>microsemi_flashpro tunnel_jtag_via_ujtag on
-Info : JTAG tap: FPGA.tap disabled
-Info : JTAG tap: FPGA.dap enabled
-<span class="hll">Info : RISC-V IDCODE = 0x10e31913
-</span>Info : Examined RISCV core; XLEN=32, misa=0x40902223
-halted at 0x80000b60 due to debug interrupt
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Notice from the log above, the following was recognized correctly</p>
-<ul class="simple">
-<li><p>The FlashPro ports</p></li>
-<li><p>The ID code of the JTAG tap</p></li>
-<li><p>And the RISC-V IDCODE</p></li>
 </ul>
 </div>
 </div>
@@ -655,11 +650,11 @@ Info: FlashPro port used: usb
 
 <script>
     var pageName = "using_softconsole/post_installation.md.txt".replace(/\.txt/g,'');
-    var uri = "feedback/com?document=SoftConsole&release=v2021.2-6.7.607&page=" + pageName;
+    var uri = "feedback/com?document=SoftConsole&release=v2021.3-7.0.607&page=" + pageName;
     var res = encodeURI(uri);
     document.getElementById("feeedbackLink").href = res;
 
-    var body  = "Document: SoftConsole\nVersion: v2021.2-6.7.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
+    var body  = "Document: SoftConsole\nVersion: v2021.3-7.0.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
     var title = "I have problem with the " + pageName + " page";
     var ghuri = "https://github.com/AntonKrug/scdocs/issues/new?title="+title+"&body="+body+"&labels=help wanted";
     document.getElementById("githubIssue").href = encodeURI(ghuri);
@@ -681,7 +676,7 @@ Info: FlashPro port used: usb
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     <span class="fa fa-book"> Other Versions</span>
-    v2021.2
+    v2021.3
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">
@@ -698,7 +693,11 @@ Info: FlashPro port used: usb
 
       
       
-      <dd><a href="/scdocs/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
       
       
 
