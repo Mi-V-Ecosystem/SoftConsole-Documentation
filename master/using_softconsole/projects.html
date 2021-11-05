@@ -885,9 +885,13 @@ If the following project settings are not configured then the eNVM Data Storage 
 </div>
 <p>This has the effect of <code class="docutils literal notranslate"><span class="pre">normalising</span></code> addresses in the Cortex-M3 memory map view of eNVM (based at 0x60000000)
 to the more restricted view of memory of the eNVM Data Storage client which only sees eNVM based at 0x00000000.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This works only for linker script linking at <code class="docutils literal notranslate"><span class="pre">0x60000000</span></code>, if using different scripts, the address <code class="docutils literal notranslate"><span class="pre">*-0x60000000</span></code> has to be changed to match the linker script.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The change-section is demonstrated on a SmartFusion2 example, but change-section concept can be applied to the RISC-V targets as well.</p>
+<p>The change-section is demonstrated on a SmartFusion2 example, but change-section concept can be applied to the RISC-V targets as well. Just the value will have to be changed acordingly.</p>
 </div>
 </div>
 <div class="section" id="generic-information-on-objcopy-and-normalization">
