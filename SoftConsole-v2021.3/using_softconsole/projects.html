@@ -897,11 +897,11 @@ by adding an additional flag into the SoftConsole’s Project Properties which w
 <p>Production deployment of RISC-V targets need to use a dedicated (and correct) deploy linker script. With <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-library</span></code> examples investigate the following
 <code class="docutils literal notranslate"><span class="pre">/src/platform/config/linker</span></code> folder.</p>
 <p>Depending on the linker script the snippet <code class="docutils literal notranslate"><span class="pre">change-section-lma</span> <span class="pre">*-0x80000000</span></code> before is copied might need to be adjusted to correctly match the base address offset of the linker script.</p>
-<div class="graphviz"><img src="../_images/graphviz-133111f97c56de6c8e41174adb8fcff3ab3c41eb.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-a38429bd948dbe08bf559c9154f4ab687b6bb492.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross RISC-V GNU Create Flash Image&quot; -&gt; &quot;General&quot; -&gt; &quot;Other flags enter&quot;
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross Create Flash Image&quot; -&gt; &quot;General&quot; -&gt; &quot;Other flags enter&quot;
      }" class="graphviz" /></div>
 <br/><p>And copy this section:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="hll">--change-section-lma *-0x80000000
