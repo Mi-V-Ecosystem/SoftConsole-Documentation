@@ -137,7 +137,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations-around-libero-designs">Considerations around Libero designs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#production-smartfusion2-relocate-to-external-ram-ld">Production-Smartfusion2-Relocate-to-External-Ram.ld</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploying-hex-files-for-production">Deploying HEX files for production</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generic-information-on-objcopy-and-normalization">Generic information on objcopy and normalization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#libero-s-word-is-16-bit">Libero’s word is 16-bit</a></li>
 </ul>
@@ -864,8 +864,51 @@ command line or a Makefile then the <code class="docutils literal notranslate"><
 <h2>Considerations around Libero designs<a class="headerlink" href="#considerations-around-libero-designs" title="Permalink to this headline">¶</a></h2>
 <p>For demonstration a SmartFusion2 was chosen, however similar steps can be applied to all other targets and other types of
 memories.</p>
-<div class="section" id="production-smartfusion2-relocate-to-external-ram-ld">
-<h3>Production-Smartfusion2-Relocate-to-External-Ram.ld<a class="headerlink" href="#production-smartfusion2-relocate-to-external-ram-ld" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="deploying-hex-files-for-production">
+<h3>Deploying HEX files for production<a class="headerlink" href="#deploying-hex-files-for-production" title="Permalink to this headline">¶</a></h3>
+<p>Libero’s restricted view of memory of the Data Storage clients expects applications based from 0x00000000 offset.
+While SoftConsole produces HEX files based at offsets where the application will be running as typically the HEX files are used for deployment/debugging from the debugger. Larger starting offsets are
+confusing Data Storage clients in Libeo and produce errors like the application is too large:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@E : IHX006 : Intel Hex Address record error. 
+Address extension specified is more than the configuration of eNVM : &quot;&lt;PATH&gt;\&lt;HEX_FILE&gt;.hex&quot; : 1 
+</pre></div>
+</div>
+<p>Or similar errors such as (depending what block is used):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@E : IHX006 : Intel Hex Address record error. 
+Address extension specified is more than the configuration of uPROM : &quot;&lt;PATH&gt;\&lt;HEX_FILE&gt;.hex&quot; : 1 
+</pre></div>
+</div>
+<p>To solve the problem the HEX file has to be “normalized” to the 0x00000000 offset. This can be achieved
+by adding an additional flag into the SoftConsole’s Project Properties which will subtract the application base offset to achieve a result of 0x00000000 HEX file base offset.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8-0 docutils container">
+<div class="docutils container">
+<p>RISC-V</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-8-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M3</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8-0 active docutils container">
+<p>Production deployment of RISC-V targets need to use a dedicated (and correct) deploy linker script. With <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-library</span></code> examples investigate the following
+<code class="docutils literal notranslate"><span class="pre">/src/platform/config/linker</span></code> folder.</p>
+<p>Depending on the linker script the snippet <code class="docutils literal notranslate"><span class="pre">change-section-lma</span> <span class="pre">*-0x80000000</span></code> before is copied might need to be adjusted to correctly match the base address offset of the linker script.</p>
+<div class="graphviz"><img src="../_images/graphviz-133111f97c56de6c8e41174adb8fcff3ab3c41eb.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross RISC-V GNU Create Flash Image&quot; -&gt; &quot;General&quot; -&gt; &quot;Other flags enter&quot;
+     }" class="graphviz" /></div>
+<br/><p>And copy this section:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="hll">--change-section-lma *-0x80000000
+</span></pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8-1 docutils container">
 <p>For a SmartFusion2 Cortex-M3 program linked using the SmartFusion2 CMSIS Hardware Abstraction Layer example
 linker script <code class="docutils literal notranslate"><span class="pre">production-smartfusion2-relocate-to-external-ram.ld</span></code> some additional settings must be
 specified.
@@ -883,15 +926,19 @@ If the following project settings are not configured then the eNVM Data Storage 
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="hll">--change-section-lma *-0x60000000
 </span></pre></div>
 </div>
-<p>This has the effect of <code class="docutils literal notranslate"><span class="pre">normalising</span></code> addresses in the Cortex-M3 memory map view of eNVM (based at 0x60000000)
-to the more restricted view of memory of the eNVM Data Storage client which only sees eNVM based at 0x00000000.</p>
+<p>This has the effect of <code class="docutils literal notranslate"><span class="pre">normalizing</span></code> addresses in the Cortex-M3 memory map view of eNVM (based at 0x60000000)
+to the more restricted eNVM Data Storage client view of memory in the Libero which only sees eNVM based at 0x00000000.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This works only for linker script linking at address <code class="docutils literal notranslate"><span class="pre">0x60000000</span></code>. If using different linker scripts, then the <code class="docutils literal notranslate"><span class="pre">--change-section-lma</span> <span class="pre">*-0x60000000</span></code> has to be changed to match the linker script address.</p>
+<p>This example works only for linker script linking at address <strong>eNVM</strong> address <code class="docutils literal notranslate"><span class="pre">0x60000000</span></code>. If using different linker scripts, then the <code class="docutils literal notranslate"><span class="pre">--change-section-lma</span> <span class="pre">*-0x60000000</span></code> has to be changed to match the linker script address before it’s copied into the SoftConsole.</p>
+</div>
+</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The change-section is demonstrated on a SmartFusion2 example, but change-section concept can be applied to the RISC-V targets as well. Just the value will have to be changed acordingly.</p>
+<p>This is the <strong>authoritative</strong> solution for the production deployment! If other (possibly legacy) Microsemi/Microchip documents are
+referencing  to this problem and are recommending to delete the first line of the HEX file then this solution
+is superseding it!</p>
 </div>
 </div>
 <div class="section" id="generic-information-on-objcopy-and-normalization">
