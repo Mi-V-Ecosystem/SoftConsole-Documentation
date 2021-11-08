@@ -137,7 +137,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations-around-libero-designs">Considerations around Libero designs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#deploying-hex-files-for-production">Deploying HEX files for production</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploying-release-hex-files-for-production">Deploying Release HEX files for production</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generic-information-on-objcopy-and-normalization">Generic information on objcopy and normalization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#libero-s-word-is-16-bit">Libero’s word is 16-bit</a></li>
 </ul>
@@ -864,11 +864,11 @@ command line or a Makefile then the <code class="docutils literal notranslate"><
 <h2>Considerations around Libero designs<a class="headerlink" href="#considerations-around-libero-designs" title="Permalink to this headline">¶</a></h2>
 <p>For demonstration a SmartFusion2 was chosen, however similar steps can be applied to all other targets and other types of
 memories.</p>
-<div class="section" id="deploying-hex-files-for-production">
-<h3>Deploying HEX files for production<a class="headerlink" href="#deploying-hex-files-for-production" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="deploying-release-hex-files-for-production">
+<h3>Deploying Release HEX files for production<a class="headerlink" href="#deploying-release-hex-files-for-production" title="Permalink to this headline">¶</a></h3>
 <p>Libero’s restricted view of memory of the Data Storage clients expects applications based from 0x00000000 offset.
 While SoftConsole produces HEX files based at offsets where the application will be running as typically the HEX files are used for deployment/debugging from the debugger. Larger starting offsets are
-confusing Data Storage clients in Libeo and produce errors like the application is too large:</p>
+confusing Data Storage clients in Libeo and produces errors like if the application is too large:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@E : IHX006 : Intel Hex Address record error. 
 Address extension specified is more than the configuration of eNVM : &quot;&lt;PATH&gt;\&lt;HEX_FILE&gt;.hex&quot; : 1 
 </pre></div>
@@ -878,7 +878,7 @@ Address extension specified is more than the configuration of eNVM : &quot;&lt;P
 Address extension specified is more than the configuration of uPROM : &quot;&lt;PATH&gt;\&lt;HEX_FILE&gt;.hex&quot; : 1 
 </pre></div>
 </div>
-<p>To solve the problem the HEX file has to be “normalized” to the 0x00000000 offset. This can be achieved
+<p>To solve the problem the HEX file has to be <strong>“normalized”</strong> to the 0x00000000 offset. This can be achieved
 by adding an additional flag into the SoftConsole’s Project Properties which will subtract the application base offset to achieve a result of 0x00000000 HEX file base offset.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -896,7 +896,10 @@ by adding an additional flag into the SoftConsole’s Project Properties which w
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8-0 active docutils container">
 <p>Production deployment of RISC-V targets need to use a dedicated (and correct) deploy linker script. With <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-library</span></code> examples investigate the following
 <code class="docutils literal notranslate"><span class="pre">/src/platform/config/linker</span></code> folder.</p>
-<p>Depending on the linker script the snippet <code class="docutils literal notranslate"><span class="pre">change-section-lma</span> <span class="pre">*-0x80000000</span></code> before is copied might need to be adjusted to correctly match the base address offset of the linker script.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on the linker script the following snippet <code class="docutils literal notranslate"><span class="pre">change-section-lma</span> <span class="pre">*-0x80000000</span></code> might need to be adjusted before it’s copy/pasted to correctly match the base address offset of the linker script.</p>
+</div>
 <div class="graphviz"><img src="../_images/graphviz-a38429bd948dbe08bf559c9154f4ab687b6bb492.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
