@@ -865,20 +865,20 @@ command line or a Makefile then the <code class="docutils literal notranslate"><
 <p>For demonstration a RISC-V and SmartFusion2 Cortex-M3 projects were chosen, however similar steps can be applied to all other targets and other types of memories.</p>
 <div class="section" id="deploying-release-hex-files-for-production">
 <h3>Deploying Release HEX files for production<a class="headerlink" href="#deploying-release-hex-files-for-production" title="Permalink to this headline">¶</a></h3>
-<p>Libero’s restricted view of memory of the Data Storage clients expects applications based from 0x00000000 offset.
+<p>Libero’s restricted memory view of the Data Storage clients expects applications based from 0x00000000 offset.
 While SoftConsole produces HEX files based at offsets where the application will be running as typically the HEX files are used for deployment/debugging from the debugger. Larger starting offsets are
-confusing Data Storage clients in Libeo and produces errors like if the application is too large:</p>
+confusing Data Storage clients in Libeo and produce errors like if the application is too large:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@E : IHX006 : Intel Hex Address record error. 
-Address extension specified is more than the configuration of eNVM : &quot;&lt;PATH&gt;\&lt;HEX_FILE&gt;.hex&quot; : 1 
+Address extension specified is more than the configuration of eNVM : &quot;&lt;HEX_FILE&gt;.hex&quot; : 1 
 </pre></div>
 </div>
 <p>Or similar errors such as (depending what block is used):</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@E : IHX006 : Intel Hex Address record error. 
-Address extension specified is more than the configuration of uPROM : &quot;&lt;PATH&gt;\&lt;HEX_FILE&gt;.hex&quot; : 1 
+Address extension specified is more than the configuration of PF_uPROM : &quot;&lt;HEX_FILE&gt;.hex&quot; : 1 
 </pre></div>
 </div>
 <p>To solve the problem the HEX file has to be <strong>“normalized”</strong> to the 0x00000000 offset. This can be achieved
-by adding an additional flag into the SoftConsole’s Project Properties which will subtract the application base offset to achieve a result of 0x00000000 HEX file base offset.</p>
+by adding an additional flag into the SoftConsole’s Project Properties which will subtract the application base offset and achieves a  0x00000000 HEX file base offset. How much has to be subtracted depends on the application’s base address, which depends on used linker script. This mean that this solution has to be adjusted depending what linker script is used.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-8-0 docutils container">
