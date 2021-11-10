@@ -435,7 +435,7 @@ configuring the boot mode 2 program image sNVM client in Libero.</p>
 <p>For boot mode 3 the ECC (Elliptic Curve Cryptography) public key x and y values
 are stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> and these details are
 required when configuring the boot mode 3 program image eNVM client in Libero.</p>
-<p>The ECC keys can be either generated on demand by the tool, or read from external files (<strong>X.509</strong> used for public key files and <strong>PKCS#8</strong> for private key files)</p>
+<p>The ECC keys can be either generated on demand by the tool or read from external files (<strong>X.509</strong> used for public key files and <strong>PKCS#8</strong> for private key files)</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-0-0 docutils container">
@@ -461,13 +461,14 @@ required when configuring the boot mode 3 program image eNVM client in Libero.</
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
 <p>Argument <code class="docutils literal notranslate"><span class="pre">--keys</span> <span class="pre">SEPARATED</span></code> has to be used, <code class="docutils literal notranslate"><span class="pre">SEPARATED</span></code> because private and public
-files are each in separated files. Keys have to use elliptical curve NIST P-384 algorithm (secp384r1 in Java/OpenSSL).</p>
+files are each in separated files. Keys have to the use elliptical curve NIST P-384 algorithm (secp384r1 in Java/OpenSSL).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt; --keys SEPARATED &lt;PATH_TO_PRIVATE_PEM_FILE&gt; &lt;PATH_TO_PUBLIC_PEM_FILE&gt;
 </pre></div>
 </div>
-<p>If user wants generate his own set of keys, then <code class="docutils literal notranslate"><span class="pre">openssl</span></code> can be used, on Linux it’s
+<p>If the user wants to generate his own set of keys, then <code class="docutils literal notranslate"><span class="pre">openssl</span></code> can be used, on Linux it’s
 usually part of any decent distribution installation and on Windows the following project
-can be used: <a class="reference external" href="https://slproweb.com/products/Win32OpenSSL.html">https://slproweb.com/products/Win32OpenSSL.html</a></p>
+can be used:</p>
+<p><a class="reference external" href="https://slproweb.com/products/Win32OpenSSL.html">https://slproweb.com/products/Win32OpenSSL.html</a></p>
 <p>Invoking these following commands will produce <code class="docutils literal notranslate"><span class="pre">private.pem</span></code> and <code class="docutils literal notranslate"><span class="pre">public.pem</span></code> files:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl ecparam -name secp384r1 -genkey -noout -out combined.ec.key
 openssl pkcs8 -topk8 -nocrypt -in combined.ec.key -out private.pem
@@ -477,6 +478,10 @@ openssl ec -in private.pem -pubout -out public.pem
 <p>Then these files can be used as arguments:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt; --keys SEPARATED private.pem public.pem
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Password-protected private keys are not currently supported.</p>
 </div>
 </div>
 </div>
