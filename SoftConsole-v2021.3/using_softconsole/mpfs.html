@@ -13,6 +13,10 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
@@ -37,6 +41,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
     
@@ -113,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#boot-mode-programming-external-launch-configurations">Boot mode programming external launch configurations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#boot-program-link-requirements">Boot program link requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generated-artifacts">Generated artifacts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-mode-3-elliptic-curve-cryptography">Boot mode 3 Elliptic Curve Cryptography</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#known-issues-limitations">Known issues/limitations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mpfsbootmodeprogrammer-usage-help">mpfsBootmodeProgrammer usage/help</a></li>
@@ -422,9 +429,57 @@ sNVM pages respectively.</p>
 <p>For boot mode 2 the USK (User sNVM/Secret Key) used is stored in
 <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm2-usk.txt</span></code>. This or another USK is required when
 configuring the boot mode 2 program image sNVM client in Libero.</p>
+</div>
+<div class="section" id="boot-mode-3-elliptic-curve-cryptography">
+<h3>Boot mode 3 Elliptic Curve Cryptography<a class="headerlink" href="#boot-mode-3-elliptic-curve-cryptography" title="Permalink to this headline">¶</a></h3>
 <p>For boot mode 3 the ECC (Elliptic Curve Cryptography) public key x and y values
 are stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> and these details are
 required when configuring the boot mode 3 program image eNVM client in Libero.</p>
+<p>The ECC keys can be either generated on demand by the tool, or read from external files (<strong>X.509</strong> used for public key files and <strong>PKCS#8</strong> for private key files)</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Generate keys</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Read keys from external files</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<p>Either specifying explicitly to generate the keys as shown in the snippet below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt; --keys GENERATE
+</pre></div>
+</div>
+<p>Or using the default behavior and not specifying the <code class="docutils literal notranslate"><span class="pre">--keys</span> <span class="pre">GENERATE</span></code> at all:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt;
+</pre></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<p>Argument <code class="docutils literal notranslate"><span class="pre">--keys</span> <span class="pre">SEPARATED</span></code> has to be used, <code class="docutils literal notranslate"><span class="pre">SEPARATED</span></code> because private and public
+files are each in separated files. Keys have to use elliptical curve NIST P-384 algorithm (secp384r1 in Java/OpenSSL).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt; --keys SEPARATED &lt;PATH_TO_PRIVATE_PEM_FILE&gt; &lt;PATH_TO_PUBLIC_PEM_FILE&gt;
+</pre></div>
+</div>
+<p>If user wants generate his own set of keys, then <code class="docutils literal notranslate"><span class="pre">openssl</span></code> can be used, on Linux it’s
+usually part of any decent distribution installation and on Windows the following project
+can be used: <a class="reference external" href="https://slproweb.com/products/Win32OpenSSL.html">https://slproweb.com/products/Win32OpenSSL.html</a></p>
+<p>Invoking these following commands will produce <code class="docutils literal notranslate"><span class="pre">private.pem</span></code> and <code class="docutils literal notranslate"><span class="pre">public.pem</span></code> files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl ecparam -name secp384r1 -genkey -noout -out combined.ec.key
+openssl pkcs8 -topk8 -nocrypt -in combined.ec.key -out private.pem
+openssl ec -in private.pem -pubout -out public.pem
+</pre></div>
+</div>
+<p>Then these files can be used as arguments:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt; --keys SEPARATED private.pem public.pem
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="troubleshooting">
 <h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
@@ -528,8 +583,13 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
 </div>
 <div class="section" id="mpfsbootmodeprogrammer-usage-help">
 <h3>mpfsBootmodeProgrammer usage/help<a class="headerlink" href="#mpfsbootmodeprogrammer-usage-help" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">44</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">mpfsBootmodeProgrammer</span> <span class="n">v3</span><span class="mf">.2</span> <span class="n">started</span><span class="o">.</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">mpfsBootmodeProgrammer</span><span class="o">.</span><span class="n">jar</span> <span class="p">[</span><span class="o">--</span><span class="n">workdir</span> <span class="n">directory</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">die</span> <span class="n">device</span><span class="o">-</span><span class="n">die</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">package</span> <span class="n">device</span><span class="o">-</span><span class="n">package</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">bootmode</span> <span class="n">mode</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">snvm_page</span> <span class="n">page</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">usk</span> <span class="n">key</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">encrypt</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">dryrun</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verify</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="n">elf</span><span class="o">-</span><span class="n">file</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">27</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">mpfsBootmodeProgrammer</span> <span class="n">v3</span><span class="mf">.5</span> <span class="n">started</span><span class="o">.</span>
+<span class="n">Usage</span><span class="p">:</span> <span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">mpfsBootmodeProgrammer</span><span class="o">.</span><span class="n">jar</span> <span class="p">[</span><span class="o">--</span><span class="n">workdir</span> <span class="n">directory</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">die</span> <span class="n">device</span><span class="o">-</span><span class="n">die</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">package</span> <span class="n">device</span><span class="o">-</span><span class="n">package</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">bootmode</span> <span class="n">mode</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">snvm_page</span> <span class="n">page</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">usk</span> <span class="n">key</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">encrypt</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">keys</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">dryrun</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verify</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="n">elf</span><span class="o">-</span><span class="n">file</span><span class="p">]</span>
+
+<span class="n">Note</span><span class="p">:</span> <span class="n">The</span> <span class="n">goal</span> <span class="n">of</span> <span class="n">this</span> <span class="n">Java</span> <span class="n">wrapper</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">make</span> <span class="n">fpgenprog</span> <span class="n">easier</span> <span class="n">to</span> <span class="n">use</span><span class="o">.</span>
+<span class="n">Some</span> <span class="n">errors</span> <span class="n">produced</span> <span class="k">with</span> <span class="n">fpgenprog</span> <span class="n">are</span> <span class="n">just</span> <span class="n">passed</span> <span class="n">through</span> <span class="k">as</span> <span class="n">they</span> <span class="n">are</span><span class="o">.</span>
+<span class="n">Users</span> <span class="n">having</span> <span class="n">issues</span> <span class="k">with</span> <span class="n">some</span> <span class="n">of</span> <span class="n">the</span> <span class="n">errors</span> <span class="n">need</span> <span class="n">to</span> <span class="n">contact</span> <span class="n">Libero</span> <span class="n">support</span>
+<span class="n">directly</span><span class="o">.</span>
 
   <span class="o">--</span><span class="n">workdir</span> <span class="n">directory</span>
     <span class="n">Description</span><span class="p">:</span>
@@ -576,7 +636,7 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
     <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
       <span class="mi">0</span> <span class="n">to</span> <span class="mi">3</span>
     <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
-      <span class="mi">0</span> <span class="o">=</span> <span class="n">idle</span> <span class="n">boot</span> 
+      <span class="mi">0</span> <span class="o">=</span> <span class="n">idle</span> <span class="n">boot</span>
 
   <span class="o">--</span><span class="n">snvm_page</span> <span class="n">page</span>
     <span class="n">Description</span><span class="p">:</span>
@@ -590,7 +650,7 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
     <span class="n">Description</span><span class="p">:</span>
       <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">key</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">User</span> <span class="n">sNVM</span> <span class="n">Key</span> <span class="n">specified</span> <span class="k">as</span> <span class="n">a</span> <span class="mi">12</span> <span class="n">byte</span> <span class="nb">hex</span> <span class="n">string</span><span class="p">;</span> <span class="k">if</span> <span class="mi">0</span> <span class="n">then</span> <span class="n">a</span> <span class="n">random</span> <span class="n">USK</span> <span class="ow">is</span> <span class="n">generated</span> <span class="ow">and</span> <span class="n">used</span>
     <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
-      <span class="nb">any</span> <span class="mi">12</span> <span class="n">byte</span> <span class="nb">hex</span> <span class="n">string</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="p">:</span> <span class="mh">0x0b841d7a16f5542cda541eeb</span> <span class="ow">or</span> <span class="mi">0</span><span class="n">b841d7a16f5542cda541eeb</span> <span class="ow">or</span> <span class="mi">0</span>
+      <span class="nb">any</span> <span class="mi">12</span> <span class="n">byte</span> <span class="nb">hex</span> <span class="n">string</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="p">:</span> <span class="mh">0x39314a54e5cf87b7a96be634</span> <span class="ow">or</span> <span class="mi">39314</span><span class="n">a54e5cf87b7a96be634</span> <span class="ow">or</span> <span class="mi">0</span>
     <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
       <span class="mi">0</span>
 
@@ -609,6 +669,21 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
   <span class="o">--</span><span class="n">help</span>
     <span class="n">Description</span><span class="p">:</span>
       <span class="n">Print</span> <span class="n">this</span> <span class="n">help</span>
+
+  <span class="o">--</span><span class="n">keys</span> <span class="n">key_mode</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">When</span> <span class="n">bootmode</span> <span class="mi">3</span> <span class="ow">is</span> <span class="n">selected</span><span class="p">,</span> <span class="n">then</span> <span class="n">private</span> <span class="ow">and</span> <span class="n">public</span> <span class="n">keys</span> <span class="n">are</span> <span class="n">required</span><span class="o">.</span> <span class="n">following</span> <span class="n">options</span> <span class="n">are</span> <span class="n">possible</span><span class="p">:</span>
+      <span class="n">GENERATE</span>  <span class="o">-</span> <span class="n">No</span> <span class="n">key</span> <span class="n">files</span> <span class="n">are</span> <span class="n">needed</span><span class="p">,</span> <span class="n">both</span> <span class="n">private</span> <span class="ow">and</span> <span class="n">public</span> <span class="n">keys</span> <span class="n">will</span> <span class="n">be</span> <span class="n">generated</span> <span class="p">(</span><span class="n">default</span> <span class="n">mode</span> <span class="k">if</span> <span class="n">none</span> <span class="ow">is</span> <span class="n">selected</span><span class="p">)</span><span class="o">.</span>
+      <span class="n">SEPARATED</span> <span class="o">-</span> <span class="mi">1</span><span class="n">st</span> <span class="n">argument</span> <span class="ow">is</span> <span class="n">private</span> <span class="n">key</span> <span class="n">file</span> <span class="ow">and</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">argument</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">public</span> <span class="n">key</span> <span class="n">file</span><span class="o">.</span>
+
+      <span class="n">Keys</span> <span class="n">have</span> <span class="n">to</span> <span class="n">use</span> <span class="n">elliptical</span> <span class="n">curve</span> <span class="n">NIST</span> <span class="n">P</span><span class="o">-</span><span class="mi">384</span> <span class="n">algorithm</span> <span class="p">(</span><span class="n">secp384r1</span> <span class="ow">in</span> <span class="n">Java</span><span class="o">/</span><span class="n">OpenSSL</span><span class="p">)</span><span class="o">.</span>
+      <span class="n">The</span> <span class="n">private</span> <span class="n">key</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="ow">in</span> <span class="n">PKCS</span><span class="c1">#8 format with &#39;-----BEGIN PRIVATE KEY-----&#39; identifier.</span>
+      <span class="n">If</span> <span class="n">an</span> <span class="n">encrypted</span> <span class="n">private</span> <span class="n">key</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">then</span> <span class="n">the</span> <span class="n">SC_ECDSA_PRIV_KEY_PASS</span> <span class="n">environment</span> <span class="n">variable</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">contain</span> <span class="n">the</span> <span class="n">password</span><span class="o">.</span>
+      <span class="n">The</span> <span class="n">public</span> <span class="n">key</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">X</span><span class="mf">.509</span> <span class="nb">format</span> <span class="k">with</span> <span class="s1">&#39;----BEGIN PUBLIC KEY-----&#39;</span> <span class="n">identifier</span><span class="o">.</span>
+      <span class="n">Using</span> <span class="n">OpenSSL</span><span class="p">,</span> <span class="n">the</span> <span class="n">keys</span> <span class="n">can</span> <span class="n">be</span> <span class="n">generated</span> <span class="k">with</span> <span class="n">the</span> <span class="n">following</span> <span class="n">commands</span><span class="p">:</span>
+        <span class="n">openssl</span> <span class="n">ecparam</span> <span class="o">-</span><span class="n">name</span> <span class="n">secp384r1</span> <span class="o">-</span><span class="n">genkey</span> <span class="o">-</span><span class="n">noout</span> <span class="o">-</span><span class="n">out</span> <span class="n">combined</span><span class="o">.</span><span class="n">ec</span><span class="o">.</span><span class="n">key</span>
+        <span class="n">openssl</span> <span class="n">pkcs8</span> <span class="o">-</span><span class="n">topk8</span> <span class="o">-</span><span class="n">nocrypt</span> <span class="o">-</span><span class="ow">in</span> <span class="n">combined</span><span class="o">.</span><span class="n">ec</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">private</span><span class="o">.</span><span class="n">pem</span>
+        <span class="n">openssl</span> <span class="n">ec</span> <span class="o">-</span><span class="ow">in</span> <span class="n">private</span><span class="o">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">pubout</span> <span class="o">-</span><span class="n">out</span> <span class="n">public</span><span class="o">.</span><span class="n">pem</span>
 
   <span class="n">elf</span><span class="o">-</span><span class="n">file</span>
     <span class="n">Description</span><span class="p">:</span>
