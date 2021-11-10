@@ -458,6 +458,7 @@ required when configuring the boot mode 3 program image eNVM client in Libero.</
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt;
 </pre></div>
 </div>
+</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
 <p>Argument <code class="docutils literal notranslate"><span class="pre">--keys</span> <span class="pre">SEPARATED</span></code> has to be used, <code class="docutils literal notranslate"><span class="pre">SEPARATED</span></code> because private and public
 files are each in separated files. Keys have to use elliptical curve NIST P-384 algorithm (secp384r1 in Java/OpenSSL).</p>
@@ -476,7 +477,6 @@ openssl ec -in private.pem -pubout -out public.pem
 <p>Then these files can be used as arguments:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt; --keys SEPARATED private.pem public.pem
 </pre></div>
-</div>
 </div>
 </div>
 </div>
