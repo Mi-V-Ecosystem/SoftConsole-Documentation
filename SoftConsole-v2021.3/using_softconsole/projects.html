@@ -240,7 +240,7 @@
          edge [arrowsize=.7];
          &quot;Drive letter&quot; -&gt; &quot;:\\&quot; -&gt; &quot;Path&quot; -&gt; &quot;NULL termination character&quot;
      }" class="graphviz" /></div>
-<p>Effectively this shrinks the limit of the usable path to 256 characters. The limit is 244 (256-12) in the case of directories because the they need to be capable to append DOS style filename <code class="docutils literal notranslate"><span class="pre">8.3</span></code> at the end of the path.</p>
+<br/><p>Effectively this shrinks the limit of the usable path to 256 characters. The limit is 244 (256-12) in the case of directories because the they need to be capable to append DOS style filename <code class="docutils literal notranslate"><span class="pre">8.3</span></code> at the end of the path.</p>
 <p>Users are encouraged to place the projects at the shortest paths feasible because not just the root of the project is important, but its name and its configuration. For example if the <code class="docutils literal notranslate"><span class="pre">WORKSPACE_PATH</span></code> is short, then still there is possibility to create long path when addressing the ELF file. On top of the project’s root, the current configuration impacts the path and the project name does as well (twice).</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;WORKSPACE_PATH&gt;/&lt;PROJECT_NAME&gt;/&lt;CONFIGURATION&gt;/&lt;PROJECT_NAME&gt;.elf</span></code></p>
 <p>Using reasonable project names, concise configuration names and placing project roots at short paths can avoid this problem.</p>
