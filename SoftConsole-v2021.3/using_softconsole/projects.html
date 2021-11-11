@@ -107,6 +107,7 @@
 <li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#long-paths-on-windows">Long paths on Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-new-project">Creating a new project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#project-settings">Project Settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#all-cpu-targets">All CPU targets</a><ul>
@@ -230,6 +231,14 @@
 
   <div class="section" id="projects">
 <h1>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="long-paths-on-windows">
+<h2>Long paths on Windows<a class="headerlink" href="#long-paths-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> inside Windows file I/O API is restricted to 260 characters, but the usable path is even more constrained. The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> must contain the drive letter and the NULL character to terminate the string correctly:</p>
+<p>Effectively this shrinks the limit of the usable path to 256 characters. The limit is 244 (256-12) in the case of directories because the they need to be capable to append DOS style filename <code class="docutils literal notranslate"><span class="pre">8.3</span></code> at the end of the path.</p>
+<p>Users are encouraged to place the projects at the shortest paths feasible because not just the root of the project is important, but its name and its configuration. For example if the <code class="docutils literal notranslate"><span class="pre">WORKSPACE_PATH</span></code> is short, then still there is possibility to create long path when addressing the ELF file. On top of the project’s root, the current configuration impacts the path and the project name does as well (twice).</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;WORKSPACE_PATH&gt;/&lt;PROJECT_NAME&gt;/&lt;CONFIGURATION&gt;/&lt;PROJECT_NAME&gt;.elf</span></code></p>
+<p>Using reasonable project names, concise configuration names and placing project roots at short paths can avoid this problem.</p>
+</div>
 <div class="section" id="creating-a-new-project">
 <h2>Creating a new project<a class="headerlink" href="#creating-a-new-project" title="Permalink to this headline">¶</a></h2>
 <ol>

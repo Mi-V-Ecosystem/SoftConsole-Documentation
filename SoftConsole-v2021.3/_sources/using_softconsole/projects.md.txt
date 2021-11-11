@@ -5,6 +5,11 @@
 
 {{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
 
+
+{% if windows is defined %}
+{% include 'main/using_softconsole/projects/_long_path.inc' %}
+{% endif %}
+
 {% include 'main/using_softconsole/projects/_creating_projects.inc' %}
 {% include 'main/using_softconsole/projects/_project_settings.inc' %}
 {% include 'main/using_softconsole/projects/_targets_all.inc' %}
