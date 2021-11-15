@@ -20,10 +20,14 @@ To debug an example in the emulator Renode must be run with the Mi-V model (exte
   {{ macros.breadcrumb_indent('"Debugger" -> "GDB Client Setup" -> "Commands"','  ') }}
   Have set the architecture and symbols:
   ```{code-block} text
-set arch riscv:rv32
+set architecture riscv:rv32
   ```
   ```{note}
     Add symbol file command and explain the macro
+  ```
+  
+  ```{note}
+  If in previous documents and projects was `set arch riscv:rv32` used, then it can be considered as analogous. The `arch` is an abbreviation for `architecture` and does the same function.
   ```
 
 - For PolarFire SoC targets the launcher must be changed (this changed in SoftConsole 6.1).

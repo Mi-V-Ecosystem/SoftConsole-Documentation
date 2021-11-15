@@ -429,7 +429,11 @@ then OpenOCD may display a message of the form:</p>
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;
      }" class="graphviz" /></div>
-<br/><p>On RV-32 should be set to <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv32</span></code></p>
+<br/><p>On RV-32 should be set to <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">architecture</span> <span class="pre">riscv:rv32</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv32</span></code> used, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
+</div>
 <p>In an edge case this problem might be present even when all settings are correct, but using a Makefile non-managed project on Linux SoftConsole. This happens when the cross compiler is incorrectly detected and the native tools are used instead (which are x86 and they do not match the RISC-V registers).</p>
 <div class="graphviz"><img src="../_images/graphviz-e3a7d8ca5c6ffe0b69077cb8236bb2dac3fb3e43.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
@@ -484,6 +488,10 @@ Truncated register 16 in remote &#39;g&#39; packet
 <p>and make sure that the following command is present:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">architecture</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv32</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv32</span></code> used, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
 </div>
 <p>And then, go to:</p>
 <div class="graphviz"><img src="../_images/graphviz-a1ff95b8a42406b78986137b1de2a0191045c9d5.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug launch configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Executable name&quot;; }" class="graphviz" /></div>

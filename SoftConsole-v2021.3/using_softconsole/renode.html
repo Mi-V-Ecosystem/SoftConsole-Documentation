@@ -210,12 +210,16 @@
 <li><p>RISC-V 32-bit targets need the following commands:</p>
 <div class="graphviz"><img src="../_images/graphviz-83839a180d94385294ded83427d951661e1e541a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
 <p>Have set the architecture and symbols:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>set arch riscv:rv32
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>set architecture riscv:rv32
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Add symbol file command and explain the macro</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv32</span></code> used, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
 </div>
 </li>
 <li><p>For PolarFire SoC targets the launcher must be changed (this changed in SoftConsole 6.1).</p>

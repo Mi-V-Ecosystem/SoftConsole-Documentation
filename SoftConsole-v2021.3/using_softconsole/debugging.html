@@ -268,12 +268,20 @@ set $target_riscv = 1
 <p>This is necessary even if there are some cases where it seems to work correctly (and previous SoftConsole examples did not require this command)!</p>
 </div>
 <p>Additionally setting the architecture (do not remove the previous commands such as set $target_riscv = 1):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">arch</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv32</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">architecture</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv32</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv32</span></code> used, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
+</div>
 <p>And when targeting 64-bit PolarFire SoC emulation model:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">arch</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv64</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">architecture</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv64</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv64</span></code> used, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
 </div>
 <p>When the binary elf file is large then it might sometimes on targets cause a timeout message, to
 suppress these the timeout can be changed:</p>
