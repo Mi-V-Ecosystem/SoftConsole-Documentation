@@ -429,12 +429,12 @@ sNVM pages respectively.</p>
 <p>For boot mode 2 the USK (User sNVM/Secret Key) used is stored in
 <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm2-usk.txt</span></code>. This or another USK is required when
 configuring the boot mode 2 program image sNVM client in Libero.</p>
-</div>
-<div class="section" id="boot-mode-3-elliptic-curve-cryptography">
-<h3>Boot mode 3 Elliptic Curve Cryptography<a class="headerlink" href="#boot-mode-3-elliptic-curve-cryptography" title="Permalink to this headline">¶</a></h3>
 <p>For boot mode 3 the ECC (Elliptic Curve Cryptography) public key x and y values
 are stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> and these details are
 required when configuring the boot mode 3 program image eNVM client in Libero.</p>
+</div>
+<div class="section" id="boot-mode-3-elliptic-curve-cryptography">
+<h3>Boot mode 3 Elliptic Curve Cryptography<a class="headerlink" href="#boot-mode-3-elliptic-curve-cryptography" title="Permalink to this headline">¶</a></h3>
 <p>The ECC keys can be either generated on demand by the tool or read from external files (<strong>X.509</strong> used for public key files and <strong>PKCS#8</strong> for private key files)</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -484,6 +484,11 @@ openssl ec -in private.pem -pubout -out public.pem
 <p>Password-protected private keys are not currently supported.</p>
 </div>
 </div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After the mpfsBootmodeProgrammer is run with boot mode 3, the ECC (Elliptic Curve Cryptography) public key’s <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> values
+will be stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> and these details are required when configuring the boot mode 3 program image eNVM client in Libero.</p>
 </div>
 </div>
 <div class="section" id="troubleshooting">
