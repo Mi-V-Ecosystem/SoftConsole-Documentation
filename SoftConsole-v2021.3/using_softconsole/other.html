@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Other features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#importing-crypto-application-library">Importing Crypto Application Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#built-in-serial-terminal-view">Built-in serial terminal view</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#integer-only-newlib-support">Integer only newlib support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#static-stack-profiling">Static stack profiling</a></li>
@@ -202,6 +203,26 @@
 
   <div class="section" id="other-features">
 <h1>Other features<a class="headerlink" href="#other-features" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="importing-crypto-application-library">
+<h2>Importing Crypto Application Library<a class="headerlink" href="#importing-crypto-application-library" title="Permalink to this headline">¶</a></h2>
+<p>If the Crypto Application Library (CAL) license was agreed on installation then the library is installed in the folder:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/CAL.zip</span></code></p>
+<p>To import in into the workspace</p>
+<div class="graphviz"><img src="../_images/graphviz-2a326d056ee4bbcb284e82727ca3058bf9b51ecf.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Existing Projects into Workspace&quot;
+     }" class="graphviz" /></div>
+<br/><p>After Import dialog is showed do following:</p>
+<div class="graphviz"><img src="../_images/graphviz-193d846e6d33eaeab06743b1699fc301a13eb8fa.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Select archive file&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the CAL.zip&quot; -&gt; &quot;Open&quot;
+     }" class="graphviz" /></div>
+<br/><p>If the dialog was left in default state (such as fresh workspace) and the project was not imported already then clicking <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button will import it correctly into the workspace.</p>
+</div>
 <div class="section" id="built-in-serial-terminal-view">
 <h2>Built-in serial terminal view<a class="headerlink" href="#built-in-serial-terminal-view" title="Permalink to this headline">¶</a></h2>
 <p>SoftConsole includes a built-in serial terminal view which obviates the need to run a separate serial terminal
