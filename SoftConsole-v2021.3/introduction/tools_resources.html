@@ -488,7 +488,7 @@
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-3 docutils container">
 <p><strong>Version:</strong></p>
-<p>v0.10.0+dev based on the SiFive fork of OpenOCD with additional SoftConsole and UltraSoC mods</p>
+<p>v0.10.0+dev based on the SiFive fork of OpenOCD with additional SoftConsole mods</p>
 <p><strong>Home page:</strong></p>
 <p><a class="reference external" href="http://openocd.org/">http://openocd.org/</a></p>
 <p><strong>Documentation:</strong></p>
@@ -498,9 +498,8 @@
 <p><a class="reference external" href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html</a></p>
 <p><strong>Notes:</strong></p>
 <p>OpenOCD sits between GDB and the target hardware (JTAG debug probe, target board and CPU) to allow for program download and debug using real hardware. When debugging Eclipse launches GDB and then uses GDB’s GDB/MI (Machine Interface) to communicate with the debugger. Meanwhile GDB communicates with OpenOCD using OpenOCD’s Remote Serial Protocol interface. GDB debug operations are translated into JTAG operations by OpenOCD which communicates with the target hardware/CPU using JTAG via the relevant JTAG debug probe. OpenOCD also has knowledge of specific CPU target debug frameworks (e.g. Arm CoreSight, RISC-V Debug Modules v0.11 and v0.13 – <a class="reference external" href="https://github.com/riscv/riscv-debug-spec">https://github.com/riscv/riscv-debug-spec</a>) so that it can communicate with and debug supported RISC-V CPUs.</p>
-<p>It is also built using some UltraSoC mods to support UltraDevelop trace functionality.</p>
 <p>SoftConsole’s version of OpenOCD is built using slightly modified versions of the xPack OpenOCD (https://xpack.github.io/openocd/) build scripts.</p>
-<p>Credit/thanks to the OpenOCD development community, SiFive, UltraSoC and Liviu Ionescu and the xPack and GNU MCU Eclipse projects and development communities.</p>
+<p>Credit/thanks to the OpenOCD development community, SiFive and Liviu Ionescu and the xPack and GNU MCU Eclipse projects and development communities.</p>
 </div>
 </div>
 </div>
