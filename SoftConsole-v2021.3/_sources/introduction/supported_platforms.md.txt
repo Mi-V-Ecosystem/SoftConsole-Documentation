@@ -120,7 +120,7 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 
 ## FlashPro support matrix
 
-{% include 'main/introduction/_support_table6.5.inc' %}
+{% include 'main/introduction/_support_table2021.3.inc' %}
 
 
 ### FlashPro6
