@@ -322,12 +322,12 @@
 <td><p><strong>Yes</strong></p></td>
 </tr>
 <tr class="row-odd"><td><p>PolarFire SoC UltraSoC<br/>trace/debug</p></td>
-<td><p><strong>Yes</strong></p></td>
 <td></td>
 <td></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
 <td></td>
@@ -365,7 +365,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Refer to the Libero SoC v12.5 SP1 or Program Debug Tools v12.5 SP1 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
+<p>Refer to the Libero SoC v2021.3 or Program Debug Tools v2021.3 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -377,11 +377,12 @@
 <div class="section" id="microchip-github-repositories">
 <h3>Microchip GitHub repositories<a class="headerlink" href="#microchip-github-repositories" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
+<li><p><a class="reference external" href="https://mi-v-ecosystem.github.io/">Mi-V Ecosystem</a></p></li>
 <li><p>PolarFire SoC</p>
 <ul>
 <li><p><a class="reference external" href="https://github.com/polarfire-soc">PolarFire SoC Embedded Software</a> Collection of various repositories:</p>
 <ul>
-<li><p><a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-bare-metal-library">Bare Metal drivers and SoftConsole examples</a></p></li>
+<li><p><a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples">Bare Metal drivers and SoftConsole examples</a></p></li>
 <li><p><a class="reference external" href="https://github.com/polarfire-soc/hart-software-services">Hart Software Services</a></p></li>
 <li><p><a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-documentation">Documentation</a></p></li>
 <li><p>Linux repositories (<a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk">buildroot</a> and <a class="reference external" href="https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp">Yocto</a>)</p></li>
@@ -392,13 +393,17 @@
 </li>
 <li><p>Softcore RISC-V resources:</p>
 <ul>
-<li><p><a class="reference external" href="https://github.com/RISCV-on-Microsemi-FPGA">RISCV on Microsemi FPGA</a> is a useful Microsemi Mi-V ecosystem resource.</p></li>
+<li><p><a class="reference external" href="https://github.com/RISCV-on-Microsemi-FPGA">RISCV on Microsemi FPGA</a> legacy Microsemi Mi-V ecosystem resource.</p></li>
 </ul>
 </li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The bundled examples with SoftConsole v2021.3 are tested and are working with SoftConsole v2021.3 correctly, therefore are recommended as the primary reference.</p>
+<p>The bundled examples with SoftConsole v2021.3 are tested and are working with SoftConsole v2021.3 correctly, therefore are recommended as the primary reference before importing other projects.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Import examples from the <a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples">Bare Metal drivers and SoftConsole examples GitHub</a> to get most up to date examples and HAL.</p>
 </div>
 </div>
 <div class="section" id="other-resources">
@@ -721,8 +726,8 @@
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
 <p><strong>Version:</strong></p>
-<p>xPack GNU Arm Embedded GCC toolchain v9.2.1-1.1-20191025 build based on GNU</p>
-<p>Arm Embedded Toolchain 9-2019-q4-major (https://developer.arm.com/tools-andsoftware/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)</p>
+<p>xPack GNU Arm Embedded GCC toolchain v10.3.1-2.2 build based on GNU</p>
+<p>Arm Embedded Toolchain 10.3-2021.10 (https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)</p>
 <p><strong>Home Page:</strong></p>
 <p><a class="reference external" href="https://xpack.github.io/arm-none-eabi-gcc/">https://xpack.github.io/arm-none-eabi-gcc/</a></p>
 <p><strong>Documentation:</strong></p>
@@ -740,7 +745,10 @@ than the Arm build of the same tools and also Windows 64-bit builds (Arm current
 provide only 32-bit builds for Windows).</p>
 <p>Credit/thanks to Arm and the GNU Arm Embedded Toolchain development community
 and Liviu Ionescu and the xPack and GNU MCU Eclipse projects and development
-communities</p>
+communities.</p>
+<p>Previous SoftConsole releases could be run in a headless mode on old unsupported OSs such
+as RHEL 6.x. However, from SoftConsole 2021.3 the Arm toolchain will need GLIBC_2.14 or higher
+and will not run on old OSs.</p>
 </div>
 </div>
 </div>
