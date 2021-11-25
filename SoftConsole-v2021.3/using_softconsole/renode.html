@@ -202,7 +202,39 @@
 <h1>Renode simulation platform<a class="headerlink" href="#renode-simulation-platform" title="Permalink to this headline">¶</a></h1>
 <p><img alt="Renode logo" src="../_images/renode_logo1.png" /></p>
 <p>Renode™ is an open-source software development framework with commercial support from Antmicro that lets you develop, debug and test multi-node device systems reliably, scalably and effectively. If all installation dependencies are met (see installation section), then the RISC-V examples can be run in the emulator.</p>
-<p>To debug an example in the emulator Renode must be run with the Mi-V model (external tool launcher called Mi-V-Renodeemulation-platform) or PolarFire SoC MPFS (previously known as PSE, see MPFS HAL manual for more details) model and a debug launcher attaches to the running Renode (for example miv-rv32im-systick-blinky Attach-to-Renode). The debug launchers for Renode are almost identical to the launchers for real 32-bit RISC-V hardware targets except:</p>
+<p>To debug an example in the emulator Renode must be run with the Mi-V model or PolarFire SoC MPFS (previously known as PSE, see MPFS HAL manual for more details) model. External launchers with models are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PolarFire-SoC-Icicle-Renode-emulation</span></code> for MPFS Icicle board</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PolarFire-SoC-Renode-emulation</span></code> for generic MPFS platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mi-V-Renode-emulation-platform</span></code> for RV32 Mi-V soft cores</p></li>
+</ul>
+<p>And then debug launcher (for example <code class="docutils literal notranslate"><span class="pre">miv-rv32im-systick-blinky</span> <span class="pre">Renode</span> <span class="pre">Debug</span></code>) attaches to the running Renode (which has halted simulation).
+In a case of Mi-V models the simulation will automatically start on the debug launcher connection. While with the MPFS launcher the simulation doesn’t start automatically on connection, but the launcher has to invoke separately <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">start</span></code> command after it connected inside Pre-Run/Restart section:</p>
+<div class="graphviz"><img src="../_images/graphviz-0a72c01cdcd03d103982e7ccec6ae38792a65ef9.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for \&lt;YOUR_PROJECT\&gt;&quot;
+     }" class="graphviz" /></div>
+<br/><p>Then inside the dialog:</p>
+<div class="graphviz"><img src="../_images/graphviz-d8db08f66f03e3125fb3e4c46381814bc6291008.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Startup&quot; -&gt; &quot;Pre-Run/Restart commands&quot;
+     }" class="graphviz" /></div>
+<br/><p>These steps are fairly convoluted, to simplify the user experience SoftConsole projects come shipped launchers that have
+the necessary extra steps are pre-configured and projects are shipped with group launchers:</p>
+<p><img alt="group launchers" src="../_images/group-launchers.png" /></p>
+<p>The group launchers simplify the steps user has to take as they automatically start the Renode platform with an external launcher and only then connects the debug launcher into Renode’s GDB server. It’s recommended to use primarily only the group launchers (except some edge cases where).</p>
+<p>The sequence of execution of a group launcher is:</p>
+<div class="graphviz"><img src="../_images/graphviz-85e0849238075db14c5e323b6f4d1788161f2fb7.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Group launcher&quot; -&gt; &quot;starts Renode with its GDB server first&quot; -&gt; &quot;Then starts debug launcher with GDB client&quot;
+     }" class="graphviz" /></div>
+<br/><p>The debug launchers for Renode are almost identical to the launchers for real RISC-V hardware targets except:</p>
 <ul>
 <li><p>Disabled/uncheck “Start OpenOCD locally” as Renode debugging does not use OpenOCD/JTAG but connects GDB directly to the Renode GDB Remote Serial Protocol interface.</p>
 <div class="graphviz"><img src="../_images/graphviz-cc07c7dcc6ceebb08add3cf1500011b81e0078fd.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Start OpenOCD locally&quot;; }" class="graphviz" /></div>
@@ -231,60 +263,6 @@ monitor start
 </pre></div>
 </div>
 </li>
-<li><p>Change the <em>e51</em> to <em>u54_1</em> in the code above if the connection is made to <em>u54_1</em>, change accordingly for <em>u54_2</em>, <em>u54_3</em>, and <em>u54_4</em>.</p></li>
-<li><p>The SoftConsole v2021.3 platform script needs to be used (it’s not compatible with SoftConsole 6.1). The scripts now start the servers with the auto-start feature disabled (no “true” appended on each line)</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>e51 StartGdbServer 3333
-u54_1 StartGdbServer 3334
-u54_2 StartGdbServer 3335
-u54_3 StartGdbServer 3336
-u54_4 StartGdbServer 3337
-</pre></div>
-</div>
-</li>
-<li><p>Connect to port with the correct hart, check the Port number value:</p>
-<div class="graphviz"><img src="../_images/graphviz-59da6a7d87af8a3988aebeae726c77321763810a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;Remote Target&quot; -&gt; &quot;Port number&quot;; }" class="graphviz" /></div>
-<table class="colwidths-auto docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head">Hart</th>
-<th class="head">Port Number</th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td>e51</td>
-<td>3333</td>
-</tr>
-<tr class="row-odd"><td>u54_1</td>
-<td>3334</td>
-</tr>
-<tr class="row-even"><td>u54_2</td>
-<td>3335</td>
-</tr>
-<tr class="row-odd"><td>u54_3</td>
-<td>3336</td>
-</tr>
-<tr class="row-even"><td>u54_4</td>
-<td>3337</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><p>The very first launcher will configure the platform, PCs and start execution of the code. If a second connection is required to debug another hart, then extra steps need to be followed</p>
-<ul class="simple">
-<li><p>Base the second launcher by making a duplicate of the first launcher</p></li>
-<li><p>In the Debugger tab:</p>
-<ul>
-<li><p>Leave the <strong>Start OpenOCD locally</strong> unchecked</p></li>
-<li><p>Select a new port to connect to (3333 to 3337 depending what hart is targeted)</p></li>
-</ul>
-</li>
-<li><p>In the Startup tab:</p>
-<ul>
-<li><p>Uncheck <strong>Initial Reset</strong></p></li>
-<li><p>Check <strong>Load symbols</strong></p></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -294,6 +272,10 @@ u54_4 StartGdbServer 3337
 <li><p><a class="reference external" href="https://renode.readthedocs.io/en/latest/">Renode’s documentation</a></p></li>
 <li><p><a class="reference external" href="https://antmicro.com/blog/tags/renode/">Antmicro’s blog</a></p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Renode which is shipped inside SoftConsole might be ahead (or behind) Antmicro’s official releases and therefore Antmicro’s released information might not always apply to Renode shipped with SoftConsole.</p>
+</div>
 </div>
 <div class="section" id="windows-firewall">
 <h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Permalink to this headline">¶</a></h2>
