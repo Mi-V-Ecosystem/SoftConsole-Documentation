@@ -42,7 +42,7 @@ The SoftConsole documentation is distributed in three variants:
  - Containing information relevant to only Windows users shipped with Windows SoftConsole
  - Containing information relevant to only Linux users shipped with Linux SoftConsole
 
-The online documentation contains both OSs, while documentation installed with specific SoftConsole contains only information relevant to its host OS.
+The online documentation contains both OSs and can be updated/improved even after the SoftConsole release. While documentation installed with specific SoftConsole contains only information relevant to its host OS and can be viewed without an internet connection.
 
 Currently you are reading the: **{{os_human}}** variant.
 
