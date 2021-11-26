@@ -26,12 +26,12 @@ Then inside the dialog:
 {{ macros.breadcrumb_square('"Startup" -> "Pre-Run/Restart commands"') }}
 <br/>
 
-These steps are fairly convoluted, to simplify the user experience SoftConsole projects come shipped launchers that have
+To simplify the user experience SoftConsole projects come shipped with launchers that have
 the necessary extra steps are pre-configured and projects are shipped with group launchers:
 
 ![group launchers](images/renode/group-launchers.png)
 
-The group launchers simplify the steps user has to take as they automatically start the Renode platform with an external launcher and only then connects the debug launcher into Renode's GDB server. It's recommended to use primarily only the group launchers (except some edge cases where).
+The group launchers simplify the steps user has to take as they automatically start of the Renode platform with an external launcher and only then connects the debug launcher into Renode's GDB server. It's recommended  only to use the group launchers, except some edge cases.
 
 The sequence of execution of a group launcher is:
 
