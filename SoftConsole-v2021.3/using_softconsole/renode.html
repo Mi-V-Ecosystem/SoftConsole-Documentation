@@ -228,11 +228,11 @@ the necessary extra steps are pre-configured and projects are shipped with group
 <p><img alt="group launchers" src="../_images/group-launchers.png" /></p>
 <p>The group launchers simplify the steps user has to take as they automatically start of the Renode platform with an external launcher and only then connects the debug launcher into Renode’s GDB server. It’s recommended  only to use the group launchers, except some edge cases.</p>
 <p>The sequence of execution of a group launcher is:</p>
-<div class="graphviz"><img src="../_images/graphviz-85e0849238075db14c5e323b6f4d1788161f2fb7.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-acbc3c918d838149a727d4bc3b05695877cf5268.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Group launcher&quot; -&gt; &quot;starts Renode with its GDB server first&quot; -&gt; &quot;Then starts debug launcher with GDB client&quot;
+         &quot;Group launcher&quot; -&gt; &quot;Starts Renode with its GDB server first&quot; -&gt; &quot;Then starts debug launcher with GDB client&quot;
      }" class="graphviz" /></div>
 <br/><p>The debug launchers for Renode are almost identical to the launchers for real RISC-V hardware targets except:</p>
 <ul>

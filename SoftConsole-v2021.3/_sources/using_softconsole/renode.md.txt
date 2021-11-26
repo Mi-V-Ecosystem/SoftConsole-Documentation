@@ -35,7 +35,7 @@ The group launchers simplify the steps user has to take as they automatically st
 
 The sequence of execution of a group launcher is:
 
-{{ macros.breadcrumb_square('"Group launcher" -> "starts Renode with its GDB server first" -> "Then starts debug launcher with GDB client"') }}
+{{ macros.breadcrumb_square('"Group launcher" -> "Starts Renode with its GDB server first" -> "Then starts debug launcher with GDB client"') }}
 <br/>
 
 The debug launchers for Renode are almost identical to the launchers for real RISC-V hardware targets except:
