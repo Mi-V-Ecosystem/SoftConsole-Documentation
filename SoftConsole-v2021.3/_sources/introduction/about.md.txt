@@ -34,13 +34,13 @@ And it is recommended to search for the error messages in the troubleshooting se
 Users of previous releases should watch for changes and in the {ref}`What is new<whatisnew>` chapter and re-read all affected chapters.
 ```
 
-## Variants
+## Documentation variants
 
 The SoftConsole documentation is distributed in three variants:
 
- - Containing information relevant to both Windows and Linux users [deployed online](https://mi-v-ecosystem.github.io/SoftConsole-Documentation)
- - Containing information relevant to only Windows users shipped with Windows SoftConsole
- - Containing information relevant to only Linux users shipped with Linux SoftConsole
+ - Containing information relevant to **both Windows and Linux** users [deployed online](https://mi-v-ecosystem.github.io/SoftConsole-Documentation)
+ - Containing information relevant to **only Windows** users shipped with Windows SoftConsole
+ - Containing information relevant to **only Linux** users shipped with Linux SoftConsole
 
 The online documentation contains both OSs and can be updated/improved even after the SoftConsole release. While documentation installed with specific SoftConsole contains only information relevant to its host OS and can be viewed without an internet connection.
 
@@ -109,7 +109,7 @@ There are few common places where these breadcrumbs start:
 
    {{ macros.breadcrumb_indent('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
 
-   ![board image](images/breadcrumbs/project_properties_menu.png)
+   ![board image](images/breadcrumbs/project_properties_menu2.png)
 
 
 

@@ -91,7 +91,7 @@
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">About SoftConsole and this document</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#variants">Variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-variants">Documentation variants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#download-offline-versions">Download offline versions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#used-terms">Used terms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#breadcrumbs">Breadcrumbs</a></li>
@@ -129,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html#starting-the-ide">Starting the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
@@ -230,13 +231,13 @@
 <p class="admonition-title">Note</p>
 <p>Users of previous releases should watch for changes and in the <a class="reference internal" href="#whatisnew"><span class="std std-ref">What is new</span></a> chapter and re-read all affected chapters.</p>
 </div>
-<div class="section" id="variants">
-<h2>Variants<a class="headerlink" href="#variants" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="documentation-variants">
+<h2>Documentation variants<a class="headerlink" href="#documentation-variants" title="Permalink to this headline">¶</a></h2>
 <p>The SoftConsole documentation is distributed in three variants:</p>
 <ul class="simple">
-<li><p>Containing information relevant to both Windows and Linux users <a class="reference external" href="https://mi-v-ecosystem.github.io/SoftConsole-Documentation">deployed online</a></p></li>
-<li><p>Containing information relevant to only Windows users shipped with Windows SoftConsole</p></li>
-<li><p>Containing information relevant to only Linux users shipped with Linux SoftConsole</p></li>
+<li><p>Containing information relevant to <strong>both Windows and Linux</strong> users <a class="reference external" href="https://mi-v-ecosystem.github.io/SoftConsole-Documentation">deployed online</a></p></li>
+<li><p>Containing information relevant to <strong>only Windows</strong> users shipped with Windows SoftConsole</p></li>
+<li><p>Containing information relevant to <strong>only Linux</strong> users shipped with Linux SoftConsole</p></li>
 </ul>
 <p>The online documentation contains both OSs and can be updated/improved even after the SoftConsole release. While documentation installed with specific SoftConsole contains only information relevant to its host OS and can be viewed without an internet connection.</p>
 <p>Currently you are reading the: <strong>Windows and Linux</strong> variant.</p>
@@ -281,7 +282,7 @@ There are few common places where these breadcrumbs start:</p>
 <p><img alt="board image" src="../_images/project_properties.png" /></p>
 <p>This opens the following menu and can be navigated with the breadcrumbs:</p>
 <div class="graphviz"><img src="../_images/graphviz-0d3696fe041bc72717b173aa6185503c9aee2318.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
-<p><img alt="board image" src="../_images/project_properties_menu.png" /></p>
+<p><img alt="board image" src="../_images/project_properties_menu2.png" /></p>
 </li>
 <li><p>The launchers <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">configuration</span></code> as starting location, example:</p>
 <div class="graphviz"><img src="../_images/graphviz-549b3d8d84b073cc27b3972b52ac6b84c938420d.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
@@ -315,7 +316,6 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Using bespoke Eclipse plugins</p>
 <ul>
 <li><p>Workspace generator and workspace version checker</p></li>
-<li><p>Custom Welcome page</p></li>
 </ul>
 </li>
 <li><p>Improved installer</p>

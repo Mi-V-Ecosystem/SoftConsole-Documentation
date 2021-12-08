@@ -104,7 +104,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Navigating the IDE</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#starting-the-ide">Starting the IDE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#first-start-up">First start-up</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#access-commands-and-other-items">Access commands and other items</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#toolbar-icons">Toolbar icons</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#save-all">Save all</a></li>
@@ -223,6 +225,76 @@
 <h1>Navigating the IDE<a class="headerlink" href="#navigating-the-ide" title="Permalink to this headline">¶</a></h1>
 <p>Through the document there are references to various actions, it’s good to know how to efficiently navigate through them.</p>
 <p>Often there multiple ways to achieve the same results and this section will highlight few, so then can find whichever way is most comfortable to him.</p>
+</div>
+<div class="section" id="starting-the-ide">
+<h1>Starting the IDE<a class="headerlink" href="#starting-the-ide" title="Permalink to this headline">¶</a></h1>
+<p>Before using the IDE, it needs to be started, installer generates shortcuts in the start menus and on the desktop:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Windows</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Linux</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<p><img alt="start-windows" src="../_images/start-windows.png" /></p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<p><img alt="start-linux" src="../_images/start-linux.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This screenshot is from KDE 5 desktop environment just as an example, some desktop environments might have different looking start menu or not have a start menu concept at all. Same for the desktop icon, the installer will try to place a desktop icon for the user, but the desktop environment might not support icons on the desktop altogether.</p>
+</div>
+</div>
+</div>
+<p>As an alternative to the desktop/menu shortcuts, the launcher scripts can be used directly:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1-0 docutils container">
+<div class="docutils container">
+<p>Windows</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-1 docutils container">
+<div class="docutils container">
+<p>Linux</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/softconsole.cmd</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/softconsole-shared.cmd</span></code></p></li>
+</ul>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/softconsole.sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/softconsole-shared.sh</span></code></p></li>
+</ul>
+</div>
+</div>
+<p>The first <code class="docutils literal notranslate"><span class="pre">softconsole.(cmd|sh)</span></code> script is the preferred one while <code class="docutils literal notranslate"><span class="pre">softconsole-shared.(cmd|sh)</span></code> is meant to be used when SoftConsole is installed in a shared environment where one installation of SoftConsole is used by many users, such as mapped network drive.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do <strong>not ever</strong> run eclipse binary directly, because the environment settings will not be configured and a lot of submodules will not behave as expected. Always use launcher script or desktop/menu shortcuts.</p>
+</div>
+<div class="section" id="first-start-up">
+<h2>First start-up<a class="headerlink" href="#first-start-up" title="Permalink to this headline">¶</a></h2>
+<p>When opening workspaces for the very first time then the indexes have to be built and discovery has to finish. It can be seen on the bottom right corner of the IDE:</p>
+<p><img alt="First start" src="../_images/first_start.png" /></p>
+<p>Until the indexing is finished actions like building projects/workspace will be stalled, therefore it’s best to just wait a minute for the indexing/discovery to finish first and only then start to use the IDE.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This might take different amount of time depending on the size of the workspace and the performance of the host machine, but it shouldn’t take long.</p>
+</div>
+</div>
 <div class="section" id="access-commands-and-other-items">
 <h2>Access commands and other items<a class="headerlink" href="#access-commands-and-other-items" title="Permalink to this headline">¶</a></h2>
 <p>“Access commands and other items” was formerly “Find Action”, it’s SoftConsole’s feature to find quickly GUI and various other entities.</p>
@@ -518,29 +590,29 @@ In the “Instruction Stepping Mode” the CPU will execute all the instructions
 <p>Interesting setting is scopes which enable specific behaviors:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="active item sphinx-data-tab-2-0 docutils container">
 <div class="docutils container">
 <p>Workspace</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="item sphinx-data-tab-2-1 docutils container">
 <div class="docutils container">
 <p>Enclosing project</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-0-2 docutils container">
+<div class="item sphinx-data-tab-2-2 docutils container">
 <div class="docutils container">
 <p>Selected resource in ‘Project Explorer’</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
 <p>Will search inside the whole workspace, that means all opened projects.</p>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
 <p>Will search only within a single project, where ever the currently selected file in the Project Explorer belongs to.</p>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
 <p>Will search within the selected file, or the selected folder (and its sub-folders/sub-files).</p>
 </div>
 </div>
