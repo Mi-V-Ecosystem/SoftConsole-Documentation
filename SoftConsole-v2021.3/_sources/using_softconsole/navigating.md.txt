@@ -74,7 +74,7 @@ When opening workspaces for the very first time then the indexes have to be buil
 
 ![First start](images/start/first_start.png)
 
-Until the indexing is finished actions like building projects/workspace will be stalled, therefore it's best to just wait a minute for the indexing/discovery to finish first and only then start to use the IDE.
+Until the indexing is finished, actions like building projects/workspace will be stalled, therefore it's best to just wait a minute for the indexing/discovery to finish first and only then start to use the IDE.
 
 ```{note}
 This might take different amount of time depending on the size of the workspace and the performance of the host machine, but it shouldn't take long.
