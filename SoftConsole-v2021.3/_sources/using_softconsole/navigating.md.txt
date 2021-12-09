@@ -9,7 +9,7 @@ Through the document there are references to various actions, it's good to know 
 
 Often there multiple ways to achieve the same results and this section will highlight few, so then can find whichever way is most comfortable to him.
 
-# Starting the IDE
+## Starting the IDE
 
 Before using the IDE, it needs to be started, installer generates shortcuts in the start menus and on the desktop:
 
