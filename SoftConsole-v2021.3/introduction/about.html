@@ -98,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#what-is-new">What is new</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#softconsole-2021-3">SoftConsole 2021.3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fixes-and-sars">Bug fixes and SARs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#flashpro-support-matrix">FlashPro support matrix</a></li>
 </ul>
@@ -304,29 +305,94 @@ There are few common places where these breadcrumbs start:</p>
 <h2>SoftConsole 2021.3<a class="headerlink" href="#softconsole-2021-3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="features">
 <h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>MPFS boot mode programmer</p>
 <ul>
-<li><p>Supporting X.509 public and PKCS#8 private keys in bootmode 3 (factory secure boot from eNVM).</p></li>
-<li><p>Minor argument parsing bug fixes</p></li>
+<li><p>MPFS boot mode programmer</p>
+<ul class="simple">
+<li><p>Supporting X.509 public and PCKS#8 private keys in boot mode 3 (factory secure boot from eNVM)</p></li>
+<li><p>Bug fixes (see the section below)</p></li>
 </ul>
 </li>
-<li><p>Arm toolchain updated to v10-3-1-2-1</p></li>
-<li><p>Documentation shift to HTML format</p></li>
-<li><p>Using bespoke Eclipse plugins</p>
+<li><p>Arm toolchain version updated to v10.3.1-2.1</p></li>
+<li><p>Documentation shifted from release notes to dedicated HTML format</p>
 <ul>
-<li><p>Workspace generator and workspace version checker</p></li>
+<li><p>Content of the documentation rewritten to make it more user friendly</p></li>
+<li><p>Online version is deployed <a class="reference external" href="https://mi-v-ecosystem.github.io/SoftConsole-Documentation/SoftConsole-v2021.3/">here</a>.</p></li>
+<li><p>Downloads for offline versions are <a class="reference external" href="https://mi-v-ecosystem.github.io/SoftConsole-Documentation/SoftConsole-v2021.3/introduction/about.html#download-offline-versions">here</a>.</p></li>
+<li><p>And each SoftConsole has offline version bundled here:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;SOFTCONSOLE_INSTALL_DIR&gt;/documentation/softconsole/index.html</span></code></p>
+<p>Shortcut to the bundled documentation is added by the installer into the start menu so users do not have to memorize the above path.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The offline versions bundled with the SoftConsole contain only the relevant operating system. That means the online documentation contains info relevant for both Windows and Linux users. While the documentation in Windows SoftConsole contains only relevant information for Windows users. And the documentation in Linux SoftConsole contains only relevant information for Linux users. This should improve readability as Windows users do not have to read/parse Linux sections and vice versa.</p>
+</div>
+</li>
+<li><p>Fixing SAR (see section below)</p></li>
+</ul>
+</li>
+<li><p>Eclipse</p>
+<ul class="simple">
+<li><p>Bundling custom Eclipse plugins that generate correct workspace for the user automatically.</p></li>
+<li><p>When opening new workspace plugins check for compatibility to make sure that incompatible versions of workspaces are opened by accident.</p></li>
+<li><p>Workspace generated with streamlined metadata, should provide very minor performance improvement</p></li>
+<li><p>Tweaked Java memory management handling</p></li>
 </ul>
 </li>
 <li><p>Improved installer</p>
-<ul>
-<li><p>CAL library integration</p></li>
-<li><p>Linux shortcut generation improved</p></li>
-<li><p>Post installation notes switched to HTML format</p></li>
+<ul class="simple">
+<li><p>CAL library integrated to the installer</p></li>
+<li><p>Bug fixes (see section below)</p></li>
 </ul>
 </li>
-<li><p>UltraSoC trace support removed</p></li>
-<li><p>OpenOCD codes for RTPFS devices added</p></li>
+<li><p>UltraSoC trace support removed from SoftConsole</p></li>
+<li><p>OpenOCD supports RTPFS devices</p></li>
+</ul>
+</div>
+<div class="section" id="bug-fixes-and-sars">
+<h3>Bug fixes and SARs<a class="headerlink" href="#bug-fixes-and-sars" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>MPFS boot mode programmer</p>
+<ul>
+<li><p>SAR 122301 - MPFS bootmode programmer doesn’t handle multiple ELF files in one workdir</p>
+<p>The manual ELF file selection was not working.</p>
+</li>
+<li><p>SAR 121969 - Running mpfs-bootmode-programer with wrong arguments can cause unhandled exception</p>
+<p>Tool crashed when given a certain combination of input arguments.</p>
+</li>
+<li><p>SAR 122302 - MPFS bootmode programmer can cause exceptions</p>
+<p>Tool crashed when given a certain combination of input arguments.</p>
+</li>
+<li><p>SAR 121388 - Environment variable path string throws Java Exception</p>
+<p>Tool crashed when the environment variable contained invalid characters instead of a valid path.</p>
+</li>
+</ul>
+</li>
+<li><p>Installer</p>
+<ul>
+<li><p>SAR 121482 - Shortcuts not generated consistently on some Linux distributions</p>
+<p>Users couldn’t see the SoftConsole shortcuts in their desktop and their start menu.</p>
+</li>
+<li><p>SAR 121479 - malformed post-installation readme.</p>
+<p>The installer was struggling with correct formatting. Switched to the HTML documentation</p>
+</li>
+<li><p>SAR 116431 - Installer ignores –prefix command line option in –mode unattended</p>
+<p>Unattended installations were ignoring the –prefix command and always installing SoftConsole into its default location</p>
+</li>
+</ul>
+</li>
+<li><p>Eclipse</p>
+<ul>
+<li><p>SAR 115587 - HOME variable in the softconsole.sh file overwrites the default HOME on Linux machines</p>
+<p>Primarily the HOME variable is set to provide a consistent experience in the most portable and standalone setup. However, if SoftConsole is installed in a shared environment where one installation can be used by many users then using the default HOME is preferred. Therefore, a secondary launcher script is added which allows SoftConsole to be used in a shared setup.</p>
+</li>
+</ul>
+</li>
+<li><p>Documentation</p>
+<ul>
+<li><p>SAR 110489 - Request to provide SoftConsole User guide with all the details provided in release notes</p>
+<p>Creating SoftConsole documentation in a new HTML format while release notes now are not overlapping with a user guide.</p>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="known-issues">
