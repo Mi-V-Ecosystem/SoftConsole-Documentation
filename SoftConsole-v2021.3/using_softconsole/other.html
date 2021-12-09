@@ -13,6 +13,10 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
@@ -37,6 +41,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
     
@@ -105,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Other features</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#importing-crypto-application-library">Importing Crypto Application Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#crypto-application-library">Crypto Application Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#built-in-serial-terminal-view">Built-in serial terminal view</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#integer-only-newlib-support">Integer only newlib support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#static-stack-profiling">Static stack profiling</a></li>
@@ -203,13 +209,33 @@
 
   <div class="section" id="other-features">
 <h1>Other features<a class="headerlink" href="#other-features" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="importing-crypto-application-library">
-<h2>Importing Crypto Application Library<a class="headerlink" href="#importing-crypto-application-library" title="Permalink to this headline">¶</a></h2>
-<p>If the Crypto Application Library (CAL) license was agreed on installation then the library is installed here:</p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/CAL.zip</span></code></p>
+<div class="section" id="crypto-application-library">
+<h2>Crypto Application Library<a class="headerlink" href="#crypto-application-library" title="Permalink to this headline">¶</a></h2>
+<p>If the Crypto Application Library (CAL) license was agreed on installation then the library is installed in this folder:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code></p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>PolarFire SoC</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Mi-V</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-src</span></code> a crypto sources in a as-is form, user can use these for reference, however they are not a SoftConsole project</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib.a</span></code> file that can be used with <strong>PolarFire SoC</strong> crypto examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user_guide.pdf</span></code> Documentation for the CAL</p></li>
+</ul>
+<p>After the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> project produces the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib.a</span></code> file, then it can be used in the example projects located on the <a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples/tree/main/driver-examples/mss">GitHub</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>CAL can be imported as any other generic/regular ZIPed SoftConsole project. Users who know how to import projects can skip the rest of the section.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> project can be imported as any other generic/regular SoftConsole project. Users who know how to import projects can skip the rest of the section.</p>
 </div>
 <p>To import in into the workspace do the following:</p>
 <div class="graphviz"><img src="../_images/graphviz-2a326d056ee4bbcb284e82727ca3058bf9b51ecf.png" alt="digraph {
@@ -219,13 +245,42 @@
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Existing Projects into Workspace&quot;
      }" class="graphviz" /></div>
 <br/><p>After Import dialog is showed do following:</p>
-<div class="graphviz"><img src="../_images/graphviz-193d846e6d33eaeab06743b1699fc301a13eb8fa.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-d0fe85cfb560ce80a633d497bf2ac9a291e25a25.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Select archive file&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the CAL.zip&quot; -&gt; &quot;Open&quot;
+         &quot;Select root directory&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the 'mss-user-crypto-lib' folder&quot; -&gt; &quot;Open&quot;
      }" class="graphviz" /></div>
 <br/><p>If the dialog was left in the default state (as provided from a fresh workspace) and the project was not imported already into the workspace, then clicking the <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button will import it correctly into the workspace.</p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-src</span></code> a crypto sources in a as-is form, user can use these for reference, however they are not a SoftConsole project</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the <code class="docutils literal notranslate"><span class="pre">miv-rv32ima-user-crypto-lib.a</span></code>, <code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code> and <code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code> files that can be used with <strong>Mi-V</strong> crypto examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user_guide.pdf</span></code> Documentation for the CAL</p></li>
+</ul>
+<p>After the <code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> project produces the <code class="docutils literal notranslate"><span class="pre">miv-rv32ima-user-crypto-lib.a</span></code>, <code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code> and <code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code> files, then they can be used in example projects located on the <a class="reference external" href="https://github.com/Mi-V-Soft-RISC-V/miv-rv32-bare-metal-examples/tree/main/driver-examples/pf-user-crypto">GitHub</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> project can be imported as any other generic/regular SoftConsole project. Users who know how to import projects can skip the rest of the section.</p>
+</div>
+<p>To import in into the workspace do the following:</p>
+<div class="graphviz"><img src="../_images/graphviz-2a326d056ee4bbcb284e82727ca3058bf9b51ecf.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Existing Projects into Workspace&quot;
+     }" class="graphviz" /></div>
+<br/><p>After Import dialog is showed do following:</p>
+<div class="graphviz"><img src="../_images/graphviz-dbbb25dff1a9dab9cb4d7986a53d998acf0987ed.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Select root directory&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the 'miv-rv32-user-crypto-lib' folder&quot; -&gt; &quot;Open&quot;
+     }" class="graphviz" /></div>
+<br/><p>If the dialog was left in the default state (as provided from a fresh workspace) and the project was not imported already into the workspace, then clicking the <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button will import it correctly into the workspace.</p>
+</div>
+</div>
 </div>
 <div class="section" id="built-in-serial-terminal-view">
 <h2>Built-in serial terminal view<a class="headerlink" href="#built-in-serial-terminal-view" title="Permalink to this headline">¶</a></h2>
