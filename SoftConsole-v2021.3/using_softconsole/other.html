@@ -212,6 +212,13 @@
 <div class="section" id="crypto-application-library">
 <h2>Crypto Application Library<a class="headerlink" href="#crypto-application-library" title="Permalink to this headline">¶</a></h2>
 <p>If the Crypto Application Library (CAL) license was agreed on installation then the library is installed in <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code> folder.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code> folder contains these following folders/files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-src</span></code> crypto sources in an as-is form, user can use these for reference, but they are not a SoftConsole project</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib.a</span></code> file that can be used with <strong>PolarFire SoC</strong> crypto examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the <code class="docutils literal notranslate"><span class="pre">miv-rv32ima-user-crypto-lib.a</span></code>, <code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code> and <code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code> files that can be used with <strong>Mi-V Soft processor</strong> crypto examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user_guide.pdf</span></code> Documentation for the CAL API</p></li>
+</ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-0-0 docutils container">
@@ -221,17 +228,11 @@
 </div>
 <div class="item sphinx-data-tab-0-1 docutils container">
 <div class="docutils container">
-<p>Mi-V</p>
+<p>Mi-V Soft processor</p>
 </div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<p>The <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code> folder contains these following folders/files:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-src</span></code> crypto sources in an as-is form, user can use these for reference, but they are not a SoftConsole project</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib.a</span></code> file that can be used with <strong>PolarFire SoC</strong> crypto examples</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">user_guide.pdf</span></code> Documentation for the CAL</p></li>
-</ul>
 <p>After the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> project produces the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib.a</span></code> file, then it can be used in the example projects located on the <a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples/tree/main/driver-examples/mss">GitHub</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -254,12 +255,6 @@
 <br/><p>If the dialog was left in the default state (as provided from a fresh workspace) and the project was not imported already into the workspace, then clicking the <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button will import it correctly into the workspace.</p>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<p>The <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code> folder contains these following folders/files:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-src</span></code> crypto sources in an as-is form, user can use these for reference, but they are not a SoftConsole project</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the <code class="docutils literal notranslate"><span class="pre">miv-rv32ima-user-crypto-lib.a</span></code>, <code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code> and <code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code> files that can be used with <strong>Mi-V</strong> crypto examples</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">user_guide.pdf</span></code> Documentation for the CAL</p></li>
-</ul>
 <p>After the <code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> project produces the <code class="docutils literal notranslate"><span class="pre">miv-rv32ima-user-crypto-lib.a</span></code>, <code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code> and <code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code> files, then they can be used in example projects located on the <a class="reference external" href="https://github.com/Mi-V-Soft-RISC-V/miv-rv32-bare-metal-examples/tree/main/driver-examples/pf-user-crypto">GitHub</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
