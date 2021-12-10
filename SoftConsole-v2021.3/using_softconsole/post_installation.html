@@ -104,6 +104,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Post Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#crypto-application-library">Crypto Application Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#polarfire-soc-boot-mode-programming">PolarFire SoC boot mode programming</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#renode-dependencies">Renode dependencies</a></li>
@@ -207,6 +208,75 @@
 
   <div class="section" id="post-installation">
 <h1>Post Installation<a class="headerlink" href="#post-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="crypto-application-library">
+<h2>Crypto Application Library<a class="headerlink" href="#crypto-application-library" title="Permalink to this headline">¶</a></h2>
+<p>If the Crypto Application Library (CAL) license was agreed on installation then the library is installed in <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code> folder.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code> folder contains these following folders/files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-src</span></code> crypto sources in an as-is form, user can use these for reference, but they are not a SoftConsole project</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib.a</span></code> file that can be used with <strong>PolarFire SoC</strong> crypto examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the <code class="docutils literal notranslate"><span class="pre">miv-rv32ima-user-crypto-lib.a</span></code>, <code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code> and <code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code> files that can be used with <strong>Mi-V Soft processor</strong> crypto examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user_guide.pdf</span></code> Documentation for the CAL API</p></li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>PolarFire SoC</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Mi-V Soft processor</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<p>After the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> project produces the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib.a</span></code> file, then it can be used in the example projects located on the <a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples/tree/main/driver-examples/mss">GitHub</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> project can be imported as any other generic/regular SoftConsole project. Users who know how to import projects can skip the rest of the section.</p>
+</div>
+<p>To import in into the workspace do the following:</p>
+<div class="graphviz"><img src="../_images/graphviz-693664cfc32b674906b3886c069421e62f65a94d.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Existing Projects into Workspace&quot;
+     }" class="graphviz" /></div>
+<br/><p>After Import dialog is showed do following:</p>
+<div class="graphviz"><img src="../_images/graphviz-84950dd02d2515a5dc0273d23ed5c4b1cad86463.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Select root directory&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the 'mss-user-crypto-lib' folder&quot; -&gt; &quot;Open&quot;
+     }" class="graphviz" /></div>
+<br/><p>If the dialog was left in the default state (as provided from a fresh workspace) and the project was not imported already into the workspace, then clicking the <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button will import it correctly into the workspace.</p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<p>After the <code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> project produces the <code class="docutils literal notranslate"><span class="pre">miv-rv32ima-user-crypto-lib.a</span></code>, <code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code> and <code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code> files, then they can be used in example projects located on the <a class="reference external" href="https://github.com/Mi-V-Soft-RISC-V/miv-rv32-bare-metal-examples/tree/main/driver-examples/pf-user-crypto">GitHub</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> project can be imported as any other generic/regular SoftConsole project. Users who know how to import projects can skip the rest of the section.</p>
+</div>
+<p>To import in into the workspace do the following:</p>
+<div class="graphviz"><img src="../_images/graphviz-693664cfc32b674906b3886c069421e62f65a94d.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Existing Projects into Workspace&quot;
+     }" class="graphviz" /></div>
+<br/><p>After Import dialog is showed do following:</p>
+<div class="graphviz"><img src="../_images/graphviz-77a782d6d3634c0082ba83aa9f19d18c958f9895.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Select root directory&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the 'miv-rv32-user-crypto-lib' folder&quot; -&gt; &quot;Open&quot;
+     }" class="graphviz" /></div>
+<br/><p>If the dialog was left in the default state (as provided from a fresh workspace) and the project was not imported already into the workspace, then clicking the <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button will import it correctly into the workspace.</p>
+</div>
+</div>
+</div>
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="polarfire-soc-boot-mode-programming">
@@ -224,18 +294,18 @@
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="active item sphinx-data-tab-1-0 docutils container">
 <div class="docutils container">
 <p>Windows 10/8.1</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="item sphinx-data-tab-1-1 docutils container">
 <div class="docutils container">
 <p>Windows 7</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
 <p>The Renode emulation platform can be used out of the box on many Windows 10/8.1 machines.
 However in a rare case when the .NET Framework is not already installed with Windows 10/8.1 then it can be changed easily from within Windows features menu.</p>
 <div class="graphviz"><img src="../_images/graphviz-02c9360d08aa1dbd4b956b49a0c10b555ed6304e.png" alt="digraph {
@@ -245,7 +315,7 @@ However in a rare case when the .NET Framework is not already installed with Win
          &quot;Start button&quot; -&gt; &quot;Type 'Turn Windows features on or off'&quot; -&gt; &quot;Select '.NET Framework 4.8'&quot; -&gt; &quot;Click OK&quot;
      }" class="graphviz" /></div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
 <p>On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:</p>
 <p><a class="reference external" href="https://www.microsoft.com/net/download/dotnet-framework-runtime">https://www.microsoft.com/net/download/dotnet-framework-runtime</a></p>
 </div>
@@ -268,33 +338,33 @@ necessary.</p>
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-1-0 docutils container">
+<div class="active item sphinx-data-tab-2-0 docutils container">
 <div class="docutils container">
 <p>Ubuntu/Debian</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-1-1 docutils container">
+<div class="item sphinx-data-tab-2-1 docutils container">
 <div class="docutils container">
 <p>CentOS/RHEL</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-1-2 docutils container">
+<div class="item sphinx-data-tab-2-2 docutils container">
 <div class="docutils container">
 <p>OpenSuse/LEAP</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install build-essential
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum groupinstall <span class="s1">&#39;Development Tools&#39;</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-2 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper install -t pattern devel_basis
 </pre></div>
 </div>
@@ -319,23 +389,23 @@ necessary.</p>
 <p>Renode requires Mono framework to run and is provided by mono-project, add its package repository running the following:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2-0 docutils container">
+<div class="active item sphinx-data-tab-3-0 docutils container">
 <div class="docutils container">
 <p>Ubuntu 20.04</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-2-1 docutils container">
+<div class="item sphinx-data-tab-3-1 docutils container">
 <div class="docutils container">
 <p>Debian 10</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-2-2 docutils container">
+<div class="item sphinx-data-tab-3-2 docutils container">
 <div class="docutils container">
 <p>CentOS/RHEL 7</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install gnupg ca-certificates
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 <span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/ubuntu stable-focal main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
@@ -345,7 +415,7 @@ sudo apt install mono-devel mono-full
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-1 docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install apt-transport-https dirmngr gnupg ca-certificates
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 <span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/debian stable-buster main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
@@ -355,7 +425,7 @@ sudo apt install mono-devel mono-full
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-2 docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>These commands have to be run from <strong>root</strong> account.</p>
@@ -437,43 +507,43 @@ Bus <span class="m">002</span> Device <span class="m">002</span>: ID <span class
 <p>And then execute the following:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-3-0 docutils container">
+<div class="active item sphinx-data-tab-4-0 docutils container">
 <div class="docutils container">
 <p>PolarFire SoC</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-3-1 docutils container">
+<div class="item sphinx-data-tab-4-1 docutils container">
 <div class="docutils container">
 <p>Mi-V RISCV</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-3-2 docutils container">
+<div class="item sphinx-data-tab-4-2 docutils container">
 <div class="docutils container">
 <p>Cortex-M1</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-3-3 docutils container">
+<div class="item sphinx-data-tab-4-3 docutils container">
 <div class="docutils container">
 <p>Cortex-M3</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 active docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -c <span class="s2">&quot;set DEVICE MPFS&quot;</span> -f board/microsemi-riscv.cfg
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-1 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-1 docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-riscv.cfg
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-2 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-2 docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-cortex-m1.cfg
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-3 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-3 docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -c <span class="s2">&quot;set DEVICE M2S090&quot;</span> -f board/microsemi-cortex-m3.cfg
 </pre></div>
 </div>
@@ -488,23 +558,23 @@ Bus <span class="m">002</span> Device <span class="m">002</span>: ID <span class
 <p>The output should be similar to the following:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4-0 docutils container">
+<div class="active item sphinx-data-tab-5-0 docutils container">
 <div class="docutils container">
 <p>Mi-V RISC-V</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-4-1 docutils container">
+<div class="item sphinx-data-tab-5-1 docutils container">
 <div class="docutils container">
 <p>Cortex-M1</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-4-2 docutils container">
+<div class="item sphinx-data-tab-5-2 docutils container">
 <div class="docutils container">
 <p>Cortex-M3</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-0 active docutils container">
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
 Licensed under GNU GPL v2
 For bug reports, read
@@ -537,7 +607,7 @@ halted at 0x80000b60 due to debug interrupt
 </ul>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-1 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-1 docutils container">
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
 Licensed under GNU GPL v2
 For bug reports, read
@@ -571,7 +641,7 @@ cortex_m auto_bp_type off
 </ul>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-2 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-2 docutils container">
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
 Licensed under GNU GPL v2
 For bug reports, read

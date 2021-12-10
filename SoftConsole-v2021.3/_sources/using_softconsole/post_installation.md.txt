@@ -5,6 +5,8 @@
 
 {{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
 
+{% include 'main/using_softconsole/other/_cal.inc' %}
+
 {% if windows is defined and linux is defined %}
 ## Windows
 {% include 'main/using_softconsole/post_installation/_windows.inc' %}
@@ -25,9 +27,6 @@
 {% endif %}  % End of Linux
 
 
-
-
-{% include 'main/using_softconsole/other/_cal.inc' %}
 
 
 {% endif %}
