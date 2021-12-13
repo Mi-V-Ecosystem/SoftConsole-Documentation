@@ -25,9 +25,10 @@
 {% endif %}  % End of Linux
 
 
+{% endif %}
+
+
 {% include 'main/using_softconsole/other/_cal.inc' %}
 
-
-{% endif %}
 
 ```````
