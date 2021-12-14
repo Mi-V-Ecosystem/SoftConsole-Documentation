@@ -120,6 +120,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#boot-program-link-requirements">Boot program link requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generated-artifacts">Generated artifacts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#boot-mode-3-elliptic-curve-cryptography">Boot mode 3 Elliptic Curve Cryptography</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Security</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#known-issues-limitations">Known issues/limitations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mpfsbootmodeprogrammer-usage-help">mpfsBootmodeProgrammer usage/help</a></li>
@@ -496,6 +497,10 @@ openssl ec -in private.pem -pubout -out public.pem
 <p>After the mpfsBootmodeProgrammer is run with boot mode 3, then the ECC (Elliptic Curve Cryptography) <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> values of the public key
 will be stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> file. The <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> values are required when configuring the boot mode 3 program image eNVM client in Libero.</p>
 </div>
+</div>
+<div class="section" id="security">
+<h3>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
+<p>The mpfsBootmodeProgrammer doesn’t use the <code class="docutils literal notranslate"><span class="pre">log4j</span></code> package because the logging capabilities are implemented from scratch in the mpfsBootmodeProgrammer. Therefore mpfsBootmodeProgrammer is not affected by the <a class="reference external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228">CVE-2021-44228</a> vulnerability.</p>
 </div>
 <div class="section" id="troubleshooting">
 <h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
