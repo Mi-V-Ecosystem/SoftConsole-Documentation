@@ -7,7 +7,7 @@
 
 This is manual for Microchip {{sc}}.
 
-SoftConsole is Microchip’s free and primarily open-source based software development environment for Windows and GNU/Linux facilitating the rapid development of bare-metal and RTOS based C/C++ software for Microchip CPU and SoC (System on Chip) based FPGAs.It provides development and debugging support for all Microchip SoC FPGAs and 32-bit soft IP CPUs.
+SoftConsole is Microchip’s free and primarily open-source based software development environment for Windows and GNU/Linux facilitating the rapid development of bare-metal and RTOS based C/C++ software for Microchip CPU and SoC (System on Chip) based FPGAs.It provides development and debugging support for all Microchip SoC FPGAs and 32-bit soft IP CPUs and can be downloaded from [Microchip website](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/programming-and-debug/softconsole).
 
 ![IDE screenshot](images/sc-ide/renode-miv.png)
 
