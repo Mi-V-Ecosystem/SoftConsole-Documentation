@@ -205,18 +205,13 @@
 <h1>Other features<a class="headerlink" href="#other-features" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="crypto-application-library">
 <h2>Crypto Application Library<a class="headerlink" href="#crypto-application-library" title="Permalink to this headline">¶</a></h2>
-<p>The Crypto Application Library (CAL) provides the software API to access User Crypto block on the PolarFire and PolarFire SoC device families.</p>
+<p>The Crypto Application Library (CAL) provides the software API to access User Crypto block on the PolarFire device families.</p>
 <p>If license was agreed on installation, then the library is installed in <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code> path and  contains these following folders/files:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-src</span></code> crypto sources in an as-is form, user can use these for reference, but they are not a SoftConsole project</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the <code class="docutils literal notranslate"><span class="pre">mss-user-crypto-lib.a</span></code> file that can be used with <strong>PolarFire SoC</strong> crypto examples located on the <a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples/tree/main/driver-examples/mss">GitHub</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the following files:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32ia-user-crypto-lib.a</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32ic-user-crypto-lib.a</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32ima-user-crypto-lib.a</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32im-user-crypto-lib.a</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code></p></li>
 </ul>
 <p>These files can be used with <strong>Mi-V Soft processor</strong> crypto examples located on the <a class="reference external" href="https://github.com/Mi-V-Soft-RISC-V/miv-rv32-bare-metal-examples/tree/main/driver-examples/pf-user-crypto">GitHub</a></p>
@@ -235,11 +230,11 @@
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Existing Projects into Workspace&quot;
      }" class="graphviz" /></div>
 <br/><p>After Import dialog is showed do following:</p>
-<div class="graphviz"><img src="../_images/graphviz-839c552360f74182c73f261fb81dc1f16e901e76.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-dbbb25dff1a9dab9cb4d7986a53d998acf0987ed.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Select root directory&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the crypto-lib folder&quot; -&gt; &quot;Open&quot;
+         &quot;Select root directory&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the 'miv-rv32-user-crypto-lib' folder&quot; -&gt; &quot;Open&quot;
      }" class="graphviz" /></div>
 <br/><p>If the dialog was left in the default state (as provided from a fresh workspace) and the project was not imported already into the workspace, then clicking the <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button will import it correctly into the workspace.</p>
 </div>
