@@ -114,16 +114,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#polarfire-soc-boot-modes">PolarFire SoC Boot Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fpgenprog">fpgenprog</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mpfsbootmodeprogrammer">mpfsBootmodeProgrammer</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#boot-mode-programming-external-launch-configurations">Boot mode programming external launch configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#boot-mode-programming-external-launch-configurations">Boot mode programming external launch configurations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#boot-program-link-requirements">Boot program link requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generated-artifacts">Generated artifacts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#boot-mode-3-elliptic-curve-cryptography">Boot mode 3 Elliptic Curve Cryptography</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#security">Security</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues-limitations">Known issues/limitations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mpfsbootmodeprogrammer-usage-help">mpfsBootmodeProgrammer usage/help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues-limitations">Known issues/limitations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#fpgenprog-fails-to-program-the-board">fpgenprog fails to program the board</a></li>
@@ -306,9 +306,8 @@ Java JRE environment. If the <code class="docutils literal notranslate"><span cl
 for the best results always use the SoftConsole’s Java JRE.</p>
 </div>
 </div>
-</div>
 <div class="section" id="boot-mode-programming-external-launch-configurations">
-<h2>Boot mode programming external launch configurations<a class="headerlink" href="#boot-mode-programming-external-launch-configurations" title="Permalink to this headline">¶</a></h2>
+<h3>Boot mode programming external launch configurations<a class="headerlink" href="#boot-mode-programming-external-launch-configurations" title="Permalink to this headline">¶</a></h3>
 <p>The SoftConsole workspace comes preconfigured with four external tool launch
 configurations, one for each of the four boot modes, which are accessible from
 the External Tools toolbar button or Main Menu &gt; External Tools.</p>
@@ -360,6 +359,7 @@ mpfsBootmodeProgrammer utility will emit an appropriate warning or error
 message to the output log.</p>
 <p>mpfsBootmodeProgrammer always generated a <code class="docutils literal notranslate"><span class="pre">&lt;workdir&gt;/bootmode&lt;n&gt;/debugLog.txt</span></code>
 log file which contains detailed information about the tasks carried out.</p>
+</div>
 <div class="section" id="boot-program-link-requirements">
 <h3>Boot program link requirements<a class="headerlink" href="#boot-program-link-requirements" title="Permalink to this headline">¶</a></h3>
 <p>A boot mode 1 or 3 program must be linked for storage in and execution from
@@ -498,110 +498,6 @@ openssl ec -in private.pem -pubout -out public.pem
 will be stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> file. The <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> values are required when configuring the boot mode 3 program image eNVM client in Libero.</p>
 </div>
 </div>
-<div class="section" id="security">
-<h3>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
-<p>The mpfsBootmodeProgrammer doesn’t use the <code class="docutils literal notranslate"><span class="pre">log4j</span></code> package because the logging capabilities are implemented from scratch in the mpfsBootmodeProgrammer. Therefore mpfsBootmodeProgrammer is not affected by the <a class="reference external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228">CVE-2021-44228</a> vulnerability.</p>
-</div>
-<div class="section" id="troubleshooting">
-<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
-<p>If boot mode programming fails then the Console log should indicate the nature
-of the problem. If necessary also check the debugLog.txt log file that
-mpfsBootmodeProgrammer generates for more details.</p>
-<p>If mpfsBootmodeProgrammer cannot find fpgenprog or the required
-RISC-V GCC/binutils tools then check that the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> and <code class="docutils literal notranslate"><span class="pre">SC_INSTALL_DIR</span></code>
-environment variables are configured correctly. Both environment variables are
-set from the <code class="docutils literal notranslate"><span class="pre">softconsole.{cmd|sh}</span></code> start script but the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> variable may
-require adjustment depending on where Libero SoC or Programming and Debug Tools
-are installed. This can be set by configuring the variable in the OS
-environment, by editing the softconsole.{cmd|sh} script itself or in the
-Environment tab of the boot mode programming external tool launch
-configurations.</p>
-<p>If boot mode programming succeeds but the program does not execute as expected
-from reset then check that the program itself executes correctly under debug
-from RAM (LIM) with the same optimization and debug options.</p>
-<p>If boot mode 2 is programmed from Libero, necessitating the enabling of
-security options including debug locking, then debugging and boot mode
-programming from SoftConsole will not be possible. Boot mode programming will
-fail with messages similar to those below. Debugging and boot mode programming
-will only be possible by erasing the device and reprogramming it with security
-disabled.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The boot mode 2 can be programmed from SoftConsole only with
-security disabled and only from Libero with security enabled.</p>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">JTAG</span> <span class="n">TCK</span> <span class="n">frequency</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">MHz</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">read</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">eFP6</span> <span class="n">USB</span> <span class="n">buffer</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span> <span class="n">to</span> <span class="n">eFP6</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">eFP6</span> <span class="n">connection</span> <span class="n">failed</span><span class="o">.</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;MPFS250T_ES&#39;</span> <span class="p">:</span> <span class="n">Executing</span> <span class="n">action</span> <span class="n">PROGRAM</span> <span class="n">FAILED</span><span class="o">.</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span> <span class="n">to</span> <span class="n">eFP6</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">Error</span><span class="p">:</span> <span class="n">eFP6</span> <span class="n">connection</span> <span class="n">failed</span><span class="o">.</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span> <span class="n">to</span> <span class="n">eFP6</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">eFP6</span> <span class="n">programmer</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">Chain</span> <span class="n">programming</span> <span class="n">FAILED</span><span class="o">.</span>
-<span class="n">Chain</span> <span class="n">Programming</span> <span class="n">Finished</span><span class="p">:</span> <span class="n">Mon</span> <span class="n">Mar</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">54</span> <span class="mi">2021</span> <span class="p">(</span><span class="n">Elapsed</span> <span class="n">time</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">06</span><span class="p">)</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">run</span> <span class="n">Action</span><span class="o">.</span>
-<span class="n">Exported</span> <span class="n">log</span> <span class="n">file</span> <span class="n">D</span><span class="p">:</span>\<span class="n">sandbox</span>\<span class="n">icicle</span><span class="o">-</span><span class="n">kit</span>\<span class="n">MPFS_ICICLE_eMMC</span>\<span class="n">designer</span>\<span class="n">MPFS_ICICLE_eMMC</span>\<span class="n">MPFS_ICICLE_eMMC_fp</span>\<span class="n">MPFS_ICICLE_eMMC</span><span class="o">.</span><span class="n">log</span><span class="o">.</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">The</span> <span class="n">command</span> <span class="s1">&#39;run_selected_actions&#39;</span> <span class="n">failed</span><span class="o">.</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">Failure</span> <span class="n">when</span> <span class="n">executing</span> <span class="n">Tcl</span> <span class="n">script</span><span class="o">.</span> <span class="p">[</span> <span class="n">Line</span> <span class="mi">5</span> <span class="p">]</span>
-<span class="n">Error</span><span class="p">:</span> <span class="n">The</span> <span class="n">Execute</span> <span class="n">Script</span> <span class="n">command</span> <span class="n">failed</span><span class="o">.</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="known-issues-limitations">
-<h3>Known issues/limitations<a class="headerlink" href="#known-issues-limitations" title="Permalink to this headline">¶</a></h3>
-<p>The following known issues and limitations will be addressed in a future
-release.</p>
-<p>There is no facility to select a specific FlashPro programmer when there is
-more than one connected. For best results ensure that only one FlashPro
-programmer is connected.</p>
-<p>Boot mode 0 overwrites page 0 of eNVM because the boot mode cannot be changed
-without at least one NVM (eNVM or sNVM) client being specified at the moment.</p>
-<p>mpfsBootmodeProgrammer does not initialize or reset the SMK (sNVM Master Key)
-and assumes that this has been previously configured appropriately. If this is
-not the case (for example, for a new device) then an attempt to program boot
-mode 2 from SoftConsole will result in messages similar to the following and
-the SMK will need to be configured/initialized from Libero by programming an
-appropriate design that causes the SMK to be (re)generated:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">BITS</span> <span class="n">component</span> <span class="n">bitstream</span> <span class="n">digest</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25295</span><span class="n">f0d1d592a90b333e26e85149708208e9f8e8bc18f6c77bd62f8ad7a6866</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Programming</span> <span class="n">Error</span><span class="o">.</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Bitstream</span> <span class="ow">or</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">corrupted</span> <span class="ow">or</span> <span class="n">noisy</span><span class="o">.</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">componentNo</span><span class="p">:</span> <span class="mi">3</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">blockNo</span><span class="p">:</span> <span class="mi">155</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">DATA_STATUS_RESULT</span><span class="p">:</span> <span class="p">[</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0002000900008407</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">READ_DEBUG_INFO</span><span class="p">[</span><span class="mi">752</span><span class="p">]</span> <span class="o">=</span> <span class="o">&gt;</span>  <span class="mi">0000000000030003017</span><span class="n">f00000080040001000000000000000000000000000000001a0000001e000000db000003000002000900008400fc5e52012dd402010000000000000000000000000084071309c709c709c700280028002824000000</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">ERROR_CODE</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="mi">801</span><span class="n">f</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="o">===================================================================================</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">DSN</span><span class="p">[</span><span class="mi">128</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4883</span><span class="n">b6958cf34738ba77807d1bb91b7f</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="o">===================================================================================</span>
-<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Finished</span><span class="p">:</span> <span class="n">Sat</span> <span class="n">Mar</span> <span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2021</span> <span class="p">(</span><span class="n">Elapsed</span> <span class="n">time</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span><span class="p">)</span>
-<span class="n">Error</span><span class="p">:</span> <span class="p">[</span><span class="mi">80609294</span><span class="p">]:</span>  <span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Executing</span> <span class="n">action</span> <span class="n">PROGRAM</span> <span class="n">FAILED</span><span class="p">,</span> <span class="n">EXIT</span> <span class="o">-</span><span class="mi">22</span><span class="p">,</span> <span class="n">refer</span> <span class="n">to</span> <span class="n">FlashPro</span> <span class="n">online</span> <span class="n">help</span> <span class="k">for</span> <span class="n">details</span><span class="o">.</span>
-<span class="o">@</span><span class="nd">@ACTIVITY</span> <span class="mi">101</span>
-<span class="n">Error</span><span class="p">:</span>  <span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">Chain</span> <span class="n">programming</span> <span class="n">FAILED</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>Elliptic Curve Cryptography private and public keys for boot mode 3 are
-automatically generated and there is no facility to pass an external key file
-yet.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Support for “advanced” options such as U_MSS_BOOTCFG:U_MSS_REVOCATION_ENABLE,
-SBIC:OPTIONS[7:0], SBIC:VERSION and SBIC:DSN is not yet available.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Boot mode programming assumes that the full capacity of eNVM and sNVM is
-available for storing the boot loader program and <strong>does not</strong> have any knowledge
-of any eNVM/sNVM clients configured via other tools (e.g. PolarFire SoC MSS
-Configurator, Libero SoC etc.). It is important, especially for boot mode 2,
-to check that only unused/available NVM is used from SoftConsole when
-programming boot modes.</p>
-</div>
-<p>mpfsBootmodeProgrammer assumes that the base address of the program image is
-identical to the program start address (<code class="docutils literal notranslate"><span class="pre">_start</span></code>) which is true when using the
-PolarFire SoC HAL example linker scripts but may not be so in the general case.</p>
-</div>
 <div class="section" id="mpfsbootmodeprogrammer-usage-help">
 <h3>mpfsBootmodeProgrammer usage/help<a class="headerlink" href="#mpfsbootmodeprogrammer-usage-help" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">13</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">43</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">mpfsBootmodeProgrammer</span> <span class="n">v3</span><span class="mf">.6</span> <span class="n">started</span><span class="o">.</span>
@@ -717,6 +613,110 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
 
 </pre></div>
 </div>
+</div>
+<div class="section" id="security">
+<h3>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
+<p>The mpfsBootmodeProgrammer doesn’t use the <code class="docutils literal notranslate"><span class="pre">log4j</span></code> package because the logging capabilities are implemented from scratch in the mpfsBootmodeProgrammer. Therefore mpfsBootmodeProgrammer is not affected by the <a class="reference external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228">CVE-2021-44228</a> vulnerability.</p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>If boot mode programming fails then the Console log should indicate the nature
+of the problem. If necessary also check the debugLog.txt log file that
+mpfsBootmodeProgrammer generates for more details.</p>
+<p>If mpfsBootmodeProgrammer cannot find fpgenprog or the required
+RISC-V GCC/binutils tools then check that the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> and <code class="docutils literal notranslate"><span class="pre">SC_INSTALL_DIR</span></code>
+environment variables are configured correctly. Both environment variables are
+set from the <code class="docutils literal notranslate"><span class="pre">softconsole.{cmd|sh}</span></code> start script but the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> variable may
+require adjustment depending on where Libero SoC or Programming and Debug Tools
+are installed. This can be set by configuring the variable in the OS
+environment, by editing the softconsole.{cmd|sh} script itself or in the
+Environment tab of the boot mode programming external tool launch
+configurations.</p>
+<p>If boot mode programming succeeds but the program does not execute as expected
+from reset then check that the program itself executes correctly under debug
+from RAM (LIM) with the same optimization and debug options.</p>
+<p>If boot mode 2 is programmed from Libero, necessitating the enabling of
+security options including debug locking, then debugging and boot mode
+programming from SoftConsole will not be possible. Boot mode programming will
+fail with messages similar to those below. Debugging and boot mode programming
+will only be possible by erasing the device and reprogramming it with security
+disabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The boot mode 2 can be programmed from SoftConsole only with
+security disabled and only from Libero with security enabled.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">JTAG</span> <span class="n">TCK</span> <span class="n">frequency</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">MHz</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">read</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">eFP6</span> <span class="n">USB</span> <span class="n">buffer</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span> <span class="n">to</span> <span class="n">eFP6</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">eFP6</span> <span class="n">connection</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;MPFS250T_ES&#39;</span> <span class="p">:</span> <span class="n">Executing</span> <span class="n">action</span> <span class="n">PROGRAM</span> <span class="n">FAILED</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span> <span class="n">to</span> <span class="n">eFP6</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">Error</span><span class="p">:</span> <span class="n">eFP6</span> <span class="n">connection</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span> <span class="n">to</span> <span class="n">eFP6</span><span class="o">.</span> <span class="n">Err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">eFP6</span> <span class="n">programmer</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">programmer</span> <span class="s1">&#39;1C21ED74&#39;</span> <span class="p">:</span> <span class="n">Chain</span> <span class="n">programming</span> <span class="n">FAILED</span><span class="o">.</span>
+<span class="n">Chain</span> <span class="n">Programming</span> <span class="n">Finished</span><span class="p">:</span> <span class="n">Mon</span> <span class="n">Mar</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">54</span> <span class="mi">2021</span> <span class="p">(</span><span class="n">Elapsed</span> <span class="n">time</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">06</span><span class="p">)</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">run</span> <span class="n">Action</span><span class="o">.</span>
+<span class="n">Exported</span> <span class="n">log</span> <span class="n">file</span> <span class="n">D</span><span class="p">:</span>\<span class="n">sandbox</span>\<span class="n">icicle</span><span class="o">-</span><span class="n">kit</span>\<span class="n">MPFS_ICICLE_eMMC</span>\<span class="n">designer</span>\<span class="n">MPFS_ICICLE_eMMC</span>\<span class="n">MPFS_ICICLE_eMMC_fp</span>\<span class="n">MPFS_ICICLE_eMMC</span><span class="o">.</span><span class="n">log</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">The</span> <span class="n">command</span> <span class="s1">&#39;run_selected_actions&#39;</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">Failure</span> <span class="n">when</span> <span class="n">executing</span> <span class="n">Tcl</span> <span class="n">script</span><span class="o">.</span> <span class="p">[</span> <span class="n">Line</span> <span class="mi">5</span> <span class="p">]</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">The</span> <span class="n">Execute</span> <span class="n">Script</span> <span class="n">command</span> <span class="n">failed</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="section" id="known-issues-limitations">
+<h3>Known issues/limitations<a class="headerlink" href="#known-issues-limitations" title="Permalink to this headline">¶</a></h3>
+<p>The following known issues and limitations will be addressed in a future
+release.</p>
+<p>There is no facility to select a specific FlashPro programmer when there is
+more than one connected. For best results ensure that only one FlashPro
+programmer is connected.</p>
+<p>Boot mode 0 overwrites page 0 of eNVM because the boot mode cannot be changed
+without at least one NVM (eNVM or sNVM) client being specified at the moment.</p>
+<p>mpfsBootmodeProgrammer does not initialize or reset the SMK (sNVM Master Key)
+and assumes that this has been previously configured appropriately. If this is
+not the case (for example, for a new device) then an attempt to program boot
+mode 2 from SoftConsole will result in messages similar to the following and
+the SMK will need to be configured/initialized from Libero by programming an
+appropriate design that causes the SMK to be (re)generated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">BITS</span> <span class="n">component</span> <span class="n">bitstream</span> <span class="n">digest</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25295</span><span class="n">f0d1d592a90b333e26e85149708208e9f8e8bc18f6c77bd62f8ad7a6866</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Programming</span> <span class="n">Error</span><span class="o">.</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Bitstream</span> <span class="ow">or</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">corrupted</span> <span class="ow">or</span> <span class="n">noisy</span><span class="o">.</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">componentNo</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">blockNo</span><span class="p">:</span> <span class="mi">155</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">DATA_STATUS_RESULT</span><span class="p">:</span> <span class="p">[</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0002000900008407</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">READ_DEBUG_INFO</span><span class="p">[</span><span class="mi">752</span><span class="p">]</span> <span class="o">=</span> <span class="o">&gt;</span>  <span class="mi">0000000000030003017</span><span class="n">f00000080040001000000000000000000000000000000001a0000001e000000db000003000002000900008400fc5e52012dd402010000000000000000000000000084071309c709c709c700280028002824000000</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">ERROR_CODE</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="mi">801</span><span class="n">f</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="o">===================================================================================</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">EXPORT</span> <span class="n">DSN</span><span class="p">[</span><span class="mi">128</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4883</span><span class="n">b6958cf34738ba77807d1bb91b7f</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="o">===================================================================================</span>
+<span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Finished</span><span class="p">:</span> <span class="n">Sat</span> <span class="n">Mar</span> <span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2021</span> <span class="p">(</span><span class="n">Elapsed</span> <span class="n">time</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span><span class="p">)</span>
+<span class="n">Error</span><span class="p">:</span> <span class="p">[</span><span class="mi">80609294</span><span class="p">]:</span>  <span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span> <span class="p">:</span> <span class="n">Executing</span> <span class="n">action</span> <span class="n">PROGRAM</span> <span class="n">FAILED</span><span class="p">,</span> <span class="n">EXIT</span> <span class="o">-</span><span class="mi">22</span><span class="p">,</span> <span class="n">refer</span> <span class="n">to</span> <span class="n">FlashPro</span> <span class="n">online</span> <span class="n">help</span> <span class="k">for</span> <span class="n">details</span><span class="o">.</span>
+<span class="o">@</span><span class="nd">@ACTIVITY</span> <span class="mi">101</span>
+<span class="n">Error</span><span class="p">:</span>  <span class="n">programmer</span> <span class="s1">&#39;S201QVSUE&#39;</span> <span class="p">:</span> <span class="n">Chain</span> <span class="n">programming</span> <span class="n">FAILED</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Elliptic Curve Cryptography private and public keys for boot mode 3 are
+automatically generated and there is no facility to pass an external key file
+yet.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Support for “advanced” options such as U_MSS_BOOTCFG:U_MSS_REVOCATION_ENABLE,
+SBIC:OPTIONS[7:0], SBIC:VERSION and SBIC:DSN is not yet available.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Boot mode programming assumes that the full capacity of eNVM and sNVM is
+available for storing the boot loader program and <strong>does not</strong> have any knowledge
+of any eNVM/sNVM clients configured via other tools (e.g. PolarFire SoC MSS
+Configurator, Libero SoC etc.). It is important, especially for boot mode 2,
+to check that only unused/available NVM is used from SoftConsole when
+programming boot modes.</p>
+</div>
+<p>mpfsBootmodeProgrammer assumes that the base address of the program image is
+identical to the program start address (<code class="docutils literal notranslate"><span class="pre">_start</span></code>) which is true when using the
+PolarFire SoC HAL example linker scripts but may not be so in the general case.</p>
 </div>
 </div>
 <div class="section" id="fpgenprog-fails-to-program-the-board">
