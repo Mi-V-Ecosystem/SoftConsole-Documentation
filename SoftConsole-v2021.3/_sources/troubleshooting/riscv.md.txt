@@ -7,6 +7,8 @@
 
 {% include 'main/troubleshooting/riscv/_cpp.inc' %}
 {% include 'main/troubleshooting/riscv/_power_cycle.inc' %}
+
+## fpgenprog fails to program the board
 {% include 'main/troubleshooting/riscv/_fpgenprog-1073741819.inc' %}
 {% include 'main/troubleshooting/riscv/_memory_view.inc' %}
 {% include 'main/troubleshooting/riscv/_nostartfiles.inc' %}

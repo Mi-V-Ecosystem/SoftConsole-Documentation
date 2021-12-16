@@ -124,9 +124,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#boot-mode-programmer-troubleshooting">Boot mode programmer troubleshooting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#known-issues-limitations">Known issues/limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fpgenprog-fails-to-program-the-board">fpgenprog fails to program the board</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#fpgenprog-fails-to-program-the-board">fpgenprog fails to program the board</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
@@ -718,9 +718,8 @@ programming boot modes.</p>
 identical to the program start address (<code class="docutils literal notranslate"><span class="pre">_start</span></code>) which is true when using the
 PolarFire SoC HAL example linker scripts but may not be so in the general case.</p>
 </div>
-</div>
 <div class="section" id="fpgenprog-fails-to-program-the-board">
-<h2>fpgenprog fails to program the board<a class="headerlink" href="#fpgenprog-fails-to-program-the-board" title="Permalink to this headline">¶</a></h2>
+<h3>fpgenprog fails to program the board<a class="headerlink" href="#fpgenprog-fails-to-program-the-board" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes user can experience program failures even when running <code class="docutils literal notranslate"><span class="pre">PolarFire</span> <span class="pre">SoC</span> <span class="pre">program</span> <span class="pre">idle</span> <span class="pre">boot</span> <span class="pre">mode</span> <span class="pre">0</span></code> external launcher:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">Warning</span><span class="p">:</span>  <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">file</span><span class="p">:</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
 <span class="ne">Warning</span><span class="p">:</span> <span class="p">[</span><span class="mi">80609481</span><span class="p">]:</span>  <span class="n">Using</span> <span class="n">local</span> <span class="n">backup</span> <span class="n">copy</span><span class="p">:</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.3.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
@@ -813,6 +812,7 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
 </pre></div>
 </div>
 <p>If invoking the fpgenprog from command line shows the following error: <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">run</span> <span class="pre">action.</span> <span class="pre">Return</span> <span class="pre">code</span> <span class="pre">=</span> <span class="pre">-1073741819</span></code>. Then contact support for Libero or Program and Debug as this issue is outside SoftConsole’s scope.</p>
+</div>
 </div>
 </div>
 
