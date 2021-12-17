@@ -45,7 +45,7 @@ SoftConsole for Linux is now fully 64-bit and unlike previous releases no longer
 4. Follow the installer GUI wizard or console mode instructions on screen.
 
    ```{note}
-   If the installation is run as a regular user, then SoftConsole can be installed into the user's home folder (or folders with the user's privileges). While running installer as a root user will allow SoftConsole installation into globally into any folder.
+   If the installation is run as a regular user, then SoftConsole can be installed into the user's home folder (or folders with the user's privileges). While running installer as a root user will allow SoftConsole installation globally into any folder.
    ```
 
 5. If, after installing, the "desktop"/"start menu" shortcuts do not appear or work correctly then log out and back in again first. If there is still a problem with shortcuts, make sure the `xdg-utils` package is installed and uninstall and then reinstall SoftConsole. The installer requires the `xdg-utils` package to create shortcuts and menus, but the supported distributions should have it already installed by default.
