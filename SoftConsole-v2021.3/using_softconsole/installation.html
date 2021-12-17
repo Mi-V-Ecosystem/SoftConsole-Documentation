@@ -197,8 +197,7 @@ The installer is a 64-bit executable GUI based program named: <code class="docut
 </div>
 <div class="section" id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
-<!-- {ref}`installation:Linux` --><!-- :ref:`installation:A Plain Title` --><p>Refer to the Supported Platforms section for details of which Linux distributions and versions are supported.
-Many of the commands below require root privileges using <code class="docutils literal notranslate"><span class="pre">su</span></code>, <code class="docutils literal notranslate"><span class="pre">sudo</span></code> or by logging in as root.</p>
+<!-- {ref}`installation:Linux` --><!-- :ref:`installation:A Plain Title` --><p>Refer to the Supported Platforms section for details of which Linux distributions and versions are supported.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>SoftConsole for Linux is now fully 64-bit and unlike previous releases no longer requires additional 32-bit packages installed on Linux 64-bit.</p>
@@ -213,7 +212,12 @@ chmod +x Microchip-SoftConsole-v2021.3-7.0.0.597-linux-x64-installer.run
 </div>
 </li>
 <li><p>Some desktop/window managers might not put the installer into the focus or show it in the taskbar. The installation might seem frozen, try to minimalize the terminal window to see the installation dialog underneath.</p></li>
-<li><p>Follow the installer GUI wizard or console mode instructions on screen.</p></li>
+<li><p>Follow the installer GUI wizard or console mode instructions on screen.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the installation is run as a regular user, then SoftConsole can be installed into the user’s home folder (or folders with the user’s privileges). While running installer as a root user will allow SoftConsole installation into globally into any folder.</p>
+</div>
+</li>
 <li><p>If, after installing, the “desktop”/”start menu” shortcuts do not appear or work correctly then log out and back in again first. If there is still a problem with shortcuts, make sure the <code class="docutils literal notranslate"><span class="pre">xdg-utils</span></code> package is installed and uninstall and then reinstall SoftConsole. The installer requires the <code class="docutils literal notranslate"><span class="pre">xdg-utils</span></code> package to create shortcuts and menus, but the supported distributions should have it already installed by default.</p></li>
 </ol>
 </div>
