@@ -381,7 +381,11 @@ yum install mono-devel mono-full
 </div>
 <div class="section" id="hardware-targets-flashpro">
 <span id="linuxpostinstallhw"></span><h3>Hardware targets (FlashPro)<a class="headerlink" href="#hardware-targets-flashpro" title="Permalink to this headline">¶</a></h3>
-<p>By default, USB devices are only accessible with root privileges. To debug using SoftConsole and FlashPro5/6 as a
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When accessing FlashPro devices then native Windows/Linux host machines are recommended as there might be issues with Virtual Machines accessing the FlashPro.</p>
+</div>
+<p>By default, USB devices are only accessible to users with root privileges. To debug using SoftConsole and FlashPro5/6 as a
 non-root user some additional steps must be taken.</p>
 <ul>
 <li><p>Copy the OpenOCD udev rules file and tell the udev subsystem to load it. This rules file describes all USB JTAG devices supported by OpenOCD to the system and makes them accessible by non-root users (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
@@ -606,13 +610,14 @@ Info : JTAG tap: M2S090.dap enabled
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>Output of the following form or other errors (excluding any documented in the known issues section) indicate a problem in which case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p></li>
-</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If seeing output similar to the snippet below (or any other errors excluding documented issues) then that indicates a problem. In that case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: FlashPro ports available: none
 Info: FlashPro port used: usb
 <span class="hll">Error: InitializeProgrammer(usb) failed: Can not connect to the programmer
 </span></pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="crypto-application-library">

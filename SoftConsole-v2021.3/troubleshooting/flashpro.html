@@ -449,13 +449,14 @@ Info : JTAG tap: M2S090.dap enabled
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>Output of the following form or other errors (excluding any documented in the known issues section) indicate a problem in which case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p></li>
-</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If seeing output similar to the snippet below (or any other errors excluding documented issues) then that indicates a problem. In that case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: FlashPro ports available: none
 Info: FlashPro port used: usb
 <span class="hll">Error: InitializeProgrammer(usb) failed: Can not connect to the programmer
 </span></pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="flashpro-programmers-cannot-be-shared-by-applications">
