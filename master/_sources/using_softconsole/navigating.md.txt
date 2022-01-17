@@ -9,6 +9,77 @@ Through the document there are references to various actions, it's good to know 
 
 Often there multiple ways to achieve the same results and this section will highlight few, so then can find whichever way is most comfortable to him.
 
+## Starting the IDE
+
+Before using the IDE, it needs to be started, installer generates shortcuts in the start menus and on the desktop:
+
+
+``````{tabs}
+
+{% if windows is defined %}
+````{tab} Windows
+
+![start-windows](images/start/start-windows.png)
+````
+{% endif %}
+
+
+{% if linux is defined %}
+````{tab} Linux
+
+![start-linux](images/start/start-linux.png)
+
+```{note}
+This screenshot is from KDE 5 desktop environment just as an example, some desktop environments might have different looking start menu or not have a start menu concept at all. Same for the desktop icon, the installer will try to place a desktop icon for the user, but the desktop environment might not support icons on the desktop altogether.
+```
+````
+{% endif %}
+
+``````
+
+As an alternative to the desktop/menu shortcuts, the launcher scripts can be used directly:
+
+``````{tabs}
+
+{% if windows is defined %}
+````{tab} Windows
+
+ - `<SC_INSTALL_DIR>/softconsole.cmd`
+ - `<SC_INSTALL_DIR>/softconsole-shared.cmd`
+
+````
+{% endif %}
+
+
+{% if linux is defined %}
+````{tab} Linux
+
+ - `<SC_INSTALL_DIR>/softconsole.sh`
+ - `<SC_INSTALL_DIR>/softconsole-shared.sh`
+
+````
+{% endif %}
+
+``````
+
+The first `softconsole.(cmd|sh)` script is the preferred one while `softconsole-shared.(cmd|sh)` is meant to be used when SoftConsole is installed in a shared environment where one installation of SoftConsole is used by many users, such as mapped network drive.
+
+```{warning}
+Do **not ever** run eclipse binary directly, because the environment settings will not be configured and a lot of submodules will not behave as expected. Always use launcher script or desktop/menu shortcuts.
+```
+
+## First start-up 
+
+When opening workspaces for the very first time then the indexes have to be built and discovery has to finish. It can be seen on the bottom right corner of the IDE:
+
+![First start](images/start/first_start.png)
+
+Until the indexing is finished, actions like building projects/workspace will be stalled, therefore it's best to just wait a minute for the indexing/discovery to finish first and only then start to use the IDE.
+
+```{note}
+This might take different amount of time depending on the size of the workspace and the performance of the host machine, but it shouldn't take long.
+```
+
 ## Access commands and other items
 
 "Access commands and other items" was formerly "Find Action", it's SoftConsole's feature to find quickly GUI and various other entities.

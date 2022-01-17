@@ -54,7 +54,7 @@ SoftConsole includes OpenOCD which uses a FlashPro JTAG programmer for debug acc
 
 The table below summarizes SoftConsole's support for FlashPro variants, OSs and target devices.
 
-{% include 'main/introduction/_support_table6.5.inc' %}
+{% include 'main/introduction/_support_table2021.3.inc' %}
 
 {% if windows is defined %}
 On Windows the FlashPro3/4/5/6 programmers are supported, and the relevant drivers must be installed. 
@@ -67,9 +67,11 @@ On Linux, the FlashPro5/6 programmers are supported and the post-install configu
 
 ### Microchip GitHub repositories
 
+ - [Mi-V Ecosystem](https://mi-v-ecosystem.github.io/)
+
  - PolarFire SoC
    - [PolarFire SoC Embedded Software](https://github.com/polarfire-soc) Collection of various repositories:
-     - [Bare Metal drivers and SoftConsole examples](https://github.com/polarfire-soc/polarfire-soc-bare-metal-library)
+     - [Bare Metal drivers and SoftConsole examples](https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples)
      - [Hart Software Services](https://github.com/polarfire-soc/hart-software-services)
      - [Documentation](https://github.com/polarfire-soc/polarfire-soc-documentation)
      - Linux repositories ([buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) and [Yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp))
@@ -78,11 +80,15 @@ On Linux, the FlashPro5/6 programmers are supported and the post-install configu
 
 
  - Softcore RISC-V resources:
-   - [RISCV on Microsemi FPGA](https://github.com/RISCV-on-Microsemi-FPGA) is a useful Microsemi Mi-V ecosystem resource. 
+   - [RISCV on Microsemi FPGA](https://github.com/RISCV-on-Microsemi-FPGA) legacy Microsemi Mi-V ecosystem resource. 
 
 
 ```{note}
-The bundled examples with {{ sc }} are tested and are working with {{ sc }} correctly, therefore are recommended as the primary reference.
+The bundled examples with {{ sc }} are tested and are working with {{ sc }} correctly, therefore are recommended as the primary reference before importing other projects.
+```
+
+```{important}
+Import examples from the [Bare Metal drivers and SoftConsole examples GitHub](https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples) to get most up to date examples and HAL.
 ```
 
 

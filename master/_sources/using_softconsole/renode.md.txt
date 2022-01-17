@@ -9,9 +9,36 @@
 
 Renode™ is an open-source software development framework with commercial support from Antmicro that lets you develop, debug and test multi-node device systems reliably, scalably and effectively. If all installation dependencies are met (see installation section), then the RISC-V examples can be run in the emulator.
 
-To debug an example in the emulator Renode must be run with the Mi-V model (external tool launcher called Mi-V-Renodeemulation-platform) or PolarFire SoC MPFS (previously known as PSE, see MPFS HAL manual for more details) model and a debug launcher attaches to the running Renode (for example miv-rv32im-systick-blinky Attach-to-Renode). The debug launchers for Renode are almost identical to the launchers for real 32-bit RISC-V hardware targets except:
+To debug an example in the emulator Renode must be run with the Mi-V model or PolarFire SoC MPFS (previously known as PSE, see MPFS HAL manual for more details) model. External launchers with models are:
 
+- `PolarFire-SoC-Icicle-Renode-emulation` for MPFS Icicle board
+- `PolarFire-SoC-Renode-emulation` for generic MPFS platform
+- `Mi-V-Renode-emulation-platform` for RV32 Mi-V soft cores
 
+And then debug launcher (for example `miv-rv32im-systick-blinky Renode Debug`) attaches to the running Renode (which has halted simulation). 
+In a case of Mi-V models the simulation will automatically start on the debug launcher connection. While with the MPFS launcher the simulation doesn't start automatically on connection, but the launcher has to invoke separately `monitor start` command after it connected inside Pre-Run/Restart section:
+
+{{ macros.breadcrumb_square('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations" -> "Launcher for \<YOUR_PROJECT\>"') }}
+<br/>
+
+Then inside the dialog:
+
+{{ macros.breadcrumb_square('"Startup" -> "Pre-Run/Restart commands"') }}
+<br/>
+
+To simplify the user experience SoftConsole projects come shipped with launchers that have
+the necessary extra steps are pre-configured and projects are shipped with group launchers:
+
+![group launchers](images/renode/group-launchers.png)
+
+The group launchers simplify the steps user has to take as they automatically start of the Renode platform with an external launcher and only then connects the debug launcher into Renode's GDB server. It's recommended  only to use the group launchers, except some edge cases.
+
+The sequence of execution of a group launcher is:
+
+{{ macros.breadcrumb_square('"Group launcher" -> "Starts Renode with its GDB server first" -> "Then starts debug launcher with GDB client"') }}
+<br/>
+
+The debug launchers for Renode are almost identical to the launchers for real RISC-V hardware targets except:
 
 - Disabled/uncheck "Start OpenOCD locally" as Renode debugging does not use OpenOCD/JTAG but connects GDB directly to the Renode GDB Remote Serial Protocol interface.
   {{ macros.breadcrumb_indent('"Debugger" -> "OpenOCD Setup" -> "Start OpenOCD locally"','  ') }}
@@ -20,10 +47,14 @@ To debug an example in the emulator Renode must be run with the Mi-V model (exte
   {{ macros.breadcrumb_indent('"Debugger" -> "GDB Client Setup" -> "Commands"','  ') }}
   Have set the architecture and symbols:
   ```{code-block} text
-set arch riscv:rv32
+set architecture riscv:rv32
   ```
   ```{note}
     Add symbol file command and explain the macro
+  ```
+  
+  ```{note}
+  If in previous documents and projects was `set arch riscv:rv32` used, then it can be considered as analogous. The `arch` is an abbreviation for `architecture` and does the same function.
   ```
 
 - For PolarFire SoC targets the launcher must be changed (this changed in SoftConsole 6.1).
@@ -34,47 +65,15 @@ monitor runMacro $SetAllPCs
 monitor start
     ```
 
-  - Change the *e51* to *u54_1* in the code above if the connection is made to *u54_1*, change accordingly for *u54_2*, *u54_3*, and *u54_4*.
-
-  - The {{sc}} platform script needs to be used (it’s not compatible with SoftConsole 6.1). The scripts now start the servers with the auto-start feature disabled (no “true” appended on each line)
-    ```{code-block} text
-e51 StartGdbServer 3333
-u54_1 StartGdbServer 3334
-u54_2 StartGdbServer 3335
-u54_3 StartGdbServer 3336
-u54_4 StartGdbServer 3337
-    ```
-
-  - Connect to port with the correct hart, check the Port number value:
-    {{ macros.breadcrumb_indent('"Debugger" -> "Remote Target" -> "Port number"','    ') }}
-
-    | Hart | Port Number |
-    | --- | --- |
-    | e51 | 3333 |
-    | u54_1 | 3334 |
-    | u54_2 | 3335 |
-    | u54_3 | 3336 |
-    | u54_4 | 3337 |
-
-  - The very first launcher will configure the platform, PCs and start execution of the code. If a second connection is required to debug another hart, then extra steps need to be followed
-
-    - Base the second launcher by making a duplicate of the first launcher
-
-
-    - In the Debugger tab:
-      - Leave the **Start OpenOCD locally** unchecked
-      - Select a new port to connect to (3333 to 3337 depending what hart is targeted)
-
-
-    - In the Startup tab:
-      - Uncheck **Initial Reset**
-      - Check **Load symbols**
-
 ## Useful Links
 
 - [Renode’s documentation](https://renode.readthedocs.io/en/latest/)
 - [Antmicro's blog](https://antmicro.com/blog/tags/renode/)
 
+
+```{note}
+The Renode which is shipped inside SoftConsole might be ahead (or behind) Antmicro's official releases and therefore Antmicro's released information might not always apply to Renode shipped with SoftConsole.
+```
 
 {% include 'main/troubleshooting/flashpro/_firewall.inc' %}
 {% include 'main/troubleshooting/renode/_cant_open_port.inc' %}

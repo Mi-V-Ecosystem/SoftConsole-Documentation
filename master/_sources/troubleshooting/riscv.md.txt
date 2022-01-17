@@ -7,7 +7,15 @@
 
 {% include 'main/troubleshooting/riscv/_cpp.inc' %}
 {% include 'main/troubleshooting/riscv/_power_cycle.inc' %}
+
+## fpgenprog fails to program the board
 {% include 'main/troubleshooting/riscv/_fpgenprog-1073741819.inc' %}
+
+{% if linux is defined %}
+## Linux fpgenprog invokes 32-bit binaries
+{% include 'main/troubleshooting/riscv/_fpgenprog-32512.inc' %}
+{% endif %}  % End of Linux
+
 {% include 'main/troubleshooting/riscv/_memory_view.inc' %}
 {% include 'main/troubleshooting/riscv/_nostartfiles.inc' %}
 {% include 'main/troubleshooting/riscv/_exception_registers.inc' %}

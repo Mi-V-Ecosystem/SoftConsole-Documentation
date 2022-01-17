@@ -5,8 +5,13 @@
 
 {{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
 
-
 This is manual for Microchip {{sc}}.
+
+SoftConsole is Microchip's free and primarily open-source based software development environment for Windows and GNU/Linux facilitating the rapid development of bare-metal and RTOS based C/C++ software for Microchip CPU and SoC (System on Chip) based FPGAs.It provides development and debugging support for all Microchip SoC FPGAs and 32-bit soft IP CPUs.
+
+SoftConsole can be downloaded for free from [Microchip's website](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/programming-and-debug/softconsole).
+
+![IDE screenshot](images/sc-ide/renode-miv.png)
 
 For first-time users the manual is strongly recommended to be read in full at least once. The installation might require extra manual steps. 
 
@@ -34,15 +39,15 @@ And it is recommended to search for the error messages in the troubleshooting se
 Users of previous releases should watch for changes and in the {ref}`What is new<whatisnew>` chapter and re-read all affected chapters.
 ```
 
-## Variants
+## Documentation variants
 
-The SoftConsole manual is distributed in three variants:
+The SoftConsole documentation is distributed in three variants:
 
- - Containing information relevant to both Windows and Linux users
- - Containing information relevant to only Windows users
- - Containing information relevant to only Linux users
+ - Containing information relevant to **both Windows and Linux** users [deployed online](https://mi-v-ecosystem.github.io/SoftConsole-Documentation)
+ - Containing information relevant to **only Windows** users shipped with Windows SoftConsole
+ - Containing information relevant to **only Linux** users shipped with Linux SoftConsole
 
-The online documentation contains both OSs, while documentation installed with specific SoftConsole contains only information relevant to its host OS.
+The online documentation contains both OSs and can be updated/improved even after the SoftConsole release. While documentation installed with specific SoftConsole contains only information relevant to its host OS and can be viewed without an internet connection.
 
 Currently you are reading the: **{{os_human}}** variant.
 
@@ -109,7 +114,7 @@ There are few common places where these breadcrumbs start:
 
    {{ macros.breadcrumb_indent('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
 
-   ![board image](images/breadcrumbs/project_properties_menu.png)
+   ![board image](images/breadcrumbs/project_properties_menu2.png)
 
 
 

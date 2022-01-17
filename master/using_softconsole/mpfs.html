@@ -7,12 +7,16 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>PolarFire SoC &mdash; SoftConsole v2021.3-7.0.607 documentation</title>
+  <title>PolarFire SoC &mdash; SoftConsole v2021.3-7.0.599 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
@@ -37,6 +41,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
     
@@ -108,17 +114,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#polarfire-soc-boot-modes">PolarFire SoC Boot Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fpgenprog">fpgenprog</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mpfsbootmodeprogrammer">mpfsBootmodeProgrammer</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#boot-mode-programming-external-launch-configurations">Boot mode programming external launch configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#boot-mode-programming-external-launch-configurations">Boot mode programming external launch configurations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#boot-program-link-requirements">Boot program link requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generated-artifacts">Generated artifacts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues-limitations">Known issues/limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-mode-3-elliptic-curve-cryptography">Boot mode 3 Elliptic Curve Cryptography</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mpfsbootmodeprogrammer-usage-help">mpfsBootmodeProgrammer usage/help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Security</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#fpgenprog-fails-to-program-the-board">fpgenprog fails to program the board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boot-mode-programmer-troubleshooting">Boot mode programmer troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues-limitations">Known issues/limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fpgenprog-fails-to-program-the-board">fpgenprog fails to program the board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux-fpgenprog-invokes-32-bit-binaries">Linux fpgenprog invokes 32-bit binaries</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
@@ -208,8 +217,8 @@
 <div class="section" id="required-tools">
 <h3>Required tools<a class="headerlink" href="#required-tools" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>SoftConsole v2021.1</p></li>
-<li><p>Libero SoC v2021.1 or Programming and Debug Tools v2021.1</p></li>
+<li><p>SoftConsole v2021.3</p></li>
+<li><p>Libero SoC v2021.3 or Programming and Debug Tools v2021.3</p></li>
 </ul>
 </div>
 <div class="section" id="polarfire-soc-boot-modes">
@@ -238,11 +247,11 @@ programming. fpgenprog and related tools are NOT bundled with SoftConsole so
 Libero SoC or Programming and Debug Tools must be installed in order to make
 them available to SoftConsole.</p>
 <p>Refer to the website for more information about these tools:</p>
-<p>Libero SoC v12.0 and later:
+<p>Libero SoC:
 <a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1750-libero-soc">https://www.microsemi.com/product-directory/design-resources/1750-libero-soc</a></p>
 <p>Programming and Debug Tools:
 <a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/5592-programming-and-debug#downloads">https://www.microsemi.com/product-directory/dev-tools/5592-programming-and-debug#downloads</a></p>
-<p>By default Libero SoC and Programming and Debug tools v2021.1 install into the
+<p>By default Libero SoC v2021.3 and Programming and Debug tools v2021.3 install into the
 following locations:</p>
 <ul class="simple">
 <li><p>Windows</p>
@@ -291,10 +300,15 @@ to program target with the relevant boot mode data and store the boot program
 image in NVM (eNVM or sNVM).</p>
 <p>Full sources for  mpfsBootmodeProgrammer and instructions on how to build it
 are also bundled with SoftConsole (in the same folder as the JAR file).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mpfsBootmodeProgrammer.jar</span></code> is tested and developed against the SoftConsole’s bundled
+Java JRE environment. If the <code class="docutils literal notranslate"><span class="pre">mpfsBootmodeProgrammer.jar</span></code> is used outside SoftConsole then
+for the best results always use the SoftConsole’s Java JRE.</p>
 </div>
 </div>
 <div class="section" id="boot-mode-programming-external-launch-configurations">
-<h2>Boot mode programming external launch configurations<a class="headerlink" href="#boot-mode-programming-external-launch-configurations" title="Permalink to this headline">¶</a></h2>
+<h3>Boot mode programming external launch configurations<a class="headerlink" href="#boot-mode-programming-external-launch-configurations" title="Permalink to this headline">¶</a></h3>
 <p>The SoftConsole workspace comes preconfigured with four external tool launch
 configurations, one for each of the four boot modes, which are accessible from
 the External Tools toolbar button or Main Menu &gt; External Tools.</p>
@@ -346,6 +360,7 @@ mpfsBootmodeProgrammer utility will emit an appropriate warning or error
 message to the output log.</p>
 <p>mpfsBootmodeProgrammer always generated a <code class="docutils literal notranslate"><span class="pre">&lt;workdir&gt;/bootmode&lt;n&gt;/debugLog.txt</span></code>
 log file which contains detailed information about the tasks carried out.</p>
+</div>
 <div class="section" id="boot-program-link-requirements">
 <h3>Boot program link requirements<a class="headerlink" href="#boot-program-link-requirements" title="Permalink to this headline">¶</a></h3>
 <p>A boot mode 1 or 3 program must be linked for storage in and execution from
@@ -426,8 +441,187 @@ configuring the boot mode 2 program image sNVM client in Libero.</p>
 are stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> and these details are
 required when configuring the boot mode 3 program image eNVM client in Libero.</p>
 </div>
-<div class="section" id="troubleshooting">
-<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="boot-mode-3-elliptic-curve-cryptography">
+<h3>Boot mode 3 Elliptic Curve Cryptography<a class="headerlink" href="#boot-mode-3-elliptic-curve-cryptography" title="Permalink to this headline">¶</a></h3>
+<p>The ECC keys can be either generated on demand by the tool or read from external files (<strong>X.509</strong> used for public key files and <strong>PKCS#8</strong> for private key files)</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Generate keys</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Read keys from external files</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<p>Either specifying explicitly to generate the keys as shown in the snippet below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt; --keys GENERATE
+</pre></div>
+</div>
+<p>Or using the default behavior and not specifying the <code class="docutils literal notranslate"><span class="pre">--keys</span> <span class="pre">GENERATE</span></code> at all:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt;
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<p>Argument <code class="docutils literal notranslate"><span class="pre">--keys</span> <span class="pre">SEPARATED</span></code> has to be used, <code class="docutils literal notranslate"><span class="pre">SEPARATED</span></code> because private and public
+files are each in separated files. Keys have to the use elliptical curve NIST P-384 algorithm (secp384r1 in Java/OpenSSL).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt; --keys SEPARATED &lt;PATH_TO_PRIVATE_PEM_FILE&gt; &lt;PATH_TO_PUBLIC_PEM_FILE&gt;
+</pre></div>
+</div>
+<p>If the user wants to generate his own set of keys, then <code class="docutils literal notranslate"><span class="pre">openssl</span></code> can be used, on Linux it’s
+usually part of any decent distribution installation and on Windows the following project
+can be used:</p>
+<p><a class="reference external" href="https://slproweb.com/products/Win32OpenSSL.html">https://slproweb.com/products/Win32OpenSSL.html</a></p>
+<p>Invoking these following commands will produce <code class="docutils literal notranslate"><span class="pre">private.pem</span></code> and <code class="docutils literal notranslate"><span class="pre">public.pem</span></code> files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl ecparam -name secp384r1 -genkey -noout -out combined.ec.key
+openssl pkcs8 -topk8 -nocrypt -in combined.ec.key -out private.pem
+openssl ec -in private.pem -pubout -out public.pem
+</pre></div>
+</div>
+<p>Then these files can be used as arguments:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--bootmode <span class="m">3</span> --workdir &lt;PROJECT_PATH&gt; --keys SEPARATED private.pem public.pem
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Password-protected private keys are not currently supported.</p>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After the mpfsBootmodeProgrammer is run with boot mode 3, then the ECC (Elliptic Curve Cryptography) <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> values of the public key
+will be stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> file. The <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> values are required when configuring the boot mode 3 program image eNVM client in Libero.</p>
+</div>
+</div>
+<div class="section" id="mpfsbootmodeprogrammer-usage-help">
+<h3>mpfsBootmodeProgrammer usage/help<a class="headerlink" href="#mpfsbootmodeprogrammer-usage-help" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">13</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">43</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">mpfsBootmodeProgrammer</span> <span class="n">v3</span><span class="mf">.6</span> <span class="n">started</span><span class="o">.</span>
+<span class="n">Usage</span><span class="p">:</span> <span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">mpfsBootmodeProgrammer</span><span class="o">.</span><span class="n">jar</span> <span class="p">[</span><span class="o">--</span><span class="n">workdir</span> <span class="n">directory</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">die</span> <span class="n">device</span><span class="o">-</span><span class="n">die</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">package</span> <span class="n">device</span><span class="o">-</span><span class="n">package</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">bootmode</span> <span class="n">mode</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">snvm_page</span> <span class="n">page</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">usk</span> <span class="n">key</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">encrypt</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">keys</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">dryrun</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verify</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="n">elf</span><span class="o">-</span><span class="n">file</span><span class="p">]</span>
+
+<span class="n">Note</span><span class="p">:</span> <span class="n">The</span> <span class="n">goal</span> <span class="n">of</span> <span class="n">this</span> <span class="n">Java</span> <span class="n">wrapper</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">make</span> <span class="n">fpgenprog</span> <span class="n">easier</span> <span class="n">to</span> <span class="n">use</span><span class="o">.</span>
+<span class="n">Some</span> <span class="n">errors</span> <span class="n">produced</span> <span class="k">with</span> <span class="n">fpgenprog</span> <span class="n">are</span> <span class="n">just</span> <span class="n">passed</span> <span class="n">through</span> <span class="k">as</span> <span class="n">they</span> <span class="n">are</span><span class="o">.</span>
+<span class="n">Users</span> <span class="n">having</span> <span class="n">issues</span> <span class="k">with</span> <span class="n">some</span> <span class="n">of</span> <span class="n">the</span> <span class="n">errors</span> <span class="n">need</span> <span class="n">to</span> <span class="n">contact</span> <span class="n">Libero</span> <span class="n">support</span>
+<span class="n">directly</span><span class="o">.</span>
+
+  <span class="o">--</span><span class="n">workdir</span> <span class="n">directory</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Working</span> <span class="n">directory</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="n">Current</span> <span class="n">working</span> <span class="n">directory</span>
+
+  <span class="o">--</span><span class="n">die</span> <span class="n">device</span><span class="o">-</span><span class="n">die</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">device</span><span class="o">-</span><span class="n">die</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">target</span> <span class="n">device</span> <span class="n">die</span> <span class="n">designator</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="n">MPFS025T</span>
+      <span class="n">MPFS095T</span>
+      <span class="n">MPFS160T</span>
+      <span class="n">MPFS250T</span>
+      <span class="n">MPFS460T</span>
+      <span class="n">MPFS025T_ES</span>
+      <span class="n">MPFS095T_ES</span>
+      <span class="n">MPFS160T_ES</span>
+      <span class="n">MPFS250T_ES</span>
+      <span class="n">MPFS460T_ES</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="n">MPFS250T_ES</span>
+
+  <span class="o">--</span><span class="n">package</span> <span class="n">device</span><span class="o">-</span><span class="n">package</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">device</span><span class="o">-</span><span class="n">package</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">target</span> <span class="n">device</span> <span class="n">package</span> <span class="n">designator</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="n">FCG1152</span>
+      <span class="n">FCSG325</span>
+      <span class="n">FCSG536</span>
+      <span class="n">FCVG484</span>
+      <span class="n">FCVG784</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="n">FCVG484</span>
+
+  <span class="o">--</span><span class="n">bootmode</span> <span class="n">mode</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">mode</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">boot</span> <span class="n">mode</span> <span class="n">to</span> <span class="n">be</span> <span class="n">programmed</span>
+      <span class="mi">0</span> <span class="o">=</span> <span class="n">idle</span> <span class="n">boot</span>
+      <span class="mi">1</span> <span class="o">=</span> <span class="n">non</span><span class="o">-</span><span class="n">secure</span> <span class="n">boot</span> <span class="kn">from</span> <span class="nn">eNVM</span>
+      <span class="mi">2</span> <span class="o">=</span> <span class="n">user</span> <span class="n">secure</span> <span class="n">boot</span> <span class="kn">from</span> <span class="nn">sNVM</span>
+      <span class="mi">3</span> <span class="o">=</span> <span class="n">factory</span> <span class="n">secure</span> <span class="n">boot</span> <span class="kn">from</span> <span class="nn">eNVM</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="mi">0</span> <span class="n">to</span> <span class="mi">3</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="mi">0</span> <span class="o">=</span> <span class="n">idle</span> <span class="n">boot</span>
+
+  <span class="o">--</span><span class="n">snvm_page</span> <span class="n">page</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">page</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">sNVM</span> <span class="n">page</span> <span class="n">number</span> <span class="n">starting</span> <span class="kn">from</span> <span class="nn">which</span> <span class="n">the</span> <span class="n">program</span> <span class="n">image</span> <span class="n">will</span> <span class="n">be</span> <span class="n">stored</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="mi">0</span> <span class="n">to</span> <span class="mi">211</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="mi">0</span>
+
+  <span class="o">--</span><span class="n">usk</span> <span class="n">key</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">key</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">User</span> <span class="n">sNVM</span> <span class="n">Key</span> <span class="n">specified</span> <span class="k">as</span> <span class="n">a</span> <span class="mi">12</span> <span class="n">byte</span> <span class="nb">hex</span> <span class="n">string</span><span class="p">;</span> <span class="k">if</span> <span class="mi">0</span> <span class="n">then</span> <span class="n">a</span> <span class="n">random</span> <span class="n">USK</span> <span class="ow">is</span> <span class="n">generated</span> <span class="ow">and</span> <span class="n">used</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="nb">any</span> <span class="mi">12</span> <span class="n">byte</span> <span class="nb">hex</span> <span class="n">string</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="p">:</span> <span class="mh">0x39ef4ad4d7d5f178f64e49d0</span> <span class="ow">or</span> <span class="mi">39</span><span class="n">ef4ad4d7d5f178f64e49d0</span> <span class="ow">or</span> <span class="mi">0</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="mi">0</span>
+
+  <span class="o">--</span><span class="n">encrypt</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">use</span> <span class="n">sNVM</span> <span class="n">encryption</span> <span class="n">to</span> <span class="n">store</span> <span class="n">the</span> <span class="n">image</span> <span class="k">as</span> <span class="n">authenticated</span> <span class="n">ciphertext</span> <span class="n">rather</span> <span class="n">than</span> <span class="k">as</span> <span class="n">authenticated</span> <span class="n">plaintext</span>
+
+  <span class="o">--</span><span class="n">dryrun</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Perform</span> <span class="nb">all</span> <span class="n">tasks</span> <span class="k">except</span> <span class="n">target</span> <span class="n">programming</span><span class="o">/</span><span class="n">verification</span>
+
+  <span class="o">--</span><span class="n">verify</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Verify</span> <span class="n">the</span> <span class="n">target</span> <span class="n">after</span> <span class="n">programming</span>
+
+  <span class="o">--</span><span class="n">help</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Print</span> <span class="n">this</span> <span class="n">help</span>
+
+  <span class="o">--</span><span class="n">keys</span> <span class="n">key_mode</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">When</span> <span class="n">bootmode</span> <span class="mi">3</span> <span class="ow">is</span> <span class="n">selected</span><span class="p">,</span> <span class="n">then</span> <span class="n">private</span> <span class="ow">and</span> <span class="n">public</span> <span class="n">keys</span> <span class="n">are</span> <span class="n">required</span><span class="o">.</span> <span class="n">following</span> <span class="n">options</span> <span class="n">are</span> <span class="n">possible</span><span class="p">:</span>
+      <span class="n">GENERATE</span>  <span class="o">-</span> <span class="n">No</span> <span class="n">key</span> <span class="n">files</span> <span class="n">are</span> <span class="n">needed</span><span class="p">,</span> <span class="n">both</span> <span class="n">private</span> <span class="ow">and</span> <span class="n">public</span> <span class="n">keys</span> <span class="n">will</span> <span class="n">be</span> <span class="n">generated</span> <span class="p">(</span><span class="n">default</span> <span class="n">mode</span> <span class="k">if</span> <span class="n">none</span> <span class="ow">is</span> <span class="n">selected</span><span class="p">)</span><span class="o">.</span>
+      <span class="n">SEPARATED</span> <span class="o">-</span> <span class="mi">1</span><span class="n">st</span> <span class="n">argument</span> <span class="ow">is</span> <span class="n">private</span> <span class="n">key</span> <span class="n">file</span> <span class="ow">and</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">argument</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">public</span> <span class="n">key</span> <span class="n">file</span><span class="o">.</span>
+
+      <span class="n">Keys</span> <span class="n">have</span> <span class="n">to</span> <span class="n">use</span> <span class="n">elliptical</span> <span class="n">curve</span> <span class="n">NIST</span> <span class="n">P</span><span class="o">-</span><span class="mi">384</span> <span class="n">algorithm</span> <span class="p">(</span><span class="n">secp384r1</span> <span class="ow">in</span> <span class="n">Java</span><span class="o">/</span><span class="n">OpenSSL</span><span class="p">)</span><span class="o">.</span>
+      <span class="n">The</span> <span class="n">private</span> <span class="n">key</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="ow">in</span> <span class="n">PKCS</span><span class="c1">#8 format with &#39;-----BEGIN PRIVATE KEY-----&#39; identifier.</span>
+      <span class="n">Currently</span><span class="p">,</span> <span class="n">encrypted</span> <span class="n">private</span> <span class="n">keys</span> <span class="k">with</span> <span class="n">passwords</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">supported</span><span class="o">.</span>
+      <span class="n">The</span> <span class="n">public</span> <span class="n">key</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">X</span><span class="mf">.509</span> <span class="nb">format</span> <span class="k">with</span> <span class="s1">&#39;----BEGIN PUBLIC KEY-----&#39;</span> <span class="n">identifier</span><span class="o">.</span>
+      <span class="n">Using</span> <span class="n">OpenSSL</span><span class="p">,</span> <span class="n">the</span> <span class="n">keys</span> <span class="n">can</span> <span class="n">be</span> <span class="n">generated</span> <span class="k">with</span> <span class="n">the</span> <span class="n">following</span> <span class="n">commands</span><span class="p">:</span>
+        <span class="n">openssl</span> <span class="n">ecparam</span> <span class="o">-</span><span class="n">name</span> <span class="n">secp384r1</span> <span class="o">-</span><span class="n">genkey</span> <span class="o">-</span><span class="n">noout</span> <span class="o">-</span><span class="n">out</span> <span class="n">combined</span><span class="o">.</span><span class="n">ec</span><span class="o">.</span><span class="n">key</span>
+        <span class="n">openssl</span> <span class="n">pkcs8</span> <span class="o">-</span><span class="n">topk8</span> <span class="o">-</span><span class="n">nocrypt</span> <span class="o">-</span><span class="ow">in</span> <span class="n">combined</span><span class="o">.</span><span class="n">ec</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">private</span><span class="o">.</span><span class="n">pem</span>
+        <span class="n">openssl</span> <span class="n">ec</span> <span class="o">-</span><span class="ow">in</span> <span class="n">private</span><span class="o">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">pubout</span> <span class="o">-</span><span class="n">out</span> <span class="n">public</span><span class="o">.</span><span class="n">pem</span>
+
+  <span class="n">elf</span><span class="o">-</span><span class="n">file</span>
+    <span class="n">Description</span><span class="p">:</span>
+      <span class="n">Boot</span> <span class="n">program</span> <span class="n">ELF</span> <span class="n">file</span>
+    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
+      <span class="n">Any</span> <span class="n">valid</span> <span class="n">ELF</span> <span class="n">filename</span> <span class="n">matching</span> <span class="n">the</span> <span class="n">selected</span> <span class="n">boot</span> <span class="n">mode</span> <span class="n">linkage</span> <span class="n">requirements</span><span class="o">.</span> <span class="n">The</span> <span class="n">filename</span> <span class="n">must</span> <span class="n">be</span> <span class="n">relative</span>
+      <span class="n">to</span> <span class="n">the</span> <span class="s1">&#39;workdir&#39;</span><span class="p">,</span> <span class="n">absolute</span> <span class="n">paths</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">supported</span><span class="o">.</span>
+    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
+      <span class="n">If</span> <span class="ow">not</span> <span class="n">specified</span> <span class="n">then</span> <span class="n">the</span> <span class="n">working</span> <span class="n">directory</span> <span class="ow">is</span> <span class="n">searched</span> <span class="k">for</span> <span class="n">an</span> <span class="n">ELF</span> <span class="n">file</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="security">
+<h3>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
+<p>The mpfsBootmodeProgrammer doesn’t use the <code class="docutils literal notranslate"><span class="pre">log4j</span></code> package because the logging capabilities are implemented from scratch. Therefore mpfsBootmodeProgrammer is not affected by the <a class="reference external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228">CVE-2021-44228</a> vulnerability.</p>
+</div>
+</div>
+<div class="section" id="boot-mode-programmer-troubleshooting">
+<h2>Boot mode programmer troubleshooting<a class="headerlink" href="#boot-mode-programmer-troubleshooting" title="Permalink to this headline">¶</a></h2>
 <p>If boot mode programming fails then the Console log should indicate the nature
 of the problem. If necessary also check the debugLog.txt log file that
 mpfsBootmodeProgrammer generates for more details.</p>
@@ -471,7 +665,6 @@ security disabled and only from Libero with security enabled.</p>
 <span class="n">Error</span><span class="p">:</span> <span class="n">Failure</span> <span class="n">when</span> <span class="n">executing</span> <span class="n">Tcl</span> <span class="n">script</span><span class="o">.</span> <span class="p">[</span> <span class="n">Line</span> <span class="mi">5</span> <span class="p">]</span>
 <span class="n">Error</span><span class="p">:</span> <span class="n">The</span> <span class="n">Execute</span> <span class="n">Script</span> <span class="n">command</span> <span class="n">failed</span><span class="o">.</span>
 </pre></div>
-</div>
 </div>
 <div class="section" id="known-issues-limitations">
 <h3>Known issues/limitations<a class="headerlink" href="#known-issues-limitations" title="Permalink to this headline">¶</a></h3>
@@ -526,117 +719,22 @@ programming boot modes.</p>
 identical to the program start address (<code class="docutils literal notranslate"><span class="pre">_start</span></code>) which is true when using the
 PolarFire SoC HAL example linker scripts but may not be so in the general case.</p>
 </div>
-<div class="section" id="mpfsbootmodeprogrammer-usage-help">
-<h3>mpfsBootmodeProgrammer usage/help<a class="headerlink" href="#mpfsbootmodeprogrammer-usage-help" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">44</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">mpfsBootmodeProgrammer</span> <span class="n">v3</span><span class="mf">.2</span> <span class="n">started</span><span class="o">.</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">mpfsBootmodeProgrammer</span><span class="o">.</span><span class="n">jar</span> <span class="p">[</span><span class="o">--</span><span class="n">workdir</span> <span class="n">directory</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">die</span> <span class="n">device</span><span class="o">-</span><span class="n">die</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">package</span> <span class="n">device</span><span class="o">-</span><span class="n">package</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">bootmode</span> <span class="n">mode</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">snvm_page</span> <span class="n">page</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">usk</span> <span class="n">key</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">encrypt</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">dryrun</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verify</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="n">elf</span><span class="o">-</span><span class="n">file</span><span class="p">]</span>
-
-  <span class="o">--</span><span class="n">workdir</span> <span class="n">directory</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">Working</span> <span class="n">directory</span>
-    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
-      <span class="n">Current</span> <span class="n">working</span> <span class="n">directory</span>
-
-  <span class="o">--</span><span class="n">die</span> <span class="n">device</span><span class="o">-</span><span class="n">die</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">device</span><span class="o">-</span><span class="n">die</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">target</span> <span class="n">device</span> <span class="n">die</span> <span class="n">designator</span>
-    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
-      <span class="n">MPFS025T</span>
-      <span class="n">MPFS095T</span>
-      <span class="n">MPFS160T</span>
-      <span class="n">MPFS250T</span>
-      <span class="n">MPFS460T</span>
-      <span class="n">MPFS025T_ES</span>
-      <span class="n">MPFS095T_ES</span>
-      <span class="n">MPFS160T_ES</span>
-      <span class="n">MPFS250T_ES</span>
-      <span class="n">MPFS460T_ES</span>
-    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
-      <span class="n">MPFS250T_ES</span>
-
-  <span class="o">--</span><span class="n">package</span> <span class="n">device</span><span class="o">-</span><span class="n">package</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">device</span><span class="o">-</span><span class="n">package</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">target</span> <span class="n">device</span> <span class="n">package</span> <span class="n">designator</span>
-    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
-      <span class="n">FCG1152</span>
-      <span class="n">FCSG325</span>
-      <span class="n">FCSG536</span>
-      <span class="n">FCVG484</span>
-      <span class="n">FCVG784</span>
-    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
-      <span class="n">FCVG484</span>
-
-  <span class="o">--</span><span class="n">bootmode</span> <span class="n">mode</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">mode</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">boot</span> <span class="n">mode</span> <span class="n">to</span> <span class="n">be</span> <span class="n">programmed</span>
-      <span class="mi">0</span> <span class="o">=</span> <span class="n">idle</span> <span class="n">boot</span>
-      <span class="mi">1</span> <span class="o">=</span> <span class="n">non</span><span class="o">-</span><span class="n">secure</span> <span class="n">boot</span> <span class="kn">from</span> <span class="nn">eNVM</span>
-      <span class="mi">2</span> <span class="o">=</span> <span class="n">user</span> <span class="n">secure</span> <span class="n">boot</span> <span class="kn">from</span> <span class="nn">sNVM</span>
-      <span class="mi">3</span> <span class="o">=</span> <span class="n">factory</span> <span class="n">secure</span> <span class="n">boot</span> <span class="kn">from</span> <span class="nn">eNVM</span>
-    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
-      <span class="mi">0</span> <span class="n">to</span> <span class="mi">3</span>
-    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
-      <span class="mi">0</span> <span class="o">=</span> <span class="n">idle</span> <span class="n">boot</span> 
-
-  <span class="o">--</span><span class="n">snvm_page</span> <span class="n">page</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">page</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">sNVM</span> <span class="n">page</span> <span class="n">number</span> <span class="n">starting</span> <span class="kn">from</span> <span class="nn">which</span> <span class="n">the</span> <span class="n">program</span> <span class="n">image</span> <span class="n">will</span> <span class="n">be</span> <span class="n">stored</span>
-    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
-      <span class="mi">0</span> <span class="n">to</span> <span class="mi">211</span>
-    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
-      <span class="mi">0</span>
-
-  <span class="o">--</span><span class="n">usk</span> <span class="n">key</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">key</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">User</span> <span class="n">sNVM</span> <span class="n">Key</span> <span class="n">specified</span> <span class="k">as</span> <span class="n">a</span> <span class="mi">12</span> <span class="n">byte</span> <span class="nb">hex</span> <span class="n">string</span><span class="p">;</span> <span class="k">if</span> <span class="mi">0</span> <span class="n">then</span> <span class="n">a</span> <span class="n">random</span> <span class="n">USK</span> <span class="ow">is</span> <span class="n">generated</span> <span class="ow">and</span> <span class="n">used</span>
-    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
-      <span class="nb">any</span> <span class="mi">12</span> <span class="n">byte</span> <span class="nb">hex</span> <span class="n">string</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="p">:</span> <span class="mh">0x0b841d7a16f5542cda541eeb</span> <span class="ow">or</span> <span class="mi">0</span><span class="n">b841d7a16f5542cda541eeb</span> <span class="ow">or</span> <span class="mi">0</span>
-    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
-      <span class="mi">0</span>
-
-  <span class="o">--</span><span class="n">encrypt</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">For</span> <span class="n">boot</span> <span class="n">mode</span> <span class="mi">2</span> <span class="n">only</span><span class="p">,</span> <span class="n">use</span> <span class="n">sNVM</span> <span class="n">encryption</span> <span class="n">to</span> <span class="n">store</span> <span class="n">the</span> <span class="n">image</span> <span class="k">as</span> <span class="n">authenticated</span> <span class="n">ciphertext</span> <span class="n">rather</span> <span class="n">than</span> <span class="k">as</span> <span class="n">authenticated</span> <span class="n">plaintext</span>
-
-  <span class="o">--</span><span class="n">dryrun</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">Perform</span> <span class="nb">all</span> <span class="n">tasks</span> <span class="k">except</span> <span class="n">target</span> <span class="n">programming</span><span class="o">/</span><span class="n">verification</span>
-
-  <span class="o">--</span><span class="n">verify</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">Verify</span> <span class="n">the</span> <span class="n">target</span> <span class="n">after</span> <span class="n">programming</span>
-
-  <span class="o">--</span><span class="n">help</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">Print</span> <span class="n">this</span> <span class="n">help</span>
-
-  <span class="n">elf</span><span class="o">-</span><span class="n">file</span>
-    <span class="n">Description</span><span class="p">:</span>
-      <span class="n">Boot</span> <span class="n">program</span> <span class="n">ELF</span> <span class="n">file</span>
-    <span class="n">Allowed</span> <span class="n">values</span><span class="p">:</span>
-      <span class="n">Any</span> <span class="n">valid</span> <span class="n">ELF</span> <span class="n">file</span> <span class="n">matching</span> <span class="n">the</span> <span class="n">selected</span> <span class="n">boot</span> <span class="n">mode</span> <span class="n">linkage</span> <span class="n">requirements</span>
-    <span class="n">Default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">:</span>
-      <span class="n">If</span> <span class="ow">not</span> <span class="n">specified</span> <span class="n">then</span> <span class="n">the</span> <span class="n">working</span> <span class="n">directory</span> <span class="ow">is</span> <span class="n">searched</span> <span class="k">for</span> <span class="n">an</span> <span class="n">ELF</span> <span class="n">file</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="section" id="fpgenprog-fails-to-program-the-board">
-<h2>fpgenprog fails to program the board<a class="headerlink" href="#fpgenprog-fails-to-program-the-board" title="Permalink to this headline">¶</a></h2>
+<h3>fpgenprog fails to program the board<a class="headerlink" href="#fpgenprog-fails-to-program-the-board" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes user can experience program failures even when running <code class="docutils literal notranslate"><span class="pre">PolarFire</span> <span class="pre">SoC</span> <span class="pre">program</span> <span class="pre">idle</span> <span class="pre">boot</span> <span class="pre">mode</span> <span class="pre">0</span></code> external launcher:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">Warning</span><span class="p">:</span>  <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">file</span><span class="p">:</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
-<span class="ne">Warning</span><span class="p">:</span> <span class="p">[</span><span class="mi">80609481</span><span class="p">]:</span>  <span class="n">Using</span> <span class="n">local</span> <span class="n">backup</span> <span class="n">copy</span><span class="p">:</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
-<span class="n">PDB</span> <span class="n">file</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">Warning</span><span class="p">:</span>  <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">file</span><span class="p">:</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
+<span class="ne">Warning</span><span class="p">:</span> <span class="p">[</span><span class="mi">80609481</span><span class="p">]:</span>  <span class="n">Using</span> <span class="n">local</span> <span class="n">backup</span> <span class="n">copy</span><span class="p">:</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.3.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
+<span class="n">PDB</span> <span class="n">file</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
 <span class="n">DESIGN</span> <span class="p">:</span> <span class="n">TOP</span><span class="p">;</span>  <span class="n">CHECKSUM</span> <span class="p">:</span> <span class="mi">0000</span><span class="p">;</span>  <span class="n">PDB_VERSION</span> <span class="p">:</span> <span class="mf">1.9</span>
 <span class="o">===============================================================</span>
 <span class="n">Programmer</span><span class="p">:</span> <span class="n">Embedded</span> <span class="n">FP6</span> <span class="s1">&#39;082D3559&#39;</span> <span class="p">:</span> <span class="n">Version</span> <span class="o">=</span> <span class="n">EF9B</span>
 <span class="o">===============================================================</span>
 <span class="n">programmer</span> <span class="s1">&#39;082D3559&#39;</span> <span class="p">:</span> <span class="n">Embedded</span> <span class="n">FlashPro6</span>
-<span class="n">Opened</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\proj_fp.pro&#39;</span>
+<span class="n">Opened</span> <span class="s1">&#39;C:\Microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\proj_fp.pro&#39;</span>
 <span class="n">The</span> <span class="s1">&#39;open_project&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
 <span class="n">Info</span><span class="p">:</span>  <span class="n">Programming</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">enabled</span> <span class="k">for</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span><span class="o">.</span>
 <span class="n">The</span> <span class="s1">&#39;enable_device&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
-<span class="n">PPD</span> <span class="n">file</span> <span class="s1">&#39;C:/Microchip/SoftConsole-v2021.1/extras/mpfs/bootmode0/fpgenprogProject/proj_fp/target.ppd&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
+<span class="n">PPD</span> <span class="n">file</span> <span class="s1">&#39;C:/Microchip/SoftConsole-v2021.3/extras/mpfs/bootmode0/fpgenprogProject/proj_fp/target.ppd&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
 <span class="n">DESIGN</span> <span class="p">:</span> <span class="n">TOP</span><span class="p">;</span>  <span class="n">CHECKSUM</span> <span class="p">:</span> <span class="mi">0000</span><span class="p">;</span>  <span class="n">PDB_VERSION</span> <span class="p">:</span> <span class="mf">1.0</span>
 <span class="n">The</span> <span class="s1">&#39;set_programming_file&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
 <span class="n">The</span> <span class="s1">&#39;set_programming_action&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
@@ -652,58 +750,61 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
 <span class="hll"><span class="mi">16</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">46</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Running</span> <span class="n">the</span> <span class="n">fpgenprog</span><span class="o">.</span><span class="n">exe</span> <span class="n">PROGRAM</span> <span class="n">action</span> <span class="n">failed</span><span class="o">.</span>
 </span></pre></div>
 </div>
-<p>To see more verbose errors it’s good to run the last fpgenprog invocation again from the command line. To see the log file, for example for boot mode 0 it’s in the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/mpfs/bootmode0/debugLog.txt</span></code>. The last fpgenprog invocation should look similar like to: <code class="docutils literal notranslate"><span class="pre">c:\microchip\libero\Program_Debug_v2021.2\Program_Debug_Tool\bin64\fpgenprog.exe</span> <span class="pre">run_action</span> <span class="pre">--location</span> <span class="pre">c:/microchip/SoftConsole-2021.1/extras\mpfs/bootmode0/fpgenprogProject</span> <span class="pre">--action</span> <span class="pre">PROGRAM</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">29</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">Selected</span> <span class="n">boot</span> <span class="n">mode</span> <span class="s2">&quot;0 - idle boot&quot;</span> <span class="ow">and</span> <span class="n">working</span> <span class="ow">in</span> <span class="n">directory</span> <span class="s2">&quot;D:\work\microchip\sc6.6-2021.1\extras\mpfs&quot;</span><span class="o">.</span>
-<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">29</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Workdir</span><span class="o">=</span><span class="n">D</span><span class="p">:</span>\<span class="n">work</span>\<span class="n">microchip</span>\<span class="n">sc6</span><span class="mf">.6</span><span class="o">-</span><span class="mf">2021.1</span>\<span class="n">extras</span>\<span class="n">mpfs</span> <span class="n">die</span><span class="o">=</span><span class="n">MPFS250T_ES</span> <span class="n">diePackage</span><span class="o">=</span><span class="n">FCVG484</span> <span class="n">bm</span><span class="o">=</span><span class="mi">0</span> <span class="o">-</span> <span class="n">idle</span> <span class="n">boot</span> <span class="n">verify</span><span class="o">=</span><span class="n">false</span> <span class="n">elf</span><span class="o">=</span><span class="n">null</span>
-<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">29</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.2\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe new_project --location D:\work\microchip\sc6.6-2021.1\extras\mpfs/bootmode0/fpgenprogProject --target_die MPFS250T_ES --target_package FCVG484&quot;</span><span class="o">.</span>
+<p>To see more verbose errors it’s good to run the last fpgenprog invocation again from the command line. To see the log file, for example for boot mode 0 it’s in the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/mpfs/bootmode0/debugLog.txt</span></code>. The last fpgenprog invocation should look similar like to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">:</span>\<span class="n">microchip</span>\<span class="n">libero</span>\<span class="n">Program_Debug_v2021</span><span class="mf">.3</span>\<span class="n">Program_Debug_Tool</span>\<span class="n">bin64</span>\<span class="n">fpgenprog</span><span class="o">.</span><span class="n">exe</span> <span class="n">run_action</span> <span class="o">--</span><span class="n">location</span> <span class="n">c</span><span class="p">:</span><span class="o">/</span><span class="n">microchip</span><span class="o">/</span><span class="n">SoftConsole</span><span class="o">-</span><span class="n">v2021</span><span class="mf">.3</span><span class="o">/</span><span class="n">extras</span>\<span class="n">mpfs</span><span class="o">/</span><span class="n">bootmode0</span><span class="o">/</span><span class="n">fpgenprogProject</span> <span class="o">--</span><span class="n">action</span> <span class="n">PROGRAM</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">29</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">Selected</span> <span class="n">boot</span> <span class="n">mode</span> <span class="s2">&quot;0 - idle boot&quot;</span> <span class="ow">and</span> <span class="n">working</span> <span class="ow">in</span> <span class="n">directory</span> <span class="s2">&quot;D:\work\microchip\SoftConsole-v2021.3\extras\mpfs&quot;</span><span class="o">.</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">29</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Workdir</span><span class="o">=</span><span class="n">D</span><span class="p">:</span>\<span class="n">work</span>\<span class="n">microchip</span>\<span class="n">SoftConsole</span><span class="o">-</span><span class="n">v2021</span><span class="mf">.3</span>\<span class="n">extras</span>\<span class="n">mpfs</span> <span class="n">die</span><span class="o">=</span><span class="n">MPFS250T_ES</span> <span class="n">diePackage</span><span class="o">=</span><span class="n">FCVG484</span> <span class="n">bm</span><span class="o">=</span><span class="mi">0</span> <span class="o">-</span> <span class="n">idle</span> <span class="n">boot</span> <span class="n">verify</span><span class="o">=</span><span class="n">false</span> <span class="n">elf</span><span class="o">=</span><span class="n">null</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">29</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.3\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe new_project --location D:\work\microchip\SoftConsole-v2021.3\extras\mpfs/bootmode0/fpgenprogProject --target_die MPFS250T_ES --target_package FCVG484&quot;</span><span class="o">.</span>
 <span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="o">.</span>
 <span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">Preparing</span> <span class="k">for</span> <span class="n">bitstream</span> <span class="n">generation</span><span class="o">...</span>
-<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.2\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe mss_boot_info --location D:\work\microchip\sc6.6-2021.1\extras\mpfs/bootmode0/fpgenprogProject --u_mss_bootmode 0&quot;</span><span class="o">.</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.3\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe mss_boot_info --location D:\work\microchip\SoftConsole-v2021.3\extras\mpfs/bootmode0/fpgenprogProject --u_mss_bootmode 0&quot;</span><span class="o">.</span>
 <span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="o">.</span>
-<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.2\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe envm_client --location D:\work\microchip\sc6.6-2021.1\extras\mpfs/bootmode0/fpgenprogProject --number_of_bytes 1 --content_file_format intel-hex --content_file D:\work\microchip\sc6.6-2021.1\extras\mpfs/bootmode0/bootmode0.hex --start_page 0 --client_name bootmode0_0&quot;</span><span class="o">.</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.3\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe envm_client --location D:\work\microchip\SoftConsole-v2021.3\extras\mpfs/bootmode0/fpgenprogProject --number_of_bytes 1 --content_file_format intel-hex --content_file D:\work\microchip\SoftConsole-v2021.3\extras\mpfs/bootmode0/bootmode0.hex --start_page 0 --client_name bootmode0_0&quot;</span><span class="o">.</span>
 <span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="o">.</span>
 <span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">Generating</span> <span class="n">bitstream</span><span class="o">...</span>
-<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.2\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe generate_bitstream --location D:\work\microchip\sc6.6-2021.1\extras\mpfs/bootmode0/fpgenprogProject&quot;</span><span class="o">.</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">30</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.3\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe generate_bitstream --location D:\work\microchipSoftConsole-v2021.3\extras\mpfs/bootmode0/fpgenprogProject&quot;</span><span class="o">.</span>
 <span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">43</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="o">.</span>
 <span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">43</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">Programming</span> <span class="n">the</span> <span class="n">target</span><span class="o">...</span>
-<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">43</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.2\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe run_action --location D:\work\microchip\sc6.6-2021.1\extras\mpfs/bootmode0/fpgenprogProject --action PROGRAM&quot;</span><span class="o">.</span>
+<span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">43</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;D:\work\microchip\libero\Program_Debug_v2021.3\Program_Debug_Tool</span><span class="se">\b</span><span class="s2">in64</span><span class="se">\f</span><span class="s2">pgenprog.exe run_action --location D:\work\microchip\SoftConsole-v2021.3\extras\mpfs/bootmode0/fpgenprogProject --action PROGRAM&quot;</span><span class="o">.</span>
 <span class="hll"><span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">46</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="o">.</span>
-</span><span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">46</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">Console</span> <span class="n">Mode</span> <span class="o">=</span> <span class="n">Software</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">2021.2.0.11</span>
-<span class="ne">Warning</span><span class="p">:</span>  <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">file</span><span class="p">:</span> <span class="s1">&#39;D:\work\microchip\sc6.6-2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
-<span class="ne">Warning</span><span class="p">:</span> <span class="p">[</span><span class="mi">80609481</span><span class="p">]:</span>  <span class="n">Using</span> <span class="n">local</span> <span class="n">backup</span> <span class="n">copy</span><span class="p">:</span> <span class="s1">&#39;D:\work\microchip\sc6.6-2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
-<span class="n">PDB</span> <span class="n">file</span> <span class="s1">&#39;D:\work\microchip\sc6.6-2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
+</span><span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">46</span> <span class="n">INFO</span>  <span class="o">-</span> <span class="n">Console</span> <span class="n">Mode</span> <span class="o">=</span> <span class="n">Software</span> <span class="n">Version</span><span class="p">:</span> <span class="n">v2021</span><span class="mf">.3</span>
+<span class="ne">Warning</span><span class="p">:</span>  <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">file</span><span class="p">:</span> <span class="s1">&#39;D:\work\microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
+<span class="ne">Warning</span><span class="p">:</span> <span class="p">[</span><span class="mi">80609481</span><span class="p">]:</span>  <span class="n">Using</span> <span class="n">local</span> <span class="n">backup</span> <span class="n">copy</span><span class="p">:</span> <span class="s1">&#39;D:\work\microchip\SoftConsole-v2021.3.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
+<span class="n">PDB</span> <span class="n">file</span> <span class="s1">&#39;D:\work\microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
 <span class="n">DESIGN</span> <span class="p">:</span> <span class="n">TOP</span><span class="p">;</span>  <span class="n">CHECKSUM</span> <span class="p">:</span> <span class="mi">0000</span><span class="p">;</span>  <span class="n">PDB_VERSION</span> <span class="p">:</span> <span class="mf">1.9</span>
-<span class="n">Opened</span> <span class="s1">&#39;D:\work\microchip\sc6.6-2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\proj_fp.pro&#39;</span>
+<span class="n">Opened</span> <span class="s1">&#39;D:\work\microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\proj_fp.pro&#39;</span>
 <span class="n">The</span> <span class="s1">&#39;open_project&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
 <span class="n">Info</span><span class="p">:</span>  <span class="n">Programming</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">enabled</span> <span class="k">for</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span><span class="o">.</span>
 <span class="n">The</span> <span class="s1">&#39;enable_device&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
-<span class="n">PPD</span> <span class="n">file</span> <span class="s1">&#39;D:/work/microchip/sc6.6-2021.1/extras/mpfs/bootmode0/fpgenprogProject/proj_fp/target.ppd&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
+<span class="n">PPD</span> <span class="n">file</span> <span class="s1">&#39;D:/work/microchip/SoftConsole-v2021.3/extras/mpfs/bootmode0/fpgenprogProject/proj_fp/target.ppd&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
 <span class="n">DESIGN</span> <span class="p">:</span> <span class="n">TOP</span><span class="p">;</span>  <span class="n">CHECKSUM</span> <span class="p">:</span> <span class="mi">0000</span><span class="p">;</span>  <span class="n">PDB_VERSION</span> <span class="p">:</span> <span class="mf">1.0</span>
 <span class="n">The</span> <span class="s1">&#39;set_programming_file&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
 <span class="n">The</span> <span class="s1">&#39;set_programming_action&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
 <span class="n">Error</span><span class="p">:</span>  <span class="n">No</span> <span class="n">programmers</span> <span class="n">found</span><span class="o">.</span> <span class="n">Please</span> <span class="n">check</span> <span class="n">the</span> <span class="n">programmer</span> <span class="n">connection</span> <span class="n">to</span> <span class="n">the</span> <span class="n">computer</span> <span class="ow">and</span> <span class="n">ensure</span> <span class="n">the</span> <span class="n">drivers</span> <span class="n">are</span> <span class="n">properly</span> <span class="n">installed</span><span class="o">.</span>
 <span class="n">Error</span><span class="p">:</span>  <span class="n">Failed</span> <span class="n">to</span> <span class="n">run</span> <span class="n">Action</span><span class="o">.</span>
-<span class="n">Exported</span> <span class="n">log</span> <span class="n">file</span> <span class="n">D</span><span class="p">:</span>\<span class="n">work</span>\<span class="n">microchip</span>\<span class="n">sc6</span><span class="mf">.6</span><span class="o">-</span><span class="mf">2021.1</span>\<span class="n">extras</span>\<span class="n">mpfs</span>\<span class="n">bootmode0</span>\<span class="n">fpgenprogProject</span>\<span class="n">proj_fp</span>\<span class="n">proj_fp</span><span class="o">.</span><span class="n">log</span><span class="o">.</span>
+<span class="n">Exported</span> <span class="n">log</span> <span class="n">file</span> <span class="n">D</span><span class="p">:</span>\<span class="n">work</span>\<span class="n">microchip</span>\<span class="n">SoftConsole</span><span class="o">-</span><span class="n">v2021</span><span class="mf">.3</span>\<span class="n">extras</span>\<span class="n">mpfs</span>\<span class="n">bootmode0</span>\<span class="n">fpgenprogProject</span>\<span class="n">proj_fp</span>\<span class="n">proj_fp</span><span class="o">.</span><span class="n">log</span><span class="o">.</span>
 <span class="n">Error</span><span class="p">:</span>  <span class="n">The</span> <span class="n">command</span> <span class="s1">&#39;run_selected_actions&#39;</span> <span class="n">failed</span><span class="o">.</span>
 <span class="n">Error</span><span class="p">:</span>  <span class="n">Failure</span> <span class="n">when</span> <span class="n">executing</span> <span class="n">Tcl</span> <span class="n">script</span><span class="o">.</span> <span class="p">[</span> <span class="n">Line</span> <span class="mi">5</span> <span class="p">]</span>
 <span class="n">Error</span><span class="p">:</span>  <span class="n">The</span> <span class="n">Execute</span> <span class="n">Script</span> <span class="n">command</span> <span class="n">failed</span><span class="o">.</span>
-<span class="n">Exported</span> <span class="n">log</span> <span class="n">file</span> <span class="n">D</span><span class="p">:</span>\<span class="n">work</span>\<span class="n">microchip</span>\<span class="n">sc6</span><span class="mf">.6</span><span class="o">-</span><span class="mf">2021.1</span>\<span class="n">extras</span>\<span class="n">mpfs</span><span class="o">/</span><span class="n">bootmode0</span><span class="o">/</span><span class="n">fpgenprogProject</span>\<span class="n">proj_fp</span>\<span class="n">proj_fp</span><span class="o">.</span><span class="n">log</span><span class="o">.</span>
-<span class="n">Software</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">2021.2.0.11</span>
-<span class="ne">Warning</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">file</span><span class="p">:</span> <span class="s1">&#39;D:\work\microchip\sc6.6-2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
-<span class="ne">Warning</span><span class="p">:</span> <span class="n">Using</span> <span class="n">local</span> <span class="n">backup</span> <span class="n">copy</span><span class="p">:</span> <span class="s1">&#39;D:\work\microchip\sc6.6-2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
-<span class="n">PDB</span> <span class="n">file</span> <span class="s1">&#39;D:\work\microchip\sc6.6-2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
+<span class="n">Exported</span> <span class="n">log</span> <span class="n">file</span> <span class="n">D</span><span class="p">:</span>\<span class="n">work</span>\<span class="n">microchip</span>\<span class="n">SoftConsole</span><span class="o">-</span><span class="n">v2021</span><span class="mf">.3</span>\<span class="n">extras</span>\<span class="n">mpfs</span><span class="o">/</span><span class="n">bootmode0</span><span class="o">/</span><span class="n">fpgenprogProject</span>\<span class="n">proj_fp</span>\<span class="n">proj_fp</span><span class="o">.</span><span class="n">log</span><span class="o">.</span>
+<span class="n">Software</span> <span class="n">Version</span><span class="p">:</span> <span class="n">v2021</span><span class="mf">.3</span>
+<span class="ne">Warning</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">file</span><span class="p">:</span> <span class="s1">&#39;D:\work\microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
+<span class="ne">Warning</span><span class="p">:</span> <span class="n">Using</span> <span class="n">local</span> <span class="n">backup</span> <span class="n">copy</span><span class="p">:</span> <span class="s1">&#39;D:\work\microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span><span class="o">.</span>
+<span class="n">PDB</span> <span class="n">file</span> <span class="s1">&#39;D:\work\microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\projectData</span><span class="se">\t</span><span class="s1">arget.pdb&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
 <span class="n">DESIGN</span> <span class="p">:</span> <span class="n">TOP</span><span class="p">;</span>  <span class="n">CHECKSUM</span> <span class="p">:</span> <span class="mi">0000</span><span class="p">;</span>  <span class="n">PDB_VERSION</span> <span class="p">:</span> <span class="mf">1.9</span>
-<span class="n">Opened</span> <span class="s1">&#39;D:\work\microchip\sc6.6-2021.1\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\proj_fp.pro&#39;</span>
+<span class="n">Opened</span> <span class="s1">&#39;D:\work\microchip\SoftConsole-v2021.3\extras\mpfs</span><span class="se">\b</span><span class="s1">ootmode0</span><span class="se">\f</span><span class="s1">pgenprogProject\proj_fp\proj_fp.pro&#39;</span>
 <span class="n">The</span> <span class="s1">&#39;open_project&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
 <span class="n">Info</span><span class="p">:</span> <span class="n">Programming</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">enabled</span> <span class="k">for</span> <span class="n">device</span> <span class="s1">&#39;target&#39;</span><span class="o">.</span>
 <span class="n">The</span> <span class="s1">&#39;enable_device&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
-<span class="n">PPD</span> <span class="n">file</span> <span class="s1">&#39;D:/work/microchip/sc6.6-2021.1/extras/mpfs/bootmode0/fpgenprogProject/proj_fp/target.ppd&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
+<span class="n">PPD</span> <span class="n">file</span> <span class="s1">&#39;D:/work/microchip/SoftConsole-v2021.3/extras/mpfs/bootmode0/fpgenprogProject/proj_fp/target.ppd&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">successfully</span><span class="o">.</span>
 <span class="n">DESIGN</span> <span class="p">:</span> <span class="n">TOP</span><span class="p">;</span>  <span class="n">CHECKSUM</span> <span class="p">:</span> <span class="mi">0000</span><span class="p">;</span>  <span class="n">PDB_VERSION</span> <span class="p">:</span> <span class="mf">1.0</span>
 <span class="n">The</span> <span class="s1">&#39;set_programming_file&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
 <span class="n">The</span> <span class="s1">&#39;set_programming_action&#39;</span> <span class="n">command</span> <span class="n">succeeded</span><span class="o">.</span>
 <span class="n">Error</span><span class="p">:</span> <span class="n">No</span> <span class="n">programmers</span> <span class="n">found</span><span class="o">.</span> <span class="n">Please</span> <span class="n">check</span> <span class="n">the</span> <span class="n">programmer</span> <span class="n">connection</span> <span class="n">to</span> <span class="n">the</span> <span class="n">computer</span> <span class="ow">and</span> <span class="n">ensure</span> <span class="n">the</span> <span class="n">drivers</span> <span class="n">are</span> <span class="n">properly</span> <span class="n">installed</span><span class="o">.</span>
 <span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">run</span> <span class="n">Action</span><span class="o">.</span>
-<span class="n">Exported</span> <span class="n">log</span> <span class="n">file</span> <span class="n">D</span><span class="p">:</span>\<span class="n">work</span>\<span class="n">microchip</span>\<span class="n">sc6</span><span class="mf">.6</span><span class="o">-</span><span class="mf">2021.1</span>\<span class="n">extras</span>\<span class="n">mpfs</span>\<span class="n">bootmode0</span>\<span class="n">fpgenprogProject</span>\<span class="n">proj_fp</span>\<span class="n">proj_fp</span><span class="o">.</span><span class="n">log</span><span class="o">.</span>
+<span class="n">Exported</span> <span class="n">log</span> <span class="n">file</span> <span class="n">D</span><span class="p">:</span>\<span class="n">work</span>\<span class="n">microchip</span>\<span class="n">SoftConsole</span><span class="o">-</span><span class="n">v2021</span><span class="mf">.3</span>\<span class="n">extras</span>\<span class="n">mpfs</span>\<span class="n">bootmode0</span>\<span class="n">fpgenprogProject</span>\<span class="n">proj_fp</span>\<span class="n">proj_fp</span><span class="o">.</span><span class="n">log</span><span class="o">.</span>
 <span class="n">Error</span><span class="p">:</span> <span class="n">The</span> <span class="n">command</span> <span class="s1">&#39;run_selected_actions&#39;</span> <span class="n">failed</span><span class="o">.</span>
 <span class="n">Error</span><span class="p">:</span> <span class="n">Failure</span> <span class="n">when</span> <span class="n">executing</span> <span class="n">Tcl</span> <span class="n">script</span><span class="o">.</span> <span class="p">[</span> <span class="n">Line</span> <span class="mi">5</span> <span class="p">]</span>
 <span class="n">Error</span><span class="p">:</span> <span class="n">The</span> <span class="n">Execute</span> <span class="n">Script</span> <span class="n">command</span> <span class="n">failed</span><span class="o">.</span>
@@ -711,7 +812,23 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
 <span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">46</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Running</span> <span class="n">the</span> <span class="n">fpgenprog</span><span class="o">.</span><span class="n">exe</span> <span class="n">PROGRAM</span> <span class="n">action</span> <span class="n">failed</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>If invoking the fpgenprog from command line shows the following error: <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">run</span> <span class="pre">action.</span> <span class="pre">Return</span> <span class="pre">code</span> <span class="pre">=</span> <span class="pre">-1073741819</span></code>. Then contact support for Libero or Program and Debug tolls as this issue is outside SoftConsole’s scope.</p>
+<p>If invoking the fpgenprog from command line shows the following error: <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">run</span> <span class="pre">action.</span> <span class="pre">Return</span> <span class="pre">code</span> <span class="pre">=</span> <span class="pre">-1073741819</span></code>. Then contact support for Libero or Program and Debug as this issue is outside SoftConsole’s scope.</p>
+</div>
+<div class="section" id="linux-fpgenprog-invokes-32-bit-binaries">
+<h3>Linux fpgenprog invokes 32-bit binaries<a class="headerlink" href="#linux-fpgenprog-invokes-32-bit-binaries" title="Permalink to this headline">¶</a></h3>
+<p>Linux fpgenprog run from the Libero or from Program and Debug will invoke 32-bit binaries, which means the 64-bit Linux will have to have extra 32-bit libraries installed. If they are not, then the following error might be observed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INFO</span>  <span class="o">-</span> <span class="n">Generating</span> <span class="n">bitstream</span><span class="o">...</span>
+<span class="hll"><span class="n">ERROR</span> <span class="o">-</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">microsemi</span><span class="o">/</span><span class="n">Program_Debug_v2021</span><span class="mf">.3</span><span class="o">/</span><span class="n">Program_Debug_Tool</span><span class="o">/</span><span class="n">binfp</span><span class="o">/</span><span class="n">fpbitgen_bin</span><span class="p">:</span> <span class="ow">not</span> <span class="n">found</span>
+</span><span class="n">ERROR</span> <span class="o">-</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">fp</span><span class="o">.</span><span class="n">pro</span><span class="o">.</span> <span class="n">Return</span> <span class="n">code</span> <span class="o">=</span> <span class="mi">32512</span>
+</pre></div>
+</div>
+<p>To solve this issue read the ‘Libero’ or ‘Program and Debug’ documentation, or contact the support team for ‘Libero’ or ‘Program and Debug’ as this issue is outside SoftConsole’s scope.  However, Ubuntu and Debian users might solve it just by running the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">architecture</span> <span class="n">i386</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libstdc</span><span class="o">++</span><span class="mi">6</span><span class="p">:</span><span class="n">i386</span> <span class="n">libz</span><span class="o">-</span><span class="n">dev</span><span class="p">:</span><span class="n">i386</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -730,10 +847,26 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021 Microchip.
+        &#169; Copyright 2022 Microchip.
 
     </p>
   </div> 
+
+<center>
+<a id=githubIssue target="_blank">
+    <img src=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAAjBAMAAABLKhiRAAAAElBMVEUAlf////9mwP86rf/G6P8Lmf+1OJXFAAABPUlEQVRIx+2VT4uDMBDFX7Lxnsmkd1PsPZTtPfbPPRb7/b/KTszioS1sUViWpQOaN+/5EycoglaVBe2wuJpg4fbb5bW3sBHL6yA8VlReyePN/0NetXJElNI+zzaLN+s7XlFx5pr5scVr/KF74OvyIh+H6HzufT7mboiGghwRII+eUWTvWAWCJiftjo2941X0WSeTOhyH2DV9PH9cim/SZxap08jqoq1BQNe03D0+P2OIsAobdWABuTnV+45FSsQq3hgoKVy642kDgQA226SiFZCIJ56oSFXnP12lFYQe5pe8nK0+tioWydWvSYm4xKEmzj7jjcwPkuYMmb/64kCkRKym7QmStBye8eh9uVhN+68oTT55iKz77zFSL2nLV/fz+5vr0szyVppvM//d7+fN/xbfWLg1vF7//6dVZb8Ak6o7NKJP34MAAAAASUVORK5CYII=" 
+    width="125px" height="35px">
+</a>
+</center>
+
+<script>
+var pageName = "using_softconsole/mpfs.md.txt".replace(/\.txt/g,'');
+var body  = "Document: SoftConsole\nVersion: v2021.3-7.0.599\nMy feedback is as follows: <PLEASE ELABORATE>";
+var title = "I have feedback for the " + pageName + " page";
+var ghuri = "https://github.com/Mi-V-Ecosystem/SoftConsole-Documentation/issues/new?title="+title+"&body="+body;
+document.getElementById("githubIssue").href = encodeURI(ghuri);
+</script>
+    
 <!-- <center>
 
     <a id=githubIssue target="_blank">
@@ -750,13 +883,13 @@ PolarFire SoC HAL example linker scripts but may not be so in the general case.<
 
 <script>
     var pageName = "using_softconsole/mpfs.md.txt".replace(/\.txt/g,'');
-    var uri = "feedback/com?document=SoftConsole&release=v2021.3-7.0.607&page=" + pageName;
+    var uri = "feedback/com?document=SoftConsole&release=v2021.3-7.0.599&page=" + pageName;
     var res = encodeURI(uri);
     document.getElementById("feeedbackLink").href = res;
 
-    var body  = "Document: SoftConsole\nVersion: v2021.3-7.0.607\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
-    var title = "I have problem with the " + pageName + " page";
-    var ghuri = "https://github.com/AntonKrug/scdocs/issues/new?title="+title+"&body="+body+"&labels=help wanted";
+    var body  = "Document: SoftConsole\nVersion: v2021.3-7.0.599\nWanted to be contacted: Yes/No <PLEASE EDIT THIS ANSWER>\nMy issue is as follows: <PLEASE ELABORATE>";
+    var title = "I have problem/feedback with the " + pageName + " page";
+    var ghuri = "https://github.com/Mi-V-Ecosystem/SoftConsole-Documentation/issues/new?title="+title+"&body="+body+"&labels=help wanted";
     document.getElementById("githubIssue").href = encodeURI(ghuri);
 
 </script> -->
