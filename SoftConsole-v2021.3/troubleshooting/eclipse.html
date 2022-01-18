@@ -206,11 +206,21 @@
 <p>Using reasonable project names, concise configuration names and placing project’s root at short paths can avoid this problem.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Big projects (such as <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-examples</span></code>) that contain large structures with long paths should be copied/cloned/extracted to a shallow path. Safest is to use a plain root folder to make sure the long path issue was not triggered.</p>
+<p>Big projects (such as <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-examples</span></code>) that contain large structures with long paths should be copied/cloned/extracted to a shallow path. Safest is to use a plain root folder to make sure the long path issue was not triggered. Then importing the project into a workspace within a shallow path is necessary as well.</p>
+</div>
+<p>When building a project and receiving the following error might indicate that the long-path issue was triggered:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>15:59:40 **** Build of configuration LIM-Debug for project mpfs-mac-simple-test-multi-emac ****
+make all 
+<span class="hll">make: *** INTERNAL: readdir: No such file or directory.  Stop.
+</span>&quot;make all&quot; terminated with exit code 2. Build might be incomplete.
+
+15:59:41 Build Failed. 1 errors, 0 warnings. (took 1s.229ms)
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Providing SotftConsole with a corrupted project will cause all sorts of problems and it will not compile the project properly. One way to avoid corruption of a project is to <strong>NOT</strong> ignore any previous errors before the project is imported.</p>
+<p>For example if extracing ZIP of a project into a long path can corrupt the project in the process:</p>
 <p><img alt="extraction-error" src="troubleshooting/images/projects/long-path-extraction.png" /></p>
 <p>Resolve all problems first and only then import the project into SoftConsole.</p>
 </div>
