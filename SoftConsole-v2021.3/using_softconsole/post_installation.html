@@ -605,7 +605,7 @@ non-root user some additional steps must be taken.</p>
 <li><p>Copy the OpenOCD udev rules file and tell the udev subsystem to load it. This rules file describes all USB JTAG devices supported by OpenOCD to the system and makes them accessible by non-root users (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;SoftConsole-install-dir&gt;/openocd/share/openocd/contrib
 sudo cp <span class="m">60</span>-openocd.rules /etc/udev/rules.d
-sudo udevadm trigger
+sudo udevadm trigger <span class="c1"># Or reboot the PC for the changes to take effect</span>
 </pre></div>
 </div>
 <p>If <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code> already exists then make sure to overwrite it with the new version in this release as it contains additional rule data not in the earlier version.</p>
@@ -614,14 +614,16 @@ sudo udevadm trigger
 sudo usermod -a -G plugdev &lt;username&gt;
 </pre></div>
 </div>
-</li>
-<li><p>If you previously used SoftConsole v4.x or 5.0 and installed the <code class="docutils literal notranslate"><span class="pre">99-openocd.rules</span></code> file into <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d</span></code> then you can delete that file as it is now redundant and superseded by <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code>. Then run again:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo udevadm trigger
-</pre></div>
-</div>
-<p>Or reboot the PC for the changes to take effect.</p>
+<p>Log out and then log in (or reboot the PC) for the <code class="docutils literal notranslate"><span class="pre">usermod</span></code> changes to be applied.</p>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you previously used SoftConsole v4.x or 5.0 and installed the <code class="docutils literal notranslate"><span class="pre">99-openocd.rules</span></code> file into <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d</span></code> then you can delete that file as it is now redundant and superseded by <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code>. Then run again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo udevadm trigger <span class="c1"># Or reboot the PC for the changes to take effect</span>
+</pre></div>
+</div>
+</div>
 <p>For all other common issues read the troubleshooting section. Or at least search for the error messages.</p>
 </div>
 </div>
