@@ -608,7 +608,11 @@ sudo cp <span class="m">60</span>-openocd.rules /etc/udev/rules.d
 sudo udevadm trigger <span class="c1"># Or reboot the PC for the changes to take effect</span>
 </pre></div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code> already exists then make sure to overwrite it with the new version in this release as it contains additional rule data not in the earlier version.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code> already exists then make sure to overwrite it with the new version in this release as it contains additional rules that are not included in the earlier version.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If SoftConsole is installed alongside other tools which affect the udev rules (for example Libero, Program and Debug), then make sure their rules/scripts do not override the rules from the <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code> file.</p>
+</div>
 <p>In some cases it may be necessary to reboot for the changes to take effect. Some distributions do not create the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group and/or may not add users to it automatically. In that case the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group must be created manually and the user added to the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo groupadd plugdev
 sudo usermod -a -G plugdev &lt;username&gt;
