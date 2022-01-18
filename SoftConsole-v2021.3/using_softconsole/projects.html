@@ -244,6 +244,16 @@
 <p>Users are encouraged to place the projects at the shortest feasible paths because not just the root of the project is important, but its <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> and its <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> as well. For example if the <code class="docutils literal notranslate"><span class="pre">WORKSPACE_PATH</span></code> is short, then still there is possibility to create long path when addressing the ELF file. On top of the project’s root, the current <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> impacts the path and the <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> impacts it twice:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;WORKSPACE_PATH&gt;/&lt;PROJECT_NAME&gt;/&lt;CONFIGURATION&gt;/&lt;PROJECT_NAME&gt;.elf</span></code></p>
 <p>Using reasonable project names, concise configuration names and placing project’s root at short paths can avoid this problem.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Big projects (such as <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-examples</span></code>) that contain large structures with long paths should be copied/cloned/extracted to a shallow path. Safest is to use a plain root folder to make sure the long path issue was not triggered.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Providing SotftConsole with a corrupted project will cause all sorts of problems and it will not compile the project properly. One way to avoid corruption of a project is to <strong>NOT</strong> ignore any previous errors before the project is imported.</p>
+<p><img alt="extraction-error" src="../_images/long-path-extraction.png" /></p>
+<p>Resolve all problems first and only then import the project into SoftConsole.</p>
+</div>
 </div>
 <div class="section" id="creating-a-new-project">
 <h2>Creating a new project<a class="headerlink" href="#creating-a-new-project" title="Permalink to this headline">¶</a></h2>
