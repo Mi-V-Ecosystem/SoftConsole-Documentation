@@ -9,6 +9,7 @@
 {% include 'main/using_softconsole/projects/_long_path.inc' %}
 {% endif %}
 {% include 'main/troubleshooting/eclipse/_running_from_cli.inc' %}
+{% include 'main/troubleshooting/eclipse/_welcome_page_images.inc' %}
 {% include 'main/troubleshooting/eclipse/_linux_gui_glitches.inc' %}
 {% include 'main/troubleshooting/eclipse/_new_tab_when_debuging.inc' %}
 
