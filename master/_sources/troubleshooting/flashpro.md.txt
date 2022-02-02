@@ -13,7 +13,10 @@
 {% include 'main/using_softconsole/debugging/_troubleshooting.inc' %}
 
 {% include 'main/troubleshooting/flashpro/_remote_openocd.inc' %}
+
+## Check that FlashPro can be used without root privileges
 {% include 'main/troubleshooting/flashpro/_check_without_root.inc' %}
+
 {% include 'main/troubleshooting/flashpro/_cannot_be_shared.inc' %}
 {% include 'main/troubleshooting/flashpro/_ftdio_sio.inc' %}
 {% include 'main/troubleshooting/flashpro/_efp6_rev_a.inc' %}

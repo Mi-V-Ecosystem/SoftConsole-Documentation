@@ -32,19 +32,18 @@ Refer to the README.txt (or .md/.html) for each example project for more informa
 
 ### Example projects
 
-The workspace is shipped with blinky projects for various targets (see their READMEs). However few projects have special reasons why they are bundled:
+The workspace is shipped with 'blinky' projects for various targets (see their READMEs). However few projects have special reasons why they are bundled:
 
 
 `````{tabs}
 
 ````{tab} RISC-V
- - **mpfs-blinky:** Simple GPIO LED and UART example program targeting the Renode PolarFire SoC emulation platform. The associated tool and debug launch configurations facilitate debugging this example on the emulation platform. Refer to the README and Renode sections for more information.
- - **mpfs-mustein-julia:** A Renode-only example showcasing a simple graphical peripheral and own platform
+ - **mpfs-gpio-interrupt:** Simple GPIO LED and UART example program targeting the Renode PolarFire SoC emulation platform. The associated tool and debug launch configurations facilitate debugging this example on the emulation platform. Refer to the README and Renode sections for more information.
+ - **mpfs-mustein-julia:** A Renode-only example showcasing a simple graphical peripheral and how to make bespoke Renode platform
  - **mpfs-freertos-lwip:** Demonstration of a FreeRTOS implementation running a LwIP and a Webserver.
  - **miv-rv32iamf-mandelbrot-uart:** Displaying Mandelbrot fractals with ASCII art through UART while using the RISC-V F extension
  - **miv-rv32iamf-raytracer-uart-cpp:** ASCII art raytraced rendering of a sphere while using C++ and RISC-V F extension. Output is displayed over UART, extra attention needs to be paid to the readme and get the UART clocked correctly. The terminal window most likely must be resized to fit the content without any artifacts.
- - **miv-rv32im-systick-blinky:** timer driven LED blinker and UART echo program for a system containing the MiV RISC-V soft processor that supports at least the M extension.
- - **miv-rv32im-interrupt-blinky:** interrupt driven LED blinker and UART echo program for a system containing the Mi-V RISC-V soft processor that supports at least the M extension.
+ - **miv-rv32i-systick-blinky:** timer driven LED blinker and UART echo program for a system containing the MiV RISC-V soft processor that supports at least the M extension.
 
 ```{note}
 All the Mi-V (including mpfs) projects can be run and debugged without target hardware on the Renode emulation platform. All the projects have enabled cppcheck on each build.

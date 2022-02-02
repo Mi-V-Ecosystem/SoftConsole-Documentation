@@ -114,10 +114,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#program-and-debug-polarfire-soc">Program and Debug PolarFire SoC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Renode dependencies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#writting-models-for-renode">Writting models for Renode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hardware-targets-flashpro">Hardware targets (FlashPro)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-targets-flashpro">Hardware targets (FlashPro)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#check-that-flashpro-can-be-used-without-root-privileges">Check that FlashPro can be used without root privileges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-non-root-user-to-access-flashpro">Enabling non-root user to access FlashPro</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#check-that-flashpro-can-be-used-without-root">Check that FlashPro can be used without root</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#crypto-application-library">Crypto Application Library</a></li>
 </ul>
 </li>
@@ -288,6 +291,7 @@ necessary.</p>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install build-essential
+sudo apt-get install libwebkit2gtk-4.0-37 <span class="c1"># To enable SoftConsole embedded web-browser</span>
 </pre></div>
 </div>
 </div>
@@ -381,34 +385,12 @@ yum install mono-devel mono-full
 </div>
 <div class="section" id="hardware-targets-flashpro">
 <span id="linuxpostinstallhw"></span><h3>Hardware targets (FlashPro)<a class="headerlink" href="#hardware-targets-flashpro" title="Permalink to this headline">¶</a></h3>
-<p>By default, USB devices are only accessible to users with root privileges. To debug using SoftConsole and FlashPro5/6 as a
-non-root user some additional steps must be taken.</p>
-<ul>
-<li><p>Copy the OpenOCD udev rules file and tell the udev subsystem to load it. This rules file describes all USB JTAG devices supported by OpenOCD to the system and makes them accessible by non-root users (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;SoftConsole-install-dir&gt;/openocd/share/openocd/contrib
-sudo cp <span class="m">60</span>-openocd.rules /etc/udev/rules.d
-sudo udevadm trigger
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When accessing FlashPro devices then native Windows/Linux host machines are recommended as there might be issues with Virtual Machines accessing the FlashPro.</p>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code> already exists then make sure to overwrite it with the new version in this release as it contains additional rule data not in the earlier version.</p>
-<p>In some cases it may be necessary to reboot for the changes to take effect. Some distributions do not create the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group and/or may not add users to it automatically. In that case the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group must be created manually and the user added to the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo groupadd plugdev
-sudo usermod -a -G plugdev &lt;username&gt;
-</pre></div>
-</div>
-</li>
-<li><p>If you previously used SoftConsole v4.x or 5.0 and installed the <code class="docutils literal notranslate"><span class="pre">99-openocd.rules</span></code> file into <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d</span></code> then you can delete that file as it is now redundant and superseded by <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code>. Then run again:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo udevadm trigger
-</pre></div>
-</div>
-<p>Or reboot the PC for the changes to take effect.</p>
-</li>
-</ul>
-<p>For all other common issues read the troubleshooting section. Or at least search for the error messages.</p>
-</div>
-</div>
-<div class="section" id="check-that-flashpro-can-be-used-without-root">
-<h2>Check that FlashPro can be used without root<a class="headerlink" href="#check-that-flashpro-can-be-used-without-root" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="check-that-flashpro-can-be-used-without-root-privileges">
+<h4>Check that FlashPro can be used without root privileges<a class="headerlink" href="#check-that-flashpro-can-be-used-without-root-privileges" title="Permalink to this headline">¶</a></h4>
 <p>Connect a FlashPro5/6 JTAG programmer to a native Linux host machine (this might not work on a VM) and check that it is visible to the operating system:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsusb
 Bus <span class="m">001</span> Device <span class="m">004</span>: ID <span class="m">1514</span>:2008 Actel
@@ -608,11 +590,46 @@ Info : JTAG tap: M2S090.dap enabled
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If seeing output similar to the snippet below (or any other errors excluding documented issues) indicate a problem. In that case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p>
+<p>If seeing output similar to the snippet below (or any other errors excluding documented issues) then that indicates a problem. In that case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: FlashPro ports available: none
 Info: FlashPro port used: usb
 <span class="hll">Error: InitializeProgrammer(usb) failed: Can not connect to the programmer
 </span></pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="enabling-non-root-user-to-access-flashpro">
+<h4>Enabling non-root user to access FlashPro<a class="headerlink" href="#enabling-non-root-user-to-access-flashpro" title="Permalink to this headline">¶</a></h4>
+<p>By default, USB devices are only accessible to users with root privileges. To debug using SoftConsole and FlashPro5/6 as a
+non-root user some additional steps must be taken.</p>
+<ul>
+<li><p>Copy the OpenOCD udev rules file and tell the udev subsystem to load it. This rules file describes all USB JTAG devices supported by OpenOCD to the system and makes them accessible by non-root users (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;SoftConsole-install-dir&gt;/openocd/share/openocd/contrib
+sudo cp <span class="m">60</span>-openocd.rules /etc/udev/rules.d
+sudo udevadm trigger <span class="c1"># Or reboot the PC for the changes to take effect</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code> already exists then make sure to overwrite it with the new version in this release as it contains additional rules that are not included in the earlier version.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If SoftConsole is installed alongside other tools which affect the udev rules (for example Libero, Program and Debug), then make sure their rules/scripts do not override the rules from the <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code> file.</p>
+</div>
+<p>In some cases it may be necessary to reboot for the changes to take effect. Some distributions do not create the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group and/or may not add users to it automatically. In that case the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group must be created manually and the user added to the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo groupadd plugdev
+sudo usermod -a -G plugdev &lt;username&gt;
+</pre></div>
+</div>
+<p>Log out and then log in (or reboot the PC) for the <code class="docutils literal notranslate"><span class="pre">usermod</span></code> changes to be applied.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you previously used SoftConsole v4.x or 5.0 and installed the <code class="docutils literal notranslate"><span class="pre">99-openocd.rules</span></code> file into <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d</span></code> then you can delete that file as it is now redundant and superseded by <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code>. Then run again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo udevadm trigger <span class="c1"># Or reboot the PC for the changes to take effect</span>
+</pre></div>
+</div>
+</div>
+<p>For all other common issues read the troubleshooting section. Or at least search for the error messages.</p>
 </div>
 </div>
 </div>

@@ -107,7 +107,6 @@
 <li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Projects</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#long-paths-on-windows">Long paths on Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-new-project">Creating a new project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#project-settings">Project Settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#all-cpu-targets">All CPU targets</a><ul>
@@ -145,6 +144,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#adding-source-files-to-a-project">Adding source files to a project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#building-a-project">Building a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#long-paths-on-windows">Long paths on Windows</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
@@ -231,20 +231,6 @@
 
   <div class="section" id="projects">
 <h1>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="long-paths-on-windows">
-<h2>Long paths on Windows<a class="headerlink" href="#long-paths-on-windows" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> inside Windows file I/O API is restricted to 260 characters, but the usable path is even more constrained. The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> must contain the drive letter and the NULL character to terminate the string correctly:</p>
-<div class="graphviz"><img src="../_images/graphviz-6e9abb0770b36e84a475d07f785ec2c033045590.png" alt="digraph {
-         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
-         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
-         edge [arrowsize=.7];
-         &quot;Drive letter&quot; -&gt; &quot;:\\&quot; -&gt; &quot;Path&quot; -&gt; &quot;NULL termination character&quot;
-     }" class="graphviz" /></div>
-<br/><p>Effectively this shrinks the limit of the usable path to 256 characters for files. While the limit for directories is 244 (256-12) because they need to be capable to append DOS style filename <code class="docutils literal notranslate"><span class="pre">8.3</span></code> at the end of the path.</p>
-<p>Users are encouraged to place the projects at the shortest feasible paths because not just the root of the project is important, but its <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> and its <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> as well. For example if the <code class="docutils literal notranslate"><span class="pre">WORKSPACE_PATH</span></code> is short, then still there is possibility to create long path when addressing the ELF file. On top of the project’s root, the current <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> impacts the path and the <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> impacts it twice:</p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;WORKSPACE_PATH&gt;/&lt;PROJECT_NAME&gt;/&lt;CONFIGURATION&gt;/&lt;PROJECT_NAME&gt;.elf</span></code></p>
-<p>Using reasonable project names, concise configuration names and placing project’s root at short paths can avoid this problem.</p>
-</div>
 <div class="section" id="creating-a-new-project">
 <h2>Creating a new project<a class="headerlink" href="#creating-a-new-project" title="Permalink to this headline">¶</a></h2>
 <ol>
@@ -1058,6 +1044,40 @@ The quickest way to build a project is to click the ‘Hammer’ icon in the Sof
 <div class="graphviz"><img src="../_images/graphviz-d24cbdb1c1c15a5add448f40eac3c8109c283140.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for &lt;YOUR_PROJECT&gt;&quot;; }" class="graphviz" /></div>
 <br/><p>Project Explorer select Project &gt; Build Project. The results of the build process
 can be viewed in the Console view and the Problems view if there are any problems (e.g. errors or warnings)</p>
+</div>
+<div class="section" id="long-paths-on-windows">
+<h2>Long paths on Windows<a class="headerlink" href="#long-paths-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> inside Windows file I/O API is restricted to 260 characters, but the usable path is even more constrained. The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> must contain the drive letter and the NULL character to terminate the string correctly:</p>
+<div class="graphviz"><img src="../_images/graphviz-6e9abb0770b36e84a475d07f785ec2c033045590.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Drive letter&quot; -&gt; &quot;:\\&quot; -&gt; &quot;Path&quot; -&gt; &quot;NULL termination character&quot;
+     }" class="graphviz" /></div>
+<br/><p>Effectively this shrinks the limit of the usable path to 256 characters for files. While the limit for directories is 244 (256-12) because they need to be capable to append DOS style filename <code class="docutils literal notranslate"><span class="pre">8.3</span></code> at the end of the path.</p>
+<p>Users are encouraged to place the projects at the shortest feasible paths because not just the root of the project is important, but its <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> and its <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> as well. For example if the <code class="docutils literal notranslate"><span class="pre">WORKSPACE_PATH</span></code> is short, then still there is possibility to create long path when addressing the ELF file. On top of the project’s root, the current <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> impacts the path and the <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> impacts it twice:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;WORKSPACE_PATH&gt;/&lt;PROJECT_NAME&gt;/&lt;CONFIGURATION&gt;/&lt;PROJECT_NAME&gt;.elf</span></code></p>
+<p>Using reasonable project names, concise configuration names and placing project’s root at short paths can avoid this problem.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Big projects (such as <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-examples</span></code>) that contain large structures with long paths should be copied/cloned/extracted to a shallow path. Safest is to use a plain root folder to make sure the long path issue was not triggered. Then importing the project into a workspace within a shallow path is necessary as well.</p>
+</div>
+<p>When building a project and receiving the following error might indicate that the long-path issue was triggered:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>15:59:40 **** Build of configuration LIM-Debug for project mpfs-mac-simple-test-multi-emac ****
+make all 
+<span class="hll">make: *** INTERNAL: readdir: No such file or directory.  Stop.
+</span>&quot;make all&quot; terminated with exit code 2. Build might be incomplete.
+
+15:59:41 Build Failed. 1 errors, 0 warnings. (took 1s.229ms)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Providing SotftConsole with a corrupted project will cause all sorts of problems and it will not compile the project properly. One way to avoid corruption of a project is to <strong>NOT</strong> ignore any previous errors before the project is imported.</p>
+<p>For example if extracing ZIP of a project into a long path can corrupt the project in the process:</p>
+<p><img alt="extraction-error" src="../_images/long-path-extraction.png" /></p>
+<p>Resolve all problems first and only then import the project into SoftConsole.</p>
+</div>
 </div>
 </div>
 

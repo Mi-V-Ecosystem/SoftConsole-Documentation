@@ -420,7 +420,7 @@ Intel Hex file that can be used in Libero:</p>
      }" class="graphviz" /></div>
 <br/><p>The name of this file includes</p>
 <ol class="simple">
-<li><p>the ELF file basename - for example “mpfs-blinky” for “mpfs-blinky.elf”</p></li>
+<li><p>the ELF file basename - for example “mpfs-gpio-interrupt” for “mpfs-gpio-interrupt.elf”</p></li>
 <li><p>“bmN” (1 &lt;= N &lt;= 3) indicating the boot mode</p></li>
 <li><p>“pM” (where M is an NVM page number) indicating the NVM (eNVM or sNVM) page  at which the boot mode program image (including prepended “header” data) is stored.</p></li>
 </ol>
@@ -429,10 +429,10 @@ boot program is stored in <code class="docutils literal notranslate"><span class
 sNVM pages respectively.</p>
 <p>Examples of boot mode program image Intel Hex file names include:</p>
 <ul class="simple">
-<li><p>Boot mode 1: mpfs-blinky-bm1-p0.hex</p></li>
-<li><p>Boot mode 2: mpfs-blinky-bm2-ap-p20.hex (authenticated plaintext)</p></li>
-<li><p>Boot mode 2: mpfs-blinky-bm2-ac-p32.hex (authenticated encrypted ciphertext)</p></li>
-<li><p>Boot mode 3: mpfs-blinky-bm3-p0.hex</p></li>
+<li><p>Boot mode 1: mpfs-gpio-interrupt-bm1-p0.hex</p></li>
+<li><p>Boot mode 2: mpfs-gpio-interrupt-bm2-ap-p20.hex (authenticated plaintext)</p></li>
+<li><p>Boot mode 2: mpfs-gpio-interrupt-bm2-ac-p32.hex (authenticated encrypted ciphertext)</p></li>
+<li><p>Boot mode 3: mpfs-gpio-interrupt-bm3-p0.hex</p></li>
 </ul>
 <p>For boot mode 2 the USK (User sNVM/Secret Key) used is stored in
 <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm2-usk.txt</span></code>. This or another USK is required when

@@ -349,17 +349,17 @@ the GDB server and target.</p>
 need this information. Renode has some debugger-client features, but there is no automated mechanism to transfer
 these symbols from within SoftConsole as Renode is treated as regular GDB server (which typically doesn’t need
 symbol information). This means that the following commands can’t be automated in a generic manner.
-The Renode must be launched, this is demonstrated on <code class="docutils literal notranslate"><span class="pre">mpfs-blinky</span></code> example, but can be applied to other projects.
-Use the <code class="docutils literal notranslate"><span class="pre">mpfs-blinky</span> <span class="pre">Renode</span> <span class="pre">all-harts</span> <span class="pre">Start-platform-and-debug</span></code> group launcher, wait for it to break on
+The Renode must be launched, this is demonstrated on <code class="docutils literal notranslate"><span class="pre">mpfs-gpio-interrupt</span></code> example, but can be applied to other projects.
+Use the <code class="docutils literal notranslate"><span class="pre">mpfs-mpfs-gpio-interrupt</span> <span class="pre">renode</span> <span class="pre">all-harts</span> <span class="pre">start-platform-and-debug</span></code> group launcher, wait for it to break on
 main and load symbols into Renode by typing the following into Renode’s monitor window:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sysbus</span> <span class="n">LoadSymbolsFrom</span> <span class="o">@../../</span><span class="n">extras</span><span class="o">/</span><span class="n">workspace</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="n">mpfs</span><span class="o">-</span><span class="n">blinky</span><span class="o">/</span><span class="n">Debug</span><span class="o">/</span><span class="n">mpfsblinky</span><span class="o">.</span><span class="n">elf</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sysbus</span> <span class="n">LoadSymbolsFrom</span> <span class="o">@../../</span><span class="n">extras</span><span class="o">/</span><span class="n">workspace</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="n">mpfs</span><span class="o">-</span><span class="n">gpio</span><span class="o">-</span><span class="n">interrupt</span><span class="o">/</span><span class="n">LIM</span><span class="o">-</span><span class="n">Debug</span><span class="o">/</span><span class="n">mpfsblinky</span><span class="o">.</span><span class="n">elf</span>
 </pre></div>
 </div>
 <p>The path to the symbols is referenced relative to Renode’s binary and needs to contain correct path to workspace,
 correct project, correct configuration (Debug/Release) and then correct binary name. Problem is that this is not generic
 and even when using macros, the path could be different depending on what workspace or what project name user’s
 use. For PolarFireSoC users there is LoadSymbols macro, but requires users to set the SYMBOLS variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>set SYMBOLS @../../extras/workspace.examples/mpfs-blinky/Debug/mpfs-blinky.elf
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>set SYMBOLS @../../extras/workspace.examples/mpfs-gpio-interrupt/LIM-Debug/mpfs-gpio-interrupt.elf
 runMacro $LoadSymbols
 </pre></div>
 </div>
@@ -390,7 +390,7 @@ command:</p>
 if just E51 trace is needed (macros for all other harts exist as well). However, enabling too much of debug/trace
 information might cause unnecessary verbosity and make the debugging harder, therefore it’s good to enable as little
 as needed.</p>
-<p>Now running the <code class="docutils literal notranslate"><span class="pre">mpfs-blinky</span></code> application by:</p>
+<p>Now running the <code class="docutils literal notranslate"><span class="pre">mpfs-gpio-interrupt</span></code> application by:</p>
 <ul>
 <li><p>pressing <code class="docutils literal notranslate"><span class="pre">Resume</span></code> icon button in the main toolbar</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">F8</span></code> key shortcut</p></li>

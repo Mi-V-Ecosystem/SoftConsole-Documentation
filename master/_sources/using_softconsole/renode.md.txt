@@ -157,12 +157,12 @@ Typically, the symbol information is used only by the debugger-client, while the
 need this information. Renode has some debugger-client features, but there is no automated mechanism to transfer
 these symbols from within SoftConsole as Renode is treated as regular GDB server (which typically doesn’t need
 symbol information). This means that the following commands can’t be automated in a generic manner.
-The Renode must be launched, this is demonstrated on `mpfs-blinky` example, but can be applied to other projects.
-Use the `mpfs-blinky Renode all-harts Start-platform-and-debug` group launcher, wait for it to break on
+The Renode must be launched, this is demonstrated on `mpfs-gpio-interrupt` example, but can be applied to other projects.
+Use the `mpfs-mpfs-gpio-interrupt renode all-harts start-platform-and-debug` group launcher, wait for it to break on
 main and load symbols into Renode by typing the following into Renode’s monitor window:
 
 ```
-sysbus LoadSymbolsFrom @../../extras/workspace.examples/mpfs-blinky/Debug/mpfsblinky.elf
+sysbus LoadSymbolsFrom @../../extras/workspace.examples/mpfs-gpio-interrupt/LIM-Debug/mpfsblinky.elf
 ```
 
 The path to the symbols is referenced relative to Renode’s binary and needs to contain correct path to workspace,
@@ -171,7 +171,7 @@ and even when using macros, the path could be different depending on what worksp
 use. For PolarFireSoC users there is LoadSymbols macro, but requires users to set the SYMBOLS variable:
 
 ```
-set SYMBOLS @../../extras/workspace.examples/mpfs-blinky/Debug/mpfs-blinky.elf
+set SYMBOLS @../../extras/workspace.examples/mpfs-gpio-interrupt/LIM-Debug/mpfs-gpio-interrupt.elf
 runMacro $LoadSymbols
 ```
 
@@ -212,7 +212,7 @@ if just E51 trace is needed (macros for all other harts exist as well). However,
 information might cause unnecessary verbosity and make the debugging harder, therefore it’s good to enable as little
 as needed.
 
-Now running the `mpfs-blinky` application by:
+Now running the `mpfs-gpio-interrupt` application by:
  - pressing `Resume` icon button in the main toolbar
  - `F8` key shortcut
  - {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Resume"', '   ') }}
