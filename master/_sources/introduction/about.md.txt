@@ -66,15 +66,15 @@ The documentation can be downloaded for 'offline' use. Because various versions 
 
 ## Used terms
 
-This document uses **\<SoftConsole-install-dir\>** as a placeholder for the actual SoftConsole install directory.
+This document uses **\<SoftConsole-install-dir\>** and **\<SC_INSTALL_DIR\>** as a placeholders for the actual SoftConsole install directory.
 Where this is mentioned substitute the actual SoftConsole install directory name.
 
 {% if windows is defined %}
- - Windows example: `C:\Microchip\SoftConsole_{{scVersion}}`
+ - Windows example: `C:\Microchip\SoftConsole_{{scVersionAndBuild}}`
 {% endif %}
 
 {% if linux is defined %}
- - Linux example: `$HOME/Microchip/SoftConsole_{{scVersion}}`
+ - Linux example: `$HOME/Microchip/SoftConsole_{{scVersionAndBuild}}`
 {% endif %}
 
 
