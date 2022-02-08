@@ -29,10 +29,6 @@ And it is recommended to search for the error messages in the troubleshooting se
 
 {doc}`/troubleshooting/renode`
 
-{% if linux is defined %}
-{doc}`/troubleshooting/renode_networking`
-{% endif %}  % End of Linux
-
 {doc}`/troubleshooting/eclipse`
 
 ```{note}

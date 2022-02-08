@@ -129,7 +129,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/arm.html">Arm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode_networking.html">Renode networking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
 </ul>
@@ -293,7 +292,7 @@ client as well.</p>
 <h2>Other troubleshooting<a class="headerlink" href="#other-troubleshooting" title="Permalink to this headline">¶</a></h2>
 <p>See sections:</p>
 <p><a class="reference internal" href="../troubleshooting/renode.html"><span class="doc">Renode troubleshooting</span></a></p>
-<p><a class="reference internal" href="../troubleshooting/renode_networking.html"><span class="doc">Renode networking</span></a></p>
+<p><span class="xref std std-doc">/troubleshooting/renode_networking</span></p>
 </div>
 <div class="section" id="macros">
 <span id="macrosrenode"></span><h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
@@ -474,7 +473,7 @@ SoftConsole v2022.1 this feature is accessible only from Linux hosts.</p>
 </div>
 <p>Renode is trying to probe user’s privileges, which should be safe to ignore. If the polkit and sudo are set to be passwordless, then the bridge should be created correctly without any other user’s interaction.
 See the chapter:</p>
-<p><a class="reference internal" href="../troubleshooting/renode_networking.html#renodecantcreatetap"><span class="std std-ref">Could not set TUNSETIFF, error: 2</span></a></p>
+<p><span class="xref std std-ref">Could not set TUNSETIFF, error: 2</span></p>
 <p>Then as superuser (<code class="docutils literal notranslate"><span class="pre">root</span></code> user, or regular user with <code class="docutils literal notranslate"><span class="pre">sudo</span></code> privileges) invoke on a Linux terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ifconfig</span> <span class="n">renode</span><span class="o">-</span><span class="n">tap0</span> <span class="mf">172.16.0.1</span><span class="o">/</span><span class="mi">24</span> <span class="n">up</span>
 </pre></div>

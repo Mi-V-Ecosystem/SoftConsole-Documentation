@@ -45,7 +45,6 @@ troubleshooting/riscv
 troubleshooting/riscv_trap
 troubleshooting/arm
 troubleshooting/renode
-troubleshooting/renode_networking
 troubleshooting/eclipse
 troubleshooting/support
 ```
