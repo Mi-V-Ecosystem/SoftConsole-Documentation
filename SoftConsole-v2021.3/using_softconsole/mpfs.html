@@ -286,6 +286,10 @@ following locations:</p>
 <p class="admonition-title">Note</p>
 <p>These are the default locations and the actual location will differ if a non-default install location is specified at install time.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the Libero v2021.3 or Program and Debug v2021.3 are installed in the default path then they should be detected by the mpfsBootmodeProgrammer.jar directly. In that case it’s best to <strong>not</strong> have <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> env. variable set and let the autodetection to find the tool. Set the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> if the autodetection fails or if the tools are installed in non-default pahts.</p>
+</div>
 </div>
 <div class="section" id="mpfsbootmodeprogrammer">
 <h3>mpfsBootmodeProgrammer<a class="headerlink" href="#mpfsbootmodeprogrammer" title="Permalink to this headline">¶</a></h3>
