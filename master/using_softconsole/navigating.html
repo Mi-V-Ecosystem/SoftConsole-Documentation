@@ -107,6 +107,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Navigating the IDE</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#starting-the-ide">Starting the IDE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#first-start-up">First start-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#high-dpi-displays">High DPI displays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#access-commands-and-other-items">Access commands and other items</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#toolbar-icons">Toolbar icons</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#save-all">Save all</a></li>
@@ -292,6 +293,40 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This might take different amount of time depending on the size of the workspace and the performance of the host machine, but it shouldn’t take long.</p>
+</div>
+</div>
+<div class="section" id="high-dpi-displays">
+<h2>High DPI displays<a class="headerlink" href="#high-dpi-displays" title="Permalink to this headline">¶</a></h2>
+<p>If the OS controlled scaling is not producing the desired results, then SoftConsole scaling can be configured with the following:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2-0 docutils container">
+<div class="docutils container">
+<p>Windows</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-1 docutils container">
+<div class="docutils container">
+<p>Linux</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
+<ul class="simple">
+<li><p>Adding <code class="docutils literal notranslate"><span class="pre">-Dswt.autoScale=125</span></code> line at the end of the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/eclipse/eclipse.ini</span></code> will set the scaling to 125%</p></li>
+<li><p>Adding <code class="docutils literal notranslate"><span class="pre">-Dswt.autoScale=150</span></code> line at the end of the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/eclipse/eclipse.ini</span></code> will set the scaling to 150%</p></li>
+<li><p>Adding <code class="docutils literal notranslate"><span class="pre">-Dswt.autoScale=200</span></code> line at the end of the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/eclipse/eclipse.ini</span></code> will set the scaling to 200%</p></li>
+</ul>
+<p>Users can use different (whole number) values to set different scaling factors.</p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
+<p>Controlling the scaling of high DPI displays on Linux depends on the desktop manager and many other factors. To override the defaults, the following <a class="reference external" href="https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)">high DPI wiki</a> can be used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">GDK_SCALE</span></code> will scale everything, including the icons, but doesn’t work with fractions (GDK_SCALE=2 means 200%). While <code class="docutils literal notranslate"><span class="pre">GDK_DPI_SCALE</span></code> can work with fractions, but doesn’t affect icons. Some users might want to use both settings at the same time, but the results might be mixed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">GDK_SCALE</span><span class="o">=</span><span class="m">2</span>
+&lt;SC_INSTALL_DIR&gt;/softconsole.sh
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="access-commands-and-other-items">
@@ -589,29 +624,29 @@ In the “Instruction Stepping Mode” the CPU will execute all the instructions
 <p>Interesting setting is scopes which enable specific behaviors:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2-0 docutils container">
+<div class="active item sphinx-data-tab-3-0 docutils container">
 <div class="docutils container">
 <p>Workspace</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-2-1 docutils container">
+<div class="item sphinx-data-tab-3-1 docutils container">
 <div class="docutils container">
 <p>Enclosing project</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-2-2 docutils container">
+<div class="item sphinx-data-tab-3-2 docutils container">
 <div class="docutils container">
 <p>Selected resource in ‘Project Explorer’</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
 <p>Will search inside the whole workspace, that means all opened projects.</p>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-1 docutils container">
 <p>Will search only within a single project, where ever the currently selected file in the Project Explorer belongs to.</p>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-2 docutils container">
 <p>Will search within the selected file, or the selected folder (and its sub-folders/sub-files).</p>
 </div>
 </div>

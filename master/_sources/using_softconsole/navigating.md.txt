@@ -80,6 +80,43 @@ Until the indexing is finished, actions like building projects/workspace will be
 This might take different amount of time depending on the size of the workspace and the performance of the host machine, but it shouldn't take long.
 ```
 
+## High DPI displays
+
+If the OS controlled scaling is not producing the desired results, then SoftConsole scaling can be configured with the following:
+
+``````{tabs}
+
+{% if windows is defined %}
+````{tab} Windows
+
+- Adding `-Dswt.autoScale=125` line at the end of the `<SC_INSTALL_DIR>/eclipse/eclipse.ini` will set the scaling to 125%
+- Adding `-Dswt.autoScale=150` line at the end of the `<SC_INSTALL_DIR>/eclipse/eclipse.ini` will set the scaling to 150%
+- Adding `-Dswt.autoScale=200` line at the end of the `<SC_INSTALL_DIR>/eclipse/eclipse.ini` will set the scaling to 200%
+
+Users can use different (whole number) values to set different scaling factors.
+
+
+````
+{% endif %}
+
+
+{% if linux is defined %}
+````{tab} Linux
+
+Controlling the scaling of high DPI displays on Linux depends on the desktop manager and many other factors. To override the defaults, the following [high DPI wiki](https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)) can be used. 
+
+The `GDK_SCALE` will scale everything, including the icons, but doesn't work with fractions (GDK_SCALE=2 means 200%). While `GDK_DPI_SCALE` can work with fractions, but doesn't affect icons. Some users might want to use both settings at the same time, but the results might be mixed.
+
+```{code-block} bash
+export GDK_SCALE=2
+<SC_INSTALL_DIR>/softconsole.sh
+```
+ 
+````
+{% endif %}
+
+``````
+
 ## Access commands and other items
 
 "Access commands and other items" was formerly "Find Action", it's SoftConsole's feature to find quickly GUI and various other entities.
