@@ -347,7 +347,7 @@
 <div class="section" id="mstatus">
 <h3>mstatus<a class="headerlink" href="#mstatus" title="Permalink to this headline">¶</a></h3>
 <p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
-<img alt="../_images/wavedrom-919217ae-4770-4a94-9694-86551b736473.svg" height="300px" src="../_images/wavedrom-919217ae-4770-4a94-9694-86551b736473.svg" width="840px" /><div class="admonition note">
+<img alt="../_images/wavedrom-ce1f434d-4216-4c99-9ebc-d4fa998aef7b.svg" height="300px" src="../_images/wavedrom-ce1f434d-4216-4c99-9ebc-d4fa998aef7b.svg" width="840px" /><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
 </div>
@@ -561,13 +561,22 @@ troubleshoot a trap without even opening the listing file, see Symbols and simpl
 </a>
 </center>
 
+
 <script>
+    var pageName = "troubleshooting/riscv_trap.md.txt".replace(/\.txt/g,'');
+    var title = "SoftConsole v2021.3-7.0.0.599 documentation";
+    var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User%20Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole%20v2021.3-7.0.0.599%20documentation&pub_ver=v2021.3-7.0.0.599&revision_letter=v2021.3-7.0.0.599&tpc_guid="+pageName+"&title="+encodeURI(title);
+    document.getElementById("githubIssue").href = encodeURI(newuri);
+</script>
+
+
+<!-- <script>
 var pageName = "troubleshooting/riscv_trap.md.txt".replace(/\.txt/g,'');
 var body  = "Document: SoftConsole\nVersion: v2021.3-7.0.0.599\nMy feedback is as follows: <PLEASE ELABORATE>";
 var title = "I have feedback for the " + pageName + " page";
 var ghuri = "https://github.com/Mi-V-Ecosystem/SoftConsole-Documentation/issues/new?title="+title+"&body="+body;
 document.getElementById("githubIssue").href = encodeURI(ghuri);
-</script>
+</script> -->
     
 <!-- <center>
 
