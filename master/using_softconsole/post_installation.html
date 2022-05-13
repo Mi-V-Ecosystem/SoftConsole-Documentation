@@ -346,7 +346,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328
 <span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/ubuntu stable-focal main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
 sudo apt update
 
-sudo apt install mono-devel mono-full
+sudo apt install mono-devel mono-complete
 </pre></div>
 </div>
 </div>
@@ -356,7 +356,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328
 <span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/debian stable-buster main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
 sudo apt update
 
-sudo apt install mono-devel mono-full
+sudo apt install mono-devel mono-complete
 </pre></div>
 </div>
 </div>
@@ -368,7 +368,7 @@ sudo apt install mono-devel mono-full
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rpmkeys --import <span class="s2">&quot;http://pool.sks-keyservers.net/pks/lookup?op=get&amp;search=0x3fa7e0328081bff6a14da29aa6a19b38d3d831ef&quot;</span>
 su -c <span class="s1">&#39;curl https://download.mono-project.com/repo/centos7-stable.repo | tee /etc/yum.repos.d/mono-centos7-stable.repo&#39;</span>
 
-yum install mono-devel mono-full
+yum install mono-devel mono-complete
 </pre></div>
 </div>
 </div>
