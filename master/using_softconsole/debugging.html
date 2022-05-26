@@ -795,7 +795,7 @@ was updated to match the target hardware by having the Libero SoC generated firm
     function link(headingTitle) {
         var pageName = "using_softconsole/debugging.md.txt".replace(/\.txt/g,'');
         var title = document.title;
-        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650 documentation&pub_ver=v2022.1-650&revision_letter=v2022.1-650&tpc_guid="+encodeURI(headingTitle)+"&title="+pageName;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650 documentation&pub_ver=v2022.1-650&revision_letter=v2022.1-650&title="+headingTitle+"&tpc_guid="+pageName;
          
         return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + encodeURI(newuri) + "\" target=_blank>Ask a question</a>";
     }
@@ -812,6 +812,17 @@ was updated to match the target hardware by having the Libero SoC generated firm
             // console.log($(this));
             $(this).append(link($(this)[0].firstChild.textContent));
         });
+
+        $("h3").each(function(i) {
+            // console.log($(this));
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h4").each(function(i) {
+            // console.log($(this));
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
     });
 </script>
 

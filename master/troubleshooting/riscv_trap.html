@@ -346,7 +346,7 @@
 <div class="section" id="mstatus">
 <h3>mstatus<a class="headerlink" href="#mstatus" title="Permalink to this headline">¶</a></h3>
 <p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
-<img alt="../_images/wavedrom-b3337cf3-70f8-4b11-904b-bd06e2829827.svg" height="300px" src="../_images/wavedrom-b3337cf3-70f8-4b11-904b-bd06e2829827.svg" width="840px" /><div class="admonition note">
+<img alt="../_images/wavedrom-d9591a0f-92a1-41dd-88d8-487f2d35cf8b.svg" height="300px" src="../_images/wavedrom-d9591a0f-92a1-41dd-88d8-487f2d35cf8b.svg" width="840px" /><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
 </div>
@@ -561,7 +561,7 @@ troubleshoot a trap without even opening the listing file, see Symbols and simpl
     function link(headingTitle) {
         var pageName = "troubleshooting/riscv_trap.md.txt".replace(/\.txt/g,'');
         var title = document.title;
-        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650 documentation&pub_ver=v2022.1-650&revision_letter=v2022.1-650&tpc_guid="+encodeURI(headingTitle)+"&title="+pageName;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650 documentation&pub_ver=v2022.1-650&revision_letter=v2022.1-650&title="+headingTitle+"&tpc_guid="+pageName;
          
         return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + encodeURI(newuri) + "\" target=_blank>Ask a question</a>";
     }
@@ -578,6 +578,17 @@ troubleshoot a trap without even opening the listing file, see Symbols and simpl
             // console.log($(this));
             $(this).append(link($(this)[0].firstChild.textContent));
         });
+
+        $("h3").each(function(i) {
+            // console.log($(this));
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h4").each(function(i) {
+            // console.log($(this));
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
     });
 </script>
 
