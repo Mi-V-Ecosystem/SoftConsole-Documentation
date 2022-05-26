@@ -207,20 +207,57 @@
     </p>
   </div> 
 
-<center>
+<script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    function link(headingTitle) {
+        var pageName = "".replace(/\.txt/g,'');
+        var title = document.title;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650 documentation&pub_ver=v2022.1-650&revision_letter=v2022.1-650&tpc_guid="+encodeURI(headingTitle)+"&title="+pageName;
+         
+        return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + encodeURI(newuri) + "\" target=_blank>Ask a question</a>";
+    }
+
+    
+    $(document).ready(function(){
+        $("h1").each(function(i) {
+            // console.log($(this));
+            $(this).append(link($(this)[0].firstChild.textContent));
+            // $(this).after(link($(this).text()));
+        });
+        
+        $("h2").each(function(i) {
+            // console.log($(this));
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+    });
+</script>
+
+
+
+  <!-- <script>
+    var pageName = "".replace(/\.txt/g,'');
+    var title = document.title;
+    var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650 documentation&pub_ver=v2022.1-650&revision_letter=v2022.1-650&tpc_guid="+pageName+"&title="+encodeURI(title);
+    document.getElementById("githubIssue").href = encodeURI(newuri);
+</script> -->
+
+<!-- <center>
 <a id=githubIssue target="_blank">
     <img src=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAAjBAMAAABLKhiRAAAAElBMVEUAlf////9mwP86rf/G6P8Lmf+1OJXFAAABPUlEQVRIx+2VT4uDMBDFX7Lxnsmkd1PsPZTtPfbPPRb7/b/KTszioS1sUViWpQOaN+/5EycoglaVBe2wuJpg4fbb5bW3sBHL6yA8VlReyePN/0NetXJElNI+zzaLN+s7XlFx5pr5scVr/KF74OvyIh+H6HzufT7mboiGghwRII+eUWTvWAWCJiftjo2941X0WSeTOhyH2DV9PH9cim/SZxap08jqoq1BQNe03D0+P2OIsAobdWABuTnV+45FSsQq3hgoKVy642kDgQA226SiFZCIJ56oSFXnP12lFYQe5pe8nK0+tioWydWvSYm4xKEmzj7jjcwPkuYMmb/64kCkRKym7QmStBye8eh9uVhN+68oTT55iKz77zFSL2nLV/fz+5vr0szyVppvM//d7+fN/xbfWLg1vF7//6dVZb8Ak6o7NKJP34MAAAAASUVORK5CYII=" 
     width="125px" height="35px">
 </a>
-</center>
+</center> -->
 
-<script>
+<!-- <script>
 var pageName = "".replace(/\.txt/g,'');
 var body  = "Document: SoftConsole\nVersion: v2022.1-650\nMy feedback is as follows: <PLEASE ELABORATE>";
 var title = "I have feedback for the " + pageName + " page";
 var ghuri = "https://github.com/Mi-V-Ecosystem/SoftConsole-Documentation/issues/new?title="+title+"&body="+body;
 document.getElementById("githubIssue").href = encodeURI(ghuri);
-</script>
+</script> -->
     
 <!-- <center>
 
