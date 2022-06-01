@@ -10,7 +10,11 @@
 {% include 'main/using_softconsole/projects/_project_settings.inc' %}
 {% include 'main/using_softconsole/projects/_targets_all.inc' %}
 {% include 'main/using_softconsole/projects/_targets_riscv.inc' %}
+
+{% if arm is defined %}
 {% include 'main/using_softconsole/projects/_targets_cortexm.inc' %}
+{% endif %} 
+
 {% include 'main/using_softconsole/projects/_libero.inc' %}
 {% include 'main/using_softconsole/projects/_adding_sources.inc' %}
 {% include 'main/using_softconsole/projects/_building_project.inc' %}

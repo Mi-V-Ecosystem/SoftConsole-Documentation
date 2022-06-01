@@ -1,7 +1,7 @@
 ```````{jinja} scvars
 {% import '_jinja/macros.html' as macros %}
 
-# SoftConsole {{scVersion}} documentation
+# {{sc}} documentation
 
 {{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
 

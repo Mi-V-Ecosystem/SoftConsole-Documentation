@@ -119,7 +119,7 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 
 ## FlashPro support matrix
 
-{% include 'main/introduction/_support_table2021.3.inc' %}
+{% include 'main/introduction/_support_table2022.2.inc' %}
 
 
 ### FlashPro6
@@ -151,9 +151,12 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 
 [![board image](images/pffpga/MPF300-SPLASH-KIT-ES.png)](https://www.microsemi.com/existing-parts/parts/144001)
 
+{% if arm is defined %}
 **Microchip - SmartFusion2 - M2S-HELLO-FPGA-KIT**
 
 [![board image](images/sf2/M2S-HELLO-FPGA-KIT.png)](https://www.microsemi.com/existing-parts/parts/150925)
+{% endif %} 
+
 ````
 
 
@@ -180,7 +183,7 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 
 
 
-
+{% if arm is defined %}
 ````{tab} Digi-key
 
 **Digi-key - SmartFusion2 - Maker Board M2S010-MKR-KIT**
@@ -188,7 +191,7 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 [![board image](images/sf2/M2S010-MKR-KIT.png)](https://www.microsemi.com/existing-parts/parts/144012)
 
 ````
-
+{% endif %} 
 
 
 
@@ -198,15 +201,17 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 
 [![board image](images/pffpga/AVMPF300TS-03.jpg)](https://www.microsemi.com/existing-parts/parts/139680)
 
+{% if arm is defined %}
 **Future - IGLOO2 - FUTUREM2GL-EVB**
 
 [![board image](images/igloo2/FUTUREM2SF_EVB.jpg)](https://www.microsemi.com/existing-parts/parts/143948)
+{% endif %} 
 
 ````
 
 
 
-
+{% if arm is defined %}
 ````{tab} Trenz
 
 **Trenz - SmartFusion 2 - SmartBerry TEM0002-02-010CA**
@@ -222,6 +227,7 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 [![board image](images/sf2/TEM0005-02-010I.jpg)](https://shop.trenz-electronic.de/en/TEM0005-02-010I-FPGA-Module-with-Microsemi-SmartFusion2-M2S010-SoC-256-MByte-DDR3)
 
 ````
+{% endif %} 
 
 
 
