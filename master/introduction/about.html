@@ -122,11 +122,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#id10">FlashPro support matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#softconsole-6-3">SoftConsole 6.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id11">Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">FlashPro support matrix</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
@@ -361,7 +356,7 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Dedicated launcher view – showing launchers in a convenient manner</p>
 <p><img alt="launcher view" src="../_images/launchers.png" /></p>
 </li>
-<li><p>A new “#pragam mark” added which improves readability of the code outline</p>
+<li><p>Support for a new pragma <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">mark</span></code> added which improves readability of the code outline</p>
 <p><img alt="pragram mark" src="../_images/CDT_10_4_outline.png" /></p>
 </li>
 <li><p>C++17 constructor template deduction supported</p>
@@ -372,7 +367,7 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>GUI</p>
 <ul>
 <li><p>Can specify external web browser on Windows</p>
-<p><img alt="pragram mark" src="../_images/browsers-windows-update.png" /></p>
+<p><img alt="external web browsers" src="../_images/browsers-windows-update.png" /></p>
 </li>
 <li><p>Welcome page plugin with usefull links is snown on first startup and can be invoked with <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">Welcome</span></code></p>
 <p><img alt="Welcome page" src="../_images/welcome.png" /></p>
@@ -386,16 +381,16 @@ There are few common places where these breadcrumbs start:</p>
 </li>
 <li><p>Eclipse now drops its internal caches when gdb’s “load” is invoked</p></li>
 <li><p>Improved memory viewer (allows floating-point, asci and other ways of rendering the memory)</p>
-<p><img alt="memory viewer" src="../_images/mem-render.png" /></p>
+<p><img alt="memory viewer render" src="../_images/mem-render.png" /></p>
 <ul>
 <li><p>Floating point view</p>
-<p><img alt="memory viewer" src="../_images/mem-floating-point.png" /></p>
+<p><img alt="memory viewer floating point" src="../_images/mem-floating-point.png" /></p>
 </li>
 <li><p>String view</p>
-<p><img alt="memory viewer" src="../_images/mem-string.png" /></p>
+<p><img alt="memory viewer string" src="../_images/mem-string.png" /></p>
 </li>
 <li><p>Traditional view</p>
-<p><img alt="memory viewer" src="../_images/mem-traditional.png" /></p>
+<p><img alt="memory viewer traditional" src="../_images/mem-traditional.png" /></p>
 </li>
 </ul>
 </li>
@@ -410,7 +405,7 @@ There are few common places where these breadcrumbs start:</p>
 <ul>
 <li><p>Redudant projects removed (mandelbrot and raytracer demos combined to one project)</p></li>
 <li><p>Projects build much faster parallel build is enabled</p>
-<p><img alt="pragram mark" src="../_images/paraller.png" /></p>
+<p><img alt="parallel builds" src="../_images/paraller.png" /></p>
 </li>
 </ul>
 </li>
@@ -1054,125 +1049,6 @@ The following table below summarizes the FlashPro support in SoftConsole v6.5 an
 <p class="admonition-title">Note</p>
 <p>Refer to the Libero SoC v12.5 SP1 or Program Debug Tools v12.5 SP1 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Empty cells mean there is <strong>no</strong> support.</p>
-</div>
-</div>
-</div>
-<div class="section" id="softconsole-6-3">
-<h2>SoftConsole 6.3<a class="headerlink" href="#softconsole-6-3" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id11">
-<h3>Features<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Static portable Python runtime bundled with SoftConsole, to allow the PolarFire Configuration generate corresponding header files before each build.</p></li>
-</ul>
-</div>
-<div class="section" id="id12">
-<h3>FlashPro support matrix<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>Standalone<br/>FlashPro6</p></th>
-<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev B</p></th>
-<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev A</p></th>
-<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5</p></th>
-<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4</p></th>
-<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Windows</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-</tr>
-<tr class="row-odd"><td><p>Linux</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><strong>Yes</strong></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>Virtual Machine</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Docker on Linux</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><strong>Yes</strong></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>Debug PolarFire SoC<br/>MSS Core Complex</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-</tr>
-<tr class="row-odd"><td><p>PolarFire SoC UltraSoC<br/>trace/debug</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/UJTAG</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-</tr>
-<tr class="row-odd"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>JTAG signals on I/O pins</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>Debug Cortex-M1 soft<br/>core via<br/>CoreJTAGDebug/UJTAG</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-</tr>
-<tr class="row-odd"><td><p>Cortex-M1 soft core<br/>debug via JTAG signals<br/>on I/O pins</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p><strong>Yes</strong></p></td>
-</tr>
-</tbody>
-</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Empty cells mean there is <strong>no</strong> support.</p>
