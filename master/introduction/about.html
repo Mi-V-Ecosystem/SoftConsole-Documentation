@@ -317,6 +317,19 @@ There are few common places where these breadcrumbs start:</p>
 <ul>
 <li><p>Eclipse upgraded to v4.22</p></li>
 <li><p>CDT upgraded to v10.5.0</p></li>
+<li><p>GUI</p>
+<ul>
+<li><p>Welcome page plugin with useful links is snown on the first startup and can be invoked with <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">Welcome</span></code></p>
+<p><img alt="Welcome page" src="../_images/welcome.png" /></p>
+</li>
+<li><p>Can detect multiple PF SoC MSS Configurator configs and allow users to invoke PF SoC MSS Configurator with them</p>
+<p><img alt="PF SoC MSS Configurator button" src="../_images/mss-button.png" /></p>
+</li>
+<li><p>Can specify an external web browser (on Windows)</p>
+<p><img alt="external web browsers" src="../_images/browsers-windows-update.png" /></p>
+</li>
+</ul>
+</li>
 <li><p>Console, Terminal and color support</p>
 <ul>
 <li><p>4-bit, 8-bit and 24-bit color support</p>
@@ -338,7 +351,7 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Console supports word wrap</p>
 <p><img alt="word wrap" src="../_images/console-preferences-word-wrap.png" /></p>
 </li>
-<li><p>Build console has now own <code class="docutils literal notranslate"><span class="pre">close</span></code> button</p></li>
+<li><p>The build console has now own <code class="docutils literal notranslate"><span class="pre">close</span></code> button</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">bring</span> <span class="pre">to</span> <span class="pre">top</span></code> toggle button is now in the toolbar and in the preferences as well</p>
 <p><img alt="close button" src="../_images/Console_actions_bug486033_bug568926.png" /></p>
 </li>
@@ -356,21 +369,11 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Dedicated launcher view – showing launchers in a convenient manner</p>
 <p><img alt="launcher view" src="../_images/launchers.png" /></p>
 </li>
-<li><p>Support for a new pragma <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">mark</span></code> added which improves readability of the code outline</p>
+<li><p>Support for a new pragma <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">mark</span></code> added which improves the readability of the code outline</p>
 <p><img alt="pragram mark" src="../_images/CDT_10_4_outline.png" /></p>
 </li>
 <li><p>C++17 constructor template deduction supported</p>
 <p><img alt="cpp17 constructor template deduction" src="../_images/cpp17.png" /></p>
-</li>
-</ul>
-</li>
-<li><p>GUI</p>
-<ul>
-<li><p>Can specify external web browser on Windows</p>
-<p><img alt="external web browsers" src="../_images/browsers-windows-update.png" /></p>
-</li>
-<li><p>Welcome page plugin with usefull links is snown on first startup and can be invoked with <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">Welcome</span></code></p>
-<p><img alt="Welcome page" src="../_images/welcome.png" /></p>
 </li>
 </ul>
 </li>
@@ -403,8 +406,8 @@ There are few common places where these breadcrumbs start:</p>
 </li>
 <li><p>Projects</p>
 <ul>
-<li><p>Redudant projects removed (mandelbrot and raytracer demos combined to one project)</p></li>
-<li><p>Projects build much faster parallel build is enabled</p>
+<li><p>Redundant projects removed (mandelbrot and raytracer demos combined into one project)</p></li>
+<li><p>Bundled projects build much faster, the parallel build is enabled</p>
 <p><img alt="parallel builds" src="../_images/paraller.png" /></p>
 </li>
 </ul>
@@ -414,13 +417,10 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Renode</p>
 <ul class="simple">
 <li><p>Upgraded to v1.3 release</p></li>
-<li><p>Includes support for Mi-RV32 IMAF legacy cores and Mi-RV32</p>
-<ul>
-<li><p>Support for the updated memory map</p></li>
-</ul>
-</li>
+<li><p>Includes support for Mi-RV32 IMAF legacy cores and Mi-RV32</p></li>
 <li><p>Improved speeds of GDB startup and <code class="docutils literal notranslate"><span class="pre">tlib</span></code> runtime</p></li>
 <li><p>Optional installer step to install Renode sources</p></li>
+<li><p>Renode DDR was overlapping with FIC</p></li>
 </ul>
 </li>
 </ul>
@@ -431,7 +431,7 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Eclipse</p>
 <ul>
 <li><p>Missing X button to close views SAR 123248</p></li>
-<li><p>Removed redudant and broken ‘copy settings’ option from the launcher SAR 123476</p></li>
+<li><p>Removed redundant and broken ‘copy settings’ option from the launcher SAR 123476</p></li>
 </ul>
 </li>
 <li><p>OpenOCD</p>
@@ -452,7 +452,7 @@ https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=RESOLVED&amp;bug_status=VER
 <div class="section" id="known-issues">
 <h3>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Providing the symbol files in the debug launchers are necessary to avoid errors on RV32 targets (see launchers of example projects).</p></li>
+<li><p>Providing the symbol files in the debug launchers is necessary to avoid errors on RV32 targets (see launchers of example projects).</p></li>
 </ul>
 </div>
 <div class="section" id="flashpro-support-matrix">
@@ -562,7 +562,7 @@ https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=RESOLVED&amp;bug_status=VER
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Refer to the Libero SoC v2021.3 or Program Debug Tools v2021.3 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
+<p>Refer to the Libero SoC v2022.2 or Program Debug Tools v2022.2 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
