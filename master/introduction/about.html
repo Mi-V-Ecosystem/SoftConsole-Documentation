@@ -316,7 +316,11 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Eclipse</p>
 <ul>
 <li><p>Eclipse upgraded to v4.22</p></li>
-<li><p>CDT upgraded to v10.5.0</p></li>
+<li><p>CDT upgraded to v10.5.0</p>
+<ul class="simple">
+<li><p>Using upstream starter.exe instead of our fork. The agresive shutdown timing is fixed in the upstream.</p></li>
+</ul>
+</li>
 <li><p>GUI</p>
 <ul>
 <li><p>Welcome page plugin with useful links is snown on the first startup and can be invoked with <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">Welcome</span></code></p>
@@ -415,12 +419,14 @@ There are few common places where these breadcrumbs start:</p>
 </ul>
 </li>
 <li><p>Renode</p>
-<ul class="simple">
+<ul>
 <li><p>Upgraded to v1.3 release</p></li>
 <li><p>Includes support for Mi-RV32 IMAF legacy cores and Mi-RV32</p></li>
 <li><p>Improved speeds of GDB startup and <code class="docutils literal notranslate"><span class="pre">tlib</span></code> runtime</p></li>
 <li><p>Optional installer step to install Renode sources</p></li>
-<li><p>Renode DDR was overlapping with FIC</p></li>
+<li><p>Renode’s Monitor (by default) is embedded into the terminal (it’s possible to opt-out from this feature and return to original behaviour)</p>
+<p><img alt="Renode's embedded window view" src="../_images/renode-monitor.png" /></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -432,6 +438,7 @@ There are few common places where these breadcrumbs start:</p>
 <ul>
 <li><p>Missing X button to close views SAR 123248</p></li>
 <li><p>Removed redundant and broken ‘copy settings’ option from the launcher SAR 123476</p></li>
+<li><p>Git freezing on Windows. SAR 125155</p></li>
 </ul>
 </li>
 <li><p>OpenOCD</p>
@@ -442,6 +449,13 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>MPFS boot mode programmer</p>
 <ul>
 <li><p>Styling bug in the verbose log fixed</p></li>
+</ul>
+</li>
+<li><p>Renode</p>
+<ul>
+<li><p>Renode DDR was overlapping with the FIC. SAR 125178</p></li>
+<li><p>Renode freezing when its UART is overloaded. SAR 123718 and SAR 123717</p></li>
+<li><p>Watchdog IRQs cleared correctly</p></li>
 </ul>
 </li>
 <li><p>Eclipse</p></li>
