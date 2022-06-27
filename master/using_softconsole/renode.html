@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Renode simulation platform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#embedded-monitor-window">Embedded monitor window</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#useful-links">Useful Links</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#windows-firewall">Windows firewall</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code></a></li>
@@ -204,9 +205,17 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">PolarFire-SoC-Icicle-Renode-emulation</span></code> for MPFS Icicle board</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PolarFire-SoC-Renode-emulation</span></code> for generic MPFS platform</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Mi-V-Renode-emulation-platform</span></code> for RV32 Mi-V soft cores</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mi-V-Renode-emulation-platform</span></code> for legacy RV32 Mi-V soft cores based on Rocket Chip (the IMA and IMAF cores for example)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mi-V-RV32-Renode-emulation-platform</span></code> for current RV32 Mi-V soft cores.</p></li>
 </ul>
-<p>And then debug launcher (for example <code class="docutils literal notranslate"><span class="pre">miv-rv32im-systick-blinky</span> <span class="pre">Renode</span> <span class="pre">Debug</span></code>) attaches to the running Renode (which has halted simulation).
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because now SoftConsole support both, legacy and new RV32 Mi-V soft cores, user must be careful which
+configuration is built and what launcher is used. The <code class="docutils literal notranslate"><span class="pre">miv32ima-Debug</span></code> and <code class="docutils literal notranslate"><span class="pre">miv32imaf-Debug</span></code> configurations reference
+the legacy core and therefore the <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span> <span class="pre">renode-legacy-rv32</span> <span class="pre">start-platform-and-debug</span></code> launcher needs to be used.
+While for configurations using the newer core, the <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span> <span class="pre">renode-rv32i</span> <span class="pre">start-platform-and-debug</span></code> launcher needs to be used.</p>
+</div>
+<p>And then debug launcher (for example <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span> <span class="pre">renode-rv32i</span> <span class="pre">start-platform-and-debug</span></code>) attaches to the running Renode (which has halted simulation).
 In a case of Mi-V models the simulation will automatically start on the debug launcher connection. While with the MPFS launcher the simulation doesn’t start automatically on connection, but the launcher has to invoke separately <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">start</span></code> command after it connected inside Pre-Run/Restart section:</p>
 <div class="graphviz"><img src="../_images/graphviz-0a72c01cdcd03d103982e7ccec6ae38792a65ef9.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
@@ -264,6 +273,15 @@ monitor start
 </ul>
 </li>
 </ul>
+<div class="section" id="embedded-monitor-window">
+<h2>Embedded monitor window<a class="headerlink" href="#embedded-monitor-window" title="Permalink to this headline">¶</a></h2>
+<p>From SoftConsole 2022.3 the Renode’s monitor is embedded inside SoftConsole as terminal,
+the terminal can’t handle colors well (so colors are disabled) and many features
+such as auto-complete are not working well.</p>
+<p>Users who interact with Renode’s monitor often might want to revert back to the
+standalone monitor. Which can be done by editiong the external launchers and
+removing the <code class="docutils literal notranslate"><span class="pre">--plain</span> <span class="pre">--console</span></code> from them.</p>
+</div>
 <div class="section" id="useful-links">
 <h2>Useful Links<a class="headerlink" href="#useful-links" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">

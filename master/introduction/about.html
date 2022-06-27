@@ -318,20 +318,21 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Eclipse upgraded to v4.22</p></li>
 <li><p>CDT upgraded to v10.5.0</p>
 <ul class="simple">
-<li><p>Using upstream starter.exe instead of our fork. The agresive shutdown timing is fixed in the upstream.</p></li>
+<li><p>Using upstream starter.exe instead of our fork. The aggressive shutdown timing is fixed in the upstream.</p></li>
 </ul>
 </li>
 <li><p>GUI</p>
 <ul>
-<li><p>Welcome page plugin with useful links is snown on the first startup and can be invoked with <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">Welcome</span></code></p>
+<li><p>Welcome page plugin with useful links is shown on the first startup and can be invoked with <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">Welcome</span></code></p>
 <p><img alt="Welcome page" src="../_images/welcome.png" /></p>
 </li>
-<li><p>Can detect multiple PF SoC MSS Configurator configs and allow users to invoke PF SoC MSS Configurator with them</p>
+<li><p>Can detect multiple PolarFire SoC MSS Configurator configs and allow users to invoke PolarFire SoC MSS Configurator with them</p>
 <p><img alt="PF SoC MSS Configurator button" src="../_images/mss-button.png" /></p>
 </li>
 <li><p>Can specify an external web browser (on Windows)</p>
 <p><img alt="external web browsers" src="../_images/browsers-windows-update.png" /></p>
 </li>
+<li><p>Launcher bar. <a class="reference external" href="https://wiki.eclipse.org/CDT/LaunchBar">https://wiki.eclipse.org/CDT/LaunchBar</a>(Click here for more info). If desired, the launcher bar can be <a class="reference external" href="https://stackoverflow.com/questions/32559827/how-to-hide-disable-cdt-launchbar">https://stackoverflow.com/questions/32559827/how-to-hide-disable-cdt-launchbar</a>(disabled from preferences).</p></li>
 </ul>
 </li>
 <li><p>Console, Terminal and color support</p>
@@ -383,6 +384,9 @@ There are few common places where these breadcrumbs start:</p>
 </li>
 <li><p>Debugging</p>
 <ul>
+<li><p>Debug icons added to the debug view/tab</p>
+<p><img alt="debug icons" src="../_images/debug-from-debug.png" /></p>
+</li>
 <li><p>Alternative way added to disable all breakpoints</p>
 <p><img alt="disable breakpoints" src="../_images/disable-allbreakpoints.png" /></p>
 </li>
@@ -424,7 +428,7 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Includes support for Mi-RV32 IMAF legacy cores and Mi-RV32</p></li>
 <li><p>Improved speeds of GDB startup and <code class="docutils literal notranslate"><span class="pre">tlib</span></code> runtime</p></li>
 <li><p>Optional installer step to install Renode sources</p></li>
-<li><p>Renode’s Monitor (by default) is embedded into the terminal (it’s possible to opt-out from this feature and return to original behaviour)</p>
+<li><p>Renode’s Monitor (by default) is embedded into the terminal (it’s possible to opt-out from this feature and return to original behaviour, read the Renode section)</p>
 <p><img alt="Renode's embedded window view" src="../_images/renode-monitor.png" /></p>
 </li>
 </ul>
@@ -439,6 +443,7 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Missing X button to close views SAR 123248</p></li>
 <li><p>Removed redundant and broken ‘copy settings’ option from the launcher SAR 123476</p></li>
 <li><p>Git freezing on Windows. SAR 125155</p></li>
+<li><p>Shared SoftConsole installation. SAR 115585</p></li>
 </ul>
 </li>
 <li><p>OpenOCD</p>
@@ -453,14 +458,16 @@ There are few common places where these breadcrumbs start:</p>
 </li>
 <li><p>Renode</p>
 <ul>
+<li><p>Renode freezing when embedding the monitor. SAR 123436</p></li>
 <li><p>Renode DDR was overlapping with the FIC. SAR 125178</p></li>
 <li><p>Renode freezing when its UART is overloaded. SAR 123718 and SAR 123717</p></li>
-<li><p>Watchdog IRQs cleared correctly</p></li>
+<li><p>Watchdog IRQs cleared correctly. SAR 110415</p></li>
+<li><p>Watchdog refresh issues. SAR 110524</p></li>
+<li><p>Compiling models on Windows with JIT. SAR 120739</p></li>
 </ul>
 </li>
 <li><p>Eclipse</p></li>
-<li><p>33 bugs resolved:
-https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=RESOLVED&amp;bug_status=VERIFIED&amp;bug_status=CLOSED&amp;classification=Tools&amp;list_id=21195151&amp;product=CDT&amp;query_format=advanced&amp;resolution=FIXED&amp;target_milestone=9.5.4&amp;target_milestone=10.5.0</p></li>
+<li><p><a class="reference external" href="https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=RESOLVED&amp;amp;bug_status=VERIFIED&amp;amp;bug_status=CLOSED&amp;amp;classification=Tools&amp;amp;list_id=21195151&amp;amp;product=CDT&amp;amp;query_format=advanced&amp;amp;resolution=FIXED&amp;amp;target_milestone=9.5.4&amp;amp;target_milestone=10.5.0">https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=RESOLVED&amp;bug_status=VERIFIED&amp;bug_status=CLOSED&amp;classification=Tools&amp;list_id=21195151&amp;product=CDT&amp;query_format=advanced&amp;resolution=FIXED&amp;target_milestone=9.5.4&amp;target_milestone=10.5.0</a> (33 bugs resolved)</p></li>
 </ul>
 </div>
 <div class="section" id="known-issues">

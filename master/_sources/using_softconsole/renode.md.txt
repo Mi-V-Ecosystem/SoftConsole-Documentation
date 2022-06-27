@@ -13,9 +13,17 @@ To debug an example in the emulator Renode must be run with the Mi-V model or Po
 
 - `PolarFire-SoC-Icicle-Renode-emulation` for MPFS Icicle board
 - `PolarFire-SoC-Renode-emulation` for generic MPFS platform
-- `Mi-V-Renode-emulation-platform` for RV32 Mi-V soft cores
+- `Mi-V-Renode-emulation-platform` for legacy RV32 Mi-V soft cores based on Rocket Chip (the IMA and IMAF cores for example)
+- `Mi-V-RV32-Renode-emulation-platform` for current RV32 Mi-V soft cores.
 
-And then debug launcher (for example `miv-rv32im-systick-blinky Renode Debug`) attaches to the running Renode (which has halted simulation). 
+```{note}
+Because now SoftConsole support both, legacy and new RV32 Mi-V soft cores, user must be careful which
+configuration is built and what launcher is used. The `miv32ima-Debug` and `miv32imaf-Debug` configurations reference
+the legacy core and therefore the `miv-rv32i-systick-blinky renode-legacy-rv32 start-platform-and-debug` launcher needs to be used.
+While for configurations using the newer core, the `miv-rv32i-systick-blinky renode-rv32i start-platform-and-debug` launcher needs to be used.
+```
+
+And then debug launcher (for example `miv-rv32i-systick-blinky renode-rv32i start-platform-and-debug`) attaches to the running Renode (which has halted simulation). 
 In a case of Mi-V models the simulation will automatically start on the debug launcher connection. While with the MPFS launcher the simulation doesn't start automatically on connection, but the launcher has to invoke separately `monitor start` command after it connected inside Pre-Run/Restart section:
 
 {{ macros.breadcrumb_square('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations" -> "Launcher for \<YOUR_PROJECT\>"') }}
@@ -64,6 +72,17 @@ monitor $COMMON_PC=`sysbus.e51 PC`
 monitor runMacro $SetAllPCs
 monitor start
     ```
+
+
+## Embedded monitor window
+
+From SoftConsole 2022.3 the Renode's monitor is embedded inside SoftConsole as terminal, 
+the terminal can't handle colors well (so colors are disabled) and many features
+such as auto-complete are not working well.
+
+Users who interact with Renode's monitor often might want to revert back to the
+standalone monitor. Which can be done by editiong the external launchers and 
+removing the `--plain --console` from them.
 
 ## Useful Links
 

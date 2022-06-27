@@ -178,10 +178,13 @@ Other useful Documentation:
 {% include 'main/introduction/used_packages/_riscv-toolchain.inc' %}
 ````
 
-
 ````{tab} GNU Arm Embedded GCC Toolchain
 
+{% if arm is defined %}
 {% include 'main/introduction/used_packages/_arm-toolchain.inc' %}
+{% else %}
+This version of SoftConsole doesn't have support for Arm targets. Feel free to use SoftConsole v2021.2 which has support for both Arm and RISC-V.
+{% endif %} 
 ````
 
 ``````
