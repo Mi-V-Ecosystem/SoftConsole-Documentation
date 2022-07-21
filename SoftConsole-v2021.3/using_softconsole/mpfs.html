@@ -267,7 +267,7 @@ following locations:</p>
 </ul>
 </li>
 </ul>
-<p>So the possible default locations for the fpgenprog tool are:</p>
+<p>These locations will be tested trying to find the fpgenprog binary when the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> is <strong>not</strong> explicitly set:</p>
 <ul class="simple">
 <li><p>Windows</p>
 <ul>
@@ -288,7 +288,7 @@ following locations:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the Libero v2021.3 or Program and Debug v2021.3 are installed in the default path then they should be detected by the mpfsBootmodeProgrammer.jar directly. In that case, it’s best to <strong>not</strong> have <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> env. variable set and let the autodetection find the tool. Set the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> if the autodetection fails or if the tools are installed in non-default paths.</p>
+<p>If the Libero v2021.3 or Program and Debug v2021.3 are installed in the default path and <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> is <strong>not</strong> set, then they should be automatically detected by the <code class="docutils literal notranslate"><span class="pre">mpfsBootmodeProgrammer.jar</span></code>. When autodetection works well then it’s best to <strong>not</strong> have <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> environment variable set. Set the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> only if the autodetection fails. When setting the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> environment variable make sure to set it to the full path including the binary itself. For example: <code class="docutils literal notranslate"><span class="pre">D:\Libero_SoC_v2021.3\Designer\bin64\fpgenprog.exe</span></code></p>
 </div>
 </div>
 <div class="section" id="mpfsbootmodeprogrammer">
