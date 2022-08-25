@@ -1,0 +1,19 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+{% if arm is defined %}
+# Arm
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+
+{% include 'main/troubleshooting/riscv/_launchers_differs.inc' %}
+{% include 'main/troubleshooting/arm/_not_connecting.inc' %}
+{% include 'main/troubleshooting/arm/_no_packs.inc' %}
+{% include 'main/troubleshooting/arm/_dpk_unlock.inc' %}
+{% include 'main/troubleshooting/arm/_cmsis_env_var.inc' %}
+{% include 'main/troubleshooting/arm/_dap_stalled.inc' %}
+
+{% endif %} 
+
+```````

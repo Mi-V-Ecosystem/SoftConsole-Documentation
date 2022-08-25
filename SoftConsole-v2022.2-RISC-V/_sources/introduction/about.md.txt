@@ -1,0 +1,148 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# About SoftConsole and this document
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+This is manual the for Microchip {{sc}}.
+
+SoftConsole is Microchip's free and primarily open-source based software development environment for Windows and GNU/Linux facilitating the rapid development of bare-metal and RTOS based C/C++ software for Microchip CPU and SoC (System on Chip) based FPGAs.It provides development and debugging support for all Microchip SoC FPGAs and 32-bit soft IP CPUs.
+
+SoftConsole can be downloaded for free from [Microchip's website](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/programming-and-debug/softconsole).
+
+Running `miv-rv32imaf-cpp` example with Renode:
+![IDE screenshot](images/sc-ide/renode-miv.png)
+
+Running `mpfs-mustein` example with Renode:
+![IDE screenshot2](images/sc-ide/renode-mustein.png)
+
+For first-time users the manual is strongly recommended to be read in full at least once. The installation might require extra manual steps. 
+
+And it is recommended to search for the error messages in the troubleshooting section when encountering a issue:
+
+{doc}`/troubleshooting/flashpro`
+
+{doc}`/troubleshooting/project`
+
+{doc}`/troubleshooting/riscv`
+
+{doc}`/troubleshooting/riscv_trap`
+
+{% if arm is defined %}
+{doc}`/troubleshooting/arm`
+{% endif %} 
+
+{doc}`/troubleshooting/renode`
+
+{doc}`/troubleshooting/eclipse`
+
+```{note}
+Users of previous releases should watch for changes and in the {ref}`What is new<whatisnew>` chapter and re-read all affected chapters.
+```
+
+## Documentation variants
+
+The SoftConsole documentation is distributed in three variants:
+
+ - Containing information relevant to **both Windows and Linux** users [deployed online](https://mi-v-ecosystem.github.io/SoftConsole-Documentation)
+ - Containing information relevant to **only Windows** users shipped with Windows SoftConsole
+ - Containing information relevant to **only Linux** users shipped with Linux SoftConsole
+
+The online documentation contains both OSs and can be updated/improved even after the SoftConsole release. While documentation installed with specific SoftConsole contains only information relevant to its host OS and can be viewed without an internet connection.
+
+Currently you are reading the: **{{os_human}}** variant.
+
+{% if is_offline_document == false %}
+## Download offline versions
+
+The documentation can be downloaded for 'offline' use. Because various versions are generated, there is an option to download variant which covers only the user's host operating system and doesn't include irrelevant information. Or download variant which covers both operating systems.
+
+ {download}`Both Windows and Linux</_static/offline/sc-doc-all.zip>`
+
+ {download}`Only Windows</_static/offline/sc-doc-win.zip>`
+
+ {download}`Only Linux</_static/offline/sc-doc-linux.zip>`
+
+{% endif %}
+
+## Used terms
+
+This document uses **\<SoftConsole-install-dir\>** and **\<SC_INSTALL_DIR\>** as a placeholders for the actual SoftConsole install directory.
+Where this is mentioned substitute the actual SoftConsole install directory name.
+
+{% if windows is defined %}
+ - Windows example: `C:\Microchip\SoftConsole_{{scVersionAndBuild}}`
+{% endif %}
+
+{% if linux is defined %}
+ - Linux example: `$HOME/Microchip/SoftConsole_{{scVersionAndBuild}}`
+{% endif %}
+
+
+## Breadcrumbs
+
+Often in this document steps are described in 'breadcrumbs' form such as this:
+
+{{ macros.breadcrumb_square('"Do A first" -> "Then do B" -> "Finally do C"') }}
+<br/>
+
+These breadcrumbs usually reference a GUI location where to click or how to navigate the menus, submenus, their tabs/dialogs.
+There are few common places where these breadcrumbs start:
+
+
+
+ - The `SoftConsole Menu toolbar` as starting location, example:
+
+   {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations"', '   ') }}
+
+   Which is located under the Window's title: 
+
+   ![board image](images/breadcrumbs/menu_toolbar.png)
+
+
+
+ - The `Project's properties` as starting location, example:
+
+   {{ macros.breadcrumb_indent('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
+
+   Which requires the user to first go into Project's settings/properties by following these steps:
+
+   {{ macros.breadcrumb_indent('"Right click on <your_project> in the Project Explorer" -> "Properties"', '   ') }}
+
+   ![board image](images/breadcrumbs/project_properties.png)
+
+   This opens the following menu and can be navigated with the breadcrumbs:
+
+   {{ macros.breadcrumb_indent('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
+
+   ![board image](images/breadcrumbs/project_properties_menu2.png)
+
+
+
+ - The launchers `Debug configuration` as starting location, example:
+
+   {{ macros.breadcrumb_indent('"Debug Configuration" -> "Debugger" -> "GDB Client Setup" -> "Commands"', '   ') }}
+
+   Which requires the user to open the corresponding debug launcher associated with your project:
+
+   {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations" -> "Launcher for \<YOUR_PROJECT\>"', '   ') }}
+
+   ```{note}
+   Each project might have multiple Debug Launchers associated with the project, for example one `hw` for Hardware targets and one `Renode` for Renode emulated targets. User needs to select the coresponding launcher within the context of the SoftConsole chapter. Renode troubleshooting guide will expect users to select the Renode variants of the launchers.
+   ```
+
+   This will open the following dialog menu:
+
+   ![board image](images/breadcrumbs/debug_launcher.png)
+
+
+(whatisnew)=
+## What is new
+
+{% include 'main/introduction/_whatsnew2022.2.inc' %}
+{% include 'main/introduction/_whatsnew2021.3.inc' %}
+{% include 'main/introduction/_whatsnew2021.1.inc' %}
+{% include 'main/introduction/_whatsnew6.5.inc' %}
+
+```````

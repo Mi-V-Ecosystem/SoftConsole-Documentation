@@ -1,0 +1,92 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Workspaces
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+Workspace is a concept of a Eclipse based IDEs which is used to 'hold' all the projects. Some settings can be set globally in the product however some aspects need to be saved either on a project level, or on workspace level. Many features which SoftConsole depends on are saved on the workspace level (for example: MPFS boot mode programmers, Renode launchers, settings which make the UX more pleasant, tweaked keyboard shortcuts...)
+
+## Example workspace
+
+SoftConsole includes an example workspace which is opened by default when you run SoftConsole. This example
+workspace is located at:
+
+`<SoftConsole-install-dir>/extras/workspace.examples`
+
+This workspace contains several simple example projects and debug launch configurations that are ready to use
+once the relevant projects have been updated to match the target hardware – for example by copying the Libero
+SoC generated **drivers_config** folder into the project where applicable. It is also advisable to update these
+example projects with the relevant CMSIS/HAL and firmware drivers generated from the Firmware Catalog.
+It is advisable to make a copy of this example workspace and use the copy for experimentation. Workspaces were
+not designed nor intended to be shared between machines nor operating systems. Do not make your own empty
+workspaces and do not transfer workspaces between machines or OSes.
+
+```{note}
+The SoftConsole uninstaller will delete some or all of this workspace in which case any changes made
+may be lost.
+```
+
+Refer to the README.txt (or .md/.html) for each example project for more information.
+
+
+(exampleworkspaceprojects)=
+### Example projects
+
+The workspace is shipped with 'blinky' projects for various targets (see their READMEs). However few projects have special reasons why they are bundled:
+
+
+`````{tabs}
+
+````{tab} RISC-V
+
+ - **miv-rv32iamf-cpp:** Displaying Raytraced sphere and Mandelbrot fractals with ASCII art through UART. Raytracer and Mandelbrot demos can be switched with a define inside the `main.c` file. Demos are using `printf` passthrough to a UART with `MSCC_STDIO_THRU_CORE_UART_APB` define, and targeting the legacy MiV RV32-IMAF soft processor (because demos require the RISC-V F extension). The Mandelbrot demo is written in C, while the Raytracer demo is implemented in **C++**.
+
+ - **miv-rv32i-systick-blinky:** Timer driven LED blinker and UART echo program for a system containing the MiV new RV32I or legacy RV32IMA soft processor.
+
+ - **mpfs-gpio-interrupt:** Simple GPIO LED blinky and UART example program.
+
+ - **mpfs-mustein:** A Renode-only example showcasing a simple graphical peripheral and how to make a bespoke Renode platform.
+
+```{note}
+All the Mi-V (including mpfs) projects can be run and debugged without target hardware on the Renode emulation platform.
+```
+
+````
+
+{% if arm is defined %}
+````{tab} Arm Cortex-M1 and Cortex-M3
+ - **fpga-cortex-m1-blinky:** LED blinker program for a system containing the encrypted HDL soft core CoreCortexM1 (Microsemi:DirectCore:CoreCortexM1:<version>) in an RTG4 or PolarFire FPGA device.
+ - **m1fpga-cortex-m1-blinky:** LED blinker program for a system containing the pre placed and routed CortexM1 (Microsemi:DirectCore:CortexM1Top:<version>) in an M1 variant IGLOO, ProASIC3, ProASIC3L or Fusion FPGA device.
+ - **smartfusion-cortex-m3-blinky:** LED blinker program for a SmartFusion Cortex-M3 system.
+ - **smartfusion2-cortex-m3-blinky:** LED blinker program for a SmartFusion2 Cortex-M3 system.
+````
+{% endif %}
+
+`````
+
+
+
+## Matching workspaces
+
+Because the workspaces change between the releases it’s **not** supported to re-use older workspace from previous SoftConsole. SoftConsole can only open workspaces which were created by the same SoftConsole version. Even when creating a new "empty" workspace from SoftConsole GUI, it still includes additional settings which are unique for its release.
+
+
+If the opening of older workspaces would be permitted, then many bundled features would either be missing or not behave as documented. All documentation assumes that only the correct workspaces are used. Trying to circumvent these constraints and creating own ad-hoc workspaces or reusing older workspaces might on the surface seem like working at first glance but it **will** eventually causes various problems. These issues might not seem to be relevant to the workspace and might be non-trivial to resolve.
+
+When sharing projects with other users, it's preferable to share exported projects instead of workspaces, even when using the same machine and dual-booting (do not run the same workspace from different OSes). If the process of exporting and importing projects breaks them, then the projects are not in good shape. Hardcoding absolute paths, not using macros in launchers and settings, and ignoring the case sensitivity (even on Windows), might issues when the project will be imported to a different SoftConsole instance running on a different system. Observe the bundled projects and how they use macros and relative paths, following these conventions will make sharable projects. Projects which are easy to share can be achieved without the need to transport them inside workspaces.
+
+To migrate projects from a previous release, users can create an empty workspace (by selecting an empty folder) through the launcher dialog and import existing projects into it:
+
+{{ macros.breadcrumb_square('"SoftConsole Menu toolbar" -> "File" -> "Import" -> "General" -> "Existing Projects into Workspace"') }}
+
+Make sure the `Copy projects into workspace` is checked so the project files will be physically copied into the new workspace and not just referencing them to the original workspace.
+
+
+
+```{warning}
+Copying/sharing workspaces between hosts and especially different OSs is not supported and can cause various and hard to debug problems.
+```
+
+
+```````

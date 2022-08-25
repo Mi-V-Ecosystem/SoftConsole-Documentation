@@ -1,0 +1,252 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Supported Platforms
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+
+
+
+
+## Host operating systems
+
+
+``````{tabs}
+
+{% if windows is defined %}
+````{tab} Windows
+
+ - Windows 10 64-bit
+````
+{% endif %}
+
+
+{% if linux is defined %}
+````{tab} Linux
+
+ - Ubuntu 20.04.1 LTS 64-bit
+ - Debian 11 64-bit
+ - CentOS 7 64-bit and RHEL 7 64-bit
+````
+{% endif %}
+
+``````
+
+{% if windows is defined %}
+```{note}
+ SoftConsole no longer officially supports Windows 7.
+``` 
+{% endif %}
+
+
+
+
+
+
+
+## Target CPUs
+
+{% if riscv is defined %}
+- Microchip PolarFire SoC RISC-V 64-bit multi-processor FPGA
+- Microchip Mi-V RISC-V CPU soft cores for PolarFire, RTG4, IGLOO2 and SmartFusion2 FPGAs
+{% endif %}
+{% if arm is defined %}
+- Microchip SmartFusion2 Arm Cortex-M3
+- Microchip SmartFusion Arm Cortex-M3
+- Microchip Arm Cortex-M1 for RTG4 and PolarFire FPGAs
+- Microchip Arm Cortex-M1 for M1 IGLOO, ProASIC3, ProASIC3L and Fusion FPGAs
+{% endif %}
+
+
+
+
+
+
+
+## JTAG Debug
+
+`````{tabs}
+
+{% if windows is defined %}
+````{tab} Windows
+
+- Microchip FlashPro3, FlashPro4, FlashPro5 and FlashPro6
+- Other JTAG debug probes supported by OpenOCD (such as Olimex ARM-USB-TINY-H) may be used, but are not tested or supported by SoftConsole team.
+````
+{% endif %}
+
+{% if linux is defined %}
+````{tab} Linux
+
+- Microchip FlashPro5 and FlashPro6
+- Other JTAG debug probes supported by OpenOCD (such as Olimex ARM-USB-TINY-H) may be used, but are not tested or supported by SoftConsole team.
+````
+{% endif %}
+
+`````
+
+```{note}
+Using SoftConsole from within a Virtual Machine might limit which JTAG probes can be used.
+```
+
+
+
+
+
+## Other software
+
+* Microchip Libero SoC
+  * Microchip {{liberoSoc}}
+  * Microchip {{firmwareCatalog}}
+
+* Firmware (minimum required version)
+{% if riscv is defined %}
+  * {{mpfsHal}}
+  * RISC-V Hardware Abstraction Layer (HAL) 3.0.105
+{% endif %}
+{% if arm is defined %}
+  * SmartFusion2 CMSIS Hardware Abstraction Layer 2.3.105
+  * SmartFusion CMSIS-PAL 2.4.102
+  * Cortex-M1 CMSIS Hardware Abstraction Layer 2.0.105
+  * (DirectCore) Hardware Abstraction Layer 2.3.103
+{% endif %}
+
+
+
+## FlashPro support matrix
+
+{% include 'main/introduction/_support_table2022.2.inc' %}
+
+
+### FlashPro6
+[![FP6](images/flashpro/fp6.jpg)](https://www.microsemi.com/existing-parts/parts/152632)
+
+### FlashPro5
+[![FP5](images/flashpro/fp5.jpg)](https://www.microsemi.com/existing-parts/parts/152631)
+
+## Boards
+
+
+``````{tabs}
+
+````{tab} Microchip
+
+**Microchip - PolarFire SoC - Icicle**
+
+[![board image](images/pfsoc/icicle.png)](https://onlinedocs.microchip.com/pr/GUID-3733F763-A053-4ECB-9268-A5620129EED4-en-US-1/index.html)
+
+**Microchip - PolarFire FPGA - MPF300-VIDEO-KIT-NS**
+
+[![board image](images/pffpga/MPF300-VIDEO-KIT.jpg)](https://www.microsemi.com/existing-parts/parts/150804)
+
+**Microchip - PolarFire FPGA - MPF300-EVAL-KIT-ES**
+
+[![board image](images/pffpga/MPF300-EVAL-KIT-ES.png)](https://www.microsemi.com/existing-parts/parts/150789)
+
+**Microchip - PolarFire FPGA - MPF300-SPLASH-KIT**
+
+[![board image](images/pffpga/MPF300-SPLASH-KIT-ES.png)](https://www.microsemi.com/existing-parts/parts/144001)
+
+{% if arm is defined %}
+**Microchip - SmartFusion2 - M2S-HELLO-FPGA-KIT**
+
+[![board image](images/sf2/M2S-HELLO-FPGA-KIT.png)](https://www.microsemi.com/existing-parts/parts/150925)
+{% endif %} 
+
+````
+
+
+
+
+````{tab} Aries
+
+**Aries - PolarFire SoC - M100PF SoM**
+
+[![board image](images/pfsoc/M100PF-2.jpg)](https://shop.aries-embedded.de/search?sSearch=M100PF)
+
+````
+
+
+
+
+````{tab} Arrow
+
+**Arrow - PolarFire FPGA - Everest Dev Board**
+
+[![board image](images/pffpga/EVEREST-DEV-BOARD.png)](https://www.microsemi.com/existing-parts/parts/143998)
+
+````
+
+
+
+{% if arm is defined %}
+````{tab} Digi-key
+
+**Digi-key - SmartFusion2 - Maker Board M2S010-MKR-KIT**
+
+[![board image](images/sf2/M2S010-MKR-KIT.png)](https://www.microsemi.com/existing-parts/parts/144012)
+
+````
+{% endif %} 
+
+
+
+````{tab} Future
+
+**Future - PolarFire FPGA - Avalanche AVMPF300TS-03**
+
+[![board image](images/pffpga/AVMPF300TS-03.jpg)](https://www.microsemi.com/existing-parts/parts/139680)
+
+{% if arm is defined %}
+**Future - IGLOO2 - FUTUREM2GL-EVB**
+
+[![board image](images/igloo2/FUTUREM2SF_EVB.jpg)](https://www.microsemi.com/existing-parts/parts/143948)
+{% endif %} 
+
+````
+
+
+
+{% if arm is defined %}
+````{tab} Trenz
+
+**Trenz - SmartFusion 2 - SmartBerry TEM0002-02-010CA**
+
+[![board image](images/sf2/TEM0002-02-010CA.jpg)](https://shop.trenz-electronic.de/en/TEM0002-02-010CA-SmartBerry-FPGA-Module-with-Microsemi-SmartFusion2-M2S010-SoC-256-MByte-DDR3L)
+
+**Trenz - SmartFusion 2 - SMF2000**
+
+[![board image](images/sf2/SMF2000.jpg)](https://shop.trenz-electronic.de/en/TEM0001-01A-010C-SMF2000-FPGA-Module-with-Microsemi-SmartFusion2-8-MByte-SDRAM)
+
+**Trenz - SmartFusion 2 - FPGA module TEM0005-02-010I**
+
+[![board image](images/sf2/TEM0005-02-010I.jpg)](https://shop.trenz-electronic.de/en/TEM0005-02-010I-FPGA-Module-with-Microsemi-SmartFusion2-M2S010-SoC-256-MByte-DDR3)
+
+````
+{% endif %} 
+
+
+
+````{tab} Sundance
+
+**Sundance - PolarFire SoC - PolarBerry**
+
+[![board image](images/pfsoc/polarberry.jpg)](https://www.crowdsupply.com/sundance-dsp/polarberry)
+
+**Sundance - PolarFire FPGA - SOM3**
+
+[![board image](images/pfsoc/som3.png)](https://www.sundancedsp.com/som/polarfire/som-3-mpf300t-module-using-microsemi-polarfire-fpga/)
+
+
+**Sundance - PolarFire FPGA - SE215 PCIe carrier for SOM3**
+
+[![board image](images/pfsoc/se215-som3.jpg)](https://www.sundancedsp.com/products/fpga-boards-modules/pcie/se215/)
+
+````
+
+
+``````
+
+
+```````

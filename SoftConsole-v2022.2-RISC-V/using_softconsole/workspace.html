@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Workspaces &mdash; SoftConsole v2022.1-650-RISC-V documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Projects" href="projects.html" />
+    <link rel="prev" title="Navigating the IDE" href="navigating.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Workspaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-workspace">Example workspace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-projects">Example projects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#matching-workspaces">Matching workspaces</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Workspaces</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="workspaces">
+<h1>Workspaces<a class="headerlink" href="#workspaces" title="Permalink to this headline">¶</a></h1>
+<p>Workspace is a concept of a Eclipse based IDEs which is used to ‘hold’ all the projects. Some settings can be set globally in the product however some aspects need to be saved either on a project level, or on workspace level. Many features which SoftConsole depends on are saved on the workspace level (for example: MPFS boot mode programmers, Renode launchers, settings which make the UX more pleasant, tweaked keyboard shortcuts…)</p>
+<div class="section" id="example-workspace">
+<h2>Example workspace<a class="headerlink" href="#example-workspace" title="Permalink to this headline">¶</a></h2>
+<p>SoftConsole includes an example workspace which is opened by default when you run SoftConsole. This example
+workspace is located at:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/extras/workspace.examples</span></code></p>
+<p>This workspace contains several simple example projects and debug launch configurations that are ready to use
+once the relevant projects have been updated to match the target hardware – for example by copying the Libero
+SoC generated <strong>drivers_config</strong> folder into the project where applicable. It is also advisable to update these
+example projects with the relevant CMSIS/HAL and firmware drivers generated from the Firmware Catalog.
+It is advisable to make a copy of this example workspace and use the copy for experimentation. Workspaces were
+not designed nor intended to be shared between machines nor operating systems. Do not make your own empty
+workspaces and do not transfer workspaces between machines or OSes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The SoftConsole uninstaller will delete some or all of this workspace in which case any changes made
+may be lost.</p>
+</div>
+<p>Refer to the README.txt (or .md/.html) for each example project for more information.</p>
+<div class="section" id="example-projects">
+<span id="exampleworkspaceprojects"></span><h3>Example projects<a class="headerlink" href="#example-projects" title="Permalink to this headline">¶</a></h3>
+<p>The workspace is shipped with ‘blinky’ projects for various targets (see their READMEs). However few projects have special reasons why they are bundled:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>RISC-V</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<ul class="simple">
+<li><p><strong>miv-rv32iamf-cpp:</strong> Displaying Raytraced sphere and Mandelbrot fractals with ASCII art through UART. Raytracer and Mandelbrot demos can be switched with a define inside the <code class="docutils literal notranslate"><span class="pre">main.c</span></code> file. Demos are using <code class="docutils literal notranslate"><span class="pre">printf</span></code> passthrough to a UART with <code class="docutils literal notranslate"><span class="pre">MSCC_STDIO_THRU_CORE_UART_APB</span></code> define, and targeting the legacy MiV RV32-IMAF soft processor (because demos require the RISC-V F extension). The Mandelbrot demo is written in C, while the Raytracer demo is implemented in <strong>C++</strong>.</p></li>
+<li><p><strong>miv-rv32i-systick-blinky:</strong> Timer driven LED blinker and UART echo program for a system containing the MiV new RV32I or legacy RV32IMA soft processor.</p></li>
+<li><p><strong>mpfs-gpio-interrupt:</strong> Simple GPIO LED blinky and UART example program.</p></li>
+<li><p><strong>mpfs-mustein:</strong> A Renode-only example showcasing a simple graphical peripheral and how to make a bespoke Renode platform.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All the Mi-V (including mpfs) projects can be run and debugged without target hardware on the Renode emulation platform.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="matching-workspaces">
+<h2>Matching workspaces<a class="headerlink" href="#matching-workspaces" title="Permalink to this headline">¶</a></h2>
+<p>Because the workspaces change between the releases it’s <strong>not</strong> supported to re-use older workspace from previous SoftConsole. SoftConsole can only open workspaces which were created by the same SoftConsole version. Even when creating a new “empty” workspace from SoftConsole GUI, it still includes additional settings which are unique for its release.</p>
+<p>If the opening of older workspaces would be permitted, then many bundled features would either be missing or not behave as documented. All documentation assumes that only the correct workspaces are used. Trying to circumvent these constraints and creating own ad-hoc workspaces or reusing older workspaces might on the surface seem like working at first glance but it <strong>will</strong> eventually causes various problems. These issues might not seem to be relevant to the workspace and might be non-trivial to resolve.</p>
+<p>When sharing projects with other users, it’s preferable to share exported projects instead of workspaces, even when using the same machine and dual-booting (do not run the same workspace from different OSes). If the process of exporting and importing projects breaks them, then the projects are not in good shape. Hardcoding absolute paths, not using macros in launchers and settings, and ignoring the case sensitivity (even on Windows), might issues when the project will be imported to a different SoftConsole instance running on a different system. Observe the bundled projects and how they use macros and relative paths, following these conventions will make sharable projects. Projects which are easy to share can be achieved without the need to transport them inside workspaces.</p>
+<p>To migrate projects from a previous release, users can create an empty workspace (by selecting an empty folder) through the launcher dialog and import existing projects into it:</p>
+<div class="graphviz"><img src="../_images/graphviz-91354c24495b20d83c45144daf81be33c3d57203.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;Existing Projects into Workspace&quot;
+     }" class="graphviz" /></div>
+<p>Make sure the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace</span></code> is checked so the project files will be physically copied into the new workspace and not just referencing them to the original workspace.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Copying/sharing workspaces between hosts and especially different OSs is not supported and can cause various and hard to debug problems.</p>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="projects.html" class="btn btn-neutral float-right" title="Projects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="navigating.html" class="btn btn-neutral float-left" title="Navigating the IDE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022 Microchip.
+
+    </p>
+  </div> 
+
+<script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    function link(headingTitle) {
+        var pageName = "using_softconsole/workspace.md.txt".replace(/\.txt/g,'');
+        var title = document.title;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650-RISC-V documentation&pub_ver=v2022.1-650-RISC-V&revision_letter=v2022.1-650-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
+         
+        return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + newuri + "\" target=_blank>Ask a question</a>";
+    }
+
+    
+    $(document).ready(function(){
+        $("h1").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+        
+        $("h2").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h3").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h4").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+    });
+</script>
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+       <strong> 
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

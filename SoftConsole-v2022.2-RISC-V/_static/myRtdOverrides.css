@@ -1,0 +1,59 @@
+/* Spacing between bullet points */
+.section li {
+  margin-bottom: 5px;
+}
+
+/* Larger content body */
+.wy-nav-content {
+  max-width: 950px;
+  min-height: 100vh;
+}
+
+/* Make background for the content white*/
+.wy-nav-content {
+  background: #fff !important;
+}
+
+@media screen and (min-width:1100px) {
+  .wy-nav-content {
+    background:#fff !important;
+  }
+}
+
+/* Highlighted text has less saturated background */
+.highlight {
+  background: #fefffa;
+}
+
+/* But more saturated line */
+.highlight .hll {
+  background-color: #ff9;
+}
+
+/* Black background for search */
+.wy-side-nav-search {
+  background-color: black;
+}
+
+/* Black background for top bar showing in mobile version */
+.wy-nav-top {
+  background-color: black;
+}
+
+/* Gray version text */
+.wy-side-nav-search>div.version {
+  color:hsla(0,0%,100%,.5)
+}
+ 
+/* Increased spacing on top of headers */
+h1 {
+  margin-top: 14px;
+}
+
+h2 {
+  margin-top: 12px;
+}
+
+h3 {
+  margin-top: 10px;
+}

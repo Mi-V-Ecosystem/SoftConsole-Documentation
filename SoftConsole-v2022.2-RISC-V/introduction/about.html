@@ -1,0 +1,1256 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>About SoftConsole and this document &mdash; SoftConsole v2022.1-650-RISC-V documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Supported Platforms" href="supported_platforms.html" />
+    <link rel="prev" title="SoftConsole for RISC-V v2022.2 documentation" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About SoftConsole and this document</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-variants">Documentation variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-offline-versions">Download offline versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#used-terms">Used terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#breadcrumbs">Breadcrumbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-new">What is new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#softconsole-2022-2-for-risc-v">SoftConsole 2022.2 for RISC-V</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fixes-and-sars">Bug fixes and SARs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flashpro-support-matrix">FlashPro support matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#softconsole-2021-3">SoftConsole 2021.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Bug fixes and SARs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">FlashPro support matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#softconsole-2021-1">SoftConsole 2021.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">FlashPro support matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#softconsole-6-5">SoftConsole 6.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sc65knownissues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">FlashPro support matrix</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>About SoftConsole and this document</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="about-softconsole-and-this-document">
+<h1>About SoftConsole and this document<a class="headerlink" href="#about-softconsole-and-this-document" title="Permalink to this headline">¶</a></h1>
+<p>This is manual the for Microchip SoftConsole for RISC-V v2022.2.</p>
+<p>SoftConsole is Microchip’s free and primarily open-source based software development environment for Windows and GNU/Linux facilitating the rapid development of bare-metal and RTOS based C/C++ software for Microchip CPU and SoC (System on Chip) based FPGAs.It provides development and debugging support for all Microchip SoC FPGAs and 32-bit soft IP CPUs.</p>
+<p>SoftConsole can be downloaded for free from <a class="reference external" href="https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/programming-and-debug/softconsole">Microchip’s website</a>.</p>
+<p>Running <code class="docutils literal notranslate"><span class="pre">miv-rv32imaf-cpp</span></code> example with Renode:
+<img alt="IDE screenshot" src="../_images/renode-miv.png" /></p>
+<p>Running <code class="docutils literal notranslate"><span class="pre">mpfs-mustein</span></code> example with Renode:
+<img alt="IDE screenshot2" src="../_images/renode-mustein.png" /></p>
+<p>For first-time users the manual is strongly recommended to be read in full at least once. The installation might require extra manual steps.</p>
+<p>And it is recommended to search for the error messages in the troubleshooting section when encountering a issue:</p>
+<p><a class="reference internal" href="../troubleshooting/flashpro.html"><span class="doc">Flashpro and OpenOCD</span></a></p>
+<p><a class="reference internal" href="../troubleshooting/project.html"><span class="doc">Project settings</span></a></p>
+<p><a class="reference internal" href="../troubleshooting/riscv.html"><span class="doc">RISC-V</span></a></p>
+<p><a class="reference internal" href="../troubleshooting/riscv_trap.html"><span class="doc">RISC-V Trap Exceptions</span></a></p>
+<p><a class="reference internal" href="../troubleshooting/renode.html"><span class="doc">Renode troubleshooting</span></a></p>
+<p><a class="reference internal" href="../troubleshooting/eclipse.html"><span class="doc">Eclipse</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users of previous releases should watch for changes and in the <a class="reference internal" href="#whatisnew"><span class="std std-ref">What is new</span></a> chapter and re-read all affected chapters.</p>
+</div>
+<div class="section" id="documentation-variants">
+<h2>Documentation variants<a class="headerlink" href="#documentation-variants" title="Permalink to this headline">¶</a></h2>
+<p>The SoftConsole documentation is distributed in three variants:</p>
+<ul class="simple">
+<li><p>Containing information relevant to <strong>both Windows and Linux</strong> users <a class="reference external" href="https://mi-v-ecosystem.github.io/SoftConsole-Documentation">deployed online</a></p></li>
+<li><p>Containing information relevant to <strong>only Windows</strong> users shipped with Windows SoftConsole</p></li>
+<li><p>Containing information relevant to <strong>only Linux</strong> users shipped with Linux SoftConsole</p></li>
+</ul>
+<p>The online documentation contains both OSs and can be updated/improved even after the SoftConsole release. While documentation installed with specific SoftConsole contains only information relevant to its host OS and can be viewed without an internet connection.</p>
+<p>Currently you are reading the: <strong>Windows and Linux</strong> variant.</p>
+</div>
+<div class="section" id="download-offline-versions">
+<h2>Download offline versions<a class="headerlink" href="#download-offline-versions" title="Permalink to this headline">¶</a></h2>
+<p>The documentation can be downloaded for ‘offline’ use. Because various versions are generated, there is an option to download variant which covers only the user’s host operating system and doesn’t include irrelevant information. Or download variant which covers both operating systems.</p>
+<p><a class="reference download internal" download="" href="../_downloads/4cce51976f1e89cd2d6775d378251b8b/sc-doc-all.zip"><code class="xref download docutils literal notranslate"><span class="pre">Both</span> <span class="pre">Windows</span> <span class="pre">and</span> <span class="pre">Linux</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/f09a773362a57a26125faa7afe93fcd1/sc-doc-win.zip"><code class="xref download docutils literal notranslate"><span class="pre">Only</span> <span class="pre">Windows</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/d6c4467773c23ed3ab2a9fb7d4b70872/sc-doc-linux.zip"><code class="xref download docutils literal notranslate"><span class="pre">Only</span> <span class="pre">Linux</span></code></a></p>
+</div>
+<div class="section" id="used-terms">
+<h2>Used terms<a class="headerlink" href="#used-terms" title="Permalink to this headline">¶</a></h2>
+<p>This document uses <strong>&lt;SoftConsole-install-dir&gt;</strong> and <strong>&lt;SC_INSTALL_DIR&gt;</strong> as a placeholders for the actual SoftConsole install directory.
+Where this is mentioned substitute the actual SoftConsole install directory name.</p>
+<ul class="simple">
+<li><p>Windows example: <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SoftConsole_v2022.1-650-RISC-V</span></code></p></li>
+<li><p>Linux example: <code class="docutils literal notranslate"><span class="pre">$HOME/Microchip/SoftConsole_v2022.1-650-RISC-V</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="breadcrumbs">
+<h2>Breadcrumbs<a class="headerlink" href="#breadcrumbs" title="Permalink to this headline">¶</a></h2>
+<p>Often in this document steps are described in ‘breadcrumbs’ form such as this:</p>
+<div class="graphviz"><img src="../_images/graphviz-abc5ab7bbb71728455148a5a9ae4ce8bc5b8a364.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Do A first&quot; -&gt; &quot;Then do B&quot; -&gt; &quot;Finally do C&quot;
+     }" class="graphviz" /></div>
+<br/><p>These breadcrumbs usually reference a GUI location where to click or how to navigate the menus, submenus, their tabs/dialogs.
+There are few common places where these breadcrumbs start:</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">SoftConsole</span> <span class="pre">Menu</span> <span class="pre">toolbar</span></code> as starting location, example:</p>
+<div class="graphviz"><img src="../_images/graphviz-d8d1ddc9c8f7599e659116b61a1dd2cfb51bc644.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot;; }" class="graphviz" /></div>
+<p>Which is located under the Window’s title:</p>
+<p><img alt="board image" src="../_images/menu_toolbar.png" /></p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Project's</span> <span class="pre">properties</span></code> as starting location, example:</p>
+<div class="graphviz"><img src="../_images/graphviz-0d3696fe041bc72717b173aa6185503c9aee2318.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
+<p>Which requires the user to first go into Project’s settings/properties by following these steps:</p>
+<div class="graphviz"><img src="../_images/graphviz-d27acdb4e917268e3d9eb49672aa8b3e5d28b012.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on &lt;your_project&gt; in the Project Explorer&quot; -&gt; &quot;Properties&quot;; }" class="graphviz" /></div>
+<p><img alt="board image" src="../_images/project_properties.png" /></p>
+<p>This opens the following menu and can be navigated with the breadcrumbs:</p>
+<div class="graphviz"><img src="../_images/graphviz-0d3696fe041bc72717b173aa6185503c9aee2318.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
+<p><img alt="board image" src="../_images/project_properties_menu2.png" /></p>
+</li>
+<li><p>The launchers <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">configuration</span></code> as starting location, example:</p>
+<div class="graphviz"><img src="../_images/graphviz-549b3d8d84b073cc27b3972b52ac6b84c938420d.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<p>Which requires the user to open the corresponding debug launcher associated with your project:</p>
+<div class="graphviz"><img src="../_images/graphviz-33532b4e905734e070842d54137f2ae0216bb283.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for \&lt;YOUR_PROJECT\&gt;&quot;; }" class="graphviz" /></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each project might have multiple Debug Launchers associated with the project, for example one <code class="docutils literal notranslate"><span class="pre">hw</span></code> for Hardware targets and one <code class="docutils literal notranslate"><span class="pre">Renode</span></code> for Renode emulated targets. User needs to select the coresponding launcher within the context of the SoftConsole chapter. Renode troubleshooting guide will expect users to select the Renode variants of the launchers.</p>
+</div>
+<p>This will open the following dialog menu:</p>
+<p><img alt="board image" src="../_images/debug_launcher.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="what-is-new">
+<span id="whatisnew"></span><h2>What is new<a class="headerlink" href="#what-is-new" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="softconsole-2022-2-for-risc-v">
+<h2>SoftConsole 2022.2 for RISC-V<a class="headerlink" href="#softconsole-2022-2-for-risc-v" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="features">
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>This release is focused on RISC-V support</p></li>
+<li><p>Java</p>
+<ul class="simple">
+<li><p>Switching from OpenJDK to JustJ vendor</p></li>
+<li><p>Upgrading to v17</p></li>
+</ul>
+</li>
+<li><p>Eclipse</p>
+<ul>
+<li><p>Eclipse upgraded to v4.22</p></li>
+<li><p>CDT upgraded to v10.5.0</p>
+<ul class="simple">
+<li><p>Using upstream starter.exe instead of our fork. The aggressive shutdown timing is fixed in the upstream.</p></li>
+</ul>
+</li>
+<li><p>GUI</p>
+<ul>
+<li><p>Welcome page plugin with useful links is shown on the first startup and can be invoked with <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">Welcome</span></code></p>
+<p><img alt="Welcome page" src="../_images/welcome.png" /></p>
+</li>
+<li><p>Can detect multiple PolarFire SoC MSS Configurator configs and allow users to invoke PolarFire SoC MSS Configurator with them</p>
+<p><img alt="PF SoC MSS Configurator button" src="../_images/mss-button.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature requires a compatible project to work correctly. There are no compatible projects (including the bundled example projects) at the time of SoftConsole 2022.2 release. Projects deployed on GitHub should start utilizing this feature in the future.</p>
+</div>
+<p>For more information see the <a class="reference internal" href="../using_softconsole/mpfs.html#mssbutton"><span class="std std-ref">PolarFire SoC MSS Configurator launcher</span></a> section.</p>
+</li>
+<li><p>JDC Helper allowing users to update content of eNVM clients without the need to run Libero or having access to the Libero design project. More information in <a class="reference internal" href="../using_softconsole/mpfs.html#jdchelper"><span class="std std-ref">JDC Helper</span></a> section.</p></li>
+<li><p>Can specify an external web browser (on Windows)</p>
+<p><img alt="external web browsers" src="../_images/browsers-windows-update.png" /></p>
+</li>
+<li><p>Launch bar, <a class="reference external" href="https://wiki.eclipse.org/CDT/LaunchBar">Click here for more Eclipse/CDT info</a>. If required, the launch bar can be <a class="reference external" href="https://stackoverflow.com/questions/32559827/how-to-hide-disable-cdt-launchbar">disabled from the preferences page</a>.</p>
+<p><img alt="Launch bar" src="../_images/bar.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>Console, Terminal and color support</p>
+<ul>
+<li><p>Terminal 4-bit, 8-bit and 24-bit color support</p>
+<p><img alt="colors" src="../_images/CDT10_new_terminal_colors.png" /></p>
+</li>
+<li><p>Can edit the terminal palette from preferences</p>
+<p><img alt="can be configured" src="../_images/CDT10_new_terminal_colors_pref.png" /></p>
+</li>
+<li><p>Terminal colors can be inverted</p>
+<p><img alt="inverting colors" src="../_images/Terminal-invert-colours.png" /></p>
+</li>
+<li><p>Terminal tabs can be renamed</p>
+<p><img alt="rename tab" src="../_images/CDTUserNewIn102Rename.png" /></p>
+</li>
+<li><p>Paths inside the Terminal and URLs can be clicked with CTRL + left click</p>
+<p><img alt="clickable content" src="../_images/Terminal-hover-selection.png" /></p>
+</li>
+<li><p>Arbitrary baud rates supported in the Serial terminal</p></li>
+<li><p>Console supports word wrap</p>
+<p><img alt="word wrap" src="../_images/console-preferences-word-wrap.png" /></p>
+</li>
+<li><p>The build console has now its own <code class="docutils literal notranslate"><span class="pre">close</span></code> button</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">bring</span> <span class="pre">to</span> <span class="pre">top</span></code> toggle button is now in the toolbar and in the preferences as well</p>
+<p><img alt="close button" src="../_images/Console_actions_bug486033_bug568926.png" /></p>
+</li>
+<li><p>Console’s <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Next</span></code> and <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Previous</span></code></p>
+<p><img alt="next and previous" src="../_images/console-find-next-find-previous-45017.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>Editors</p>
+<ul>
+<li><p>Dedicated assembly editor associated with <code class="docutils literal notranslate"><span class="pre">.lst</span></code> list files</p></li>
+<li><p>The last edit location remembers history and allows to go forward and backwards (icons added to the main toolbar as well)</p>
+<p><img alt="last edit location" src="../_images/multiple-last-edit-locations.png" /></p>
+</li>
+<li><p>Dedicated launcher view – showing launchers in a convenient manner</p>
+<p><img alt="launcher view" src="../_images/launchers.png" /></p>
+</li>
+<li><p>Support for a new pragma <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">mark</span></code> added which improves the readability of the code outline</p>
+<p><img alt="pragram mark" src="../_images/CDT_10_4_outline.png" /></p>
+</li>
+<li><p>C++17 constructor template deduction supported</p>
+<p><img alt="cpp17 constructor template deduction" src="../_images/cpp17.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>Debugging</p>
+<ul>
+<li><p>Secondary Debug icons added to the debug view/tab</p>
+<p><img alt="debug icons" src="../_images/debug-from-debug.png" /></p>
+</li>
+<li><p>Alternative way added to disable all breakpoints</p>
+<p><img alt="disable breakpoints" src="../_images/disable-allbreakpoints.png" /></p>
+</li>
+<li><p>Eclipse now drops its internal caches when gdb’s <code class="docutils literal notranslate"><span class="pre">load</span></code> is invoked</p></li>
+<li><p>Improved memory viewer (allows floating-point, asci and other ways of rendering the memory)</p>
+<p><img alt="memory viewer render" src="../_images/mem-render.png" /></p>
+<ul>
+<li><p>Floating point view</p>
+<p><img alt="memory viewer floating point" src="../_images/mem-floating-point.png" /></p>
+</li>
+<li><p>String view</p>
+<p><img alt="memory viewer string" src="../_images/mem-string.png" /></p>
+</li>
+<li><p>Traditional view</p>
+<p><img alt="memory viewer traditional" src="../_images/mem-traditional.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Headless builder</p>
+<ul class="simple">
+<li><p>Multiple builds of multiple projects running in one go could have caused an exit code to masked and report falsely a successful build. Now any subproject build failure will cause the whole build to fail</p></li>
+</ul>
+</li>
+<li><p>Projects</p>
+<ul>
+<li><p>Redundant projects removed (mandelbrot and raytracer demos combined into one project)</p></li>
+<li><p>Few of the bundled projects build much faster, see <a class="reference internal" href="../using_softconsole/projects.html#parallelbuilds"><span class="std std-ref">Parallel builds</span></a> section for more information.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code> project supports the new soft processor <code class="docutils literal notranslate"><span class="pre">MIV_RV32</span></code> and legacy soft processor <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AHB</span></code>, <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AXI</span></code> and <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMAF_L1_AHB</span></code> as well. This requires extra attention to what build configuration can be used with what target and with what launcher:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">Configuration</th>
+<th class="head">Target</th>
+<th class="head">Launcher to debug with Renode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>miv32i-Debug</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+<tr class="row-odd"><td>miv32i-Release</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+<tr class="row-even"><td>miv32ima-Debug</td>
+<td>legacy RV32</td>
+<td>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</td>
+</tr>
+<tr class="row-odd"><td>miv32ima-Release</td>
+<td>legacy RV32</td>
+<td>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</td>
+</tr>
+<tr class="row-even"><td>miv32imc-Debug</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+<tr class="row-odd"><td>miv32imc-Release</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When targeting real Hardware, then all the configurations are using the same launcher <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span> <span class="pre">Hw</span> <span class="pre">Debug</span></code>. However the connected board must have matching design. For the new core it needs to be 2022.1 release of <code class="docutils literal notranslate"><span class="pre">MIV_RV32</span></code> with ESS memory map (such as <code class="docutils literal notranslate"><span class="pre">DGC2</span></code> config). And for the legacy core it needs to be 2022.1 release of <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AHB</span></code>, <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AXI</span></code> or <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMAF_L1_AHB</span></code> (for example <code class="docutils literal notranslate"><span class="pre">CFG1</span></code> config). The reset vector for legacy core changed in this release and using older builds of this core is not recomended.</p>
+</div>
+<ul>
+<li><p>Renode</p>
+<ul>
+<li><p>Upgraded to v1.13.1 release</p></li>
+<li><p>Includes support for Mi-RV32 IMAF legacy cores and Mi-RV32 cores</p></li>
+<li><p>Improved speeds of GDB startup and <code class="docutils literal notranslate"><span class="pre">tlib</span></code> runtime</p></li>
+<li><p>CoreGPIO supports fixed IO config. See the <a class="reference internal" href="../using_softconsole/renode.html#renodefixedgpio"><span class="std std-ref">Fixed configuration of a GPIO peripheral</span></a> section for more details.</p></li>
+<li><p>Optional installer step to install Renode sources</p></li>
+<li><p>Renode’s Monitor (by default) is embedded into the terminal (it’s possible to return to the original behaviour, read the <a class="reference internal" href="../using_softconsole/renode.html#embddedrenodewindow"><span class="std std-ref">Embedded monitor window</span></a> section)</p>
+<p><img alt="Renode's embedded window view" src="../_images/renode-monitor.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="bug-fixes-and-sars">
+<h3>Bug fixes and SARs<a class="headerlink" href="#bug-fixes-and-sars" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Eclipse</p>
+<ul>
+<li><p>Missing X button to close views SAR 123248</p></li>
+<li><p>Removed redundant and broken ‘copy settings’ option from the launcher SAR 123476</p></li>
+<li><p>Issues with links in the Welcome page SAR 124454</p></li>
+<li><p>Git freezing on Windows. SAR 125155</p></li>
+<li><p>Shared SoftConsole installation. SAR 115585</p></li>
+<li><p>Launcher’s error message can sometimes display a badly formatted path in the text SAR 124471</p></li>
+<li><p><a class="reference external" href="https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=RESOLVED&amp;bug_status=VERIFIED&amp;bug_status=CLOSED&amp;classification=Tools&amp;list_id=21195151&amp;product=CDT&amp;query_format=advanced&amp;resolution=FIXED&amp;target_milestone=9.5.4&amp;target_milestone=10.5.0">33 bugs resolved in the upstream</a></p></li>
+</ul>
+</li>
+<li><p>OpenOCD</p>
+<ul>
+<li><p>FlashPro port selection fixed. SAR 119110</p></li>
+</ul>
+</li>
+<li><p>MPFS boot mode programmer</p>
+<ul>
+<li><p>Styling bug in the verbose log fixed (no SAR reference).</p></li>
+</ul>
+</li>
+<li><p>Documentation</p>
+<ul>
+<li><p>Discrepancy in the number of hardware breakpoints between PFSoC TRM and SoftConsole. SAR 123621</p></li>
+</ul>
+</li>
+<li><p>Projects</p>
+<ul>
+<li><p>Mi-V example projects using old HAL. SAR 113988</p></li>
+<li><p>mpfs-gpio-interrupt example has updated HAL (no SAR reference).</p></li>
+<li><p>A malloc() issue with C++. SAR 120920</p></li>
+</ul>
+</li>
+<li><p>Renode</p>
+<ul>
+<li><p>Renode freezing when embedding the monitor. SAR 123436</p></li>
+<li><p>Renode DDR was overlapping with the FIC. SAR 125178</p></li>
+<li><p>Renode freezing when its UART is overloaded. SAR 123718 and SAR 123717</p></li>
+<li><p>Renode not showing CSR registers in the Register Window. SAR 114512</p></li>
+<li><p>PLIC crashes when enabling PLIC IRQ on multiple harts. SAR 107418</p></li>
+<li><p>QSPI model not indicating correctly TXDONE and RXDONE. SAR 109794</p></li>
+<li><p>QSPI model not supporting <code class="docutils literal notranslate"><span class="pre">QSPIMODE[2:0]</span></code> modes. SAR 109794</p></li>
+<li><p>Watchdog IRQs cleared correctly. SAR 110415</p></li>
+<li><p>Watchdog refresh issues. SAR 110524</p></li>
+<li><p>Renode interacting with host based devices (UART -&gt; Socket -&gt; UDP). SAR 124676</p></li>
+<li><p>Compiling models on Windows with JIT. SAR 120739</p></li>
+<li><p>Non-responding UART terminal on low-end Linux machines (no SAR reference). Please read the <a class="reference internal" href="../troubleshooting/renode.html#uartanalyzernotresponding"><span class="std std-ref">UART analyzer not responding</span></a> section for the fix instructions.</p></li>
+<li><p>CoreGPIO Renode model doesn’t support fixed IO config. See the <a class="reference internal" href="../using_softconsole/renode.html#renodefixedgpio"><span class="std std-ref">Fixed configuration of a GPIO peripheral</span></a> section for more details. SAR 115138</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="known-issues">
+<h3>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Providing the symbol files in the debug launchers is necessary to avoid errors on RV32 targets (see launchers of example projects).</p></li>
+<li><p>The DDR training on Renode targets is extremely slow and applications do not reach the main breakpoint for an extensive time. DDR on Renode doesn’t have to be trained, it works reliably instantly on the ‘power-up’. Applications targeting Renode can disable the DDR training to avoid this issue.</p></li>
+</ul>
+</div>
+<div class="section" id="flashpro-support-matrix">
+<h3>FlashPro support matrix<a class="headerlink" href="#flashpro-support-matrix" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Standalone<br/>FlashPro6</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev B</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Windows</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Virtual Machine</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Docker on Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Debug PolarFire SoC<br/>MSS Core Complex</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>PolarFire SoC UltraSoC<br/>trace/debug</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Debug Cortex-M1<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Cortex-M1<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to the Libero SoC v2022.2 or Program Debug Tools v2022.2 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Empty cells mean there is <strong>no</strong> support.</p>
+</div>
+</div>
+</div>
+<div class="section" id="softconsole-2021-3">
+<h2>SoftConsole 2021.3<a class="headerlink" href="#softconsole-2021-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Features<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>MPFS boot mode programmer</p>
+<ul class="simple">
+<li><p>Supporting X.509 public and PCKS#8 private keys in boot mode 3 (factory secure boot from eNVM)</p></li>
+<li><p>Bug fixes (see the section below)</p></li>
+</ul>
+</li>
+<li><p>Arm toolchain version updated to v10.3.1-2.1</p></li>
+<li><p>Documentation shifted from release notes to dedicated HTML format</p>
+<ul>
+<li><p>Content of the documentation rewritten to make it more user friendly</p></li>
+<li><p>Online version is deployed <a class="reference external" href="https://mi-v-ecosystem.github.io/SoftConsole-Documentation/SoftConsole-v2021.3/">here</a>.</p></li>
+<li><p>Downloads for offline versions are <a class="reference external" href="https://mi-v-ecosystem.github.io/SoftConsole-Documentation/SoftConsole-v2021.3/introduction/about.html#download-offline-versions">here</a>.</p></li>
+<li><p>And each SoftConsole has offline version bundled here:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;SOFTCONSOLE_INSTALL_DIR&gt;/documentation/softconsole/index.html</span></code></p>
+<p>Shortcut to the bundled documentation is added by the installer into the start menu so users do not have to memorize the above path.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The offline versions bundled with the SoftConsole contain only the relevant operating system. That means the online documentation contains info relevant for both Windows and Linux users. While the documentation in Windows SoftConsole contains only relevant information for Windows users. And the documentation in Linux SoftConsole contains only relevant information for Linux users. This should improve readability as Windows users do not have to read/parse Linux sections and vice versa.</p>
+</div>
+</li>
+<li><p>Fixing SAR (see section below)</p></li>
+</ul>
+</li>
+<li><p>Eclipse</p>
+<ul class="simple">
+<li><p>Bundling custom Eclipse plugins that generate correct workspace for the user automatically.</p></li>
+<li><p>When opening new workspace plugins check for compatibility to make sure that incompatible versions of workspaces are opened by accident.</p></li>
+<li><p>Workspace generated with streamlined metadata, should provide very minor performance improvement</p></li>
+<li><p>Tweaked Java memory management handling</p></li>
+</ul>
+</li>
+<li><p>Improved installer</p>
+<ul class="simple">
+<li><p>CAL library integrated to the installer</p></li>
+<li><p>Bug fixes (see section below)</p></li>
+</ul>
+</li>
+<li><p>UltraSoC trace support removed from SoftConsole</p></li>
+<li><p>OpenOCD supports RTPFS devices</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Bug fixes and SARs<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>MPFS boot mode programmer</p>
+<ul>
+<li><p>SAR 122301 - MPFS bootmode programmer doesn’t handle multiple ELF files in one workdir</p>
+<p>The manual ELF file selection was not working.</p>
+</li>
+<li><p>SAR 121969 - Running mpfs-bootmode-programer with wrong arguments can cause unhandled exception</p>
+<p>Tool crashed when given a certain combination of input arguments.</p>
+</li>
+<li><p>SAR 122302 - MPFS bootmode programmer can cause exceptions</p>
+<p>Tool crashed when given a certain combination of input arguments.</p>
+</li>
+<li><p>SAR 121388 - Environment variable path string throws Java Exception</p>
+<p>Tool crashed when the environment variable contained invalid characters instead of a valid path.</p>
+</li>
+</ul>
+</li>
+<li><p>Installer</p>
+<ul>
+<li><p>SAR 121482 - Shortcuts not generated consistently on some Linux distributions</p>
+<p>Users couldn’t see the SoftConsole shortcuts in their desktop and their start menu.</p>
+</li>
+<li><p>SAR 121479 - malformed post-installation readme.</p>
+<p>The installer was struggling with correct formatting. Switched to the HTML documentation</p>
+</li>
+<li><p>SAR 116431 - Installer ignores <code class="docutils literal notranslate"><span class="pre">--prefix</span></code> command line option in <code class="docutils literal notranslate"><span class="pre">--mode</span> <span class="pre">unattended</span></code></p>
+<p>Unattended installations were ignoring the <code class="docutils literal notranslate"><span class="pre">--prefix</span></code> command and always installing SoftConsole into its default location</p>
+</li>
+</ul>
+</li>
+<li><p>Eclipse</p>
+<ul>
+<li><p>SAR 115587 - HOME variable in the softconsole.sh file overwrites the default HOME on Linux machines</p>
+<p>Primarily the HOME variable is set to provide a consistent experience in the most portable and standalone setup. However, if SoftConsole is installed in a shared environment where one installation can be used by many users then using the default HOME is preferred. Therefore, a secondary launcher script is added which allows SoftConsole to be used in a shared setup.</p>
+</li>
+</ul>
+</li>
+<li><p>Documentation</p>
+<ul>
+<li><p>SAR 110489 - Request to provide SoftConsole User guide with all the details provided in release notes</p>
+<p>Creating SoftConsole documentation in a new HTML format while release notes now are not overlapping with a user guide.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>Known issues<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>All issues inherited from 6.5 (see <a class="reference internal" href="#sc65knownissues"><span class="std std-ref">SoftConsole 6.5 Known issues</span></a>)</p>
+</div>
+<div class="section" id="id4">
+<h3>FlashPro support matrix<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Standalone<br/>FlashPro6</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev B</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev A</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Windows</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Virtual Machine</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Docker on Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Debug PolarFire SoC<br/>MSS Core Complex</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>PolarFire SoC UltraSoC<br/>trace/debug</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Debug Cortex-M1<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Cortex-M1<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to the Libero SoC v2021.3 or Program Debug Tools v2021.3 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Empty cells mean there is <strong>no</strong> support.</p>
+</div>
+</div>
+</div>
+<div class="section" id="softconsole-2021-1">
+<h2>SoftConsole 2021.1<a class="headerlink" href="#softconsole-2021-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Features<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Support for programming PolarFire SoC boot mode 0/1/2/3. Please refer to <SoftConsole-installdir>/extras/mpfs/mpfs-bootmodes-readme.txt for full details.</p>
+<ul>
+<li><p>Extra attention needs to be paid for boards which do not have SMK initialized yet and extra steps in Libero/FlashProExpress are necessary.</p></li>
+</ul>
+</li>
+<li><p>Original SoftConsole v6.4 Bash script-based support for boot modes 0/1 replaced by a Java utility program that supports all boot modes. The built_tools on Linux version were removed in the process as the bundled bash/shell scripting is not needed, and still the bundled bash/zsh/shell on the distribution can be used.</p></li>
+<li><p>Improved custom Eclipse launcher for SoftConsole which generates our recommended workspace settings when creating new workspace.</p></li>
+<li><p>Fixed a bug in CDT whereby register groups that were previously configured got lost whenever a debug connection attempt failed.</p></li>
+<li><p>Please refer to the table in the section below for details of FlashPro programmer support in SoftConsole v2021.1.</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>Known issues<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>All issues inherited from 6.5 (see <a class="reference internal" href="#sc65knownissues"><span class="std std-ref">SoftConsole 6.5 Known issues</span></a>)</p>
+</div>
+<div class="section" id="id7">
+<h3>FlashPro support matrix<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Standalone<br/>FlashPro6</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev B</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev A</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Windows</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Virtual Machine</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Docker on Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Debug PolarFire SoC<br/>MSS Core Complex</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>PolarFire SoC UltraSoC<br/>trace/debug</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Debug Cortex-M1<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Cortex-M1<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to the Libero SoC v12.5 SP1 or Program Debug Tools v12.5 SP1 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Empty cells mean there is <strong>no</strong> support.</p>
+</div>
+</div>
+</div>
+<div class="section" id="softconsole-6-5">
+<h2>SoftConsole 6.5<a class="headerlink" href="#softconsole-6-5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>Features<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Support for PolarFire SoC Icicle board’s Embedded FlashPro6 Rev B for debugging a PolarFire SoC MSS
+(Microcontroller Subsystem) RISC-V multicore core complex based SoC.</p></li>
+<li><p>Newer RISC-V GDB with improved performance (the first connection after power cycle significanly improved)</p></li>
+<li><p>Adding support for embedded and standalone FP6</p></li>
+</ul>
+</div>
+<div class="section" id="sc65knownissues">
+<span id="id9"></span><h3>Known issues<a class="headerlink" href="#sc65knownissues" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Port selection when multiple FlashPros are connected might not work.</p></li>
+<li><p>Providing the symbol files in the debug launchers are necessary to avoid errors on RV32 targets (see launchers of example projects).</p></li>
+<li><p>The Icicle board’s Embedded FlashPro6 programmer <strong>must</strong> be upgraded from Rev A to Rev
+B for it to work with SoftConsole. Refer to the Libero SoC v12.5 SP1 or Program Debug Tools v12.5 SP1 (or
+later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.
+The following table below summarizes the FlashPro support in SoftConsole v6.5 and later.</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>FlashPro support matrix<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Standalone<br/>FlashPro6</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev B</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev A</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Windows</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Virtual Machine</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Docker on Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Debug PolarFire SoC<br/>MSS Core Complex</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>PolarFire SoC UltraSoC<br/>trace/debug</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Debug Cortex-M1<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Cortex-M1<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to the Libero SoC v12.5 SP1 or Program Debug Tools v12.5 SP1 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Empty cells mean there is <strong>no</strong> support.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="supported_platforms.html" class="btn btn-neutral float-right" title="Supported Platforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="SoftConsole for RISC-V v2022.2 documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022 Microchip.
+
+    </p>
+  </div> 
+
+<script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    function link(headingTitle) {
+        var pageName = "introduction/about.md.txt".replace(/\.txt/g,'');
+        var title = document.title;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650-RISC-V documentation&pub_ver=v2022.1-650-RISC-V&revision_letter=v2022.1-650-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
+         
+        return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + newuri + "\" target=_blank>Ask a question</a>";
+    }
+
+    
+    $(document).ready(function(){
+        $("h1").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+        
+        $("h2").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h3").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h4").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+    });
+</script>
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+       <strong> 
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,683 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Post Installation &mdash; SoftConsole v2022.1-650-RISC-V documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Navigating the IDE" href="navigating.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Post Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#polarfire-soc-boot-mode-programming">PolarFire SoC boot mode programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renode-dependencies">Renode dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-firewall">Windows firewall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#program-and-debug-polarfire-soc">Program and Debug PolarFire SoC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Renode dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-dependencies">Additional dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-models-for-renode">Writing models for Renode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-targets-flashpro">Hardware targets (FlashPro)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#check-that-flashpro-can-be-used-without-root-privileges">Check that FlashPro can be used without root privileges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-non-root-user-to-access-flashpro">Enabling non-root user to access FlashPro</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#crypto-application-library">Crypto Application Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Post Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="post-installation">
+<h1>Post Installation<a class="headerlink" href="#post-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="polarfire-soc-boot-mode-programming">
+<h3>PolarFire SoC boot mode programming<a class="headerlink" href="#polarfire-soc-boot-mode-programming" title="Permalink to this headline">¶</a></h3>
+<p>When using PolarFire SoC boot mode programming tool from within SoftConsole then Program and debug, or Libero has to be installed:</p>
+<p><a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/4970-programming">https://www.microsemi.com/product-directory/dev-tools/4970-programming</a></p>
+<p><a class="reference external" href="https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions">https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions</a></p>
+</div>
+<div class="section" id="renode-dependencies">
+<h3>Renode dependencies<a class="headerlink" href="#renode-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode’s dependencies.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A administrative account is required to install the .NET framework.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Windows 10</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<p>The Renode emulation platform can be used out of the box on many Windows 10 machines.
+However in a rare case when the .NET Framework is not already installed with Windows 10 then it can be changed easily from within Windows features menu.</p>
+<div class="graphviz"><img src="../_images/graphviz-02c9360d08aa1dbd4b956b49a0c10b555ed6304e.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Start button&quot; -&gt; &quot;Type 'Turn Windows features on or off'&quot; -&gt; &quot;Select '.NET Framework 4.8'&quot; -&gt; &quot;Click OK&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="windows-firewall">
+<h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Permalink to this headline">¶</a></h2>
+<p>On Windows if there is a firewall in use then the first time that a debug session is run the firewall may prompt that it is blocking
+OpenOCD, <code class="docutils literal notranslate"><span class="pre">fpServer.exe</span></code> and/or <code class="docutils literal notranslate"><span class="pre">renode.exe</span></code>. Allow the firewall to unblock these and save this as the default setting if
+necessary.</p>
+</div>
+<div class="section" id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<p>Many of the commands below require root privileges using <code class="docutils literal notranslate"><span class="pre">su</span></code>, <code class="docutils literal notranslate"><span class="pre">sudo</span></code> or by logging in as root.</p>
+<ol>
+<li><p>Many platforms have <code class="docutils literal notranslate"><span class="pre">gcc</span></code> and <code class="docutils literal notranslate"><span class="pre">make</span></code> packages installed by default, but it is advisable to make sure that these are installed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Renode is using <code class="docutils literal notranslate"><span class="pre">gcc</span></code> for compiling just in time models. While <code class="docutils literal notranslate"><span class="pre">make</span></code> is used by Eclipse CDT to compile projects.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1-0 docutils container">
+<div class="docutils container">
+<p>Ubuntu/Debian</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-1 docutils container">
+<div class="docutils container">
+<p>CentOS/RHEL</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install build-essential
+sudo apt-get install libwebkit2gtk-4.0-37 <span class="c1"># To enable SoftConsole embedded web-browser</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum groupinstall <span class="s1">&#39;Development Tools&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</li>
+<li><p>It is recommended that the Linux platform used to run SoftConsole has all available updates installed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may be possible to install and run SoftConsole on other Linux distributions or versions once the required packages are installed. However, some earlier distributions (for example, CentOS/RHEL 5.x and 6.x) may not work and are not recommended or supported.</p>
+</div>
+</li>
+</ol>
+<div class="section" id="program-and-debug-polarfire-soc">
+<h3>Program and Debug PolarFire SoC<a class="headerlink" href="#program-and-debug-polarfire-soc" title="Permalink to this headline">¶</a></h3>
+<p>If you want to use mpfs programmer you need to install Program and debug, or Libero:</p>
+<p><a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/4970-programming">https://www.microsemi.com/product-directory/dev-tools/4970-programming</a></p>
+<p><a class="reference external" href="https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions">https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions</a></p>
+</div>
+<div class="section" id="id1">
+<h3>Renode dependencies<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Renode requires Mono framework to run and is provided by mono-project, add its package repository running the following:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2-0 docutils container">
+<div class="docutils container">
+<p>Ubuntu 20.04</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-1 docutils container">
+<div class="docutils container">
+<p>Debian 10</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-2 docutils container">
+<div class="docutils container">
+<p>CentOS/RHEL 7</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install gnupg ca-certificates
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+<span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/ubuntu stable-focal main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt update
+
+sudo apt install mono-devel mono-complete
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install apt-transport-https dirmngr gnupg ca-certificates
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+<span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/debian stable-buster main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt update
+
+sudo apt install mono-devel mono-complete
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These commands have to be run from <strong>root</strong> account.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rpmkeys --import <span class="s2">&quot;http://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF&quot;</span>
+su -c <span class="s1">&#39;curl https://download.mono-project.com/repo/centos7-stable.repo | tee /etc/yum.repos.d/mono-centos7-stable.repo&#39;</span>
+
+yum install mono-devel mono-complete
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For users who wish to use Renode on a unsupported platform, they can on their own risk visit <a class="reference external" href="https://www.mono-project.com/download/stable/">mono project website</a> and follow the instructions.</p>
+</div>
+</div>
+<div class="section" id="additional-dependencies">
+<span id="additionalrenodedeps"></span><h3>Additional dependencies<a class="headerlink" href="#additional-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>The mono framework is the main dependency for Renode to run. There are additional packages which might be have to be installed, but the packages either are needed only for a additional feature (like Robot testing or compiling Renode from its sources), or the packages might be already included with a generic GUI desktop environment anyway. Most of the users can skip this step.</p>
+<p>On Ubuntu they can be installed with the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install git automake autoconf libtool g++ realpath gcc libc6-dev
+sudo apt-get install policykit-1 libgtk2.0-0 screen uml-utilities gtk-sharp2 rpm libarchive-tools
+sudo apt-get install python3 python3-pip python3-setuptools python3-dev ruby ruby-dev 
+sudo gem install fpm
+</pre></div>
+</div>
+</div>
+<div class="section" id="writing-models-for-renode">
+<h3>Writing models for Renode<a class="headerlink" href="#writing-models-for-renode" title="Permalink to this headline">¶</a></h3>
+<p>Users, wishing to write Renode models can use <a class="reference external" href="https://www.monodevelop.com/">Mono Develop IDE</a> as their C# editor. Renode is made as a Mono Develop project, therefore it should be able to open Renode’s sources without any extra manual steps.</p>
+</div>
+<div class="section" id="hardware-targets-flashpro">
+<span id="linuxpostinstallhw"></span><h3>Hardware targets (FlashPro)<a class="headerlink" href="#hardware-targets-flashpro" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When accessing FlashPro devices then native Windows/Linux host machines are recommended as there might be issues with Virtual Machines accessing the FlashPro.</p>
+</div>
+<div class="section" id="check-that-flashpro-can-be-used-without-root-privileges">
+<h4>Check that FlashPro can be used without root privileges<a class="headerlink" href="#check-that-flashpro-can-be-used-without-root-privileges" title="Permalink to this headline">¶</a></h4>
+<p>Connect a FlashPro5/6 JTAG programmer to a native Linux host machine (this might not work on a VM) and check that it is visible to the operating system:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsusb
+Bus <span class="m">001</span> Device <span class="m">004</span>: ID <span class="m">1514</span>:2008 Actel
+Bus <span class="m">001</span> Device <span class="m">004</span>: ID <span class="m">1514</span>:2009 Actel
+Bus <span class="m">002</span> Device <span class="m">002</span>: ID <span class="m">1514</span>:200b Actel
+</pre></div>
+</div>
+<p>If the FlashPro5 (VID=1514 PID=2008) or FlashPro6 (VID=1514 PID=2009) or embedded FlashPro6 Rev B (VID=1514 PID=200b) does not appear then double check that the previous steps were carried out correctly.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you will see VID=1514 PID=200a then that is embedded FlashPro6 Rev A and to use it with SoftConsole or Libero, it needs to be upgraded to Rev B.</p>
+</div>
+<ul class="simple">
+<li><p>To the JTAG end of the FlashPro connect a suitable board containing a RISC-V CPU based SoC design.</p>
+<ul>
+<li><p>Make sure you are connecting to the right JTAG connector (in case of Icicle board it’s <strong>J23</strong> and not J10, the J10 is used <strong>only</strong> to reprogram the embedded JTAG)</p></li>
+</ul>
+</li>
+<li><p>Power the board on.</p></li>
+<li><p>Make sure that the board is configured for FlashPro JTAG debugging of the target CPU (depending on the board and CPU/SoC in use some board switches/jumpers configuration may be required).</p></li>
+<li><p>Make sure that it has correct and matching Libero design (if you are going to connect to Mi-V RV-32 then you need working Mi-V design on the device)</p></li>
+<li><p>Run OpenOCD from the command line to ensure that the debug connection can be established to the target CPU/SoC:</p></li>
+</ul>
+<p>First go to the correct directory (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;SoftConsole-install-dir&gt;/openocd/bin
+</pre></div>
+</div>
+<p>And then execute the following:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-3-0 docutils container">
+<div class="docutils container">
+<p>PolarFire SoC</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-3-1 docutils container">
+<div class="docutils container">
+<p>Mi-V RISCV</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -c <span class="s2">&quot;set DEVICE MPFS&quot;</span> -f board/microsemi-riscv.cfg
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-1 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-riscv.cfg
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output should be similar to the following:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4-0 docutils container">
+<div class="docutils container">
+<p>Mi-V RISC-V</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 active docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
+Licensed under GNU GPL v2
+For bug reports, read
+http://openocd.org/doc/doxygen/bugs.html
+Info : only one transport option; autoselect &#39;jtag&#39;
+adapter speed: 6000 kHz
+microsemi_flashpro tunnel_jtag_via_ujtag off
+trst_only separate trst_push_pull
+do_board_reset_init
+<span class="hll">Info : FlashPro ports available: S201Z7LB20, E200X3ID7
+</span>Info : FlashPro port used: S201Z7LB20
+Info : clock speed 6000 kHz
+<span class="hll">Info : JTAG tap: FPGA.tap tap/device found: 0x1f8071cf (mfg: 0x0e7
+</span><span class="hll">(GateField), part: 0xf807, ver: 0x1)
+</span>microsemi_flashpro tunnel_jtag_via_ujtag on
+Info : JTAG tap: FPGA.tap disabled
+Info : JTAG tap: FPGA.dap enabled
+<span class="hll">Info : RISC-V IDCODE = 0x10e31913
+</span>Info : Examined RISCV core; XLEN=32, misa=0x40902223
+halted at 0x80000b60 due to debug interrupt
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice from the log above, the following was recognized correctly</p>
+<ul class="simple">
+<li><p>The FlashPro ports</p></li>
+<li><p>The ID code of the JTAG tap</p></li>
+<li><p>And the RISC-V IDCODE</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If seeing output similar to the snippet below (or any other errors excluding documented issues) then that indicates a problem. In that case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: FlashPro ports available: none
+Info: FlashPro port used: usb
+<span class="hll">Error: InitializeProgrammer(usb) failed: Can not connect to the programmer
+</span></pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="enabling-non-root-user-to-access-flashpro">
+<h4>Enabling non-root user to access FlashPro<a class="headerlink" href="#enabling-non-root-user-to-access-flashpro" title="Permalink to this headline">¶</a></h4>
+<p>By default, USB devices are only accessible to users with root privileges. To debug using SoftConsole and FlashPro5/6 as a
+non-root user some additional steps must be taken.</p>
+<ul>
+<li><p>Copy the OpenOCD udev rules file and tell the udev subsystem to load it. This rules file describes all USB JTAG devices supported by OpenOCD to the system and makes them accessible by non-root users (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;SoftConsole-install-dir&gt;/openocd/share/openocd/contrib
+sudo cp <span class="m">60</span>-openocd.rules /etc/udev/rules.d
+sudo udevadm trigger <span class="c1"># Or reboot the PC for the changes to take effect</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code> already exists then make sure to overwrite it with the new version in this release as it contains additional rules that are not included in the earlier version.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If SoftConsole is installed alongside other tools which affect the udev rules (for example Libero, Program and Debug), then make sure their rules/scripts do not override the rules from the <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code> file.</p>
+</div>
+<p>In some cases it may be necessary to reboot for the changes to take effect. Some distributions do not create the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group and/or may not add users to it automatically. In that case the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group must be created manually and the user added to the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo groupadd plugdev
+sudo usermod -a -G plugdev &lt;username&gt;
+</pre></div>
+</div>
+<p>Log out and then log in (or reboot the PC) for the <code class="docutils literal notranslate"><span class="pre">usermod</span></code> changes to be applied.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you previously used SoftConsole v4.x or 5.0 and installed the <code class="docutils literal notranslate"><span class="pre">99-openocd.rules</span></code> file into <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d</span></code> then you can delete that file as it is now redundant and superseded by <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code>. Then run again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo udevadm trigger <span class="c1"># Or reboot the PC for the changes to take effect</span>
+</pre></div>
+</div>
+</div>
+<p>For all other common issues read the troubleshooting section. Or at least search for the error messages.</p>
+</div>
+</div>
+</div>
+<div class="section" id="crypto-application-library">
+<h2>Crypto Application Library<a class="headerlink" href="#crypto-application-library" title="Permalink to this headline">¶</a></h2>
+<p>The Crypto Application Library (CAL) provides the software API to access User Crypto block on the PolarFire and PolarFire SoC device families.</p>
+<p>If license was agreed on installation, then the library is installed in <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code> path and  contains these following folders/files:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cal-src</span></code> crypto sources in an as-is form, user can use these for reference, but they are not a SoftConsole project</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpfs-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the following files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mpfs-rv64g-user-crypto-lib.a</span></code> (U54)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpfs-rv64imac-user-crypto-lib.a</span></code> (E51)</p></li>
+</ul>
+<p>These files can be used with <strong>PolarFire SoC</strong> crypto examples located on the <a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples/tree/main/driver-examples/mss">GitHub</a></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the following files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code></p></li>
+</ul>
+<p>These files can be used with <strong>Mi-V Soft processor</strong> crypto examples located on the <a class="reference external" href="https://github.com/Mi-V-Soft-RISC-V/miv-rv32-bare-metal-examples/tree/main/driver-examples/pf-user-crypto">GitHub</a></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user_guide.pdf</span></code> Documentation for the CAL API</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The crypto-lib projects can be imported as any other generic/regular SoftConsole projects. Users who know how to import projects can skip the rest of the section.</p>
+</div>
+<p>To import in into the workspace do the following:</p>
+<div class="graphviz"><img src="../_images/graphviz-693664cfc32b674906b3886c069421e62f65a94d.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Existing Projects into Workspace&quot;
+     }" class="graphviz" /></div>
+<br/><p>After Import dialog is showed do following:</p>
+<div class="graphviz"><img src="../_images/graphviz-77a782d6d3634c0082ba83aa9f19d18c958f9895.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Select root directory&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the 'miv-rv32-user-crypto-lib' folder&quot; -&gt; &quot;Open&quot;
+     }" class="graphviz" /></div>
+<br/><p>If the dialog was left in the default state (as provided from a fresh workspace) and the project was not imported already into the workspace, then clicking the <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button will import it correctly into the workspace.</p>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="navigating.html" class="btn btn-neutral float-right" title="Navigating the IDE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022 Microchip.
+
+    </p>
+  </div> 
+
+<script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    function link(headingTitle) {
+        var pageName = "using_softconsole/post_installation.md.txt".replace(/\.txt/g,'');
+        var title = document.title;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650-RISC-V documentation&pub_ver=v2022.1-650-RISC-V&revision_letter=v2022.1-650-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
+         
+        return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + newuri + "\" target=_blank>Ask a question</a>";
+    }
+
+    
+    $(document).ready(function(){
+        $("h1").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+        
+        $("h2").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h3").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h4").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+    });
+</script>
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+       <strong> 
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

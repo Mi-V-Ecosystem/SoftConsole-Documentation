@@ -1,0 +1,677 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Project settings &mdash; SoftConsole v2022.1-650-RISC-V documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="RISC-V" href="riscv.html" />
+    <link rel="prev" title="Flashpro and OpenOCD" href="flashpro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#program-image-is-too-large">Program image is too large</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#size-optimizations-cause-trap-exception-load-store-address-misaligned-mcause-4-6">Size optimizations cause trap exception: Load/Store address misaligned (mcause 4/6)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-file-does-not-exist">Program file does not exist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linker-script-issues">Linker script issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#redirect-printf-output-to-uart">Redirect printf() output to UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#undefined-reference-to-printf-puts-write-strlen-etc">Undefined reference to <code class="docutils literal notranslate"><span class="pre">printf</span></code>/<code class="docutils literal notranslate"><span class="pre">puts</span></code>/<code class="docutils literal notranslate"><span class="pre">write</span></code>/<code class="docutils literal notranslate"><span class="pre">strlen</span></code> etc.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-fails-when-using-print-removed-sections-xlinker-print-gc-sections">Build fails when using “Print removed sections (-Xlinker –print-gc-sections)”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugger-console-view-is-not-working-or-gdb-is-misbehaving">Debugger Console View is not working or GDB is misbehaving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sprintf-prints-empty-characters-instead-of-floating-point-numbers">sprintf() prints empty characters instead of floating point numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#invalid-project-path-duplicate-path-entries-found-warnings">Invalid project path: Duplicate path entries found Warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#undefined-reference-to-stack-top-etc">undefined reference to `__stack_top’ etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Project settings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="project-settings">
+<h1>Project settings<a class="headerlink" href="#project-settings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="program-image-is-too-large">
+<span id="shrinking"></span><h2>Program image is too large<a class="headerlink" href="#program-image-is-too-large" title="Permalink to this headline">¶</a></h2>
+<p>If the program image size is too large, then check the list and map files for details of what application and library code is contributing to the total size. Note that the ELF file size on disk is not indicative of the program image size when running on the embedded hardware target. Some useful common tips for reducing the program image size:</p>
+<ol>
+<li><p>Tell the compiler to <strong>optimize</strong>:</p>
+<div class="graphviz"><img src="../_images/graphviz-b4868d93613d300d4d33b73613e86667da8c0d0f.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Optimization&quot;; }" class="graphviz" /></div>
+<p>Level = <code class="docutils literal notranslate"><span class="pre">Optimize</span> <span class="pre">for</span> <span class="pre">size</span> <span class="pre">-Os</span></code> (this will negatively affect debugging capabilities)</p>
+</li>
+<li><p>Use <strong>newlib-nano</strong>.</p>
+<p>Multiple things can be configured in the <code class="docutils literal notranslate"><span class="pre">Linker</span></code>, go into its setting by:</p>
+<div class="graphviz"><img src="../_images/graphviz-13212bbda46efcf0cc21cc5205a6936f364a192d.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot;; }" class="graphviz" /></div>
+<p>Then check to use the <code class="docutils literal notranslate"><span class="pre">nano.spec</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-ee5e6203e17ed3b69e8cb9a983afedab9a2d39b5.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Use newlib-nano (--spec=nano.specs)&quot;; }" class="graphviz" /></div>
+<p>Uncheck the <code class="docutils literal notranslate"><span class="pre">nodefaultlibs</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-e307ce207d3befe24585dbb341244912fb5ad163.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Do not use default libraries (-nodefaultlibs)&quot;; }" class="graphviz" /></div>
+<p>And uncheck <code class="docutils literal notranslate"><span class="pre">nostdlib</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-75b5246cef3b9ab46ff8880930f52f4f83a23fdb.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;No use startup or default libs (-nostdlib)&quot;; }" class="graphviz" /></div>
+<p>[https://hackaday.com/2021/07/19/the-newlib-embedded-c-standard-library-and-how-to-use-it/](More info about newlib nano).</p>
+</li>
+<li><p>Note the newlib doesn’t have fully ported floating point support for RISC-V and is not utilizing some floating point instructions even if they are supported by the hardware (fmin/fmax/fsqrt…) and some functions might accidentally include soft double support. This can lead to the application footprint growing unexpectedly. If really needed, it’s possible to avoid these newlib functions and replace them with own implementations using inline assembly.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">printf()</span></code> style functions are being used and the program is still too large even when using newlib-nano then it may be possible to use a standalone small printf() implementation instead. Most such implementations may have limitations compared to a “full” standard library <code class="docutils literal notranslate"><span class="pre">printf()</span></code> implementation but often these limitations are acceptable in an embedded context. Examples of such “small” printf() implementations include:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/mpaland/printf">https://github.com/mpaland/printf</a> (minimalistic <code class="docutils literal notranslate"><span class="pre">printf()</span></code> that supports floats)</p></li>
+<li><p><a class="reference external" href="https://github.com/mludvig/mini-printf">https://github.com/mludvig/mini-printf</a></p></li>
+<li><p><a class="reference external" href="http://www.xappsoftware.com/wordpress/2011/01/17/a-tiny-printf-for-embedded-systems/">http://www.xappsoftware.com/wordpress/2011/01/17/a-tiny-printf-for-embedded-systems/</a></p></li>
+</ul>
+<p>Then disable the use of the compiler standard libraries inside the linker:</p>
+<div class="graphviz"><img src="../_images/graphviz-e307ce207d3befe24585dbb341244912fb5ad163.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Do not use default libraries (-nodefaultlibs)&quot;; }" class="graphviz" /></div>
+<p>Better still consider rewriting the relevant code to avoid the use of <code class="docutils literal notranslate"><span class="pre">printf()</span></code> functions which are generally not recommended on embedded platforms because they are often large and often use the heap. The use of heap can lead to heap fragmentation and over a long runtime (which embedded applications are expected to run) can cause allocation failure (if run on hardware without MMU).</p>
+</li>
+<li><p>Wrap code that is not always required (e.g. verbose logging code used for debugging/diagnostics only) in blocks such as below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef &lt;symbol&gt; </span>
+
+<span class="c1">// Debuging code, logging feature, auxaliary feature</span>
+
+<span class="cp">#endif </span>
+</pre></div>
+</div>
+<p>The blocks can be quickly and conditionally compiled out when not needed (in essence enabled/disabled). Adding addition extra auxiliary features into the ifdef blocks could produce further code shrinking as it’s less frequent that all the features have to be used on the target all the time. Custom (or existing) configurations can be used to have different defines and the <code class="docutils literal notranslate"><span class="pre">Debug</span></code> configuration having different set of features enabled then <code class="docutils literal notranslate"><span class="pre">Release</span></code> configuration (debugging/troubleshooting log features on a production code will not just make it bigger, but often are considered as a security risk as well).</p>
+</li>
+<li><p>Check if the floating point is using hardware and not software implementation. Not enabling hardware properly and using floating point will emulate every instruction in software and enlarge the codebase significantly. Do not use RVF or RVD floating point without setting the corresponding floating point ABI in :</p>
+<div class="graphviz"><img src="../_images/graphviz-c6a6b18179f72dbd2725057169c25f3ac34d8437.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Target processor&quot;; }" class="graphviz" /></div>
+<p>With RISC-V cores implementing the <code class="docutils literal notranslate"><span class="pre">F</span></code> and/or <code class="docutils literal notranslate"><span class="pre">D</span></code> extensions the Floating-point divide/sqrt instructions (<code class="docutils literal notranslate"><span class="pre">-mfdiv</span></code>) can also be enabled.</p>
+</li>
+<li><p>Check what function or blocks of project code should be prioritized for optimization. Create a size analysis post build
+step under:</p>
+<div class="graphviz"><img src="../_images/graphviz-5bcbd3bc4c4cc97ade601a67401205da499c7480.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Build Steps&quot; -&gt; &quot;Post-build steps&quot;; }" class="graphviz" /></div>
+<p>and put the following in the Command field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${cross_prefix}nm${cross_suffix} --print-size --size-sort ${BuildArtifactFileName}
+</pre></div>
+</div>
+<p>Optionally a Description can be given to it, for example: <code class="docutils literal notranslate"><span class="pre">-------</span> <span class="pre">Size</span> <span class="pre">analysis</span> <span class="pre">-------</span></code>.</p>
+<p>After the build all symbols with their sizes will be displayed and ordered by the size. This can point to functions which will benefit from optimizations the most. It can reveal design/code issues as when a large library could have been linked into a project by mistake or other unnecessary code compiled in.</p>
+</li>
+<li><p>Enable hardware features if the core is capable – e.g. use the RISC-V M extension fully if present. Under:</p>
+<div class="graphviz"><img src="../_images/graphviz-3cdd83acf7abacaa9c53d6ba58bc860b06cc1ad9.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target processor&quot;; }" class="graphviz" /></div>
+<p>Enable/check the Multiply extension (<code class="docutils literal notranslate"><span class="pre">RVM</span></code>) and the Integer divide instructions (<code class="docutils literal notranslate"><span class="pre">-mdiv</span></code>) options if appropriate. If the target implements the Compressed extension (<code class="docutils literal notranslate"><span class="pre">RVC</span></code>) then enable/check that too.</p>
+</li>
+<li><p>See the <code class="docutils literal notranslate"><span class="pre">miv-rv32imaf-raytracer-uart-cpp</span></code> as an example when making a C++ project. C++ is a large language with an overhead which is very significant from an embedded perspective. Disable as much as is viable in the Optimization tab settings:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">not</span> <span class="pre">use</span> <span class="pre">exceptions</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">not</span> <span class="pre">use</span> <span class="pre">RTTI</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">not</span> <span class="pre">use</span> <span class="pre">_cxa_atexit()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">not</span> <span class="pre">use</span> <span class="pre">thread-safe</span> <span class="pre">statics</span></code></p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="size-optimizations-cause-trap-exception-load-store-address-misaligned-mcause-4-6">
+<h2>Size optimizations cause trap exception: Load/Store address misaligned (mcause 4/6)<a class="headerlink" href="#size-optimizations-cause-trap-exception-load-store-address-misaligned-mcause-4-6" title="Permalink to this headline">¶</a></h2>
+<p>Can be caused when using default HAL without any modifications and allowing unaligned accesses in the project settings.</p>
+<p>Can be fixed by making the project to use aligned addresses only:</p>
+<div class="graphviz"><img src="../_images/graphviz-5162b1b2915b9ea0282c0b7761cb0c4c8378bbdc.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project&quot; -&gt; &quot;Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Align Strict (-mstrict-align)&quot;
+     }" class="graphviz" /></div>
+<br/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Our HAL is not supporting unaligned accesses. Howerver it’s not recommended for the user to implement the unaligned acesses to the trap handler because it significantly affects the performance.</p>
+</div>
+<p>See: <a class="reference internal" href="../using_softconsole/projects.html#alignstrict"><span class="std std-ref">Use strict alignment</span></a></p>
+</div>
+<div class="section" id="program-file-does-not-exist">
+<h2>Program file does not exist<a class="headerlink" href="#program-file-does-not-exist" title="Permalink to this headline">¶</a></h2>
+<p>Possibly caused by build finishing successfully and the ELF file existing, but a misconfigured debug launch configuration cannot see it.
+Then a likely cause is the use of the wrong slash in the program path name. It is advisable to use the forward slash <code class="docutils literal notranslate"><span class="pre">/</span></code> in such paths for Windows and Linux cross OS compatibility. If the backslash <code class="docutils literal notranslate"><span class="pre">\</span></code> is used then it will only work on Windows but the forward slash works on both. Unfortunately the debug launch configuration editor on Windows defaults to using the backslash.</p>
+<p>Change the slash in launcher configuration from “Debug\blinky.elf” to “Debug/blinky.elf”:</p>
+<div class="graphviz"><img src="../_images/graphviz-7261bee2e108a0131cb7ce6edd627bd1c42b2c2e.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations...&quot; -&gt; &quot;&lt;YOUR_LAUNCHER&gt;&quot; -&gt; &quot;Main&quot; -&gt; &quot;C/C++ Application&quot;
+     }" class="graphviz" /></div>
+<br/><p>Another cause of this problem is building one configuration (for example Release) and having launcher hard-coded for different configuration (for example Debug).
+Good and generic launchers (such as launchers bundled in the workspace.examples) always use the macro approach:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${config_name:&lt;YOUR_PROJECT_NAME&gt;}/&lt;YOUR_PROJECT_NAME&gt;.elf
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;YOUR_PROJECT_NAME&gt;</span></code> is replaced with the name of the project, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${config_name:miv-rv32imaf-mandelbrot-uart}/miv-rv32imaf-mandelbrot-uart.elf
+</pre></div>
+</div>
+<p>Together with build configuration set to <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">Active</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-1d5c8e4619b8cc94e89eca3333eaa501f5ccbc7d.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations...&quot; -&gt; &quot;&lt;YOUR_LAUNCHER&gt;&quot; -&gt; &quot;Main&quot; -&gt; &quot;Build Configuration&quot; -&gt; &quot;Use Active&quot;
+     }" class="graphviz" /></div>
+<br/><p>It will allow the launcher to work with any configuration seemingly such as Debug/Release (or many more).</p>
+</div>
+<div class="section" id="linker-script-issues">
+<h2>Linker script issues<a class="headerlink" href="#linker-script-issues" title="Permalink to this headline">¶</a></h2>
+<p>If a linker script is not specified correctly then it might cause various problems.</p>
+<p>Having no linker script specified can produce these errors:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>16:31:37 **** Incremental Build of configuration miv32i-Debug for project miv-rv32i-systick-blinky ****
+make all 
+Building target: miv-rv32i-systick-blinky.elf
+Invoking: GNU RISC-V Cross C Linker
+riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mstrict-align -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -nostartfiles -Xlinker --gc-sections -Wl,-Map,&quot;miv-rv32i-systick-blinky.map&quot; --specs=nano.specs -o &quot;miv-rv32i-systick-blinky.elf&quot;  ./src/platform/miv_rv32_hal/miv_rv32_entry.o ./src/platform/miv_rv32_hal/miv_rv32_hal.o ./src/platform/miv_rv32_hal/miv_rv32_init.o ./src/platform/miv_rv32_hal/miv_rv32_stubs.o ./src/platform/miv_rv32_hal/miv_rv32_syscall.o  ./src/platform/hal/hal_irq.o ./src/platform/hal/hw_reg_access.o  ./src/platform/drivers/fabric_ip/CoreUARTapb/core_uart_apb.o  ./src/platform/drivers/fabric_ip/CoreGPIO/core_gpio.o  ./src/application/main.o   
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: ./src/platform/miv_rv32_hal/miv_rv32_entry.o: in function `generic_reset_handling&#39;:
+<span class="hll">C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:727: undefined reference to `__sdata_load&#39;
+</span>c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: ./src/platform/miv_rv32_hal/miv_rv32_entry.o: in function `.L0 &#39;:
+C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:728: undefined reference to `__sdata_start&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:729: undefined reference to `__sdata_end&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:753: undefined reference to `__stack_top&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:768: undefined reference to `__bss_end&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:771: undefined reference to `__sbss_start&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:775: undefined reference to `__sbss_end&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:777: undefined reference to `__heap_start&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:778: undefined reference to `__heap_end&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:782: undefined reference to `__data_load&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:784: undefined reference to `__data_start&#39;
+c:/microchip/softconsole-v2022.2-risc-v-716/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/bin/ld.exe: C:\Microchip\SoftConsole-v2022.2-RISC-V-716\extras\workspace.examples\miv-rv32i-systick-blinky\miv32i-Debug/../src/platform/miv_rv32_hal/miv_rv32_entry.S:788: undefined reference to `__data_end&#39;
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:65: miv-rv32i-systick-blinky.elf] Error 1
+&quot;make all&quot; terminated with exit code 2. Build might be incomplete.
+</pre></div>
+</div>
+<p>In rare cases, wrong linker script path can cause an error such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">:</span><span class="o">/</span><span class="n">microchip</span><span class="o">/</span><span class="n">softconsole</span><span class="o">-</span><span class="n">v2022</span><span class="mf">.2</span><span class="o">-</span><span class="n">risc</span><span class="o">-</span><span class="n">v</span><span class="o">-</span><span class="mi">716</span><span class="o">/</span><span class="n">riscv</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="nb">bin</span><span class="o">/../</span><span class="n">lib</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="mf">8.3.0</span><span class="o">/../../../../</span><span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">read</span> <span class="ow">in</span> <span class="n">flex</span> <span class="n">scanner</span> <span class="n">failed</span>
+</pre></div>
+</div>
+<p>However, most likely a wrong path in the linker script will produce the following error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">16</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">09</span> <span class="o">****</span> <span class="n">Build</span> <span class="n">of</span> <span class="n">configuration</span> <span class="n">miv32i</span><span class="o">-</span><span class="n">Debug</span> <span class="k">for</span> <span class="n">project</span> <span class="n">miv</span><span class="o">-</span><span class="n">rv32i</span><span class="o">-</span><span class="n">systick</span><span class="o">-</span><span class="n">blinky</span> <span class="o">****</span>
+<span class="n">make</span> <span class="nb">all</span> 
+<span class="n">Building</span> <span class="n">target</span><span class="p">:</span> <span class="n">miv</span><span class="o">-</span><span class="n">rv32i</span><span class="o">-</span><span class="n">systick</span><span class="o">-</span><span class="n">blinky</span><span class="o">.</span><span class="n">elf</span>
+<span class="n">Invoking</span><span class="p">:</span> <span class="n">GNU</span> <span class="n">RISC</span><span class="o">-</span><span class="n">V</span> <span class="n">Cross</span> <span class="n">C</span> <span class="n">Linker</span>
+<span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">gcc</span> <span class="o">-</span><span class="n">march</span><span class="o">=</span><span class="n">rv32i</span> <span class="o">-</span><span class="n">mabi</span><span class="o">=</span><span class="n">ilp32</span> <span class="o">-</span><span class="n">mcmodel</span><span class="o">=</span><span class="n">medany</span> <span class="o">-</span><span class="n">msmall</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">limit</span><span class="o">=</span><span class="mi">8</span> <span class="o">-</span><span class="n">mstrict</span><span class="o">-</span><span class="n">align</span> <span class="o">-</span><span class="n">mno</span><span class="o">-</span><span class="n">save</span><span class="o">-</span><span class="n">restore</span> <span class="o">-</span><span class="n">O0</span> <span class="o">-</span><span class="n">fmessage</span><span class="o">-</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span> <span class="o">-</span><span class="n">fsigned</span><span class="o">-</span><span class="n">char</span> <span class="o">-</span><span class="n">ffunction</span><span class="o">-</span><span class="n">sections</span> <span class="o">-</span><span class="n">fdata</span><span class="o">-</span><span class="n">sections</span>  <span class="o">-</span><span class="n">g3</span> <span class="o">-</span><span class="n">T</span> <span class="s2">&quot;&quot;</span> <span class="o">-</span><span class="n">nostartfiles</span> <span class="o">-</span><span class="n">Xlinker</span> <span class="o">--</span><span class="n">gc</span><span class="o">-</span><span class="n">sections</span> <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">-</span><span class="n">Map</span><span class="p">,</span><span class="s2">&quot;miv-rv32i-systick-blinky.map&quot;</span> <span class="o">--</span><span class="n">specs</span><span class="o">=</span><span class="n">nano</span><span class="o">.</span><span class="n">specs</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;miv-rv32i-systick-blinky.elf&quot;</span>  <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">miv_rv32_hal</span><span class="o">/</span><span class="n">miv_rv32_entry</span><span class="o">.</span><span class="n">o</span> <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">miv_rv32_hal</span><span class="o">/</span><span class="n">miv_rv32_hal</span><span class="o">.</span><span class="n">o</span> <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">miv_rv32_hal</span><span class="o">/</span><span class="n">miv_rv32_init</span><span class="o">.</span><span class="n">o</span> <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">miv_rv32_hal</span><span class="o">/</span><span class="n">miv_rv32_stubs</span><span class="o">.</span><span class="n">o</span> <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">miv_rv32_hal</span><span class="o">/</span><span class="n">miv_rv32_syscall</span><span class="o">.</span><span class="n">o</span>  <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">hal</span><span class="o">/</span><span class="n">hal_irq</span><span class="o">.</span><span class="n">o</span> <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">hal</span><span class="o">/</span><span class="n">hw_reg_access</span><span class="o">.</span><span class="n">o</span>  <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">fabric_ip</span><span class="o">/</span><span class="n">CoreUARTapb</span><span class="o">/</span><span class="n">core_uart_apb</span><span class="o">.</span><span class="n">o</span>  <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">fabric_ip</span><span class="o">/</span><span class="n">CoreGPIO</span><span class="o">/</span><span class="n">core_gpio</span><span class="o">.</span><span class="n">o</span>  <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">application</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">o</span>   
+<span class="hll"><span class="n">c</span><span class="p">:</span><span class="o">/</span><span class="n">microchip</span><span class="o">/</span><span class="n">softconsole</span><span class="o">-</span><span class="n">v2022</span><span class="mf">.2</span><span class="o">-</span><span class="n">risc</span><span class="o">-</span><span class="n">v</span><span class="o">-</span><span class="mi">716</span><span class="o">/</span><span class="n">riscv</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="nb">bin</span><span class="o">/../</span><span class="n">lib</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="mf">8.3.0</span><span class="o">/../../../../</span><span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">cannot</span> <span class="nb">open</span> <span class="n">linker</span> <span class="n">script</span> <span class="n">file</span> <span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+</span><span class="n">collect2</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">ld</span> <span class="n">returned</span> <span class="mi">1</span> <span class="n">exit</span> <span class="n">status</span>
+<span class="n">make</span><span class="p">:</span> <span class="o">***</span> <span class="p">[</span><span class="n">makefile</span><span class="p">:</span><span class="mi">65</span><span class="p">:</span> <span class="n">miv</span><span class="o">-</span><span class="n">rv32i</span><span class="o">-</span><span class="n">systick</span><span class="o">-</span><span class="n">blinky</span><span class="o">.</span><span class="n">elf</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">1</span>
+<span class="s2">&quot;make all&quot;</span> <span class="n">terminated</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mf">2.</span> <span class="n">Build</span> <span class="n">might</span> <span class="n">be</span> <span class="n">incomplete</span><span class="o">.</span>
+
+<span class="mi">16</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">09</span> <span class="n">Build</span> <span class="n">Failed</span><span class="o">.</span> <span class="mi">2</span> <span class="n">errors</span><span class="p">,</span> <span class="mi">0</span> <span class="n">warnings</span><span class="o">.</span> <span class="p">(</span><span class="n">took</span> <span class="mi">305</span><span class="n">ms</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are many cases which trigger a linker error, but it’s good to check the linker script path when receiving one of these errors:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cannot</span> <span class="pre">open</span> <span class="pre">linker</span> <span class="pre">script</span> <span class="pre">file</span> <span class="pre">:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read</span> <span class="pre">in</span> <span class="pre">flex</span> <span class="pre">scanner</span> <span class="pre">failed</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">undefined</span> <span class="pre">reference</span> <span class="pre">to</span></code></p></li>
+</ul>
+<p>Check the following:</p>
+<ul class="simple">
+<li><p>the path to your linker script</p></li>
+<li><p>check for file access privileges</p></li>
+<li><p>case sensitivity (for example moving a project from Windows to Linux could cause such issues).</p></li>
+</ul>
+<p>Linker script settings can be found in the Project Properties (make sure to check them for all present build configurations, not just the active one):</p>
+<div class="graphviz"><img src="../_images/graphviz-cd9c130f5641ea095896ee902921585b6c54ec24.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="section" id="redirect-printf-output-to-uart">
+<h2>Redirect printf() output to UART<a class="headerlink" href="#redirect-printf-output-to-uart" title="Permalink to this headline">¶</a></h2>
+<p>To route printf() output to UART:</p>
+<ol>
+<li><p>Set up CoreUART in such way that <code class="docutils literal notranslate"><span class="pre">UART_polled_tx_string()</span></code> output works</p></li>
+<li><p>Add the following include file:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Go to the C/C++ Compiler settings:</p>
+<div class="graphviz"><img src="../_images/graphviz-dc783b8b924de1d59016a97daf18e34053ba4445.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot;; }" class="graphviz" /></div>
+<p>And add the define symbol <code class="docutils literal notranslate"><span class="pre">MSCC_STDIO_THRU_CORE_UART_APB</span></code> to the:</p>
+<div class="graphviz"><img src="../_images/graphviz-ccbe02ead5f0c523264c39eb7df8961aa1f15d34.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Preprocessor&quot; -&gt; &quot;Defined Symbols&quot;; }" class="graphviz" /></div>
+</li>
+</ol>
+</div>
+<div class="section" id="undefined-reference-to-printf-puts-write-strlen-etc">
+<h2>Undefined reference to <code class="docutils literal notranslate"><span class="pre">printf</span></code>/<code class="docutils literal notranslate"><span class="pre">puts</span></code>/<code class="docutils literal notranslate"><span class="pre">write</span></code>/<code class="docutils literal notranslate"><span class="pre">strlen</span></code> etc.<a class="headerlink" href="#undefined-reference-to-printf-puts-write-strlen-etc" title="Permalink to this headline">¶</a></h2>
+<p>When one of these errors appears:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">undefined</span> <span class="n">reference</span> <span class="n">to</span> <span class="s1">&#39;printf&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">undefined</span> <span class="n">reference</span> <span class="n">to</span> <span class="s1">&#39;puts&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">undefined</span> <span class="n">reference</span> <span class="n">to</span> <span class="s1">&#39;write&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">undefined</span> <span class="n">reference</span> <span class="n">to</span> <span class="s1">&#39;strlen&#39;</span>
+</pre></div>
+</div>
+<p>Then possibly no libraries are present to implement these calls, go to the linker settings:</p>
+<div class="graphviz"><img src="../_images/graphviz-64bf6f300bb6c59114cea1e27d426890be76b06c.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot;
+     }" class="graphviz" /></div>
+<br/><p>And uncheck the <code class="docutils literal notranslate"><span class="pre">nodefaultlibs</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-93e16ca19644a7720c0b23e6171671d060e46937.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Do not use default libraries (-nodefaultlibs)&quot;
+     }" class="graphviz" /></div>
+<br/><p>And the <code class="docutils literal notranslate"><span class="pre">nostdlib</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-f11b11f53bd02c3111c7836590d55ab898895a04.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;No startup or default libs (-nostdlib)&quot;
+     }" class="graphviz" /></div>
+<br/></div>
+<div class="section" id="build-fails-when-using-print-removed-sections-xlinker-print-gc-sections">
+<h2>Build fails when using “Print removed sections (-Xlinker –print-gc-sections)”<a class="headerlink" href="#build-fails-when-using-print-removed-sections-xlinker-print-gc-sections" title="Permalink to this headline">¶</a></h2>
+<p>When the option to print removed unused sections is selected, then CDT may report that the build has failed even though it was completed correctly. This is because of a bug in CDT whereby the <code class="docutils literal notranslate"><span class="pre">--print-gc-sections</span></code> option prints removed sections to stderr and CDT incorrectly interprets <strong>any</strong> output on <code class="docutils literal notranslate"><span class="pre">stderr</span></code> as a build error. This bug has been reported to the CDT project and for now it is safe to ignore such build failure false positives.</p>
+<p>Alternatively disable the <code class="docutils literal notranslate"><span class="pre">--print-gc-sections</span></code> option resolve the issue. First go to the <code class="docutils literal notranslate"><span class="pre">Tool</span> <span class="pre">settings</span></code> :</p>
+<div class="graphviz"><img src="../_images/graphviz-04b6e1cee4ff945c8d60ff20ff3eea916dbcfebd.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; 
+     }" class="graphviz" /></div>
+<br/><p>For RISC-V targets uncheck the <code class="docutils literal notranslate"><span class="pre">--print-gc-sections</span></code> inside the <code class="docutils literal notranslate"><span class="pre">Tool</span> <span class="pre">settings</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-e02324363e7926e5bf0ea26f6dd1eb2c6967d30d.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Print removed sections (-Xlinker --print-gc-sections)&quot;
+     }" class="graphviz" /></div>
+<br/><p>When the –print-gc-sections option is enabled then the following false positive build failure may occur:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">Removing</span> <span class="n">unused</span> <span class="n">section</span> <span class="s1">&#39;.text.__disable_irq&#39;</span> <span class="ow">in</span> <span class="n">file</span>
+<span class="s1">&#39;./riscv_hal/riscv_hal.o&#39;</span>
+<span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">Removing</span> <span class="n">unused</span> <span class="n">section</span> <span class="s1">&#39;.text.handle_m_ext_interrupt&#39;</span> <span class="ow">in</span>
+<span class="n">file</span> <span class="s1">&#39;./riscv_hal/riscv_hal_stubs.o&#39;</span>
+<span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">Removing</span> <span class="n">unused</span> <span class="n">section</span> <span class="s1">&#39;.text.SysTick_Handler&#39;</span> <span class="ow">in</span> <span class="n">file</span>
+<span class="s1">&#39;./riscv_hal/riscv_hal_stubs.o&#39;</span>
+<span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">Removing</span> <span class="n">unused</span> <span class="n">section</span> <span class="s1">&#39;.sbss.__env&#39;</span> <span class="ow">in</span> <span class="n">file</span>
+<span class="s1">&#39;./riscv_hal/syscall.o&#39;</span>
+<span class="o">...</span>
+<span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">Removing</span> <span class="n">unused</span> <span class="n">section</span> <span class="s1">&#39;.text.isatty&#39;</span> <span class="ow">in</span> <span class="n">file</span>
+<span class="s1">&#39;lib/rv32im/ilp32\libg_nano.a(lib_a-sysisatty.o)&#39;</span>
+<span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">Removing</span> <span class="n">unused</span> <span class="n">section</span> <span class="s1">&#39;.debug_frame&#39;</span> <span class="ow">in</span> <span class="n">file</span>
+<span class="s1">&#39;lib/rv32im/ilp32\libg_nano.a(lib_a-sysisatty.o)&#39;</span>
+<span class="n">riscv64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">elf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">Removing</span> <span class="n">unused</span> <span class="n">section</span> <span class="s1">&#39;.sdata._global_impure_ptr&#39;</span> <span class="ow">in</span> <span class="n">file</span>
+<span class="s1">&#39;lib/rv32im/ilp32\libg_nano.a(lib_a-impure.o)&#39;</span>
+<span class="n">Finished</span> <span class="n">building</span> <span class="n">target</span><span class="p">:</span> <span class="n">miv</span><span class="o">-</span><span class="n">rv32im</span><span class="o">-</span><span class="n">systick</span><span class="o">-</span><span class="n">blinky</span><span class="o">.</span><span class="n">elf</span>
+<span class="mi">12</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">47</span> <span class="n">Build</span> <span class="n">Failed</span><span class="o">.</span> <span class="mi">71</span> <span class="n">errors</span><span class="p">,</span> <span class="mi">0</span> <span class="n">warnings</span><span class="o">.</span> <span class="p">(</span><span class="n">took</span> <span class="mi">2</span><span class="n">s</span><span class="mf">.428</span><span class="n">ms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debugger-console-view-is-not-working-or-gdb-is-misbehaving">
+<h2>Debugger Console View is not working or GDB is misbehaving<a class="headerlink" href="#debugger-console-view-is-not-working-or-gdb-is-misbehaving" title="Permalink to this headline">¶</a></h2>
+<p>SoftConsole for RISC-V v2022.2 debugger version detection can fail and not show <code class="docutils literal notranslate"><span class="pre">Debugger</span> <span class="pre">Console</span></code>. The <code class="docutils literal notranslate"><span class="pre">Debugger</span> <span class="pre">Console</span></code> will work when macros are not used in the debug launcher, copy content of the</p>
+<div class="graphviz"><img src="../_images/graphviz-398d52da05447994fbee9b590f802178532d6af4.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Actual name&quot;
+     }" class="graphviz" /></div>
+<br/><p>It should be <code class="docutils literal notranslate"><span class="pre">riscv64-unknown-elf-gdb</span></code>, if the actual name doesn’t match expected value then workaround the issue, change the <code class="docutils literal notranslate"><span class="pre">Executable</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-836ef54ebd4d8c4e96c63ec9676dac6df93d3578.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Executable&quot;
+     }" class="graphviz" /></div>
+<br/><p>To use explicitly <code class="docutils literal notranslate"><span class="pre">riscv64-unknown-elf-gdb</span></code> instead of the <span class="math notranslate nohighlight">\({cross_prefix}gdb\)</span>{cross_suffix} macro.</p>
+</div>
+<div class="section" id="sprintf-prints-empty-characters-instead-of-floating-point-numbers">
+<h2>sprintf() prints empty characters instead of floating point numbers<a class="headerlink" href="#sprintf-prints-empty-characters-instead-of-floating-point-numbers" title="Permalink to this headline">¶</a></h2>
+<p>Possible cause is that the support in the libraries is not enabled by default when newlib-nano is used.
+Verify if the <code class="docutils literal notranslate"><span class="pre">newlib-nano</span></code> is used in the project settings:</p>
+<div class="graphviz"><img src="../_images/graphviz-13570685feb36e5b478276cd14888290f9727b77.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt;  &quot;Use newlib-nano (--specs=nano.specs)&quot;
+     }" class="graphviz" /></div>
+<br/><p>If <code class="docutils literal notranslate"><span class="pre">newlib-nano</span></code> is used, then the the <strong>%f</strong> feature can be enabled by checking the following in the project settings:</p>
+<div class="graphviz"><img src="../_images/graphviz-1f84a2600985034cc8e7a92cb38db52ae87e8e26.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt;  &quot;-u_printf_float&quot;
+     }" class="graphviz" /></div>
+<br/><p>and/or (when <code class="docutils literal notranslate"><span class="pre">scanf</span></code> is used):</p>
+<div class="graphviz"><img src="../_images/graphviz-80d39fadc8c9734b725db9502bb81a483e1e2d91.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt;  &quot;-u_scanf_float&quot;
+     }" class="graphviz" /></div>
+<br/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Enabling the floating feature of printf will increase the footprint. If that is a problem, see the <a class="reference internal" href="#shrinking"><span class="std std-ref">size shrinking</span></a> section.</p>
+</div>
+<p>If newlib-nano is not in use but this problem occurs then it may be caused by the GNU or a third party standard library used instead of newlib.</p>
+</div>
+<div class="section" id="invalid-project-path-duplicate-path-entries-found-warnings">
+<h2>Invalid project path: Duplicate path entries found Warnings<a class="headerlink" href="#invalid-project-path-duplicate-path-entries-found-warnings" title="Permalink to this headline">¶</a></h2>
+<p>Using macros in include files can cause these warnings, use relative paths on all included folders instead.
+RISC-V projects:</p>
+<div class="graphviz"><img src="../_images/graphviz-5e375e2e780ca97b3013c1fea3d31f52bf66508b.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Includes&quot;
+     }" class="graphviz" /></div>
+<br/><p>For example replace <code class="docutils literal notranslate"><span class="pre">&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;../drivers/CoreUARTapb&quot;</span></code></p>
+</div>
+<div class="section" id="undefined-reference-to-stack-top-etc">
+<h2>undefined reference to `__stack_top’ etc.<a class="headerlink" href="#undefined-reference-to-stack-top-etc" title="Permalink to this headline">¶</a></h2>
+<p>Or one of the following errors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>undefined reference to `__sdata_start&#39;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>undefined reference to `__data_start&#39;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>undefined reference to `__sbss_start&#39;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>undefined reference to `_heap_end&#39;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>undefined reference to `__dso_handle&#39;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>hidden symbol `__dso_handle&#39; isn&#39;t defined
+</pre></div>
+</div>
+<p>Possibly caused because of old/wrong/no linker script.</p>
+<p>Ensure that the appropriate linker script is configured under:</p>
+<div class="graphviz"><img src="../_images/graphviz-b3ab05d94372948b7eb6866ef5947c01d8a6e623.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project&quot; -&gt; &quot;Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot; GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Add linker script&quot;
+     }" class="graphviz" /></div>
+<br/></div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="riscv.html" class="btn btn-neutral float-right" title="RISC-V" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="flashpro.html" class="btn btn-neutral float-left" title="Flashpro and OpenOCD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022 Microchip.
+
+    </p>
+  </div> 
+
+<script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    function link(headingTitle) {
+        var pageName = "troubleshooting/project.md.txt".replace(/\.txt/g,'');
+        var title = document.title;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650-RISC-V documentation&pub_ver=v2022.1-650-RISC-V&revision_letter=v2022.1-650-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
+         
+        return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + newuri + "\" target=_blank>Ask a question</a>";
+    }
+
+    
+    $(document).ready(function(){
+        $("h1").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+        
+        $("h2").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h3").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h4").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+    });
+</script>
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+       <strong> 
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

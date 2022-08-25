@@ -1,0 +1,1296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Projects &mdash; SoftConsole v2022.1-650-RISC-V documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Debugging" href="debugging.html" />
+    <link rel="prev" title="Workspaces" href="workspace.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bundled-example-projects">Bundled example projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-projects">Importing projects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#metadata-and-project-files">Metadata and project files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importing-general-projects">Importing general projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unable-to-import-a-project">Unable to import a project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importing-git-projects-first-time-users">Importing Git projects - First-time users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#importing-git-projects-subsequent-imports">Importing Git projects - Subsequent imports</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-new-project">Creating a new project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-settings">Project Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#all-cpu-targets">All CPU targets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#target-processor">Target Processor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#architecture">Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#abi">ABI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multilibs">Multilibs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#linker-script">Linker Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#newlib-nano">Newlib-Nano</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-extended-listing">Create Extended Listing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessor-defines-and-includes">Preprocessor Defines and Includes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimization-options">Optimization Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#library-dependencies">Library Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#print-size">Print Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-options">Other Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specifying-options-for-all-build-configurations">Specifying Options for All Build Configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#risc-v-targets">RISC-V targets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#do-not-use-standard-start-files-nostartfiles">Do not use standard start files (-nostartfiles)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-strict-alignment">Use strict alignment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#parallel-builds">Parallel builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mismatching-mi-v-rv32-project-configuration-and-the-target">Mismatching Mi-V RV32 project configuration and the target</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-error-messages-and-issues">Example error messages and issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#running-legacy-mi-v-renode-platform-with-application-targeting-the-new-core">Running legacy Mi-V Renode platform with application targeting the new core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-new-mi-v-renode-platform-with-application-targeting-the-legacy-core">Running new Mi-V Renode platform with application targeting the legacy core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-legacy-hw-design-with-application-targeting-the-new-core">Running legacy HW design with application targeting the new core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-new-hw-design-with-application-targeting-the-legacy-core">Running new HW design with application targeting the legacy core</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#considerations-around-libero-designs">Considerations around Libero designs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deploying-release-hex-files-for-production">Deploying Release HEX files for production</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generic-information-on-objcopy-and-normalization">Generic information on objcopy and normalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#libero-s-word-is-16-bit">Libero’s word is 16-bit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-source-files-to-a-project">Adding source files to a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-a-project">Building a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#long-paths-on-windows">Long paths on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Projects</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="projects">
+<h1>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bundled-example-projects">
+<h2>Bundled example projects<a class="headerlink" href="#bundled-example-projects" title="Permalink to this headline">¶</a></h2>
+<p>Details about bundled examples are in the <a class="reference internal" href="workspace.html#exampleworkspaceprojects"><span class="std std-ref">Example projects</span></a> section inside the Workspace chapter.</p>
+</div>
+<div class="section" id="importing-projects">
+<h2>Importing projects<a class="headerlink" href="#importing-projects" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="metadata-and-project-files">
+<h3>Metadata and project files<a class="headerlink" href="#metadata-and-project-files" title="Permalink to this headline">¶</a></h3>
+<p>SoftConsole has a separate concept of metadata and project files which might look intimidating to first-time users.</p>
+<ul class="simple">
+<li><p>The project files hold the source code of the project and the project settings (such as the target CPU, Debug/Release configurations and other settings). These are often part of the workspace, but sometimes can be placed in different locations and the workspace metadata references the files. This means when opening the workspace from SoftConsole the files will be presented as they are inside the workspace, but physically going into the workspace folder with OS’s tools such as File Explorer will show that the files are not there.</p></li>
+<li><p>The project metadata holds additional information about a project, such as indexes which understand the project’s structure and allow features such as Refactoring to work. Metadata is always stored inside the workspace folder.</p></li>
+</ul>
+<p>The principle of this separation has many advantages, but it might be confusing for new users and cause various problems if not understood fully.</p>
+<p>Problem 1: The user can copy files into the workspace when importing the project, but not delete the files when deleting the project. SoftConsole will present the workspace without the project, but opening the physical location of the workspace in File Explorer will show the project files still present. Trying to import a new project with the same name will fail because it still physically exists in the workspace, even when the metadata is gone.</p>
+<p>Problem 2: Importing a project from a shared networked location, not copying it into the workspace, will cause each edit to be written into the shared location. When deleting the project the deletion of the project files, will not just delete the metadata from the local workspace but delete the project files from the shared location.</p>
+<p>It’s up to the user to decide what is needed, but here are some recommendations on what to do and when:</p>
+<ul class="simple">
+<li><p>Importing from an existing project on the file system. It’s recommended to <strong>check</strong> the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace?</span></code> when importing. This will keep the project files together with the metadata inside the workspace. When deleting the project it’s recommended to <strong>check</strong> <code class="docutils literal notranslate"><span class="pre">Delete</span> <span class="pre">project</span> <span class="pre">contents</span> <span class="pre">on</span> <span class="pre">disk</span> <span class="pre">(cannot</span> <span class="pre">be</span> <span class="pre">undone)</span></code>, which will remove both metadata and project files.</p></li>
+<li><p>Importing from a zip. The option is <strong>forced</strong> and does the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace?</span></code> when importing. This will keep the project files together with the metadata inside the workspace. When deleting the project it’s recommended to <strong>check</strong> <code class="docutils literal notranslate"><span class="pre">Delete</span> <span class="pre">project</span> <span class="pre">contents</span> <span class="pre">on</span> <span class="pre">disk</span> <span class="pre">(cannot</span> <span class="pre">be</span> <span class="pre">undone)</span></code>, which will remove both metadata and project files.</p></li>
+<li><p>Importing from git. There will be <strong>no option</strong> for the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace?</span></code> when importing from git. This will make the files to live inside the cloned destination, most likely <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/&lt;REPOSITORY_NAME&gt;</span></code> while the project’s metadata will be inside the workspace. When deleting the project it’s recommended to <strong>uncheck</strong> <code class="docutils literal notranslate"><span class="pre">Delete</span> <span class="pre">project</span> <span class="pre">contents</span> <span class="pre">on</span> <span class="pre">disk</span> <span class="pre">(cannot</span> <span class="pre">be</span> <span class="pre">undone)</span></code>, which will remove the metadata from the workspace, but will leave the files in the cloned repository intact.</p></li>
+</ul>
+</div>
+<div class="section" id="importing-general-projects">
+<span id="importgeneralprojects"></span><h3>Importing general projects<a class="headerlink" href="#importing-general-projects" title="Permalink to this headline">¶</a></h3>
+<p>Any one of the following steps will reach the import dialog for general project which is just a folder on the file system or a zipped archive of the project:</p>
+<ul>
+<li><div class="graphviz"><img src="../_images/graphviz-19e186edd40b1a5dde3a54c9193ec9a5baba46df.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;Existing Projects into Workspace&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-ebc82715aa12c647535e987aeff44682cd78b606.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;Existing Projects into Workspace&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-7f26bf5788f28024c11286b9ca8c929874a57af6.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Press 'CTRL + SHIFT + P'&quot; -&gt; &quot;Type 'import existing project'&quot;; }" class="graphviz" /></div>
+</li>
+<li><p>If it’s an empty workspace then <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">projects...</span></code> is accessible directly from the workspace:</p>
+<p><img alt="import projects" src="../_images/import-project.png" /></p>
+</li>
+</ul>
+<p>Use the option <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">root</span> <span class="pre">directory</span></code> when importing a project located directly on a file system, or use <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">archive</span> <span class="pre">file</span></code> if the project is in a zip archive.</p>
+<p>The rest of dialog options should be safe, the default settings in most cases are fine and can be accepted with <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some cases, the dialog allows importing the projects without copying the project files (this option is not possible when importing from a zip and not possible with git import). By default, the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace</span></code> is checked, which is considered the safe option. Unchecking the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace</span></code> manually will mean that the project metadata will be included in the workspace, but physically their source files and project files will be kept in the original location, which might have undesired implications. This depends on the use-case, but in most cases it’s desired to have the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace</span></code> <strong>checked</strong>, then both the project’s metadata and project’s files are kept together in the same workspace folder.</p>
+</div>
+</div>
+<div class="section" id="unable-to-import-a-project">
+<span id="unabletoimport"></span><h3>Unable to import a project<a class="headerlink" href="#unable-to-import-a-project" title="Permalink to this headline">¶</a></h3>
+<p>There are many scenarios when importing a project is not allowed and that depends if there are metadata or project files inside the workspace which have the same name. Possible scenarios:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">Metadata</th>
+<th class="head">Project files</th>
+<th class="head">Visible in SoftConsole</th>
+<th class="head">Importing a project with the same name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>not present</td>
+<td>not in the workspace</td>
+<td>No</td>
+<td>Allowed</td>
+</tr>
+<tr class="row-odd"><td>present</td>
+<td>not in the workspace</td>
+<td>Yes, but without sources</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>present</td>
+<td>not in the referenced location</td>
+<td>Yes, but without sources</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>not present</td>
+<td>inside the workspace</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>present</td>
+<td>inside the workspace</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>If it’s not possible to continue with the import then the likely cause is that there is an existing project under the same name. If the project was deleted previously then it might be caused by the metadata being deleted, but not deleting the project files (and the source code) from the repository. To resolve this issue it’s possible to delete the project files manually from the workspace with a file explorer. However, it’s safer to just start a new workspace. It’s better to avoid the issue altogether instead of trying to fix it, when deleting a project which is <strong>copied into the workspace</strong> then it’s usually desired to delete the project files together with the metadata. Make sure <code class="docutils literal notranslate"><span class="pre">Delete</span> <span class="pre">project</span> <span class="pre">contents</span> <span class="pre">on</span> <span class="pre">disk</span> <span class="pre">(cannot</span> <span class="pre">be</span> <span class="pre">undone)</span></code> is <strong>checked</strong> when deleting the project:</p>
+<p><img alt="delete project" src="../_images/delete.png" /></p>
+<p>Double check if it’s the right project and if it’s the one which needs to be deleted as this action cannot be undone.</p>
+<p>When deleting a project which is <strong>referencing the files outside the workspace</strong>, then it might be desired to have <code class="docutils literal notranslate"><span class="pre">Delete</span> <span class="pre">project</span> <span class="pre">contents</span> <span class="pre">on</span> <span class="pre">disk</span> <span class="pre">(cannot</span> <span class="pre">be</span> <span class="pre">undone)</span></code> checkbox <strong>unchecked</strong>. For example, a project which didn’t have <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace</span></code> checked when it was imported, or when importing a git project.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The decisions when importing projects and deleting them have implications, take extra care to make sure you select the options right for the current project.</p>
+</div>
+</div>
+<div class="section" id="importing-git-projects-first-time-users">
+<h3>Importing Git projects - First-time users<a class="headerlink" href="#importing-git-projects-first-time-users" title="Permalink to this headline">¶</a></h3>
+<p>Common Microchip repositories with examples targeting PolarFire SoC and Mi-V soft processors are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">https://github.com/polarfire-soc/polarfire-soc-bare-metal-library</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://github.com/Mi-V-Soft-RISC-V/miv-rv32-bare-metal-examples</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the user will copy the URL into their clipboard before triggering the import dialog, then the wizard will have pre-populated values and for most cases, it’s enough to accept the default values and click <code class="docutils literal notranslate"><span class="pre">Next</span></code> through the dialog steps until its finished.</p>
+</div>
+<p>For the first time-users one of the following:</p>
+<ul>
+<li><div class="graphviz"><img src="../_images/graphviz-3dcb210ce0510415811017aa2e49abf94fbd55a1.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Clone URI&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-0dca8a725d86b980ff7d9c6ba9117f537cd6ebde.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Clone URI&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-ea5ce1bd17de0970c4dcb93c1893134782f9aee2.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Press 'CTRL + SHIFT + P'&quot; -&gt; &quot;Type 'import git'&quot; -&gt; &quot;Clone URI&quot;; }" class="graphviz" /></div>
+</li>
+</ul>
+<p>The import dialog has the following steps:</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Git</span> <span class="pre">Repository</span></code>: if the URL was copied into the clipboard before starting the import process then the fields should be pre-populated, click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Branch</span> <span class="pre">selection</span></code>: typically on these two Microchip example repositories there should be only one branch. It’s <code class="docutils literal notranslate"><span class="pre">main</span></code> branch for <code class="docutils literal notranslate"><span class="pre">miv-rv32-bare-metal-examples</span></code> repository and <code class="docutils literal notranslate"><span class="pre">master</span></code> branch for <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-library</span></code> repository. If there will be more branches in the future, then still select the default main branch unless specifically instructed by Microchip support. Click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">destination</span></code>: is a folder where the whole repository will get cloned into, by default the destination is in <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/&lt;REPOSITORY_NAME&gt;</span></code>, for the first time import this location can be used as it is, but for subsequent clones a different destination needs to be used because the destination needs to be unique (can’t clone into a folder which was already populated by the previous clone operation). Click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">wizard</span> <span class="pre">to</span> <span class="pre">use</span> <span class="pre">for</span> <span class="pre">importing</span> <span class="pre">projects</span></code>: this step will take a while cloning the whole repository with all its projects. Leave it at default settings and click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Projects</span></code>: users can either leave the dialog as is and import all projects, but that might overwhelm the workspace with all the projects and might make navigating the workspace harder as there will be a lot of clutter. The safer option is to click <code class="docutils literal notranslate"><span class="pre">Deselect</span> <span class="pre">All</span></code> and then type in the filter field <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">filter</span> <span class="pre">text</span> <span class="pre">to</span> <span class="pre">filter</span> <span class="pre">unselected</span> <span class="pre">projects</span></code> to search for the desired projects. For example typing <code class="docutils literal notranslate"><span class="pre">can</span></code> will list all examples related to CAN and select only the needed projects. Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If it’s not possible to finish this the last step? The desired projects are greyed out and can’t be selected? Then it’s likely caused by an existing project in the current workspace which has the same name, or the workspace containing leftover files from a deleted project, read the <a class="reference internal" href="#unabletoimport"><span class="std std-ref">Unable to import a project</span></a> section above for more details.</p>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Importing projects from git will not copy the files into the workspace, but reference them to the location where they were cloned into. This has a few implications:</p>
+<ul class="simple">
+<li><p>When deleting a project and <strong>checking</strong> the <code class="docutils literal notranslate"><span class="pre">Delete</span> <span class="pre">project</span> <span class="pre">contents</span> <span class="pre">on</span> <span class="pre">disk</span> <span class="pre">(cannot</span> <span class="pre">be</span> <span class="pre">undone)</span></code> might delete the project files from the cloned repository.</p></li>
+<li><p>When deleting a project and <strong>unchecking</strong> the <code class="docutils literal notranslate"><span class="pre">Delete</span> <span class="pre">project</span> <span class="pre">contents</span> <span class="pre">on</span> <span class="pre">disk</span> <span class="pre">(cannot</span> <span class="pre">be</span> <span class="pre">undone)</span></code> will not remove the project from the cloned repository. However, a subsequent import will not import a fresh/reverted/original version of the project and will contain all the changes made up to the point of deletion.</p></li>
+<li><p>When deleting (or moving) the destination where the project was cloned into will break the imported project. Moving the repository should be avoided and deleting the repository needs to be done with extra care as it will delete the scontent of the imported projects. If the repository is “in use” (some workspace is referencing it by having an imported project from that repository), then it’s recommended to not alter the cloned repository.</p></li>
+</ul>
+</div>
+<div class="section" id="importing-git-projects-subsequent-imports">
+<h4>Importing Git projects - Subsequent imports<a class="headerlink" href="#importing-git-projects-subsequent-imports" title="Permalink to this headline">¶</a></h4>
+<p>After the initial import, the subsequent imports can skip the clone part of the process.</p>
+<ul>
+<li><div class="graphviz"><img src="../_images/graphviz-c6a900f8a7a8345f85c748b5ea33da47f90fdfa7.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Existing local repository&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-1093e9b5e63e58af620606afb6ab8419f9c1a505.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Existing local repository&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-b4cfed514b08ab288be9bdab3df44cc42b61264a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Press 'CTRL + SHIFT + P'&quot; -&gt; &quot;Type 'import git'&quot; -&gt; &quot;Existing local repository&quot;; }" class="graphviz" /></div>
+</li>
+</ul>
+<p>The selection of previously cloned repositories should be displayed:</p>
+<p><img alt="Cloned repos" src="../_images/select-repository.png" /></p>
+<p>After selecting the desired repository the process should be similar to step 5 of the previous chapter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there is a need to get a newer version of the repository when a newer release is published. Or when needing a vanila/fresh version of a modified project, then it’s good to make a separate clone into a new destination. Cloning into a separate destination is a prefered action as deleting the original repository requires extra care to make sure the repository is not “in use” by any workspace (not just the currently opened one).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-a-new-project">
+<h2>Creating a new project<a class="headerlink" href="#creating-a-new-project" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Depending on the type of project required select:</p>
+<div class="graphviz"><img src="../_images/graphviz-b2ac91da8acb2b55f5d446a1c6590490cce9293f.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;New&quot; -&gt; &quot;'C Project' or 'C++ Project'&quot;; }" class="graphviz" /></div>
+</li>
+<li><p>In the C/C++ Project page of the wizard enter the Project name, select</p>
+<div class="graphviz"><img src="../_images/graphviz-bb5a6e934e82ab09d33c7b44c16c6c2d09f6230e.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project type = Executable (or Static Library)&quot; -&gt; &quot;Empty Project&quot;; }" class="graphviz" /></div>
+</li>
+<li><p>Select the appropriate toolchain.</p>
+<ul class="simple">
+<li><p>For a RISC-V project select Toolchains = RISC-V Cross GCC.</p></li>
+</ul>
+</li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> to go to the next wizard page, Select Configurations:
+<img alt="New project wizard" src="../_images/wizzard-new-project-riscv.png" /></p></li>
+<li><p>The Select Configurations page of the wizard allows the configurations or build targets that the project will
+support to be configured. By default, two configurations are created – Debug and Release. Should other
+configurations be required these can be created using the Advanced settings… button which launches the
+project Properties dialog in which additional configurations can be specified or properties for any or all
+configurations can be changed. Normally the default Debug and Release configurations are sufficient. When
+finished click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button to go to the next wizard page <code class="docutils literal notranslate"><span class="pre">GNU</span> <span class="pre">RISC-V</span> <span class="pre">Cross</span> <span class="pre">Toolchain</span></code>.</p></li>
+<li><p>The GNU RISC-V Cross Toolchain wizard page specifies the name and path
+of the toolchain to be used to build the project. These should be correct by default but double check that the
+values are as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<ul class="simple">
+<li><p>Toolchain name = RISC-V GCC/Newlib (riscv64-unknown-elf-gcc)</p></li>
+<li><p>Toolchain path = ${eclipse_home}/../riscv-unknown-elf-gcc/bin</p></li>
+</ul>
+</div>
+</div>
+</li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code> to complete the creation of the new project.</p></li>
+</ol>
+</div>
+<div class="section" id="project-settings">
+<h2>Project Settings<a class="headerlink" href="#project-settings" title="Permalink to this headline">¶</a></h2>
+<p>Most of the project settings default to usable values. However, some project settings must be modified manually
+depending on the target device/CPU. Use the example projects as a guide to creating new project while bearing in
+mind that these are just simple functional examples and a real application may benefit from the use of some of the
+many other configuration options and command line options that the underlying GCC tools support.</p>
+<p>To modify the project settings right click on the project in the Project Explorer and select Properties from the context
+menu. Then navigate to:</p>
+<div class="graphviz"><img src="../_images/graphviz-007b45d025b7d99fbc9ef69b8cad07c4ae40c202.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; 
+     }" class="graphviz" /></div>
+<br/><p>Select Configuration = <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">configurations</span></code> to configure settings applicable to all build targets (by default Debug and
+Release) or else select a specific configuration (e.g. Configuration = Debug or Configuration = Release) to configure
+settings applicable only to that build target.</p>
+<p>Except where noted the settings below can be configured for all [All Configurations].</p>
+</div>
+<div class="section" id="all-cpu-targets">
+<h2>All CPU targets<a class="headerlink" href="#all-cpu-targets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="target-processor">
+<h3>Target Processor<a class="headerlink" href="#target-processor" title="Permalink to this headline">¶</a></h3>
+<p>The characteristics of the target CPU are configured in the:</p>
+<div class="graphviz"><img src="../_images/graphviz-8b505d07ba4f3eed615bcbefb86c5d6ba767c3ff.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot;
+     }" class="graphviz" /></div>
+<br/><p>For RISC-V projects the settings must be configured to match the target CPU characteristics so that the underlying
+compiler tools are passed the correct <code class="docutils literal notranslate"><span class="pre">-march=&lt;arch&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">-mabi=&lt;abi&gt;</span></code> options, code is generated in line with
+the supported and used extensions and the appropriate multilibs are linked. Note that the RISC-V toolchain defaults
+to targeting rv64gc which may not be appropriate for all RISC-V target designs. Architecture and ABI settings affect all platforms, but it’s very important with RISC-V because of all the possible extensions and their possible combinations.</p>
+<p>The main options of relevance here are:</p>
+<ul class="simple">
+<li><p>Architecture: specifies the base architecture – e.g. RV32* for Mi-V 32-bit soft cores or RV64* for PolarFire SoC 64-
+bit multi-processor</p></li>
+<li><p>Multiply extension (RVM): check if the target supports the M (hardware multiply/divide) extension</p></li>
+<li><p>Atomic extension (RVA): check if the target supports the A extension</p></li>
+<li><p>Floating point: specifies what hardware floating point extension the target supports</p></li>
+<li><p>Compressed extension (RVC): check if the target supports the C extension</p></li>
+<li><p>Integer ABI: specifies the integer ABI to be used – usually set to LP32 (<code class="docutils literal notranslate"><span class="pre">-mabi=ilp32</span></code>) for Mi-V or LP64 (<code class="docutils literal notranslate"><span class="pre">-mabi=lp64</span></code>) for PolarFire SoC</p></li>
+<li><p>Floating point ABI: specifies the floating-point ABI to be used</p></li>
+<li><p>Code model: specifies the code model to be used</p></li>
+<li><p>Align: specifies the alignment policy – should be set to Strict (<code class="docutils literal notranslate"><span class="pre">-mstrict-align</span></code>) to avoid unaligned memory access
+exceptions when using the Microsemi (Mi-V) RISC-V Hardware Abstraction Layer (HAL) or PolarFire SoC
+PSE_HAL and <code class="docutils literal notranslate"><span class="pre">-Os</span></code> to optimize the program for size</p></li>
+</ul>
+<div class="section" id="architecture">
+<h4>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h4>
+<p>Architecture is configured with the following settings, it describes what the target HW is capable of:</p>
+<p><img alt="board image" src="../_images/arch.png" /></p>
+</div>
+<div class="section" id="abi">
+<h4>ABI<a class="headerlink" href="#abi" title="Permalink to this headline">¶</a></h4>
+<p>ABI describes how many and what registers are used and available on the target, which ones are used to pass variable arguments to functions, which one are return variables. Which registers get saved by callee and which one by caller. The ABI can’t use more than the HW is capable of. ABI can be configured with following:</p>
+<p><img alt="board image" src="../_images/abi.png" /></p>
+<p>For more information see the SiFive’s blog: <a class="reference external" href="https://www.sifive.com/blog/all-aboard-part-1-compiler-args">https://www.sifive.com/blog/all-aboard-part-1-compiler-args</a></p>
+</div>
+<div class="section" id="multilibs">
+<h4>Multilibs<a class="headerlink" href="#multilibs" title="Permalink to this headline">¶</a></h4>
+<p>Are build for specific combinations of Architecture and ABI. Because these increase the size of the toolchain, not every combination is supported. Currently supported combinations are:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">march</th>
+<th class="head">mabi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>rv32i</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32ia</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32iac</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32iaf</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv32iafc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32ic</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32if</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32ifc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv32im</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32ima</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32imac</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32imaf</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv32imafc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32imc</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32imf</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32imfc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv64i</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64ia</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64iac</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64iaf</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64iafc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64iafd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-even"><td>rv64iafdc</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64ic</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64if</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64ifc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64ifd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64ifdc</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-even"><td>rv64im</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64ima</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64imac</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64imaf</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64imafc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64imafd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-even"><td>rv64imafdc</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64imc</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64imf</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64imfc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64imfd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64imfdc</td>
+<td>lp64d</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Be specific. Avoid using <code class="docutils literal notranslate"><span class="pre">Toolchain</span> <span class="pre">default</span></code> settings which will revert to RV64GC and on RV32 targets will give obscure errors.</p></li>
+<li><p>Double check if your combincation of Architecture/ABI is supported, if not it will revert to the default (RV64GC) and cause problems.</p></li>
+<li><p>SoftConsole supports only native ABIs, <code class="docutils literal notranslate"><span class="pre">RV64IMAFD</span></code> architecture is supporting only the ABI which contains the <code class="docutils literal notranslate"><span class="pre">D</span></code> extension. However it is possible to change the architecture to <code class="docutils literal notranslate"><span class="pre">RV64IMAF</span></code> and then the <code class="docutils literal notranslate"><span class="pre">F</span></code> ABI will work. If it’s needed to use some subset of ABI, change the Architecture first. It’s OK to compile for less capable Architecture</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="linker-script">
+<h3>Linker Script<a class="headerlink" href="#linker-script" title="Permalink to this headline">¶</a></h3>
+<p>It is essential that the appropriate linker script is configured for the project. This will often be one of the example
+linker scripts bundled with the relevant CMSIS/HAL firmware core which has been generated and imported/copied
+into the project.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-15637dc4124400098b704823a91b356241d9b0c6.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<p>Then:</p>
+<div class="graphviz"><img src="../_images/graphviz-e80763f06b6c2d7c456c3b8edc8756bdbb2c4971.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Script files (-T)&quot; -&gt; &quot;Add...&quot;
+     }" class="graphviz" /></div>
+<br/><p>and enter the linker script name into the Add file path dialog – e.g.:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2-0 docutils container">
+<div class="docutils container">
+<p>PolarFire SoC</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-1 docutils container">
+<div class="docutils container">
+<p>Mi-V RISC-V</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
+<p>Please refer to the PolarFire SoC PSE_HAL documentation and PolarFire SoC/PSE example project(s)
+bundled with SoftConsole for guidance on how to configure this option.</p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
+<p><code class="docutils literal notranslate"><span class="pre">${workspace_loc:/${ProjName}/riscv_hal/microsemi-riscv-ram.ld}</span></code></p>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Refer to the relevant CMSIS/HAL documentation for more information about what example linker scripts are available and the circumstances in which they are used.</p></li>
+<li><p>CMSIS/HAL bundled linker scripts are just examples that can usually be used as-is in simple cases but should generally be adapted as required to match the requirements of a specific target/application.</p></li>
+<li><p>In some cases, different configurations/build targets will use different linker scripts.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="newlib-nano">
+<h3>Newlib-Nano<a class="headerlink" href="#newlib-nano" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">newlib</span></code> is the standard library bundled with SoftConsole and it is optimized for use in resource/memory constrained
+bare metal embedded firmware environments. newlib also comes with a “nano” version which is even smaller at the
+cost of omitting some functionality which may be rarely used in such environments (e.g. the full range of *printf
+formatting options etc.). In many cases it makes sense to use newlib-nano and only switch to the full blown newlib if
+necessary because using newlib-nano can significantly reduce the compiled and linked programs which use
+standard library features.</p>
+<p>To use newlib-nano check the following option:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-3-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-2dde41363230a5e8f1edd13967d1a5e2a6272b90.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Use newlib-nano (--specs=nano.specs)&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-extended-listing">
+<h3>Create Extended Listing<a class="headerlink" href="#create-extended-listing" title="Permalink to this headline">¶</a></h3>
+<p>An extended listing file (e.g. Debug/<project-name>.lst) is often useful for understanding the structure and layout of the linked executable.
+To enable generation of this file, check the Toolchains &gt; Create extended listing checkbox.</p>
+</div>
+<div class="section" id="preprocessor-defines-and-includes">
+<h3>Preprocessor Defines and Includes<a class="headerlink" href="#preprocessor-defines-and-includes" title="Permalink to this headline">¶</a></h3>
+<p>If any preprocessor defines/symbols or includes are needed, then they can be specified under:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-796d9db065e7e11a252e86cd8dc92acec3061f94.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Preprocessor&quot; -&gt; &quot;Defined symbols (-D)&quot;
+     }" class="graphviz" /></div>
+<br/><div class="graphviz"><img src="../_images/graphviz-81ba498db370e6366f32060c69350b3c6ac62e67.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Include paths (-I) or Include files (-include)&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<p>Depending on the target CPU and CMSIS/HAL used additional CMSIS/HAL related include paths may be required.
+Refer to the relevant CMSIS/HAL documentation for more information.</p>
+</div>
+<div class="section" id="optimization-options">
+<h3>Optimization Options<a class="headerlink" href="#optimization-options" title="Permalink to this headline">¶</a></h3>
+<p>Most optimization options can be set at the project top level under Tool Settings &gt; Optimization.
+Other optimization settings, including Language standard (which defaults to GNU ISO C11 (<code class="docutils literal notranslate"><span class="pre">-std=gnu11</span></code>) or GNU
+ISO 2011 C++ (<code class="docutils literal notranslate"><span class="pre">-std=gnu++11</span></code>), can be specified under</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-5-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-26732c9e0526e65b51e9a62097005bc227448749.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Optimization&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<p>“Fine grained” linking using <code class="docutils literal notranslate"><span class="pre">-fdata-sections</span></code> <code class="docutils literal notranslate"><span class="pre">-ffunction-sections</span></code> and <code class="docutils literal notranslate"><span class="pre">-gc-sections</span></code> is enabled by default here and under</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-6-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-749d8a27965b85fb1d00c13a1dc89e804c887905.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Remove unused sections (-Xlinker --gc-sections)&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="library-dependencies">
+<h3>Library Dependencies<a class="headerlink" href="#library-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Where an application project depends on a static library project this dependency can be configured in the
+application project’s properties so that building the application will ensure that the static library project is also built
+and up to date if necessary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For this to work the same configuration/build target (e.g. Debug or Release) must be selected for both projects: e.g.</p>
+<div class="graphviz"><img src="../_images/graphviz-3a333bcc61155c99dca14dc17a075c4ac5fc98f8.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;select the required configuration&quot;
+     }" class="graphviz" /></div>
+</div>
+<p>To configure such an application/library project dependency right click on the application project in Project Explorer
+and from the context menu select Properties then Project References and check the library project(s) on which the
+application project depends.</p>
+</div>
+<div class="section" id="print-size">
+<h3>Print Size<a class="headerlink" href="#print-size" title="Permalink to this headline">¶</a></h3>
+<p>By default, the Print Size build step is configured to output size information in “Berkeley” format. The alternative,
+“SysV” format is often more informative and useful. To change this option right click on the project in Project
+Explorer and from the context menu select</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-7-0 docutils container">
+<div class="docutils container">
+<p>RISC-V project</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7-0 active docutils container">
+<div class="graphviz"><img src="../_images/graphviz-21587c1825edc5b65b9e38de63825f11ed305b86.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross Print Size&quot; -&gt; &quot;General&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<p>and select <code class="docutils literal notranslate"><span class="pre">Size</span> <span class="pre">format</span> <span class="pre">=</span> <span class="pre">SysV</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Berkeley</span></code>.</p>
+</div>
+<div class="section" id="other-options">
+<h3>Other Options<a class="headerlink" href="#other-options" title="Permalink to this headline">¶</a></h3>
+<p>There are many other options that can be set if needed. Explore the SoftConsole project properties dialog and refer
+to the relevant GNU/GCC tool documentation for more information on these.</p>
+</div>
+<div class="section" id="specifying-options-for-all-build-configurations">
+<h3>Specifying Options for All Build Configurations<a class="headerlink" href="#specifying-options-for-all-build-configurations" title="Permalink to this headline">¶</a></h3>
+<p>Some project settings can be set once for all configurations/build targets (e.g. Debug and Release). To do this
+select Configuration = [ All Configurations] before specifying the relevant options and applying/saving them.</p>
+</div>
+</div>
+<div class="section" id="risc-v-targets">
+<h2>RISC-V targets<a class="headerlink" href="#risc-v-targets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="do-not-use-standard-start-files-nostartfiles">
+<h3>Do not use standard start files (-nostartfiles)<a class="headerlink" href="#do-not-use-standard-start-files-nostartfiles" title="Permalink to this headline">¶</a></h3>
+<p>For RISC-V targets this option must be checked when using the Microsemi Mi-V RISC-V HAL (Hardware
+Abstraction Layer) to avoid link errors:</p>
+<div class="graphviz"><img src="../_images/graphviz-6f9e1ee02172c67c6322fc3e684ce88a5bc9f931.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Do not use
+standard start files (-nostartfiles)&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="section" id="use-strict-alignment">
+<span id="alignstrict"></span><h3>Use strict alignment<a class="headerlink" href="#use-strict-alignment" title="Permalink to this headline">¶</a></h3>
+<p>Generally, and particularly when using the Microsemi RISC-V Hardware Abstraction Layer (HAL) strict alignment
+should be used to avoid unaligned memory access trap exceptions (mcause = 4 or 6) when the program is
+optimized for size using <code class="docutils literal notranslate"><span class="pre">-Os</span></code>:</p>
+<div class="graphviz"><img src="../_images/graphviz-7d464a0a33b98182ecd64b007a1377dd929cf822.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Align = Strict (-mstrict-align)&quot;
+     }" class="graphviz" /></div>
+</div>
+</div>
+<div class="section" id="parallel-builds">
+<span id="parallelbuilds"></span><h2>Parallel builds<a class="headerlink" href="#parallel-builds" title="Permalink to this headline">¶</a></h2>
+<p>Projects which do not use elaborate pre-build steps (all non PolarFire SoC) should be compatible with parallel compilation.</p>
+<p>Instead of compile one source file at the time, the toolchain can utilize all cores to compile the source files in parallel. Then they are linked in a single thread and overall improve the build time almost linearly depending on how many cores were used. In simpler terms, enabling parallel build on a quad core CPU can improve the build speeds by almost 4x.</p>
+<p>Bundled <code class="docutils literal notranslate"><span class="pre">miv-rv32imaf-cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code> example projects have parallel build enabled because they do not execute any pre-build steps. The parallel build setting can easily be enabled and disabled from the project properties:</p>
+<div class="graphviz"><img src="../_images/graphviz-56f0babc77598c08a310c93fac3d2ce38436f452.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Behavior&quot; -&gt; &quot;Build settings&quot; -&gt; &quot;checkbox `Enable parallel build`&quot;
+     }" class="graphviz" /></div>
+<p><img alt="parallel builds" src="../_images/paraller.png" /></p>
+</div>
+<div class="section" id="mismatching-mi-v-rv32-project-configuration-and-the-target">
+<h2>Mismatching Mi-V RV32 project configuration and the target<a class="headerlink" href="#mismatching-mi-v-rv32-project-configuration-and-the-target" title="Permalink to this headline">¶</a></h2>
+<p>Currently there are two Mi-V classes of soft processors supported in SoftConsole, the newer one <code class="docutils literal notranslate"><span class="pre">MIV_RV32</span></code> and legacy soft processor in these variants: <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AHB</span></code>, <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AXI</span></code> and <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMAF_L1_AHB</span></code>. If a project is using floating-point F extension (and not emulating it in software), then it requires the legacy soft processor.</p>
+<p>Because the legacy soft processor is using older memory map the applications are not compatible between each other. The bundled example <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code> supports both and has custom configuration for each, the <code class="docutils literal notranslate"><span class="pre">miv32i</span></code> and <code class="docutils literal notranslate"><span class="pre">miv32ic</span></code> are for the newer core and use the ESS memory map, while <code class="docutils literal notranslate"><span class="pre">miv32ima</span></code> is for the legacy core and uses older memory map. The current RV32 HAL is supporting both and legacy support can be enabled with <code class="docutils literal notranslate"><span class="pre">MIV_LEGACY_RV32</span></code> define, while in project’s settings the include paths can point to a legacy board. This means that it’s very important what target design is used with what configuration (in case of Renode even the correct group launcher has to be used). Each project can be setup differently, but for the bundled <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code> example it’s as follows:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">Configuration</th>
+<th class="head">Target</th>
+<th class="head">Launcher to debug with Renode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>miv32i-Debug</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+<tr class="row-odd"><td>miv32i-Release</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+<tr class="row-even"><td>miv32ima-Debug</td>
+<td>legacy RV32</td>
+<td>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</td>
+</tr>
+<tr class="row-odd"><td>miv32ima-Release</td>
+<td>legacy RV32</td>
+<td>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</td>
+</tr>
+<tr class="row-even"><td>miv32imc-Debug</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+<tr class="row-odd"><td>miv32imc-Release</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When targeting real Hardware, then all the configurations are using the same launcher <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span> <span class="pre">Hw</span> <span class="pre">Debug</span></code>. However the connected board must have matching design. For the new core it needs to be 2022.1 release of <code class="docutils literal notranslate"><span class="pre">MIV_RV32</span></code> with ESS memory map (such as <code class="docutils literal notranslate"><span class="pre">DGC2</span></code> config). And for the legacy core it needs to be 2022.1 release of <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AHB</span></code>, <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AXI</span></code> or <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMAF_L1_AHB</span></code> (for example <code class="docutils literal notranslate"><span class="pre">CFG1</span></code> config). The reset vector for legacy core changed in this release and using older builds of this core is not recomended.</p>
+</div>
+<p>Using wrong target with wrong build configuration and wrong launcher might produce cryptic looking messages/issues. Because the new memory map is overlapping partially with the old memory map the application writing to PLIC on the new core might cause writes to UART/GPIO/TIMER if run on legacy core. While application targeting legacy core might end up writing to PLIC on the new core instead of UART/GPIO/TIMER.</p>
+<div class="section" id="example-error-messages-and-issues">
+<h3>Example error messages and issues<a class="headerlink" href="#example-error-messages-and-issues" title="Permalink to this headline">¶</a></h3>
+<p>If you encounter any of these issues, then they might be caused by mismatch between what the application targets and what it is run againts.</p>
+<div class="section" id="running-legacy-mi-v-renode-platform-with-application-targeting-the-new-core">
+<h4>Running legacy Mi-V Renode platform with application targeting the new core<a class="headerlink" href="#running-legacy-mi-v-renode-platform-with-application-targeting-the-new-core" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Renode</span> <span class="n">has</span> <span class="n">been</span> <span class="n">started</span> <span class="n">successfully</span> <span class="ow">and</span> <span class="ow">is</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">a</span> <span class="n">gdb</span> <span class="n">connection</span><span class="o">.</span>
+<span class="p">(</span><span class="n">PF</span> <span class="n">Mi</span><span class="o">-</span><span class="n">V</span> <span class="n">RV32</span> <span class="n">legacy</span><span class="p">)</span> <span class="mi">18</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mf">06.1893</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80000828</span><span class="p">]</span> <span class="n">WriteDoubleWord</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x200BFFC</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x0</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mf">08.5992</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80001198</span><span class="p">]</span> <span class="n">WriteByte</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x71000008</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x1A</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mf">08.5992</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80001198</span><span class="p">]</span> <span class="n">WriteByte</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x7100000C</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x1</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mf">08.6011</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x800011A0</span><span class="p">]</span> <span class="n">ReadByte</span> <span class="kn">from</span> <span class="nn">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x71000010</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-new-mi-v-renode-platform-with-application-targeting-the-legacy-core">
+<h4>Running new Mi-V Renode platform with application targeting the legacy core<a class="headerlink" href="#running-new-mi-v-renode-platform-with-application-targeting-the-legacy-core" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Renode</span> <span class="n">has</span> <span class="n">been</span> <span class="n">started</span> <span class="n">successfully</span> <span class="ow">and</span> <span class="ow">is</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">a</span> <span class="n">gdb</span> <span class="n">connection</span><span class="o">.</span>
+<span class="p">(</span><span class="n">PF</span> <span class="n">Mi</span><span class="o">-</span><span class="n">V</span> <span class="n">RV32</span> <span class="p">(</span><span class="n">IMC</span><span class="p">))</span> <span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">42.2117</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80000F38</span><span class="p">]</span> <span class="n">WriteByte</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x70001008</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x1A</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">42.2127</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80000F38</span><span class="p">]</span> <span class="n">WriteByte</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x7000100C</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x1</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">42.2147</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80000F40</span><span class="p">]</span> <span class="n">ReadByte</span> <span class="kn">from</span> <span class="nn">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x70001010</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-legacy-hw-design-with-application-targeting-the-new-core">
+<h4>Running legacy HW design with application targeting the new core<a class="headerlink" href="#running-legacy-hw-design-with-application-targeting-the-new-core" title="Permalink to this headline">¶</a></h4>
+<p>Might not reach the main breakpoint, nor the entry entry, disassembly tab showing unimplemented instructions. Or get into exception trap in early stages of the application.</p>
+</div>
+<div class="section" id="running-new-hw-design-with-application-targeting-the-legacy-core">
+<h4>Running new HW design with application targeting the legacy core<a class="headerlink" href="#running-new-hw-design-with-application-targeting-the-legacy-core" title="Permalink to this headline">¶</a></h4>
+<p>Might get stuck in a infinite loop in the UART driver trying to read back the ready status:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            /* Wait for UART to become ready to transmit. */
+            do {
+                tx_ready = HAL_get_8bit_reg( this_uart-&gt;base_address, STATUS ) &amp;
+                                                              STATUS_TXRDY_MASK;
+            } while ( !tx_ready );
+            /* Send next character in the buffer. */
+            HAL_set_8bit_reg( this_uart-&gt;base_address, TXDATA,
+                              (uint_fast8_t)p_sz_string[char_idx] );
+            char_idx++;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="considerations-around-libero-designs">
+<h2>Considerations around Libero designs<a class="headerlink" href="#considerations-around-libero-designs" title="Permalink to this headline">¶</a></h2>
+<p>For demonstration some projects were chosen and steps can’t be followed blindly for all the cases, however similar steps can be applied to all other targets and other types of memories.</p>
+<div class="section" id="deploying-release-hex-files-for-production">
+<h3>Deploying Release HEX files for production<a class="headerlink" href="#deploying-release-hex-files-for-production" title="Permalink to this headline">¶</a></h3>
+<p>Libero’s restricted memory view of the Data Storage clients expects applications based from 0x00000000 offset.
+While SoftConsole produces HEX files based at offsets where the application will be running as typically the HEX files are used for deployment/debugging from the debugger. Larger starting offsets are
+confusing Data Storage clients in Libeo and produce errors like if the application is too large:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@E : IHX006 : Intel Hex Address record error. 
+Address extension specified is more than the configuration of eNVM : &quot;&lt;HEX_FILE&gt;.hex&quot; : 1 
+</pre></div>
+</div>
+<p>Or similar errors such as (depending what block is used):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@E : IHX006 : Intel Hex Address record error. 
+Address extension specified is more than the configuration of PF_uPROM : &quot;&lt;HEX_FILE&gt;.hex&quot; : 1 
+</pre></div>
+</div>
+<p>To solve the problem the HEX file has to be <strong>“normalized”</strong> to the 0x00000000 offset. This can be achieved
+by adding an additional flag into the SoftConsole’s Project Properties which will subtract the application base offset and achieves a  0x00000000 HEX file base offset. How much has to be subtracted depends on the application’s base address, which depends on used linker script. This mean that this solution has to be adjusted depending what linker script is used.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8-0 docutils container">
+<div class="docutils container">
+<p>RISC-V</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8-0 active docutils container">
+<p>Production deployment of RISC-V targets need to use a dedicated (and correct) deploy linker script. With <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-library</span></code> examples investigate the following
+<code class="docutils literal notranslate"><span class="pre">/src/platform/config/linker</span></code> folder.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on the linker script the following snippet <code class="docutils literal notranslate"><span class="pre">change-section-lma</span> <span class="pre">*-0x80000000</span></code> might need to be adjusted before it’s copy/pasted to correctly match the base address offset of the linker script.</p>
+</div>
+<p>Inside your project do the following:</p>
+<div class="graphviz"><img src="../_images/graphviz-a38429bd948dbe08bf559c9154f4ab687b6bb492.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross Create Flash Image&quot; -&gt; &quot;General&quot; -&gt; &quot;Other flags enter&quot;
+     }" class="graphviz" /></div>
+<br/><p>And copy this section:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="hll">--change-section-lma *-0x80000000
+</span></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the <strong>authoritative</strong> solution for the production deployment! If other (possibly legacy) Microsemi/Microchip documents are
+referencing  to this problem and are recommending to delete the first line of the HEX file then this solution
+is superseding it!</p>
+</div>
+</div>
+<div class="section" id="generic-information-on-objcopy-and-normalization">
+<h3>Generic information on objcopy and normalization<a class="headerlink" href="#generic-information-on-objcopy-and-normalization" title="Permalink to this headline">¶</a></h3>
+<p>For more on this and other <code class="docutils literal notranslate"><span class="pre">objcopy</span></code> options see here: <a class="reference external" href="https://sourceware.org/binutils/docs/binutils/objcopy.html">https://sourceware.org/binutils/docs/binutils/objcopy.html</a>.
+Previously some users deleted the first line of the HEX file, even it might seem like a working solution, but it’s flawed on multiple
+levels and is <strong>strongly not recommended nor supported</strong>. There is a high risk of the data getting malformed and causing various
+other issues in the deployment. Making new launcher “Deploy” and adding this as the permanent flag will allow users to regenerate the file as frequently as they need without a need of any extra manual steps (and not modify the data beyond the tool’s
+back). And because the Intel HEX format is based on 16-bit blocks, the bigger applications will not work at all with the ‘delete
+the first line’ workaround (especially the error around the line 4097). This might falsely indicate that there is something wrong
+with the application, code or the compilation settings/features or something wrong between Debug/Release configurations
+because with different code/settings/configuration the issue is not observed, however it still might be caused by not “normalizing”
+the file properly.</p>
+<p>The error messages differ depending on what core/memory the hex file is getting stored into. For example, the error from
+PF_SRAM_AHBL_AXI module might be different than error from PF_uPROM or eNVM module, however all might be pointing
+to the same issue. Here is a list (not extensive) of some error messages which might be related to this issue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">Memory</span> <span class="n">File</span> <span class="n">Content</span><span class="p">:</span> <span class="n">Errors</span> <span class="n">encountered</span> <span class="k">while</span> <span class="n">parsing</span> <span class="n">the</span> <span class="n">Memory</span> <span class="n">file</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>IHX006: Intel Hex Address record error. Address extension specified in the record is more than the maximum possible address
+for the destination, when reading file “&lt;YOUR_HEX&gt;” at line 1.
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>IHX006: Intel Hex Address record error. Address extension specified in the record is more than the maximum possible address
+for the destination, when reading file “&lt;YOUR_HEX&gt;” at line 4097.
+</pre></div>
+</div>
+</div>
+<div class="section" id="libero-s-word-is-16-bit">
+<span id="liberoword"></span><h3>Libero’s word is 16-bit<a class="headerlink" href="#libero-s-word-is-16-bit" title="Permalink to this headline">¶</a></h3>
+<p>There might be other independent but overlapping issues which make it harder for the users to debug this issue. Very common
+and easy to make mistake is having the physical memory smaller than the application requirements, make sure the memory is
+sized properly. The meaning of “word” in Libero design might not mean what users could expect and might not correlate with
+the Data Width settings, users should verify its meaning with the core’s documentation. It’s possible to set the SRAM block to
+64KiB size (<strong>word meaning 16-bits no matter what is the Data Bus Width</strong>) while users expecting it to be 128KiB size:</p>
+<p><img alt="word" src="../_images/libero-word.png" /></p>
+</div>
+</div>
+<div class="section" id="adding-source-files-to-a-project">
+<h2>Adding source files to a project<a class="headerlink" href="#adding-source-files-to-a-project" title="Permalink to this headline">¶</a></h2>
+<p>Once the project has been created the required source files should be added.</p>
+<p>In most cases the best way to do this is to use Libero SoC to select the relevant firmware cores (including
+CMSIS/HAL, SmartFusion/SmartFusion2 MSS peripheral drivers, DirectCore drivers etc.), generate these, export
+the firmware files and then import or copy them into the SoftConsole project.</p>
+<p>In fact, for SmartFusion and SmartFusion2 is it essential that at least the <code class="docutils literal notranslate"><span class="pre">drivers_config</span></code> folder is generated
+by/exported from Libero SoC and imported/copied into the SoftConsole project every time that the hardware project
+is changed. This is because the files in this folder contain information about the target platform that is essential to
+the correct functioning on firmware on that hardware platform.</p>
+<p>It is also possible to generate specific firmware cores/drivers from the Firmware Catalog and then import/copy them
+into the SoftConsole project.</p>
+<p>Refer to the Libero SoC and Firmware Catalog tools and documentation for more information on
+generating/exporting firmware cores from these tools.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember that any SoftConsole v3.4 workspaces or projects or SoftConsole v5.1 RISC-V projects
+generated by Libero SoC or the Firmware Catalog cannot be used with SoftConsole v5.2 or later.</p>
+</div>
+<p>When importing/copying firmware files generated by/exported from Libero SoC or the Firmware Catalog it is safest to first manually delete all relevant folders from the SoftConsole project (e.g. <code class="docutils literal notranslate"><span class="pre">CMSIS</span></code>, <code class="docutils literal notranslate"><span class="pre">hal</span></code>, <code class="docutils literal notranslate"><span class="pre">pse_hal</span></code>, <code class="docutils literal notranslate"><span class="pre">mpfs_hal</span></code>, <code class="docutils literal notranslate"><span class="pre">drivers</span></code>, <code class="docutils literal notranslate"><span class="pre">drivers_config</span></code>) and retain only the custom source files created for the project itself.</p>
+<p>Firmware folders/files can be copied by dragging and dropping from a file manager on Windows or Linux or by using
+the SoftConsole import facility:</p>
+<div class="graphviz"><img src="../_images/graphviz-d09d901e916b248814ef9586c316f2e7d30abd31.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;File System&quot; -&gt; &quot;click 'Next'&quot; -&gt; &quot;Browse&quot;
+     }" class="graphviz" /></div>
+<br/><p>And select the directory from which the firmware files are to be imported (e.g. the firmware directory below a Libero SoC project directory), select the
+required folders/files and click Finish to import the files.</p>
+</div>
+<div class="section" id="building-a-project">
+<h2>Building a project<a class="headerlink" href="#building-a-project" title="Permalink to this headline">¶</a></h2>
+<p>Once a project has been correctly configured and populated with the required firmware it can be built.
+The quickest way to build a project is to click the ‘Hammer’ icon in the SoftConsole menu toolbar.</p>
+<div class="graphviz"><img src="../_images/graphviz-3a333bcc61155c99dca14dc17a075c4ac5fc98f8.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;select the required configuration&quot;
+     }" class="graphviz" /></div>
+<br/><p>Typical build configurations are Debug and Release, but projects can have many other configurations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is big difference between the <code class="docutils literal notranslate"><span class="pre">Debug</span></code> configuration to build unoptimized binary and the <code class="docutils literal notranslate"><span class="pre">Debug</span></code> launcher to be debugging whatever the active configuration is. It’s the difference between noun and verb.</p>
+<p>It is possible:</p>
+<ul class="simple">
+<li><p>To be Debugging your Debug configuraion</p></li>
+<li><p>To be Running your Debug configuration</p></li>
+<li><p>To be Debugging your Release configuraion</p></li>
+<li><p>To be Running your Release configuration</p></li>
+</ul>
+<p>All combinations have valid use cases. It’s upto the users and their projects, but typically the Debug configuration has no optimalizations enabled, is linked to SRAM, can have some <code class="docutils literal notranslate"><span class="pre">#defines</span></code> enabled to increase verbosity of the logging features, possibly enabling some other helper features which are not required for production.</p>
+<p>While the Release configuration can be seen as production release, linked to eNVM, enabled size/speed optimalizations and disabled all non-production features.</p>
+<p>However there is still need to sometimes just to Run the Debug configuraion (no need to change how it’s linked/oprimised), but no need to break at main and other breakpoints.</p>
+<p>Other case is that sometimes a edge-case bug is happening and the optimised Release build has to be Debugged, which makes stepping thorugh the code not as straight forward as non-optimized variant.</p>
+<p>Therefore the <code class="docutils literal notranslate"><span class="pre">Debug</span></code> build configuration and <code class="docutils literal notranslate"><span class="pre">Debug</span></code> launchers have to be considered as two separate concepts, which they are.</p>
+</div>
+<p>With the project still selected in the:</p>
+<div class="graphviz"><img src="../_images/graphviz-d24cbdb1c1c15a5add448f40eac3c8109c283140.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for &lt;YOUR_PROJECT&gt;&quot;; }" class="graphviz" /></div>
+<br/><p>Project Explorer select Project &gt; Build Project. The results of the build process
+can be viewed in the Console view and the Problems view if there are any problems (e.g. errors or warnings)</p>
+</div>
+<div class="section" id="long-paths-on-windows">
+<h2>Long paths on Windows<a class="headerlink" href="#long-paths-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> inside Windows file I/O API is restricted to 260 characters, but the usable path is even more constrained. The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> must contain the drive letter and the NULL character to terminate the string correctly:</p>
+<div class="graphviz"><img src="../_images/graphviz-6e9abb0770b36e84a475d07f785ec2c033045590.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Drive letter&quot; -&gt; &quot;:\\&quot; -&gt; &quot;Path&quot; -&gt; &quot;NULL termination character&quot;
+     }" class="graphviz" /></div>
+<br/><p>Effectively this shrinks the limit of the usable path to 256 characters for files. While the limit for directories is 244 (256-12) because they need to be capable to append DOS style filename <code class="docutils literal notranslate"><span class="pre">8.3</span></code> at the end of the path.</p>
+<p>Users are encouraged to place the projects at the shortest feasible paths because not just the root of the project is important, but its <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> and its <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> as well. For example if the <code class="docutils literal notranslate"><span class="pre">WORKSPACE_PATH</span></code> is short, then still there is possibility to create long path when addressing the ELF file. On top of the project’s root, the current <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> impacts the path and the <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> impacts it twice:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;WORKSPACE_PATH&gt;/&lt;PROJECT_NAME&gt;/&lt;CONFIGURATION&gt;/&lt;PROJECT_NAME&gt;.elf</span></code></p>
+<p>Using reasonable project names, concise configuration names and placing project’s root at short paths can avoid this problem.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Big projects (such as <code class="docutils literal notranslate"><span class="pre">polarfire-soc-bare-metal-examples</span></code>) that contain large structures with long paths should be copied/cloned/extracted to a shallow path. Safest is to use a plain root folder to make sure the long path issue was not triggered. Then importing the project into a workspace within a shallow path is necessary as well.</p>
+</div>
+<p>When building a project and receiving the following error might indicate that the long-path issue was triggered:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>15:59:40 **** Build of configuration LIM-Debug for project mpfs-mac-simple-test-multi-emac ****
+make all 
+<span class="hll">make: *** INTERNAL: readdir: No such file or directory.  Stop.
+</span>&quot;make all&quot; terminated with exit code 2. Build might be incomplete.
+
+15:59:41 Build Failed. 1 errors, 0 warnings. (took 1s.229ms)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Providing SotftConsole with a corrupted project will cause all sorts of problems and it will not compile the project properly. One way to avoid corruption of a project is to <strong>NOT</strong> ignore any previous errors before the project is imported.</p>
+<p>For example if extracing ZIP of a project into a long path can corrupt the project in the process:</p>
+<p><img alt="extraction-error" src="../_images/long-path-extraction1.png" /></p>
+<p>Resolve all problems first and only then import the project into SoftConsole.</p>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="debugging.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="workspace.html" class="btn btn-neutral float-left" title="Workspaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022 Microchip.
+
+    </p>
+  </div> 
+
+<script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    function link(headingTitle) {
+        var pageName = "using_softconsole/projects.md.txt".replace(/\.txt/g,'');
+        var title = document.title;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650-RISC-V documentation&pub_ver=v2022.1-650-RISC-V&revision_letter=v2022.1-650-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
+         
+        return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + newuri + "\" target=_blank>Ask a question</a>";
+    }
+
+    
+    $(document).ready(function(){
+        $("h1").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+        
+        $("h2").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h3").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h4").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+    });
+</script>
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+       <strong> 
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

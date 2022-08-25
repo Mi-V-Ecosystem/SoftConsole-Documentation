@@ -1,0 +1,582 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Supported Platforms &mdash; SoftConsole v2022.1-650-RISC-V documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Packages, Tools and Resources" href="tools_resources.html" />
+    <link rel="prev" title="About SoftConsole and this document" href="about.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Supported Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#host-operating-systems">Host operating systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#target-cpus">Target CPUs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jtag-debug">JTAG Debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-software">Other software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flashpro-support-matrix">FlashPro support matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flashpro6">FlashPro6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flashpro5">FlashPro5</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#boards">Boards</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Supported Platforms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="supported-platforms">
+<h1>Supported Platforms<a class="headerlink" href="#supported-platforms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="host-operating-systems">
+<h2>Host operating systems<a class="headerlink" href="#host-operating-systems" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Windows</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Linux</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<ul class="simple">
+<li><p>Windows 10 64-bit</p></li>
+</ul>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<ul class="simple">
+<li><p>Ubuntu 20.04.1 LTS 64-bit</p></li>
+<li><p>Debian 11 64-bit</p></li>
+<li><p>CentOS 7 64-bit and RHEL 7 64-bit</p></li>
+</ul>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SoftConsole no longer officially supports Windows 7.</p>
+</div>
+</div>
+<div class="section" id="target-cpus">
+<h2>Target CPUs<a class="headerlink" href="#target-cpus" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Microchip PolarFire SoC RISC-V 64-bit multi-processor FPGA</p></li>
+<li><p>Microchip Mi-V RISC-V CPU soft cores for PolarFire, RTG4, IGLOO2 and SmartFusion2 FPGAs</p></li>
+</ul>
+</div>
+<div class="section" id="jtag-debug">
+<h2>JTAG Debug<a class="headerlink" href="#jtag-debug" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1-0 docutils container">
+<div class="docutils container">
+<p>Windows</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-1 docutils container">
+<div class="docutils container">
+<p>Linux</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
+<ul class="simple">
+<li><p>Microchip FlashPro3, FlashPro4, FlashPro5 and FlashPro6</p></li>
+<li><p>Other JTAG debug probes supported by OpenOCD (such as Olimex ARM-USB-TINY-H) may be used, but are not tested or supported by SoftConsole team.</p></li>
+</ul>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
+<ul class="simple">
+<li><p>Microchip FlashPro5 and FlashPro6</p></li>
+<li><p>Other JTAG debug probes supported by OpenOCD (such as Olimex ARM-USB-TINY-H) may be used, but are not tested or supported by SoftConsole team.</p></li>
+</ul>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using SoftConsole from within a Virtual Machine might limit which JTAG probes can be used.</p>
+</div>
+</div>
+<div class="section" id="other-software">
+<h2>Other software<a class="headerlink" href="#other-software" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Microchip Libero SoC</p>
+<ul>
+<li><p>Microchip Libero SoC v2022.2</p></li>
+<li><p>Microchip Firmware Catalog  v2022.2</p></li>
+</ul>
+</li>
+<li><p>Firmware (minimum required version)</p>
+<ul>
+<li><p>PolarFire SoC MPFS_HAL 1.5.107</p></li>
+<li><p>RISC-V Hardware Abstraction Layer (HAL) 3.0.105</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="flashpro-support-matrix">
+<h2>FlashPro support matrix<a class="headerlink" href="#flashpro-support-matrix" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Standalone<br/>FlashPro6</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev B</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Windows</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Virtual Machine</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Docker on Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Debug PolarFire SoC<br/>MSS Core Complex</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>PolarFire SoC UltraSoC<br/>trace/debug</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Debug Cortex-M1<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debug Cortex-M1<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to the Libero SoC v2022.2 or Program Debug Tools v2022.2 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Empty cells mean there is <strong>no</strong> support.</p>
+</div>
+<div class="section" id="flashpro6">
+<h3>FlashPro6<a class="headerlink" href="#flashpro6" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/152632"><img alt="FP6" src="../_images/fp6.jpg" /></a></p>
+</div>
+<div class="section" id="flashpro5">
+<h3>FlashPro5<a class="headerlink" href="#flashpro5" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/152631"><img alt="FP5" src="../_images/fp5.jpg" /></a></p>
+</div>
+</div>
+<div class="section" id="boards">
+<h2>Boards<a class="headerlink" href="#boards" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2-0 docutils container">
+<div class="docutils container">
+<p>Microchip</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-1 docutils container">
+<div class="docutils container">
+<p>Aries</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-2 docutils container">
+<div class="docutils container">
+<p>Arrow</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-3 docutils container">
+<div class="docutils container">
+<p>Future</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-4 docutils container">
+<div class="docutils container">
+<p>Sundance</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
+<p><strong>Microchip - PolarFire SoC - Icicle</strong></p>
+<p><a class="reference external" href="https://onlinedocs.microchip.com/pr/GUID-3733F763-A053-4ECB-9268-A5620129EED4-en-US-1/index.html"><img alt="board image" src="../_images/icicle.png" /></a></p>
+<p><strong>Microchip - PolarFire FPGA - MPF300-VIDEO-KIT-NS</strong></p>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/150804"><img alt="board image" src="../_images/MPF300-VIDEO-KIT.jpg" /></a></p>
+<p><strong>Microchip - PolarFire FPGA - MPF300-EVAL-KIT-ES</strong></p>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/150789"><img alt="board image" src="../_images/MPF300-EVAL-KIT-ES.png" /></a></p>
+<p><strong>Microchip - PolarFire FPGA - MPF300-SPLASH-KIT</strong></p>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/144001"><img alt="board image" src="../_images/MPF300-SPLASH-KIT-ES.png" /></a></p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
+<p><strong>Aries - PolarFire SoC - M100PF SoM</strong></p>
+<p><a class="reference external" href="https://shop.aries-embedded.de/search?sSearch=M100PF"><img alt="board image" src="../_images/M100PF-2.jpg" /></a></p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
+<p><strong>Arrow - PolarFire FPGA - Everest Dev Board</strong></p>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/143998"><img alt="board image" src="../_images/EVEREST-DEV-BOARD.png" /></a></p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-3 docutils container">
+<p><strong>Future - PolarFire FPGA - Avalanche AVMPF300TS-03</strong></p>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/139680"><img alt="board image" src="../_images/AVMPF300TS-03.jpg" /></a></p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-4 docutils container">
+<p><strong>Sundance - PolarFire SoC - PolarBerry</strong></p>
+<p><a class="reference external" href="https://www.crowdsupply.com/sundance-dsp/polarberry"><img alt="board image" src="../_images/polarberry.jpg" /></a></p>
+<p><strong>Sundance - PolarFire FPGA - SOM3</strong></p>
+<p><a class="reference external" href="https://www.sundancedsp.com/som/polarfire/som-3-mpf300t-module-using-microsemi-polarfire-fpga/"><img alt="board image" src="../_images/som3.png" /></a></p>
+<p><strong>Sundance - PolarFire FPGA - SE215 PCIe carrier for SOM3</strong></p>
+<p><a class="reference external" href="https://www.sundancedsp.com/products/fpga-boards-modules/pcie/se215/"><img alt="board image" src="../_images/se215-som3.jpg" /></a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tools_resources.html" class="btn btn-neutral float-right" title="Packages, Tools and Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="about.html" class="btn btn-neutral float-left" title="About SoftConsole and this document" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022 Microchip.
+
+    </p>
+  </div> 
+
+<script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    function link(headingTitle) {
+        var pageName = "introduction/supported_platforms.md.txt".replace(/\.txt/g,'');
+        var title = document.title;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650-RISC-V documentation&pub_ver=v2022.1-650-RISC-V&revision_letter=v2022.1-650-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
+         
+        return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + newuri + "\" target=_blank>Ask a question</a>";
+    }
+
+    
+    $(document).ready(function(){
+        $("h1").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+        
+        $("h2").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h3").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h4").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+    });
+</script>
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+       <strong> 
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

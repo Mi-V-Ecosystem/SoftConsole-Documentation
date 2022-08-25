@@ -1,0 +1,873 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Debugging &mdash; SoftConsole v2022.1-650-RISC-V documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PolarFire SoC" href="mpfs.html" />
+    <link rel="prev" title="Projects" href="projects.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SoftConsole
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Debugging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#debug-launch-configurations">Debug launch configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openocd-command-line-options-and-scripts">OpenOCD command line options and scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#board-scripts">Board scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flashpro-jtag-speed">FlashPro JTAG speed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-openocd-options">Other OpenOCD options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#softconsole-openocd-script-parameters">SoftConsole OpenOCD script parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-a-debug-session">Using a debug session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#launching-a-debug-session">Launching a debug session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-monitor">Memory Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#console-view">Console view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#built-in-serial-terminal-view">Built-in serial terminal view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debug-using-a-specific-flashpro-programmer">Debug using a specific FlashPro programmer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-using-a-non-flashpro-jtag-interface">Debugging using a non FlashPro JTAG interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-connect-to-debug-a-running-program">How to connect to/debug a running program</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#call-stack">Call stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conditional-breakpoints">Conditional breakpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mismatching-mi-v-rv32-project-configuration-and-the-target">Mismatching Mi-V RV32 project configuration and the target</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-error-messages-and-issues">Example error messages and issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#running-legacy-mi-v-renode-platform-with-application-targeting-the-new-core">Running legacy Mi-V Renode platform with application targeting the new core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-new-mi-v-renode-platform-with-application-targeting-the-legacy-core">Running new Mi-V Renode platform with application targeting the legacy core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-legacy-hw-design-with-application-targeting-the-new-core">Running legacy HW design with application targeting the new core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-new-hw-design-with-application-targeting-the-legacy-core">Running new HW design with application targeting the legacy core</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Debugging</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="debugging">
+<h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="debug-launch-configurations">
+<h2>Debug launch configurations<a class="headerlink" href="#debug-launch-configurations" title="Permalink to this headline">¶</a></h2>
+<p>To debug a program a debug launch configuration must be created. Most of the default settings for a debug launch
+configuration can be left as they are but a few needs to be manually configured. Use the example projects and
+debug launch configurations as a guide to creating new debug launch configurations.</p>
+<ol>
+<li><p>Select the project in the Project Explorer and from the:</p>
+<div class="graphviz"><img src="../_images/graphviz-0fc3bd0b2230060abc572338136b145064ec8e8a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot;; }" class="graphviz" /></div>
+</li>
+<li><p>In the Debug Configurations dialog select GDB OpenOCD Debugging and click on the New launch configuration button which will create a new debug launch configuration for the previously selected project.</p></li>
+<li><p>For PolarFire SoC Renode emulation please refer to the README provided with the PolarFire SoC/PSE example project(s) in the example workspace.</p></li>
+<li><p>On the Main tab ensure that the <code class="docutils literal notranslate"><span class="pre">C/C++</span> <span class="pre">Application</span></code> field contains the correct executable name.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using forward slashes in paths here aids portability of projects and debug launch configurations between Windows and Linux:</p>
+</div>
+<p><img alt="main" src="../_images/main.png" /></p>
+</li>
+<li><p>On the Debugger tab, it is critical that the Config options field contains the correct command line
+options/script to be passed to OpenOCD. The example settings here work for SmartFusion or SmartFusion2
+targets where the program uses only eSRAM and/or eNVM – if the <code class="docutils literal notranslate"><span class="pre">DEVICE</span></code> setting is modified to match the actual target device (SmartFusion A2FXXX or SmartFusion2 M2SXXX where XXX is the three-digit device
+size designator). Further details about these options are provided elsewhere in this documentation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set DEVICE ...&quot;</span>
+</pre></div>
+</div>
+<p>is mandatory for SmartFusion and SmartFusion2 Cortex-M3 targets but is optional for Cortex-M1 and Mi-V RISC-V targets.</p>
+<p>For a Cortex-M1 target the <code class="docutils literal notranslate"><span class="pre">Config</span> <span class="pre">options</span></code> should be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">cortex</span><span class="o">-</span><span class="n">m1</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<p><img alt="debugger" src="../_images/debug-sf2-config.png" /></p>
+</li>
+<li><p>For a RISC-V target the Debugger tab settings must be configured as follows:</p>
+<div class="graphviz"><img src="../_images/graphviz-511c55f377b13c926f8eb3c07a7a9d60175faa17.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Config options&quot;; }" class="graphviz" /></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<p>or when targeting the HiFive Unleashed Platform using the integrated FTDI JTAG debug probe (rather than
+FlashPro):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">sifive</span><span class="o">-</span><span class="n">hifive</span><span class="o">-</span><span class="n">unleashed</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<div class="graphviz"><img src="../_images/graphviz-205a597968cdcf74701f4e44595341c990f06c2d.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>set mem inaccessible-by-default off
+set $target_riscv = 1
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This is necessary even if there are some cases where it seems to work correctly (and previous SoftConsole examples did not require this command)!</p>
+</div>
+<p>Additionally setting the architecture (do not remove the previous commands such as set $target_riscv = 1):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">architecture</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv32</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv32</span></code> used, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
+</div>
+<p>And when targeting 64-bit PolarFire SoC emulation model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">architecture</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv64</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv64</span></code> used, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
+</div>
+<p>When the binary elf file is large then it might sometimes on targets cause a timeout message, to
+suppress these the timeout can be changed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">remotetimeout</span> <span class="mi">7</span>
+</pre></div>
+</div>
+<p>Existing workspace examples should be used to see how these are configured:</p>
+<p><img alt="debug" src="../_images/debug-riscv-commands.png" /></p>
+</li>
+<li><p>On the <code class="docutils literal notranslate"><span class="pre">Startup</span></code> tab the default settings should be configured as shown below and these are the default
+settings so do not change them unless necessary and you understand what effect these changes will have.</p>
+<div class="graphviz"><img src="../_images/graphviz-bcd06702ab72f8ed70caade39b7720eb44249753.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Initialization Commands&quot; -&gt; &quot;check 'Initial Reset'&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-2b6e81f3d8f59917738fcd0777b17a1381faa122.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Initialization Commands&quot; -&gt; &quot;set type to 'init'&quot;; }" class="graphviz" /></div>
+<p>Load symbols/executable should be configured as shown.</p>
+<p>Even when targeting embedded or external RAM:</p>
+<div class="graphviz"><img src="../_images/graphviz-e9f92113614b9947a013803b1d4721d202507d63.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Runtime Options&quot; -&gt; &quot;'Debug in RAM' should always be disabled&quot;; }" class="graphviz" /></div>
+<p>In the section:</p>
+<div class="graphviz"><img src="../_images/graphviz-295c82f29076b56cceffce180033848637b94124.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Run/Restart Commands&quot; -&gt; &quot;Pre-run/Restart&quot;; }" class="graphviz" /></div>
+<p>set breakpoint at main and <code class="docutils literal notranslate"><span class="pre">Continue</span></code> should normally be checked although can be
+modified if, for example, an initial breakpoint somewhere other than main() is required or startup code
+executed before <code class="docutils literal notranslate"><span class="pre">main()</span></code> needs to be debugged.</p>
+<p>For PolarFire SoC Renode emulation please refer to the README provided with the PolarFire SoC/PSE
+example project(s) in the example workspace.</p>
+<p><img alt="startup" src="../_images/startup-raw.png" /></p>
+</li>
+<li><p>By default the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">as</span></code> is set to:</p>
+<div class="graphviz"><img src="../_images/graphviz-f091a9047096a4db0a8e6e827b70590ad151d9b6.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Common&quot; -&gt; &quot;Save as&quot; -&gt; &quot;Local file&quot;; }" class="graphviz" /></div>
+<p><code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">file</span></code> causes the debug launch configuration to be saved <strong>into the workspace</strong>. However, if the <code class="docutils literal notranslate"><span class="pre">Shared</span> <span class="pre">file</span></code> option is selected (the default name can be accepted) then the debug launch configuration instead gets saved <strong>into the project</strong> which aids portability as it means that the debug launch configuration moves in tandem with the project (e.g. when copying or exporting/importing the project).</p>
+<div class="graphviz"><img src="../_images/graphviz-3cb3c3ea7e5747e113da515ba857171e3c0db80d.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Common&quot; -&gt; &quot;Save as&quot; -&gt; &quot;Shared file&quot;; }" class="graphviz" /></div>
+<p><img alt="common" src="../_images/common-project.png" /></p>
+</li>
+</ol>
+</div>
+<div class="section" id="openocd-command-line-options-and-scripts">
+<h2>OpenOCD command line options and scripts<a class="headerlink" href="#openocd-command-line-options-and-scripts" title="Permalink to this headline">¶</a></h2>
+<p>As explained above, it is important that the correct command line options/scripts are passed to OpenOCD via the:</p>
+<div class="graphviz"><img src="../_images/graphviz-23327ae9e7189ab79dd50602f4de810df455c6a6.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;Config&quot;
+     }" class="graphviz" /></div>
+<br/><p>This section explains these settings.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><p>Commands can be specified using <code class="docutils literal notranslate"><span class="pre">--command</span> <span class="pre">...</span></code> or <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">....</span></code></p></li>
+<li><p>Multiple commands can be specified individually</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set DEVICE M2S090&quot;</span> <span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set JTAG_KHZ 1000&quot;</span>
+<span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<p>or together separated by semi-colons</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set DEVICE M2S090; set JTAG_KHZ 1000&quot;</span>
+<span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All <code class="docutils literal notranslate"><span class="pre">--command</span> <span class="pre">...</span></code> settings mentioned above <strong>must be placed before</strong> the <code class="docutils literal notranslate"><span class="pre">--file</span> <span class="pre">...</span></code> setting.
+The <code class="docutils literal notranslate"><span class="pre">DEVICE</span></code> and <code class="docutils literal notranslate"><span class="pre">JTAG_KHZ</span></code> need to be set before calling the <code class="docutils literal notranslate"><span class="pre">--file</span></code>, but setting the port needs to be added <strong>after</strong> the <code class="docutils literal notranslate"><span class="pre">--file</span></code> like this:</p>
+</div>
+<p>–command “set JTAG_KHZ 1000”
+–file board/microsemi-riscv.cfg
+–command “microsemi_flashpro port usb86709”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="section" id="board-scripts">
+<h3>Board scripts<a class="headerlink" href="#board-scripts" title="Permalink to this headline">¶</a></h3>
+<p>The board script describes the relevant aspects of the target hardware to OpenOCD. A number of example scripts
+are provided and are stored in <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/openocd/share/openocd/scripts</span></code>. The
+following list enumerates these and outlines the context in which each of them can be used. Remember that the
+target device must also be correctly specified in the debug launch configuration.</p>
+<ul class="simple">
+<li><p>RISC-V</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">board/microsemi-riscv.cfg</span></code>: for targeting RISC-V.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">board/microsemi-sifive-hifive-unleashed.cfg</span></code>: for targeting the HiFive Unleashed Platform</p></li>
+</ul>
+</li>
+</ul>
+<p>The following outlines the normal correlation between the linker script used to link the program and the OpenOCD board script used for debugging:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Mi-V RISC-V</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<p>RISC-V Hardware Abstraction Layer (HAL) and PolarFire SoC MPFS_HAL (previously known as PSE_HAL)</p>
+<ul class="simple">
+<li><p>Linker Script</p>
+<ul>
+<li><p>Refer to the Mi-V RISC-V HAL, PolarFire SoC MPFS HAL and the various RISC-V example projects provided for details of the example linker scripts provided.</p></li>
+</ul>
+</li>
+<li><p>OpenOCD board script</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">board/microsemi-riscv.cfg</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="flashpro-jtag-speed">
+<h3>FlashPro JTAG speed<a class="headerlink" href="#flashpro-jtag-speed" title="Permalink to this headline">¶</a></h3>
+<p>The SoftConsole OpenOCD scripts use a default JTAG clock speed of 6MHz. If this needs to be overridden, then it
+can be specified (in kHz) alongside the target device – e.g. to use 1MHz (1000kHz):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set DEVICE M2S090; set JTAG_KHZ 1000&quot;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set DEVICE M2S090&quot;</span> <span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set JTAG_KHZ 1000&quot;</span>
+</pre></div>
+</div>
+<p>The JTAG_KHZ needs to be set before invoking the other commands such as: <code class="docutils literal notranslate"><span class="pre">board/microsemi-riscv.cfg</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not change the JTAG clock speed unless absolutely necessary and only if you understand the
+implications and possible pitfalls of doing so.</p>
+</div>
+</div>
+<div class="section" id="other-openocd-options">
+<h3>Other OpenOCD options<a class="headerlink" href="#other-openocd-options" title="Permalink to this headline">¶</a></h3>
+<p>In some cases, where OpenOCD debugging does not work as expected it may be useful to add the –debug n
+(where n is a debug level between 0 and 3) or simply -d option to the debug launch configuration.
+See also the OpenOCD User’s Guide for other OpenOCD options and commands:
+<a class="reference external" href="https://openocd.org/pages/documentation.html">https://openocd.org/pages/documentation.html</a>.</p>
+</div>
+<div class="section" id="softconsole-openocd-script-parameters">
+<h3>SoftConsole OpenOCD script parameters<a class="headerlink" href="#softconsole-openocd-script-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Several parameters can be used to configure/control how the SoftConsole OpenOCD scripts operate.
+Refer to the comments in the example scripts for more details.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/openocd/share/openocd/scripts/interface/microsemi-flashpro.cfg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/openocd/share/openocd/scripts/target/microsemi-riscv.cfg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/openocd/share/openocd/scripts/target/microsemi-sifive-hifive-unleashed.cfg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/openocd/share/openocd/scripts/target/microsemi-olimex-ocd-riscv.cfg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/openocd/share/openocd/scripts/target/microsemi-olimex-tiny-h-riscv.cfg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/openocd/share/openocd/scripts/target/microsemi-olimex-tiny-riscv.cfg</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="using-a-debug-session">
+<h2>Using a debug session<a class="headerlink" href="#using-a-debug-session" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="launching-a-debug-session">
+<h3>Launching a debug session<a class="headerlink" href="#launching-a-debug-session" title="Permalink to this headline">¶</a></h3>
+<p>Select the project in the Project Explorer, right click on it and from the context menu select Debug As &gt; Debug
+Configurations, select the relevant debug launch configuration and click Debug.</p>
+</div>
+<div class="section" id="memory-monitor">
+<h3>Memory Monitor<a class="headerlink" href="#memory-monitor" title="Permalink to this headline">¶</a></h3>
+<p>The default Memory Monitor view rendering is Hex which may render values in big-endian rather than little-endian form. If this is the case, then switch to Traditional or Hex Integer rendering which renders values properly as littleendian.</p>
+</div>
+<div class="section" id="console-view">
+<h3>Console view<a class="headerlink" href="#console-view" title="Permalink to this headline">¶</a></h3>
+<p>During a debug session SoftConsole can display several different consoles in the Console view. By default, the
+OpenOCD console is displayed showing OpenOCD output:</p>
+<p><img alt="console view" src="../_images/console-view.png" /></p>
+<p>The highlighted Display Selected Console toolbar button allows different consoles to be selected:</p>
+<p><img alt="debug sessions" src="../_images/debug-sessions.png" /></p>
+<p>The openocd and GDB consoles are usually the ones of most interest. If semihosting is used the I/O is done via the GDB console. The GDB console must be the active console to manually enter GDB commands.</p>
+</div>
+<div class="section" id="built-in-serial-terminal-view">
+<h3>Built-in serial terminal view<a class="headerlink" href="#built-in-serial-terminal-view" title="Permalink to this headline">¶</a></h3>
+<p>SoftConsole includes a built-in serial terminal view which obviates the need to run a separate serial terminal
+emulator when connecting to a target board using a UART. The plug-ins used to implement this view are preinstalled. Refer to this blog post for information on how to show and configure the terminal view (but skip the parts
+dealing with plug-in installation as this is already done):</p>
+<p><a class="reference external" href="https://mcuoneclipse.com/2017/10/07/using-serial-terminal-and-com-support-in-eclipse-oxygen-and-neon/">https://mcuoneclipse.com/2017/10/07/using-serial-terminal-and-com-support-in-eclipse-oxygen-and-neon/</a></p>
+<p>In order for the serial terminal to list the relevant serial/COM ports, especially for USB serial ports, the relevant OS
+drivers may need to be installed. Refer to the relevant hardware/board documentation for more details.</p>
+</div>
+<div class="section" id="debug-using-a-specific-flashpro-programmer">
+<h3>Debug using a specific FlashPro programmer<a class="headerlink" href="#debug-using-a-specific-flashpro-programmer" title="Permalink to this headline">¶</a></h3>
+<p>By default, SoftConsole will debug using the first FlashPro5 programmer that it detects. If there is no FlashPro5 connected, then it will use the first FlashPro3/4 that it detects.</p>
+<p>When there is only one FlashPro programmer connected and not used by any other application then SoftConsole
+will automatically use that. In some cases, more than one FlashPro programmer will be connected in which case
+SoftConsole needs to be told which one to use for debugging.</p>
+<p>A specific example of this is when using the M2S090 Security Evaluation Kit board. On this board J5 is the FlashPro
+connector normally used for FlashPro programming of the FPGA and SoftConsole debugging. However, J18 is also
+an on-board SPI only FlashPro5 programmer which can be used for programming the FPGA but cannot be used for
+SoftConsole debugging. J18 is also used for access to serial ports on the target design.</p>
+<p>In this case if both J5 and J18 are connected to the host computer on which SoftConsole is running then
+SoftConsole needs to be told to use the former for debugging.</p>
+<p>When OpenOCD runs, it lists the FlashPro programmers that it finds and indicates which one it uses by default –
+e.g:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Open</span> <span class="n">On</span><span class="o">-</span><span class="n">Chip</span> <span class="n">Debugger</span>
+<span class="n">Licensed</span> <span class="n">under</span> <span class="n">GNU</span> <span class="n">GPL</span> <span class="n">v2</span>
+<span class="n">For</span> <span class="n">bug</span> <span class="n">reports</span><span class="p">,</span> <span class="n">read</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">openocd</span><span class="o">.</span><span class="n">sourceforge</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">doxygen</span><span class="o">/</span><span class="n">bugs</span><span class="o">.</span><span class="n">html</span>
+<span class="n">M2S010</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">only</span> <span class="n">one</span> <span class="n">transport</span> <span class="n">option</span><span class="p">;</span> <span class="n">autoselect</span> <span class="s1">&#39;jtag&#39;</span>
+<span class="n">adapter</span> <span class="n">speed</span><span class="p">:</span> <span class="mi">2000</span> <span class="n">kHz</span>
+<span class="n">cortex_m</span> <span class="n">reset_config</span> <span class="n">sysresetreq</span>
+<span class="n">trst_only</span> <span class="n">separate</span> <span class="n">trst_push_pull</span>
+<span class="n">do_board_reset_init</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">FlashPro</span> <span class="n">ports</span> <span class="n">available</span><span class="p">:</span> <span class="n">usb86709</span><span class="p">,</span> <span class="n">S200XTYRZ3</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">FlashPro</span> <span class="n">port</span> <span class="n">used</span><span class="p">:</span> <span class="n">S200XTYRZ3</span>
+</pre></div>
+</div>
+<p>To use a specific FlashPro device when there is more than one connected in the debug launch configuration
+change the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<p>to this which specifies which FlashPro programmer/port to use for debugging:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span>
+<span class="o">--</span><span class="n">command</span> <span class="s2">&quot;microsemi_flashpro port usb86709&quot;</span>
+</pre></div>
+</div>
+<p>A partial port name can be specified and the first FlashPro port matched that starts with the specified string will be
+used. (The string comparison is case insensitive). This is useful, for example, where there are two FlashPro5
+programmers attached – one standalone (e.g. SXXXXX) and one embedded e.g. EXXXXX). In this case the
+embedded one can be selected by simply specifying:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="o">--</span><span class="n">command</span> <span class="s2">&quot;microsemi_flashpro port e&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The microsemi_flashpro_port command must appear after the board script has been specified
+because this script sources the <code class="docutils literal notranslate"><span class="pre">interface/microsemi-flashpro.cfg</span></code> script.</p>
+</div>
+</div>
+<div class="section" id="debugging-using-a-non-flashpro-jtag-interface">
+<h3>Debugging using a non FlashPro JTAG interface<a class="headerlink" href="#debugging-using-a-non-flashpro-jtag-interface" title="Permalink to this headline">¶</a></h3>
+<p>By default, the Microsemi OpenOCD board scripts (e.g. board/microsemi-riscv.cfg) specify that a
+FlashPro programmer will be used for debugging:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># FlashPro</span>
+<span class="n">source</span> <span class="p">[</span><span class="n">find</span> <span class="n">interface</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">flashpro</span><span class="o">.</span><span class="n">cfg</span><span class="p">]</span>
+
+<span class="c1"># Device</span>
+<span class="n">source</span> <span class="p">[</span><span class="n">find</span> <span class="n">target</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span><span class="p">]</span>
+
+<span class="c1"># Board specific initialization</span>
+<span class="n">proc</span> <span class="n">do_board_reset_init</span> <span class="p">{}</span> <span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is akin to assuming that all boards come with an on-board FlashPro programmer even if some use a
+discrete/external programmer. This is the normal and recommended debugging setup.
+In this case the debug launch configuration will look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<p>However, it is possible to use other JTAG probes that are supported by OpenOCD. As an example, to debug using the
+Olimex ARM-USB-TINY-H.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Use 3rd party JTAG probes at your own risk. Make sure to use the correct jumper settings and correct JTAG pinout. OpenOCD is supporting many JTAG probes, but they are not tested from within SoftConsole and SoftConsole support might not be able to help you with issues caused by using 3rd party probe. Using wrong pinout or wrong jumper settings might cause damage to the hardware.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Windows it’s required to run <a class="reference external" href="https://zadig.akeo.ie/">Zadig</a> tool and replace Olimex drivers with <code class="docutils literal notranslate"><span class="pre">WinUSB</span></code> before continuing. Be careful and use zadig at your own risk!</p>
+<p><img alt="zadig" src="../_images/zadig.png" /></p>
+</div>
+<ol>
+<li><p>In the debug launch configuration replace the <code class="docutils literal notranslate"><span class="pre">--file</span> <span class="pre">microsemi-riscv.cfg</span></code> with the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">microsemi</span><span class="o">-</span><span class="n">olimex</span><span class="o">-</span><span class="n">tiny</span><span class="o">-</span><span class="n">h</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ensure that the board’s jumper[s] such as JTAG_SEL is configured to use external/standalone JTAG probe instead of the embedded FlashPro. For example, on the Icicle board it means to open the <code class="docutils literal notranslate"><span class="pre">J9</span></code> jumper.</p></li>
+<li><p>Connect the Olimex ARM-USB-TINY-H programmer USB end to the.</p></li>
+<li><p>Make sure the Olimex JTAG signals are connected correctly to the FlashPro signals. This can be achieved by buying/making own adapter board, or by using female-to-female jumper wires.</p>
+<p>Olimex pinout:
+<img alt="Olimex JTAG" src="../_images/olimex_generic_jtag.png" /></p>
+<p>FlashPro pinout:
+<img alt="FlashPro JTAG" src="../_images/fp.png" /></p>
+<p>Connecting Olimex pins to pins on the FlashPro header:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">Olimex ARM-USB-TINY-H pin</th>
+<th class="head">Target board FlashPro JTAG pin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>1 (VREF)</td>
+<td>6 (VJATG_VSPI)</td>
+</tr>
+<tr class="row-odd"><td>3 (TTRST_N)</td>
+<td>8 (TRSTB/FL_GLDN)</td>
+</tr>
+<tr class="row-even"><td>5 (TTDI)</td>
+<td>9 (TDI/MOSI)</td>
+</tr>
+<tr class="row-odd"><td>7 (TTMS)</td>
+<td>5 (TMS/SS)</td>
+</tr>
+<tr class="row-even"><td>9 (TTCK)</td>
+<td>1 (TCK/SCK)</td>
+</tr>
+<tr class="row-odd"><td>13 (TTDO)</td>
+<td>3 (TDO/MISO)</td>
+</tr>
+<tr class="row-even"><td>10 (GND)</td>
+<td>2 (GND)</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Olimex PIN 1 location" src="../_images/olimex-pins.jpg" /></p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">microsemi-olimex-tiny-riscv.cfg</span></code> already assumes that the integrity of the signals will not be optimal and sets the JTAG TCK speed to 2MHz, this can be overridden by setting the <code class="docutils literal notranslate"><span class="pre">JTAG_KHZ</span></code> value before calling the <code class="docutils literal notranslate"><span class="pre">microsemi-olimex-tiny-h-riscv.cfg</span></code> file. However users might be surprised that the debug latency and speeds might be satisfactory even at 2MHz. If experiencing crashes in the debug sessions, then the TCK speed might have to be lowered even more, for example: 1MHz with <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">JTAG_KHZ</span> <span class="pre">1000</span></code>.</p></li>
+<li><p>Debugging can now be done via the Olimex ARMUSB-TINY-H device.</p></li>
+</ol>
+<p>A similar approach can be taken with other JTAG programmers supported by OpenOCD. Study the present CFG files to see how to make custom ones.</p>
+</div>
+<div class="section" id="how-to-connect-to-debug-a-running-program">
+<h3>How to connect to/debug a running program<a class="headerlink" href="#how-to-connect-to-debug-a-running-program" title="Permalink to this headline">¶</a></h3>
+<p>In some situations it is desirable to connect to a program already running on the target without resetting the target,
+loading the program, executing from the startup code, breakpointing at main() etc. To enable this form of
+debugging:</p>
+<ol class="simple">
+<li><p>The program/project built must match the program running on the target – i.e. the same code, linker script etc.</p></li>
+<li><p>On the Startup page of the debug launch configuration…</p></li>
+<li><p>Clear the Initial Reset checkbox</p></li>
+<li><p>In the Initialization Commands text field enter <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">halt</span></code></p></li>
+<li><p>Clear the Load Symbols and Executable &gt; Load Executable checkbox</p></li>
+</ol>
+<p>With these settings when the debug session is launched SoftConsole the program remains running and the
+Suspend “pause” button can be used to halt it and thereafter normal debugging operations can be performed.</p>
+</div>
+</div>
+<div class="section" id="call-stack">
+<h2>Call stack<a class="headerlink" href="#call-stack" title="Permalink to this headline">¶</a></h2>
+<p>Normally call stacks can be ignored, but they are very useful when troubleshooting pre-existing conditions. When using the recommended workspace and its <code class="docutils literal notranslate"><span class="pre">Develop</span> <span class="pre">and</span> <span class="pre">Debug</span></code> perspective then this should be in the bottom-left section of
+the screen. It can be opened (if it got previously closed) with :</p>
+<div class="graphviz"><img src="../_images/graphviz-ffffad17a2f14987122d1b446b96b6e6663f2f5f.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Window&quot; -&gt; &quot;Show view&quot; -&gt; &quot;Debug&quot;
+     }" class="graphviz" /></div>
+<br/><p><img alt="Call stack" src="../_images/call_stack.png" /></p>
+<p>The figure above shows how nested the calls are, clicking on each will jump to the exact line of code from where the
+child stack was invoked and it will even show the content of local variables at that given time. This is very useful when
+troubleshooting what conditions lead to the given breakpoint. Using it with ISR handlers can show what the application
+was processing when the IRQ happened. Together with conditional breakpoints which makes debugging even easier.</p>
+</div>
+<div class="section" id="conditional-breakpoints">
+<h2>Conditional breakpoints<a class="headerlink" href="#conditional-breakpoints" title="Permalink to this headline">¶</a></h2>
+<p>A conditional breakpoint can be enabled by <code class="docutils literal notranslate"><span class="pre">holding</span> <span class="pre">CTRL</span> <span class="pre">and</span> <span class="pre">double-clicking</span></code> on a regular breakpoint:</p>
+<p><img alt="Conditional breakpoints" src="../_images/conditional_breakpoint.png" /></p>
+<p>The figure above shows a conditional breakpoint which will break on a second event when variable x is equal to 3. The
+first event when this condition is met is ignored because <code class="docutils literal notranslate"><span class="pre">Ignore</span> <span class="pre">count</span></code> is set to 1. This allows to create a complex
+condition where the code should break and together with call stack can be troubleshoot why and how this event
+happened. Debugging intermittent issues with these features is easier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is very useful for both a Renode and HW targets as well.</p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>If the debug session fails to run as expected, then check the following:</p>
+<ul class="simple">
+<li><p>On Linux, was the udev rules file installed and activated in order to grant non-root access to users in the
+relevant group (usually plugdev)?</p>
+</li>
+<li><p>Is a FlashPro device connected (FlashPro 5 on Linux, FlashPro3/4/5 on Windows)?</p></li>
+<li><p>Is there more than one FlashPro device connected? If so SoftConsole may not be using the correct one. If
+you want to use a specific one of several FlashPro devices connected, then you can add <code class="docutils literal notranslate"><span class="pre">--command</span> <span class="pre">&quot;microsemi_flashpro</span> <span class="pre">port</span> <span class="pre">&lt;fp-port-name&gt;&quot;</span></code> to the OpenOCD command line options.</p></li>
+<li><p>On Windows did a previous FlashPro3/4 debug session fail leaving OpenOCD (<code class="docutils literal notranslate"><span class="pre">openocd.exe</span></code> or
+<code class="docutils literal notranslate"><span class="pre">fpserver.exe</span></code>) running because <code class="docutils literal notranslate"><span class="pre">abiactel.dll</span></code> did not exit cleanly thus blocking access to the FlashPro
+device? Check Task Manager/ProcessExplorer for openocd.exe and if it’s still running then unplug the
+FlashPro USB cable and then reattach it and OpenOCD should terminate.</p>
+</li>
+<li><p>If the debug session starts but the program does not run/behave as expected, then check that the project
+was updated to match the target hardware by having the Libero SoC generated firmware and
+<code class="docutils literal notranslate"><span class="pre">drivers_config</span></code> copied in before rebuilding.</p></li>
+<li><p>Ensure that the relevant CMSIS/HAL firmware core is used.</p></li>
+</ul>
+</div>
+<div class="section" id="mismatching-mi-v-rv32-project-configuration-and-the-target">
+<h2>Mismatching Mi-V RV32 project configuration and the target<a class="headerlink" href="#mismatching-mi-v-rv32-project-configuration-and-the-target" title="Permalink to this headline">¶</a></h2>
+<p>Currently there are two Mi-V classes of soft processors supported in SoftConsole, the newer one <code class="docutils literal notranslate"><span class="pre">MIV_RV32</span></code> and legacy soft processor in these variants: <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AHB</span></code>, <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AXI</span></code> and <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMAF_L1_AHB</span></code>. If a project is using floating-point F extension (and not emulating it in software), then it requires the legacy soft processor.</p>
+<p>Because the legacy soft processor is using older memory map the applications are not compatible between each other. The bundled example <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code> supports both and has custom configuration for each, the <code class="docutils literal notranslate"><span class="pre">miv32i</span></code> and <code class="docutils literal notranslate"><span class="pre">miv32ic</span></code> are for the newer core and use the ESS memory map, while <code class="docutils literal notranslate"><span class="pre">miv32ima</span></code> is for the legacy core and uses older memory map. The current RV32 HAL is supporting both and legacy support can be enabled with <code class="docutils literal notranslate"><span class="pre">MIV_LEGACY_RV32</span></code> define, while in project’s settings the include paths can point to a legacy board. This means that it’s very important what target design is used with what configuration (in case of Renode even the correct group launcher has to be used). Each project can be setup differently, but for the bundled <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code> example it’s as follows:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">Configuration</th>
+<th class="head">Target</th>
+<th class="head">Launcher to debug with Renode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>miv32i-Debug</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+<tr class="row-odd"><td>miv32i-Release</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+<tr class="row-even"><td>miv32ima-Debug</td>
+<td>legacy RV32</td>
+<td>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</td>
+</tr>
+<tr class="row-odd"><td>miv32ima-Release</td>
+<td>legacy RV32</td>
+<td>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</td>
+</tr>
+<tr class="row-even"><td>miv32imc-Debug</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+<tr class="row-odd"><td>miv32imc-Release</td>
+<td><strong>new RV32</strong></td>
+<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When targeting real Hardware, then all the configurations are using the same launcher <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span> <span class="pre">Hw</span> <span class="pre">Debug</span></code>. However the connected board must have matching design. For the new core it needs to be 2022.1 release of <code class="docutils literal notranslate"><span class="pre">MIV_RV32</span></code> with ESS memory map (such as <code class="docutils literal notranslate"><span class="pre">DGC2</span></code> config). And for the legacy core it needs to be 2022.1 release of <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AHB</span></code>, <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AXI</span></code> or <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMAF_L1_AHB</span></code> (for example <code class="docutils literal notranslate"><span class="pre">CFG1</span></code> config). The reset vector for legacy core changed in this release and using older builds of this core is not recomended.</p>
+</div>
+<p>Using wrong target with wrong build configuration and wrong launcher might produce cryptic looking messages/issues. Because the new memory map is overlapping partially with the old memory map the application writing to PLIC on the new core might cause writes to UART/GPIO/TIMER if run on legacy core. While application targeting legacy core might end up writing to PLIC on the new core instead of UART/GPIO/TIMER.</p>
+<div class="section" id="example-error-messages-and-issues">
+<h3>Example error messages and issues<a class="headerlink" href="#example-error-messages-and-issues" title="Permalink to this headline">¶</a></h3>
+<p>If you encounter any of these issues, then they might be caused by mismatch between what the application targets and what it is run againts.</p>
+<div class="section" id="running-legacy-mi-v-renode-platform-with-application-targeting-the-new-core">
+<h4>Running legacy Mi-V Renode platform with application targeting the new core<a class="headerlink" href="#running-legacy-mi-v-renode-platform-with-application-targeting-the-new-core" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Renode</span> <span class="n">has</span> <span class="n">been</span> <span class="n">started</span> <span class="n">successfully</span> <span class="ow">and</span> <span class="ow">is</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">a</span> <span class="n">gdb</span> <span class="n">connection</span><span class="o">.</span>
+<span class="p">(</span><span class="n">PF</span> <span class="n">Mi</span><span class="o">-</span><span class="n">V</span> <span class="n">RV32</span> <span class="n">legacy</span><span class="p">)</span> <span class="mi">18</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mf">06.1893</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80000828</span><span class="p">]</span> <span class="n">WriteDoubleWord</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x200BFFC</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x0</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mf">08.5992</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80001198</span><span class="p">]</span> <span class="n">WriteByte</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x71000008</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x1A</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mf">08.5992</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80001198</span><span class="p">]</span> <span class="n">WriteByte</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x7100000C</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x1</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mf">08.6011</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x800011A0</span><span class="p">]</span> <span class="n">ReadByte</span> <span class="kn">from</span> <span class="nn">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x71000010</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-new-mi-v-renode-platform-with-application-targeting-the-legacy-core">
+<h4>Running new Mi-V Renode platform with application targeting the legacy core<a class="headerlink" href="#running-new-mi-v-renode-platform-with-application-targeting-the-legacy-core" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Renode</span> <span class="n">has</span> <span class="n">been</span> <span class="n">started</span> <span class="n">successfully</span> <span class="ow">and</span> <span class="ow">is</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">a</span> <span class="n">gdb</span> <span class="n">connection</span><span class="o">.</span>
+<span class="p">(</span><span class="n">PF</span> <span class="n">Mi</span><span class="o">-</span><span class="n">V</span> <span class="n">RV32</span> <span class="p">(</span><span class="n">IMC</span><span class="p">))</span> <span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">42.2117</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80000F38</span><span class="p">]</span> <span class="n">WriteByte</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x70001008</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x1A</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">42.2127</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80000F38</span><span class="p">]</span> <span class="n">WriteByte</span> <span class="n">to</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x7000100C</span><span class="p">,</span> <span class="n">value</span> <span class="mh">0x1</span><span class="o">.</span>
+<span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">42.2147</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sysbus</span><span class="p">:</span> <span class="p">[</span><span class="n">cpu</span><span class="p">:</span> <span class="mh">0x80000F40</span><span class="p">]</span> <span class="n">ReadByte</span> <span class="kn">from</span> <span class="nn">non</span> <span class="n">existing</span> <span class="n">peripheral</span> <span class="n">at</span> <span class="mh">0x70001010</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-legacy-hw-design-with-application-targeting-the-new-core">
+<h4>Running legacy HW design with application targeting the new core<a class="headerlink" href="#running-legacy-hw-design-with-application-targeting-the-new-core" title="Permalink to this headline">¶</a></h4>
+<p>Might not reach the main breakpoint, nor the entry entry, disassembly tab showing unimplemented instructions. Or get into exception trap in early stages of the application.</p>
+</div>
+<div class="section" id="running-new-hw-design-with-application-targeting-the-legacy-core">
+<h4>Running new HW design with application targeting the legacy core<a class="headerlink" href="#running-new-hw-design-with-application-targeting-the-legacy-core" title="Permalink to this headline">¶</a></h4>
+<p>Might get stuck in a infinite loop in the UART driver trying to read back the ready status:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            /* Wait for UART to become ready to transmit. */
+            do {
+                tx_ready = HAL_get_8bit_reg( this_uart-&gt;base_address, STATUS ) &amp;
+                                                              STATUS_TXRDY_MASK;
+            } while ( !tx_ready );
+            /* Send next character in the buffer. */
+            HAL_set_8bit_reg( this_uart-&gt;base_address, TXDATA,
+                              (uint_fast8_t)p_sz_string[char_idx] );
+            char_idx++;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="mpfs.html" class="btn btn-neutral float-right" title="PolarFire SoC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="projects.html" class="btn btn-neutral float-left" title="Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022 Microchip.
+
+    </p>
+  </div> 
+
+<script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    function link(headingTitle) {
+        var pageName = "using_softconsole/debugging.md.txt".replace(/\.txt/g,'');
+        var title = document.title;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650-RISC-V documentation&pub_ver=v2022.1-650-RISC-V&revision_letter=v2022.1-650-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
+         
+        return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + newuri + "\" target=_blank>Ask a question</a>";
+    }
+
+    
+    $(document).ready(function(){
+        $("h1").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+        
+        $("h2").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h3").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+        $("h4").each(function(i) {
+            $(this).append(link($(this)[0].firstChild.textContent));
+        });
+
+    });
+</script>
+
+
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+       <strong> 
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+       </strong> 
+      
+
+    </dl>
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
