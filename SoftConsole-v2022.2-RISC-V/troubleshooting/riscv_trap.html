@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>RISC-V Trap Exceptions &mdash; SoftConsole v2022.1-650-RISC-V documentation</title>
+  <title>RISC-V Trap Exceptions &mdash; SoftConsole v2022.2-728-RISC-V documentation</title>
   
 
   
@@ -320,7 +320,7 @@
 </div>
 <div class="section" id="mtval-mbadaddr">
 <h3>mtval/mbadaddr<a class="headerlink" href="#mtval-mbadaddr" title="Permalink to this headline">¶</a></h3>
-<p>Depending on the assembler version the name of this CSR might be either <code class="docutils literal notranslate"><span class="pre">mtval</span></code> or <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code>. In the current SoftConsole for RISC-V v2022.2 these can be freely interchanged, however the <code class="docutils literal notranslate"><span class="pre">mtval</span></code> is the newer <strong>correct</strong> name. If the exit code is 1,2, 5, 6, 7, 8, 0xE or 0x10 (mcause 0,1,4,5,6,7,0xD,0xF) then this CSR points to the memory address which caused this fault. If the exit code is 3 (mcause=2) then this CSR contains the opcode of the instruction which triggered the trap. Together with the exit code (mcause+1) and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> this can point to what happened and where it happened.</p>
+<p>Depending on the assembler version the name of this CSR might be either <code class="docutils literal notranslate"><span class="pre">mtval</span></code> or <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code>. In the current SoftConsole v2022.2-RISC-V these can be freely interchanged, however the <code class="docutils literal notranslate"><span class="pre">mtval</span></code> is the newer <strong>correct</strong> name. If the exit code is 1,2, 5, 6, 7, 8, 0xE or 0x10 (mcause 0,1,4,5,6,7,0xD,0xF) then this CSR points to the memory address which caused this fault. If the exit code is 3 (mcause=2) then this CSR contains the opcode of the instruction which triggered the trap. Together with the exit code (mcause+1) and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> this can point to what happened and where it happened.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">mcause</span></code> and exit code are almost identical except the exit code is offset by 1.</p>
@@ -345,7 +345,7 @@
 <div class="section" id="mstatus">
 <h3>mstatus<a class="headerlink" href="#mstatus" title="Permalink to this headline">¶</a></h3>
 <p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
-<img alt="../_images/wavedrom-a3e84952-25cc-4fc7-a5c7-c28a7da594d8.svg" height="300px" src="../_images/wavedrom-a3e84952-25cc-4fc7-a5c7-c28a7da594d8.svg" width="840px" /><div class="admonition note">
+<img alt="../_images/wavedrom-0ebfceb3-be0a-4e1b-9efe-f5edd6ce1582.svg" height="300px" src="../_images/wavedrom-0ebfceb3-be0a-4e1b-9efe-f5edd6ce1582.svg" width="840px" /><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
 </div>
@@ -560,7 +560,7 @@ troubleshoot a trap without even opening the listing file, see Symbols and simpl
     function link(headingTitle) {
         var pageName = "troubleshooting/riscv_trap.md.txt".replace(/\.txt/g,'');
         var title = document.title;
-        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650-RISC-V documentation&pub_ver=v2022.1-650-RISC-V&revision_letter=v2022.1-650-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.2-728-RISC-V documentation&pub_ver=v2022.2-728-RISC-V&revision_letter=v2022.2-728-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
          
         return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + newuri + "\" target=_blank>Ask a question</a>";
     }

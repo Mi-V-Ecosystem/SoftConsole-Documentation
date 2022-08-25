@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Renode simulation platform &mdash; SoftConsole v2022.1-650-RISC-V documentation</title>
+  <title>Renode simulation platform &mdash; SoftConsole v2022.2-728-RISC-V documentation</title>
   
 
   
@@ -406,7 +406,7 @@ client as well.</p>
 <li><p>When a watch command is invoking few commands.</p></li>
 <li><p>When using ‘monitor’ with longer commands, at the moment the monitor command length is limited and might cause problems when invoking longer commands (they will get truncated and then they will misbehave). Macro can contain long commands and then it can be invoked with a short name.</p></li>
 </ul>
-<p>SoftConsole for RISC-V v2022.2 has bundled a few macros, to get them listed run any PolarFire SoC platform (at the moment no Mi-V macros bundled) and type runMacro in the Renode’s monitor window:</p>
+<p>SoftConsole v2022.2-RISC-V has bundled a few macros, to get them listed run any PolarFire SoC platform (at the moment no Mi-V macros bundled) and type runMacro in the Renode’s monitor window:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Available</span> <span class="n">macros</span><span class="p">:</span>
 <span class="k">global</span><span class="o">.</span><span class="n">BridgeNetworkMac0</span>
 <span class="k">global</span><span class="o">.</span><span class="n">WiresharkRun</span>
@@ -607,7 +607,7 @@ Then with a generic webserver browser opening the location: <a class="reference 
 </div>
 <div class="section" id="using-wireshark-to-monitor-the-network-traffic-inside-the-emulation">
 <h2>Using Wireshark to monitor the network traffic inside the emulation<a class="headerlink" href="#using-wireshark-to-monitor-the-network-traffic-inside-the-emulation" title="Permalink to this headline">¶</a></h2>
-<p>In SoftConsole for RISC-V v2022.2 release this feature is accessible only from Linux hosts. The following steps are mainly covered
+<p>In SoftConsole v2022.2-RISC-V release this feature is accessible only from Linux hosts. The following steps are mainly covered
 from Ubuntu perspective, for other distributions contact your system administrator or execute the equivalent steps for
 your distribution yourself.</p>
 <p>To startup Wireshark with each debug session, edit the GDB debug launcher and in the <code class="docutils literal notranslate"><span class="pre">Initialization</span> <span class="pre">Commands</span></code> text-box area:</p>
@@ -781,7 +781,7 @@ get retransmitted transparently</p>
     function link(headingTitle) {
         var pageName = "using_softconsole/renode.md.txt".replace(/\.txt/g,'');
         var title = document.title;
-        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.1-650-RISC-V documentation&pub_ver=v2022.1-650-RISC-V&revision_letter=v2022.1-650-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
+        var newuri = "https://microchipsupport.force.com/s/newcase?pub_guid=SoftConsole-Documentation&pub_lang=en-US&pub_type=User Guide&bu=fpga&tech_support_link=NA&source=GitHub-based-HTML&cover_title=SoftConsole v2022.2-728-RISC-V documentation&pub_ver=v2022.2-728-RISC-V&revision_letter=v2022.2-728-RISC-V&title="+headingTitle+"&tpc_guid="+pageName;
          
         return "&nbsp; <a class=\"reference external\" style=\"font-size:60%\" href=\"" + newuri + "\" target=_blank>Ask a question</a>";
     }
