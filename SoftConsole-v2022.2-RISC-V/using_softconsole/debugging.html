@@ -352,12 +352,11 @@ example project(s) in the example workspace.</p>
 <p class="admonition-title">Warning</p>
 <p>All <code class="docutils literal notranslate"><span class="pre">--command</span> <span class="pre">...</span></code> settings mentioned above <strong>must be placed before</strong> the <code class="docutils literal notranslate"><span class="pre">--file</span> <span class="pre">...</span></code> setting.
 The <code class="docutils literal notranslate"><span class="pre">DEVICE</span></code> and <code class="docutils literal notranslate"><span class="pre">JTAG_KHZ</span></code> need to be set before calling the <code class="docutils literal notranslate"><span class="pre">--file</span></code>, but setting the port needs to be added <strong>after</strong> the <code class="docutils literal notranslate"><span class="pre">--file</span></code> like this:</p>
-</div>
-<p>–command “set JTAG_KHZ 1000”
-–file board/microsemi-riscv.cfg
-–command “microsemi_flashpro port usb86709”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>--command &quot;set JTAG_KHZ 1000&quot;
+--file board/microsemi-riscv.cfg
+--command &quot;microsemi_flashpro port usb86709&quot;
 </pre></div>
+</div>
 </div>
 <div class="section" id="board-scripts">
 <h3>Board scripts<a class="headerlink" href="#board-scripts" title="Permalink to this headline">¶</a></h3>
