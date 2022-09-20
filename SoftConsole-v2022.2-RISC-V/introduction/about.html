@@ -549,6 +549,7 @@ There are few common places where these breadcrumbs start:</p>
 <li><p>Providing the symbol files in the debug launchers is necessary to avoid errors on RV32 targets (see launchers of example projects).</p></li>
 <li><p>The DDR training on Renode targets is extremely slow and applications do not reach the main breakpoint for an extensive time. DDR on Renode doesn’t have to be trained, it works reliably instantly on the ‘power-up’. Applications targeting Renode can disable the DDR training to avoid this issue.</p></li>
 <li><p>Renode’s base platform doesn’t include a Scratchpad memory region. Build configurations using it will not work on Renode unless the project launcher adds the Scratchpad on top of the existing platform or uses a bespoke platform which contains Scratchpad.</p></li>
+<li><p>PolarFire SoC MSS Configurator launcher does remember the ‘Do not show again the info dialog’ setting when it’s set from Preference page. However, when it’s set from the dialog itself, then the decision is retained only until the next SoftConsole restart.</p></li>
 </ul>
 </div>
 <div class="section" id="flashpro-support-matrix">
