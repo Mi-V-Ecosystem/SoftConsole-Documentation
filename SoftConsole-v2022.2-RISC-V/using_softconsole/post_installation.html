@@ -122,7 +122,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#crypto-application-library">Crypto Application Library</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
@@ -521,48 +520,6 @@ sudo usermod -a -G plugdev &lt;username&gt;
 <p>For all other common issues read the troubleshooting section. Or at least search for the error messages.</p>
 </div>
 </div>
-</div>
-<div class="section" id="crypto-application-library">
-<h2>Crypto Application Library<a class="headerlink" href="#crypto-application-library" title="Permalink to this headline">¶</a></h2>
-<p>The Crypto Application Library (CAL) provides the software API to access User Crypto block on the PolarFire and PolarFire SoC device families.</p>
-<p>If license was agreed on installation, then the library is installed in <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/CAL/</span></code> path and  contains these following folders/files:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">cal-src</span></code> crypto sources in an as-is form, user can use these for reference, but they are not a SoftConsole project</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mpfs-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the following files:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mpfs-rv64g-user-crypto-lib.a</span></code> (U54)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mpfs-rv64imac-user-crypto-lib.a</span></code> (E51)</p></li>
-</ul>
-<p>These files can be used with <strong>PolarFire SoC</strong> crypto examples located on the <a class="reference external" href="https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples/tree/main/driver-examples/mss">GitHub</a></p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32-user-crypto-lib</span></code> a SoftConsole project which after compilation will produce the following files:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32imc-user-crypto-lib.a</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">miv-rv32i-user-crypto-lib.a</span></code></p></li>
-</ul>
-<p>These files can be used with <strong>Mi-V Soft processor</strong> crypto examples located on the <a class="reference external" href="https://github.com/Mi-V-Soft-RISC-V/miv-rv32-bare-metal-examples/tree/main/driver-examples/pf-user-crypto">GitHub</a></p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">user_guide.pdf</span></code> Documentation for the CAL API</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The crypto-lib projects can be imported as any other generic/regular SoftConsole projects. Users who know how to import projects can skip the rest of the section.</p>
-</div>
-<p>To import in into the workspace do the following:</p>
-<div class="graphviz"><img src="../_images/graphviz-693664cfc32b674906b3886c069421e62f65a94d.png" alt="digraph {
-         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
-         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
-         edge [arrowsize=.7];
-         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Existing Projects into Workspace&quot;
-     }" class="graphviz" /></div>
-<br/><p>After Import dialog is showed do following:</p>
-<div class="graphviz"><img src="../_images/graphviz-77a782d6d3634c0082ba83aa9f19d18c958f9895.png" alt="digraph {
-         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
-         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
-         edge [arrowsize=.7];
-         &quot;Select root directory&quot; -&gt; &quot;Browse...&quot; -&gt; &quot;find and select the 'miv-rv32-user-crypto-lib' folder&quot; -&gt; &quot;Open&quot;
-     }" class="graphviz" /></div>
-<br/><p>If the dialog was left in the default state (as provided from a fresh workspace) and the project was not imported already into the workspace, then clicking the <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button will import it correctly into the workspace.</p>
 </div>
 </div>
 

@@ -28,7 +28,6 @@
 {% endif %}
 
 
-{% include 'main/using_softconsole/other/_cal.inc' %}
 
 
 ```````
