@@ -113,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="riscv.html">RISC-V</a></li>
 <li class="toctree-l1"><a class="reference internal" href="riscv_trap.html">RISC-V Trap Exceptions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Renode troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#application-doesn-t-reach-the-main-breakpoint">Application doesn’t reach the main breakpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code">Using OSS tool such as Renode will contaminate my proprietary code?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#source-id-13802-was-not-found-when-attempting-to-remove-it">Source ID 13802 was not found when attempting to remove it</a></li>
@@ -195,6 +196,28 @@
   <div class="section" id="renode-troubleshooting">
 <h1>Renode troubleshooting<a class="headerlink" href="#renode-troubleshooting" title="Permalink to this headline">¶</a></h1>
 <p><img alt="Renode logo" src="../_images/renode_logo.png" /></p>
+<div class="section" id="application-doesn-t-reach-the-main-breakpoint">
+<span id="renodeddrtraining"></span><h2>Application doesn’t reach the main breakpoint<a class="headerlink" href="#application-doesn-t-reach-the-main-breakpoint" title="Permalink to this headline">¶</a></h2>
+<p>On PolarFire SoC targets the application doesn’t reach the main breakpoint and when suspended, callstack shows <code class="docutils literal notranslate"><span class="pre">mss_nwc_init_ddr()</span></code>:</p>
+<p><img alt="DDR state machine" src="../_images/ddr.png" /></p>
+<p>The application is executing DDR training, but currently Renode is not supporting the DDR training well, Renode doesn’t need to train the DDR for DDR to work correctly and it’s best to disable the training inside the application. Typically the DDR training is enabled with the <code class="docutils literal notranslate"><span class="pre">DDR_SUPPORT</span></code> define. Depending on the application and board configuration this define might be defined in various places, but on the bundled <code class="docutils literal notranslate"><span class="pre">mpfs-gpio-interrupt</span></code> example it’s inside the <code class="docutils literal notranslate"><span class="pre">src/boards/icicle-kit-es/platform_config/mpfs_hal_config/mss_sw_config.h</span></code> file:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Comment out the lines to disable the corresponding hardware support not required</span>
+<span class="cm"> * in your application.</span>
+<span class="cm"> * This is not necessary from an operational point of view as operation dictated</span>
+<span class="cm"> * by MSS configurator settings, and items are enabled/disabled by this method.</span>
+<span class="cm"> * The reason you may want to use below is to save code space.</span>
+<span class="cm"> */</span>
+<span class="cp">#define SGMII_SUPPORT</span>
+<span class="cp">#define DDR_SUPPORT</span>
+<span class="cp">#define MSSIO_SUPPORT</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The project needs to be recompiled for the changes to take effect.</p>
+</div>
+</div>
 <div class="section" id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
 <h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Permalink to this headline">¶</a></h2>
 <p>Something is keeping the port <code class="docutils literal notranslate"><span class="pre">3333</span></code> opened, it could be some other application, but in most cases it’s just a previous instance
