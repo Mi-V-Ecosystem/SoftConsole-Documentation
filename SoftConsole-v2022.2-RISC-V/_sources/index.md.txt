@@ -43,7 +43,6 @@ troubleshooting/flashpro
 troubleshooting/project
 troubleshooting/riscv
 troubleshooting/riscv_trap
-troubleshooting/arm
 troubleshooting/renode
 troubleshooting/eclipse
 troubleshooting/support

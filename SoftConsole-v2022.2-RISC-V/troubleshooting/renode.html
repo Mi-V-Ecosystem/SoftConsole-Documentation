@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Eclipse" href="eclipse.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="arm.html" /> 
+    <link rel="prev" title="RISC-V Trap Exceptions" href="riscv_trap.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -199,24 +199,7 @@
 <div class="section" id="application-doesn-t-reach-the-main-breakpoint">
 <span id="renodeddrtraining"></span><h2>Application doesn’t reach the main breakpoint<a class="headerlink" href="#application-doesn-t-reach-the-main-breakpoint" title="Permalink to this headline">¶</a></h2>
 <p>On PolarFire SoC targets the application doesn’t reach the main breakpoint and when suspended, callstack shows <code class="docutils literal notranslate"><span class="pre">mss_nwc_init_ddr()</span></code>:</p>
-<p><img alt="DDR state machine" src="../_images/ddr.png" /></p>
 <p>The application is executing DDR training, but currently Renode is not supporting the DDR training well, Renode doesn’t need to train the DDR for DDR to work correctly and it’s best to disable the training inside the application. Typically the DDR training is enabled with the <code class="docutils literal notranslate"><span class="pre">DDR_SUPPORT</span></code> define. Depending on the application and board configuration this define might be defined in various places, but on the bundled <code class="docutils literal notranslate"><span class="pre">mpfs-gpio-interrupt</span></code> example it’s inside the <code class="docutils literal notranslate"><span class="pre">src/boards/icicle-kit-es/platform_config/mpfs_hal_config/mss_sw_config.h</span></code> file:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
-<span class="cm"> * Comment out the lines to disable the corresponding hardware support not required</span>
-<span class="cm"> * in your application.</span>
-<span class="cm"> * This is not necessary from an operational point of view as operation dictated</span>
-<span class="cm"> * by MSS configurator settings, and items are enabled/disabled by this method.</span>
-<span class="cm"> * The reason you may want to use below is to save code space.</span>
-<span class="cm"> */</span>
-<span class="cp">#define SGMII_SUPPORT</span>
-<span class="cp">#define DDR_SUPPORT</span>
-<span class="cp">#define MSSIO_SUPPORT</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The project needs to be recompiled for the changes to take effect.</p>
-</div>
 </div>
 <div class="section" id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
 <h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Permalink to this headline">¶</a></h2>
@@ -308,7 +291,7 @@ XTerm is significantly faster and more optimized (at a cost aesthetics) terminal
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="eclipse.html" class="btn btn-neutral float-right" title="Eclipse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="arm.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="riscv_trap.html" class="btn btn-neutral float-left" title="RISC-V Trap Exceptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

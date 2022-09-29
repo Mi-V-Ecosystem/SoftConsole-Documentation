@@ -575,7 +575,6 @@ SoftConsole v2022.2-RISC-V this feature is accessible only from Linux hosts.</p>
 </div>
 <p>Renode is trying to probe user’s privileges, which should be safe to ignore. If the polkit and sudo are set to be passwordless, then the bridge should be created correctly without any other user’s interaction.
 See the chapter:</p>
-<p><span class="xref std std-ref">Could not set TUNSETIFF, error: 2</span></p>
 <p>Then as superuser (<code class="docutils literal notranslate"><span class="pre">root</span></code> user, or regular user with <code class="docutils literal notranslate"><span class="pre">sudo</span></code> privileges) invoke on a Linux terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ifconfig</span> <span class="n">renode</span><span class="o">-</span><span class="n">tap0</span> <span class="mf">172.16.0.1</span><span class="o">/</span><span class="mi">24</span> <span class="n">up</span>
 </pre></div>
