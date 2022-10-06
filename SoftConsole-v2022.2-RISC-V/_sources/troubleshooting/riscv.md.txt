@@ -26,5 +26,6 @@
 {% include 'main/troubleshooting/riscv/_truncated_register_16.inc' %}
 {% include 'main/troubleshooting/riscv/_stuck_first_hart.inc' %}
 {% include 'main/troubleshooting/riscv/_abi.inc' %}
+{% include 'main/troubleshooting/riscv/_dpk_unlock.inc' %}
 
 ```````
