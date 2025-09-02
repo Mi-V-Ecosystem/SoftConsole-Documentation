@@ -1,100 +1,60 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Renode troubleshooting &mdash; SoftConsole v2022.2-747-RISC-V documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/myRtdOverrides.css?v=775951b6" />
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
-
-  
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=ce9ecd98"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Eclipse" href="eclipse.html" />
     <link rel="prev" title="RISC-V Trap Exceptions" href="riscv_trap.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> SoftConsole
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            SoftConsole
           </a>
-
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using SoftConsole</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
@@ -106,7 +66,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="flashpro.html">Flashpro and OpenOCD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project.html">Project settings</a></li>
@@ -129,75 +89,35 @@
 <li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">SoftConsole</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Renode troubleshooting</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Renode troubleshooting</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
 
-  <div class="section" id="renode-troubleshooting">
-<h1>Renode troubleshooting<a class="headerlink" href="#renode-troubleshooting" title="Permalink to this headline">¶</a></h1>
+  <section id="renode-troubleshooting">
+<h1>Renode troubleshooting<a class="headerlink" href="#renode-troubleshooting" title="Link to this heading"></a></h1>
 <p><img alt="Renode logo" src="../_images/renode_logo.png" /></p>
-<div class="section" id="application-doesn-t-reach-the-main-breakpoint">
-<span id="renodeddrtraining"></span><h2>Application doesn’t reach the main breakpoint<a class="headerlink" href="#application-doesn-t-reach-the-main-breakpoint" title="Permalink to this headline">¶</a></h2>
+<section id="application-doesn-t-reach-the-main-breakpoint">
+<span id="renodeddrtraining"></span><h2>Application doesn’t reach the main breakpoint<a class="headerlink" href="#application-doesn-t-reach-the-main-breakpoint" title="Link to this heading"></a></h2>
 <p>On PolarFire SoC targets the application might not reach the main breakpoint and when suspended, callstack shows <code class="docutils literal notranslate"><span class="pre">mss_nwc_init_ddr()</span></code>:</p>
 <p><img alt="DDR state machine" src="../_images/renode_ddr_training.png" /></p>
 <p>This might indicate that the application is executing DDR training, but currently Renode is not supporting the DDR training well. Renode doesn’t need to train the DDR for DDR to work correctly and it’s best to disable the training inside the application. Typically the DDR training is enabled with the <code class="docutils literal notranslate"><span class="pre">DDR_SUPPORT</span></code> define. Depending on the application and board configuration this define might be defined in various places. For instance, in the bundled <code class="docutils literal notranslate"><span class="pre">mpfs-gpio-interrupt</span></code> example it’s inside the <code class="docutils literal notranslate"><span class="pre">src/boards/icicle-kit-es/platform_config/mpfs_hal_config/mss_sw_config.h</span></code> file:</p>
@@ -217,21 +137,21 @@
 <p class="admonition-title">Note</p>
 <p>The project needs to be recompiled for the changes to take effect.</p>
 </div>
-</div>
-<div class="section" id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
-<h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
+<h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Link to this heading"></a></h2>
 <p>Something is keeping the port <code class="docutils literal notranslate"><span class="pre">3333</span></code> opened, it could be some other application, but in most cases it’s just a previous instance
 of the Renode. Close it by pressing X on the window or stop the group launcher which should stop the Renode and the gdb
 client as well.</p>
-</div>
-<div class="section" id="using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code">
-<h2>Using OSS tool such as Renode will contaminate my proprietary code?<a class="headerlink" href="#using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code">
+<h2>Using OSS tool such as Renode will contaminate my proprietary code?<a class="headerlink" href="#using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code" title="Link to this heading"></a></h2>
 <p>Using the Renode (Open Source Software) will not impose any obligations or restrictions on the user’s code, his license or his IP. In an edge case where the user would copy part of the Renode’s source code, modify it and redistribute its binaries, then there are obligations to meet, however Renode has MIT license and allows wide use (including commercial, private use and sublicensing it with a more restrictive license):</p>
 <p><a class="reference external" href="https://tldrlegal.com/license/mit-license">https://tldrlegal.com/license/mit-license</a></p>
 <p>If in doubt consult with a legal team.</p>
-</div>
-<div class="section" id="source-id-13802-was-not-found-when-attempting-to-remove-it">
-<h2>Source ID 13802 was not found when attempting to remove it<a class="headerlink" href="#source-id-13802-was-not-found-when-attempting-to-remove-it" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="source-id-13802-was-not-found-when-attempting-to-remove-it">
+<h2>Source ID 13802 was not found when attempting to remove it<a class="headerlink" href="#source-id-13802-was-not-found-when-attempting-to-remove-it" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Renode</span><span class="p">:</span><span class="mi">5523</span><span class="p">):</span> <span class="n">GLib</span><span class="o">-</span><span class="n">CRITICAL</span> <span class="o">**</span><span class="p">:</span> <span class="n">Source</span> <span class="n">ID</span> <span class="mi">13802</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">found</span> <span class="n">when</span> <span class="n">attempting</span> <span class="n">to</span> <span class="n">remove</span> <span class="n">it</span>
 </pre></div>
 </div>
@@ -239,23 +159,23 @@ client as well.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mono</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="renode-source-code">
-<h2>Renode source code<a class="headerlink" href="#renode-source-code" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="renode-source-code">
+<h2>Renode source code<a class="headerlink" href="#renode-source-code" title="Link to this heading"></a></h2>
 <p>Upstream sources can be found <a class="reference external" href="https://github.com/renode/">on GitHub</a>, while the version of source code matching with the bundled binary is supplied in the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/renode-source-code</span></code>.</p>
 <p>Installation of Renode sources is an optional SoftConsole installation step, if the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/renode-source-code</span></code> is not present, then reinstall SoftConsole.</p>
-</div>
-<div class="section" id="uart-analyzer-not-responding">
-<span id="uartanalyzernotresponding"></span><h2>UART analyzer not responding<a class="headerlink" href="#uart-analyzer-not-responding" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="uart-analyzer-not-responding">
+<span id="uartanalyzernotresponding"></span><h2>UART analyzer not responding<a class="headerlink" href="#uart-analyzer-not-responding" title="Link to this heading"></a></h2>
 <p>This can happen on Linux when UART is heavily loaded with rapid messages and when Renode is running on a low-end machine (or small VM).</p>
 <p>Application could be rewritten to reduce the amount of UART messages, faster machine (or VM) could be used. Or more efficient analyzer can be used.
 XTerm is significantly faster and more optimized (at a cost aesthetics) terminal emulator which can be used for UART analyzer.</p>
 <p>Edit the following file in a text editor:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/.config/renode/config</span></code></p>
 <p>And edit the <code class="docutils literal notranslate"><span class="pre">terminal</span></code> line and point to the XTerm: <code class="docutils literal notranslate"><span class="pre">terminal</span> <span class="pre">=</span> <span class="pre">XTerm</span></code></p>
-</div>
-<div class="section" id="no-gui-when-starting-the-renode-platform">
-<h2>No GUI when starting the Renode platform<a class="headerlink" href="#no-gui-when-starting-the-renode-platform" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="no-gui-when-starting-the-renode-platform">
+<h2>No GUI when starting the Renode platform<a class="headerlink" href="#no-gui-when-starting-the-renode-platform" title="Link to this heading"></a></h2>
 <p>When seeing the following error:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">Couldn</span><span class="s1">&#39;t start UI - falling back to telnet mode</span>
 </pre></div>
@@ -265,9 +185,9 @@ XTerm is significantly faster and more optimized (at a cost aesthetics) terminal
 <p class="admonition-title">Note</p>
 <p>The Renode’s Monitor is now embedded into the console intentionally, if this is undesired then read the <a class="reference internal" href="../using_softconsole/renode.html#embddedrenodewindow"><span class="std std-ref">Embedded monitor window</span></a> section.</p>
 </div>
-</div>
-<div class="section" id="deeply-nested-code-causes-crashes-and-glitches">
-<span id="renodestack"></span><h2>Deeply nested code causes crashes and glitches<a class="headerlink" href="#deeply-nested-code-causes-crashes-and-glitches" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="deeply-nested-code-causes-crashes-and-glitches">
+<span id="renodestack"></span><h2>Deeply nested code causes crashes and glitches<a class="headerlink" href="#deeply-nested-code-causes-crashes-and-glitches" title="Link to this heading"></a></h2>
 <p>Experiencing a CPU abort message inside Renode:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">ERROR</span><span class="p">]</span> <span class="n">u54_1</span><span class="p">:</span> <span class="n">CPU</span> <span class="n">abort</span> <span class="p">[</span><span class="n">PC</span><span class="o">=</span><span class="mh">0x0</span><span class="p">]:</span> <span class="n">Trying</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">code</span> <span class="n">outside</span> <span class="n">RAM</span> <span class="ow">or</span> <span class="n">ROM</span> <span class="n">at</span>
 <span class="mh">0x0000000000000000</span><span class="o">.</span>
@@ -281,44 +201,41 @@ XTerm is significantly faster and more optimized (at a cost aesthetics) terminal
 <p class="admonition-title">Note</p>
 <p>This error can happen on any hart and is not limited to u54_1, nor PolarFireSoC. Stack overflow can be triggered on any platform and thus the error messages or observed behavior might be slightly different.</p>
 </div>
-</div>
-<div class="section" id="what-are-the-robot-references-in-softconsole">
-<h2>What are the Robot references in SoftConsole?<a class="headerlink" href="#what-are-the-robot-references-in-softconsole" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-are-the-robot-references-in-softconsole">
+<h2>What are the Robot references in SoftConsole?<a class="headerlink" href="#what-are-the-robot-references-in-softconsole" title="Link to this heading"></a></h2>
 <p>SoftConsole v2022.2-RISC-V is bundled with Nokia’s RED (Robot EDitor) plugin. Robot can be used for automated testing of Renode and real hardware targets. Currently the RED is not supported SoftConsole feature and requires additional manual steps to work (which are not documented yet), however users might try to experiment with it at their own risks.</p>
 <p><a class="reference external" href="https://robotframework.org/">https://robotframework.org/</a></p>
 <p><a class="reference external" href="https://github.com/nokia/RED">https://github.com/nokia/RED</a></p>
 <p><a class="reference external" href="https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html#prerequisites">https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html#prerequisites</a></p>
 <p><a class="reference external" href="https://renode.readthedocs.io/en/latest/tutorials/zephyr-ptp-testing.html">https://renode.readthedocs.io/en/latest/tutorials/zephyr-ptp-testing.html</a></p>
-</div>
-<div class="section" id="renode-on-startup-crashes-with-an-unhandled-exception">
-<h2>Renode on startup crashes with an unhandled exception<a class="headerlink" href="#renode-on-startup-crashes-with-an-unhandled-exception" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="renode-on-startup-crashes-with-an-unhandled-exception">
+<h2>Renode on startup crashes with an unhandled exception<a class="headerlink" href="#renode-on-startup-crashes-with-an-unhandled-exception" title="Link to this heading"></a></h2>
 <p>If the exception message contains the following:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Could not find a part of the path &quot;/&lt;YOUR_PATH&gt;/.renode/history&quot;
 </pre></div>
 </div>
 <p>Then it could have been caused by moving the SoftConsole installation and the config pointing to the old (and nonexistent) location of the history file. Correct the path inside the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/.renode/config</span></code> or just delete the config and let Renode to re-create it.</p>
-</div>
-</div>
+</section>
+</section>
 
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="eclipse.html" class="btn btn-neutral float-right" title="Eclipse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="riscv_trap.html" class="btn btn-neutral float-left" title="RISC-V Trap Exceptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eclipse.html" class="btn btn-neutral float-right" title="Eclipse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2022 Microchip.
+    <p>&#169; Copyright 2025 Microchip.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 <script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
 
@@ -361,9 +278,7 @@ XTerm is significantly faster and more optimized (at a cost aesthetics) terminal
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
   
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
@@ -386,32 +301,21 @@ XTerm is significantly faster and more optimized (at a cost aesthetics) terminal
 
       
       
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
-      
-      
-      
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
        <strong> 
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
        </strong> 
       
 
     </dl>
   </div>
-</div>
-
-  <script type="text/javascript">
+</div><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

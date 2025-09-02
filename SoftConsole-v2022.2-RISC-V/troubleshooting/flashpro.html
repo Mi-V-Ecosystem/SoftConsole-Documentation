@@ -1,106 +1,62 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Flashpro and OpenOCD &mdash; SoftConsole v2022.2-747-RISC-V documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/myRtdOverrides.css?v=775951b6" />
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
-
-  
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
-        <script src="../_static/sphinx_tabs/tabs.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=ce9ecd98"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Project settings" href="project.html" />
     <link rel="prev" title="Other features" href="../using_softconsole/other.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> SoftConsole
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            SoftConsole
           </a>
-
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using SoftConsole</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
@@ -112,7 +68,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Flashpro and OpenOCD</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#windows-firewall">Windows firewall</a></li>
@@ -136,125 +92,87 @@
 <li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">SoftConsole</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Flashpro and OpenOCD</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flashpro and OpenOCD</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
 
-  <div class="section" id="flashpro-and-openocd">
-<h1>Flashpro and OpenOCD<a class="headerlink" href="#flashpro-and-openocd" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="windows-firewall">
-<h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Permalink to this headline">¶</a></h2>
+  <section id="flashpro-and-openocd">
+<h1>Flashpro and OpenOCD<a class="headerlink" href="#flashpro-and-openocd" title="Link to this heading"></a></h1>
+<section id="windows-firewall">
+<h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Link to this heading"></a></h2>
 <p>On Windows if there is a firewall in use then the first time that a debug session is run the firewall may prompt that it is blocking
 OpenOCD, <code class="docutils literal notranslate"><span class="pre">fpServer.exe</span></code> and/or <code class="docutils literal notranslate"><span class="pre">renode.exe</span></code>. Allow the firewall to unblock these and save this as the default setting if
 necessary.</p>
-</div>
-<div class="section" id="multiple-debug-sessions">
-<h2>Multiple debug sessions<a class="headerlink" href="#multiple-debug-sessions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="multiple-debug-sessions">
+<h2>Multiple debug sessions<a class="headerlink" href="#multiple-debug-sessions" title="Link to this heading"></a></h2>
 <p>For a particular SoftConsole application instance, only one debug session should be active at any one time. If a deliberate or
 inadvertent attempt is made to run more than one debug session, then SoftConsole may not work properly and it may be
 necessary to exit and restart SoftConsole for further debugging to work properly.</p>
-</div>
-<div class="section" id="flashpro-jtag-debugging-is-unreliable-on-virtual-machines">
-<h2>FlashPro JTAG debugging is unreliable on virtual machines<a class="headerlink" href="#flashpro-jtag-debugging-is-unreliable-on-virtual-machines" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flashpro-jtag-debugging-is-unreliable-on-virtual-machines">
+<h2>FlashPro JTAG debugging is unreliable on virtual machines<a class="headerlink" href="#flashpro-jtag-debugging-is-unreliable-on-virtual-machines" title="Link to this heading"></a></h2>
 <p>FlashPro JTAG debugging is unreliable on virtual machines so it is recommended that only physical machines and not virtual
 machines be used for SoftConsole debugging</p>
-</div>
-<div class="section" id="debug-session-fails-to-run-as-expected">
-<h2>Debug session fails to run as expected<a class="headerlink" href="#debug-session-fails-to-run-as-expected" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="debug-session-fails-to-run-as-expected">
+<h2>Debug session fails to run as expected<a class="headerlink" href="#debug-session-fails-to-run-as-expected" title="Link to this heading"></a></h2>
 <p>If the debug session fails to run as expected, then check the following:</p>
 <ul class="simple">
 <li><p>On Linux, was the udev rules file installed and activated in order to grant non-root access to users in the
-relevant group (usually plugdev)?</p>
-</li>
+relevant group (usually plugdev)?</p></li>
+</ul>
+<ul class="simple">
 <li><p>Is a FlashPro device connected (FlashPro 5 on Linux, FlashPro3/4/5 on Windows)?</p></li>
 <li><p>Is there more than one FlashPro device connected? If so SoftConsole may not be using the correct one. If
 you want to use a specific one of several FlashPro devices connected, then you can add <code class="docutils literal notranslate"><span class="pre">--command</span> <span class="pre">&quot;microsemi_flashpro</span> <span class="pre">port</span> <span class="pre">&lt;fp-port-name&gt;&quot;</span></code> to the OpenOCD command line options.</p></li>
 <li><p>On Windows did a previous FlashPro3/4 debug session fail leaving OpenOCD (<code class="docutils literal notranslate"><span class="pre">openocd.exe</span></code> or
 <code class="docutils literal notranslate"><span class="pre">fpserver.exe</span></code>) running because <code class="docutils literal notranslate"><span class="pre">abiactel.dll</span></code> did not exit cleanly thus blocking access to the FlashPro
 device? Check Task Manager/ProcessExplorer for openocd.exe and if it’s still running then unplug the
-FlashPro USB cable and then reattach it and OpenOCD should terminate.</p>
-</li>
+FlashPro USB cable and then reattach it and OpenOCD should terminate.</p></li>
+</ul>
+<ul class="simple">
 <li><p>If the debug session starts but the program does not run/behave as expected, then check that the project
 was updated to match the target hardware by having the Libero SoC generated firmware and
 <code class="docutils literal notranslate"><span class="pre">drivers_config</span></code> copied in before rebuilding.</p></li>
 <li><p>Ensure that the relevant CMSIS/HAL firmware core is used.</p></li>
 </ul>
-</div>
-<div class="section" id="connecting-to-remote-openocd">
-<h2>Connecting to remote OpenOCD<a class="headerlink" href="#connecting-to-remote-openocd" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="connecting-to-remote-openocd">
+<h2>Connecting to remote OpenOCD<a class="headerlink" href="#connecting-to-remote-openocd" title="Link to this heading"></a></h2>
 <p>The binding behavior of the OpenOCD changed from the SoftConsole 5.2. Now by default, it’s binding itself to the 127.0.0.1 instead of the 0.0.0.0 which means that the remote OpenOCD will listen only to its loopback address instead on all interfaces and it will not be reachable remotely. This default behavior is considered to be safer and when needed can be overridden by adding the <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">&quot;bindto</span> <span class="pre">0.0.0.0&quot;</span></code> argument to
 the OpenOCD command.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openocd</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;bindto 0.0.0.0&quot;</span> <span class="o">&lt;</span><span class="n">rest</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">your</span><span class="o">-</span><span class="n">arguments</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="check-that-flashpro-can-be-used-without-root-privileges">
-<h2>Check that FlashPro can be used without root privileges<a class="headerlink" href="#check-that-flashpro-can-be-used-without-root-privileges" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="check-that-flashpro-can-be-used-without-root-privileges">
+<h2>Check that FlashPro can be used without root privileges<a class="headerlink" href="#check-that-flashpro-can-be-used-without-root-privileges" title="Link to this heading"></a></h2>
 <p>Connect a FlashPro5/6 JTAG programmer to a native Linux host machine (this might not work on a VM) and check that it is visible to the operating system:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsusb
-Bus <span class="m">001</span> Device <span class="m">004</span>: ID <span class="m">1514</span>:2008 Actel
-Bus <span class="m">001</span> Device <span class="m">004</span>: ID <span class="m">1514</span>:2009 Actel
-Bus <span class="m">002</span> Device <span class="m">002</span>: ID <span class="m">1514</span>:200b Actel
+Bus<span class="w"> </span><span class="m">001</span><span class="w"> </span>Device<span class="w"> </span><span class="m">004</span>:<span class="w"> </span>ID<span class="w"> </span><span class="m">1514</span>:2008<span class="w"> </span>Actel
+Bus<span class="w"> </span><span class="m">001</span><span class="w"> </span>Device<span class="w"> </span><span class="m">004</span>:<span class="w"> </span>ID<span class="w"> </span><span class="m">1514</span>:2009<span class="w"> </span>Actel
+Bus<span class="w"> </span><span class="m">002</span><span class="w"> </span>Device<span class="w"> </span><span class="m">002</span>:<span class="w"> </span>ID<span class="w"> </span><span class="m">1514</span>:200b<span class="w"> </span>Actel
 </pre></div>
 </div>
 <p>If the FlashPro5 (VID=1514 PID=2008) or FlashPro6 (VID=1514 PID=2009) or embedded FlashPro6 Rev B (VID=1514 PID=200b) does not appear then double check that the previous steps were carried out correctly.</p>
@@ -274,45 +192,21 @@ Bus <span class="m">002</span> Device <span class="m">002</span>: ID <span class
 <li><p>Run OpenOCD from the command line to ensure that the debug connection can be established to the target CPU/SoC:</p></li>
 </ul>
 <p>First go to the correct directory (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;SoftConsole-install-dir&gt;/openocd/bin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;SoftConsole-install-dir&gt;/openocd/bin
 </pre></div>
 </div>
 <p>And then execute the following:</p>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
-<div class="docutils container">
-<p>PolarFire SoC</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-1 docutils container">
-<div class="docutils container">
-<p>Mi-V RISCV</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -c <span class="s2">&quot;set DEVICE MPFS&quot;</span> -f board/microsemi-riscv.cfg
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">PolarFire SoC</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Mi-V RISCV</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;set DEVICE MPFS&quot;</span><span class="w"> </span>-f<span class="w"> </span>board/microsemi-riscv.cfg
 </pre></div>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-riscv.cfg
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd<span class="w"> </span>-f<span class="w"> </span>board/microsemi-riscv.cfg
 </pre></div>
 </div>
-</div>
-</div>
+</div></div>
 <p>The output should be similar to the following:</p>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-1-0 docutils container">
-<div class="docutils container">
-<p>Mi-V RISC-V</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Mi-V RISC-V</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
 Licensed under GNU GPL v2
 For bug reports, read
 http://openocd.org/doc/doxygen/bugs.html
@@ -343,8 +237,7 @@ halted at 0x80000b60 due to debug interrupt
 <li><p>And the RISC-V IDCODE</p></li>
 </ul>
 </div>
-</div>
-</div>
+</div></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If seeing output similar to the snippet below (or any other errors excluding documented issues) then that indicates a problem. In that case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p>
@@ -354,13 +247,13 @@ Info: FlashPro port used: usb
 </span></pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="flashpro-programmers-cannot-be-shared-by-applications">
-<h2>FlashPro programmers cannot be shared by applications<a class="headerlink" href="#flashpro-programmers-cannot-be-shared-by-applications" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flashpro-programmers-cannot-be-shared-by-applications">
+<h2>FlashPro programmers cannot be shared by applications<a class="headerlink" href="#flashpro-programmers-cannot-be-shared-by-applications" title="Link to this heading"></a></h2>
 <p>Due to limitations of the FlashPro driver/library software support used by FlashPro client applications (e.g. SoftConsole OpenOCD, SmartDebug, Identify etc.) FlashPro programmers cannot be shared and used at the same time by multiple applications and only one application can use a specific FlashPro programmer at any one time.</p>
-</div>
-<div class="section" id="ftdi-detected-as-ttyusb-on-linux">
-<h2>FTDI detected as ttyUSB on Linux<a class="headerlink" href="#ftdi-detected-as-ttyusb-on-linux" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="ftdi-detected-as-ttyusb-on-linux">
+<h2>FTDI detected as ttyUSB on Linux<a class="headerlink" href="#ftdi-detected-as-ttyusb-on-linux" title="Link to this heading"></a></h2>
 <p>In some instances, all the FTDI channels might get taken by the serial driver and turned into the ttyUSB devices. If this happens then OpenOCD may list one or more FlashPro programmers but fail to connect to one:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info : FlashPro ports available: S201Z7LB20
 Info : FlashPro port used: S201Z7LB20
@@ -380,32 +273,32 @@ Running dmesg can show that the ftdi_sio driver is registered to the device.
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 <span class="c1"># $DEVNAME environment variable is most likely set to /dev/ttyUSB0</span>
 <span class="c1"># get the ttyUSB0 without the path</span>
-<span class="nv">NAME</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$DEVNAME</span><span class="k">)</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$DEVNAME</span><span class="k">)</span>
 <span class="c1"># Find FTDI child USB device with then $DEVNAME parent device</span>
-<span class="k">for</span> DEVICE <span class="k">in</span> /sys/bus/usb/drivers/ftdi_sio/*/
+<span class="k">for</span><span class="w"> </span>DEVICE<span class="w"> </span><span class="k">in</span><span class="w"> </span>/sys/bus/usb/drivers/ftdi_sio/*/
 <span class="k">do</span>
-    <span class="k">if</span> <span class="o">[</span> -e <span class="nv">$DEVICE</span>/<span class="nv">$NAME</span> <span class="o">]</span>
-    <span class="k">then</span>
-        <span class="c1"># Match found, unbind it from the FTDI driver</span>
-        <span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="k">$(</span>basename <span class="nv">$DEVICE</span><span class="k">)</span><span class="s2">&quot;</span> &gt; /sys/bus/usb/drivers/ftdi_sio/unbind
-        <span class="nb">break</span>
-    <span class="k">fi</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-e<span class="w"> </span><span class="nv">$DEVICE</span>/<span class="nv">$NAME</span><span class="w"> </span><span class="o">]</span>
+<span class="w">    </span><span class="k">then</span>
+<span class="w">        </span><span class="c1"># Match found, unbind it from the FTDI driver</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$DEVICE</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/usb/drivers/ftdi_sio/unbind
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">fi</span>
 <span class="k">done</span>
 </pre></div>
 </div>
 <p>Save this script as <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/unbind_ftdi.sh</span></code> and give it correct privileges:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo chmod a+x /usr/local/bin/unbind_ftdi.sh
-sudo chown root:staff /usr/local/bin/unbind_ftdi.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span>/usr/local/bin/unbind_ftdi.sh
+sudo<span class="w"> </span>chown<span class="w"> </span>root:staff<span class="w"> </span>/usr/local/bin/unbind_ftdi.sh
 </pre></div>
 </div>
 <p>Now find where the OpenOCD udev script was installed (most likely <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code>) and modify the existing “Microsemi (Actel) FlashPro5” entry as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Microsemi (Actel) FlashPro5</span>
-ATTRS<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1514&quot;</span>, ATTRS<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;2008&quot;</span>, <span class="nv">MODE</span><span class="o">=</span><span class="s2">&quot;666&quot;</span>,
+ATTRS<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1514&quot;</span>,<span class="w"> </span>ATTRS<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;2008&quot;</span>,<span class="w"> </span><span class="nv">MODE</span><span class="o">=</span><span class="s2">&quot;666&quot;</span>,
 <span class="nv">RUN</span><span class="o">+=</span><span class="s2">&quot;/usr/local/bin/unbind_ftdi.sh&quot;</span>
 </pre></div>
 </div>
 <p>Depending on the distribution I might be necessary to reload the udev rules or reboot for the changes to take effect:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo udevadm trigger
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>udevadm<span class="w"> </span>trigger
 </pre></div>
 </div>
 <p>Now reconnecting the FlashPro device and watching <code class="docutils literal notranslate"><span class="pre">dmesg</span></code> messages should state that the <code class="docutils literal notranslate"><span class="pre">ftdi_sio</span></code> module was unloaded and OpenOCD should be able to connect to and use the connected FlashPro programmer(s).</p>
@@ -422,42 +315,39 @@ ATTRS<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">
 </span>[10626.432296] ftdi_sio 2-1.4:1.2: device disconnected
 </pre></div>
 </div>
-</div>
-<div class="section" id="embedded-flashpro6-rev-a">
-<h2>Embedded FlashPro6 rev A<a class="headerlink" href="#embedded-flashpro6-rev-a" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="embedded-flashpro6-rev-a">
+<h2>Embedded FlashPro6 rev A<a class="headerlink" href="#embedded-flashpro6-rev-a" title="Link to this heading"></a></h2>
 <p>Refer to the Libero SoC v12.5 SP1 or Program Debug Tools v12.5 SP1 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
 <p>Only a few early production boards were shipped with Rev A, while most of the users have already board with Rev B.</p>
-</div>
-<div class="section" id="openocd-crashes-when-attempting-to-debug-risc-v">
-<h2>OpenOCD crashes when attempting to debug RISC-V<a class="headerlink" href="#openocd-crashes-when-attempting-to-debug-risc-v" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="openocd-crashes-when-attempting-to-debug-risc-v">
+<h2>OpenOCD crashes when attempting to debug RISC-V<a class="headerlink" href="#openocd-crashes-when-attempting-to-debug-risc-v" title="Link to this heading"></a></h2>
 <p>In some cases, OpenOCD may crash when attempting to debug a RISC-V target. This happens when the debug session would fail anyway due to everything not being order for it to work – for example, the target board is not connected or powered up or the wrong target board is connected. In some cases, such a crash may necessitate closing SoftConsole and restarting it in order for a subsequent debug session to work.</p>
-</div>
-<div class="section" id="windows-occasionally-crashes-when-plugging-flashpro-in-out">
-<h2>Windows occasionally crashes when plugging FlashPro in/out<a class="headerlink" href="#windows-occasionally-crashes-when-plugging-flashpro-in-out" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="windows-occasionally-crashes-when-plugging-flashpro-in-out">
+<h2>Windows occasionally crashes when plugging FlashPro in/out<a class="headerlink" href="#windows-occasionally-crashes-when-plugging-flashpro-in-out" title="Link to this heading"></a></h2>
 <p>It has been observed in some cases that plugging a FlashPro JTAG programmer in/out of a Windows machine can sporadically/occasionally cause it to “Blue Screen” (“Blue Screen of Death” or “BSOD”). When this happens, the error is often a <code class="docutils literal notranslate"><span class="pre">PAGE_FAULT_IN_NONPAGED_AREA</span></code> in <code class="docutils literal notranslate"><span class="pre">ftdibus.sys</span></code> but in some cases a different cause may be displayed.</p>
 <p>Reducing the amount of unplugging and re-plugging of the FlashPro 5 and making sure to not ‘wiggle’ the connector while doing so should lower the risks of getting BSOD. Switching to embedded FlashPro6 should improve the user experience as well.</p>
-</div>
-</div>
+</section>
+</section>
 
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="project.html" class="btn btn-neutral float-right" title="Project settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../using_softconsole/other.html" class="btn btn-neutral float-left" title="Other features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="project.html" class="btn btn-neutral float-right" title="Project settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2022 Microchip.
+    <p>&#169; Copyright 2025 Microchip.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 <script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
 
@@ -500,9 +390,7 @@ ATTRS<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
   
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
@@ -525,32 +413,21 @@ ATTRS<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">
 
       
       
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
-      
-      
-      
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
        <strong> 
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
        </strong> 
       
 
     </dl>
   </div>
-</div>
-
-  <script type="text/javascript">
+</div><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
