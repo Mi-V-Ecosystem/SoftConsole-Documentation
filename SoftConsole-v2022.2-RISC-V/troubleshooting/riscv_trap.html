@@ -1,100 +1,60 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>RISC-V Trap Exceptions &mdash; SoftConsole v2022.2-747-RISC-V documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/myRtdOverrides.css?v=775951b6" />
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
-
-  
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=ce9ecd98"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Renode troubleshooting" href="renode.html" />
     <link rel="prev" title="RISC-V" href="riscv.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> SoftConsole
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            SoftConsole
           </a>
-
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using SoftConsole</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
@@ -106,7 +66,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="flashpro.html">Flashpro and OpenOCD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project.html">Project settings</a></li>
@@ -137,74 +97,34 @@
 <li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">SoftConsole</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>RISC-V Trap Exceptions</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RISC-V Trap Exceptions</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
 
-  <div class="section" id="risc-v-trap-exceptions">
-<h1>RISC-V Trap Exceptions<a class="headerlink" href="#risc-v-trap-exceptions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="mi-v-hal-exit-codes">
-<h2>Mi-V HAL Exit codes<a class="headerlink" href="#mi-v-hal-exit-codes" title="Permalink to this headline">¶</a></h2>
+  <section id="risc-v-trap-exceptions">
+<h1>RISC-V Trap Exceptions<a class="headerlink" href="#risc-v-trap-exceptions" title="Link to this heading"></a></h1>
+<section id="mi-v-hal-exit-codes">
+<h2>Mi-V HAL Exit codes<a class="headerlink" href="#mi-v-hal-exit-codes" title="Link to this heading"></a></h2>
 <p>If UART displays message such as these:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Progam</span> <span class="n">has</span> <span class="n">exited</span> <span class="k">with</span> <span class="n">code</span><span class="p">:</span><span class="mh">0x00000003</span> <span class="p">(</span><span class="n">got</span> <span class="n">into</span> <span class="n">a</span> <span class="n">trap</span> <span class="n">exception</span><span class="p">)</span>
 </pre></div>
@@ -212,69 +132,69 @@
 <p>It means that it reached to a unhandled exception and decided to stop the execution voluntary as it could cause unexpected behaviors.</p>
 <p>This section applies to any other exit codes as well because it deals with <strong>unhandled trap exceptions</strong> in general. And this section can be used on other trap exceptions as well (they do not have to display a error on the UART). Possibly the code got into unhandled exception/trap state.</p>
 <p>Troubleshoot as a trap, the Mi-V HAL exit code meanings are:</p>
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head">Mi-V HAL Exit code</th>
-<th class="head">mcause</th>
-<th class="head">Cause of the exit code</th>
+<tr class="row-odd"><th class="head"><p>Mi-V HAL Exit code</p></th>
+<th class="head"><p>mcause</p></th>
+<th class="head"><p>Cause of the exit code</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td>0x00000001</td>
-<td>0x00000000</td>
-<td>Instruction address misaligned</td>
+<tr class="row-even"><td><p>0x00000001</p></td>
+<td><p>0x00000000</p></td>
+<td><p>Instruction address misaligned</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000002</td>
-<td>0x00000001</td>
-<td>Instruction access fault</td>
+<tr class="row-odd"><td><p>0x00000002</p></td>
+<td><p>0x00000001</p></td>
+<td><p>Instruction access fault</p></td>
 </tr>
-<tr class="row-even"><td>0x00000003</td>
-<td>0x00000002</td>
-<td>Illegal instruction</td>
+<tr class="row-even"><td><p>0x00000003</p></td>
+<td><p>0x00000002</p></td>
+<td><p>Illegal instruction</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000004</td>
-<td>0x00000003</td>
-<td>Breakpoint</td>
+<tr class="row-odd"><td><p>0x00000004</p></td>
+<td><p>0x00000003</p></td>
+<td><p>Breakpoint</p></td>
 </tr>
-<tr class="row-even"><td>0x00000005</td>
-<td>0x00000004</td>
-<td>Load address misaligned</td>
+<tr class="row-even"><td><p>0x00000005</p></td>
+<td><p>0x00000004</p></td>
+<td><p>Load address misaligned</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000006</td>
-<td>0x00000005</td>
-<td>Load access fault</td>
+<tr class="row-odd"><td><p>0x00000006</p></td>
+<td><p>0x00000005</p></td>
+<td><p>Load access fault</p></td>
 </tr>
-<tr class="row-even"><td>0x00000007</td>
-<td>0x00000006</td>
-<td>Store/AMO address misaligned</td>
+<tr class="row-even"><td><p>0x00000007</p></td>
+<td><p>0x00000006</p></td>
+<td><p>Store/AMO address misaligned</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000008</td>
-<td>0x00000007</td>
-<td>Store/AMO access fault</td>
+<tr class="row-odd"><td><p>0x00000008</p></td>
+<td><p>0x00000007</p></td>
+<td><p>Store/AMO access fault</p></td>
 </tr>
-<tr class="row-even"><td>0x00000009</td>
-<td>0x00000008</td>
-<td>Environment call from U-mode</td>
+<tr class="row-even"><td><p>0x00000009</p></td>
+<td><p>0x00000008</p></td>
+<td><p>Environment call from U-mode</p></td>
 </tr>
-<tr class="row-odd"><td>0x0000000A</td>
-<td>0x00000009</td>
-<td>Environment call from S-mode</td>
+<tr class="row-odd"><td><p>0x0000000A</p></td>
+<td><p>0x00000009</p></td>
+<td><p>Environment call from S-mode</p></td>
 </tr>
-<tr class="row-even"><td>0x0000000C</td>
-<td>0x0000000B</td>
-<td>Environment call from M-mode</td>
+<tr class="row-even"><td><p>0x0000000C</p></td>
+<td><p>0x0000000B</p></td>
+<td><p>Environment call from M-mode</p></td>
 </tr>
-<tr class="row-odd"><td>0x0000000D</td>
-<td>0x0000000C</td>
-<td>Instruction page fault</td>
+<tr class="row-odd"><td><p>0x0000000D</p></td>
+<td><p>0x0000000C</p></td>
+<td><p>Instruction page fault</p></td>
 </tr>
-<tr class="row-even"><td>0x0000000E</td>
-<td>0x0000000D</td>
-<td>Load page fault</td>
+<tr class="row-even"><td><p>0x0000000E</p></td>
+<td><p>0x0000000D</p></td>
+<td><p>Load page fault</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000010</td>
-<td>0x0000000F</td>
-<td>Store/AMO page fault</td>
+<tr class="row-odd"><td><p>0x00000010</p></td>
+<td><p>0x0000000F</p></td>
+<td><p>Store/AMO page fault</p></td>
 </tr>
 </tbody>
 </table>
@@ -294,65 +214,65 @@
 <p class="admonition-title">Note</p>
 <p>When asking for assistance, all these CSRs can give vital information to troubleshoot your problem, <strong>do not ask for trap troubleshooting help without supplying this vital information!</strong></p>
 </div>
-</div>
-<div class="section" id="csrs-relevant-to-troubleshooting">
-<h2>CSRs relevant to troubleshooting<a class="headerlink" href="#csrs-relevant-to-troubleshooting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="csrs-relevant-to-troubleshooting">
+<h2>CSRs relevant to troubleshooting<a class="headerlink" href="#csrs-relevant-to-troubleshooting" title="Link to this heading"></a></h2>
 <p>Our Mi-V verbose trap handler when running Debug build (Release builds do have it disabled) should show the values as local variables in the bottom right corner (however it’s not the only method how to fetch them):</p>
 <p><img alt="CSRs" src="../_images/trap-csrs.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Converting these values to HEX should give more meaningful representation:</p>
-<div class="graphviz"><img src="../_images/graphviz-fcaa503b59aebaa113bbbfb92137b9432017c3c9.png" alt="digraph {
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right-click&quot; -&gt; &quot;Format Number&quot; -&gt; &quot;Hex&quot;
-     }" class="graphviz" /></div>
-</div>
+     }</div>
 <p>These CSRs have the following meanings which should help troubleshoot the cause of why the exception happened:</p>
-<div class="section" id="mcause">
-<h3>mcause<a class="headerlink" href="#mcause" title="Permalink to this headline">¶</a></h3>
+<section id="mcause">
+<h3>mcause<a class="headerlink" href="#mcause" title="Link to this heading"></a></h3>
 <p>Should be the same as <code class="docutils literal notranslate"><span class="pre">Mi-V</span> <span class="pre">HAL</span> <span class="pre">exit</span> <span class="pre">code</span> <span class="pre">-</span> <span class="pre">1</span></code>, if it’s not then different trap happened in middle of the trap debug session.</p>
-</div>
-<div class="section" id="mepc">
-<h3>mepc<a class="headerlink" href="#mepc" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mepc">
+<h3>mepc<a class="headerlink" href="#mepc" title="Link to this heading"></a></h3>
 <p>Is the value of Program Counter at the moment when the exception happened (address to code which caused the trap).</p>
-</div>
-<div class="section" id="mtval-mbadaddr">
-<h3>mtval/mbadaddr<a class="headerlink" href="#mtval-mbadaddr" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mtval-mbadaddr">
+<h3>mtval/mbadaddr<a class="headerlink" href="#mtval-mbadaddr" title="Link to this heading"></a></h3>
 <p>Depending on the assembler version the name of this CSR might be either <code class="docutils literal notranslate"><span class="pre">mtval</span></code> or <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code>. In the current SoftConsole v2022.2-RISC-V these can be freely interchanged, however the <code class="docutils literal notranslate"><span class="pre">mtval</span></code> is the newer <strong>correct</strong> name. If the exit code is 1,2, 5, 6, 7, 8, 0xE or 0x10 (mcause 0,1,4,5,6,7,0xD,0xF) then this CSR points to the memory address which caused this fault. If the exit code is 3 (mcause=2) then this CSR contains the opcode of the instruction which triggered the trap. Together with the exit code (mcause+1) and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> this can point to what happened and where it happened.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">mcause</span></code> and exit code are almost identical except the exit code is offset by 1.</p>
 </div>
-</div>
-<div class="section" id="mip">
-<h3>mip<a class="headerlink" href="#mip" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mip">
+<h3>mip<a class="headerlink" href="#mip" title="Link to this heading"></a></h3>
 <p>Displays any pending interrupts.</p>
-</div>
-<div class="section" id="mie">
-<h3>mie<a class="headerlink" href="#mie" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mie">
+<h3>mie<a class="headerlink" href="#mie" title="Link to this heading"></a></h3>
 <p>Displays what interrupts are enabled.</p>
-</div>
-<div class="section" id="mtvec">
-<h3>mtvec<a class="headerlink" href="#mtvec" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mtvec">
+<h3>mtvec<a class="headerlink" href="#mtvec" title="Link to this heading"></a></h3>
 <p>Is trap handler vector, address where to jump when the trap happens.</p>
-</div>
-<div class="section" id="mscratch">
-<h3>mscratch<a class="headerlink" href="#mscratch" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mscratch">
+<h3>mscratch<a class="headerlink" href="#mscratch" title="Link to this heading"></a></h3>
 <p>Temporary values, sometimes it can hold value of the A0 register which is used for arguments passing or return values from the functions.</p>
-</div>
-<div class="section" id="mstatus">
-<h3>mstatus<a class="headerlink" href="#mstatus" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mstatus">
+<h3>mstatus<a class="headerlink" href="#mstatus" title="Link to this heading"></a></h3>
 <p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
-<img alt="../_images/wavedrom-0ad72515-23c8-4ce5-bee4-5eb8170de057.svg" height="300px" src="../_images/wavedrom-0ad72515-23c8-4ce5-bee4-5eb8170de057.svg" width="840px" /><div class="admonition note">
+<img alt="../_images/wavedrom-c1f39546-cff3-42ad-942e-959f66c15bcb.svg" src="../_images/wavedrom-c1f39546-cff3-42ad-942e-959f66c15bcb.svg" style="width: 840px; height: 300px;" />
+<div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
 </div>
-</div>
-</div>
-<div class="section" id="typical-causes-of-mcause-2">
-<h2>Typical causes of mcause==2<a class="headerlink" href="#typical-causes-of-mcause-2" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="typical-causes-of-mcause-2">
+<h2>Typical causes of mcause==2<a class="headerlink" href="#typical-causes-of-mcause-2" title="Link to this heading"></a></h2>
 <p>Just few of possible situations and causes. Often this is caused by non matching SW and HW (using wrong extensions, or using more memory than target has), or SW bugs (overflows). Knowing how to read code listing (.lst file) and being able to read CSR values is cruitial in the troubleshooting. Often the symptoms and cause are not in the same place, unhandled trap exception happens after the damage was done and user needs to traverse back the callstack what caused it. Often placing breakpoints to the aseembly just before the issue then single stepping and verifying values of stack and registers can pin point to the real cause of the problem.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">mtval</span></code> opcode of valid instruction, <code class="docutils literal notranslate"><span class="pre">mepc</span></code> pointing to valid location in the code. Check if the instruction is supported by HW. Can be caused by enabling F or C extensions in the project settings while running on HW which can’t execute these instructions.</p></li>
@@ -362,13 +282,13 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the <code class="docutils literal notranslate"><span class="pre">mtval</span></code> opcode of the instruction is full of zeroes or ones, then that indicates the code went executing in a wrong region of memory. Troubleshoot why it might have jumped there, corrupted RA return pointer in a stack, stack getting overwritten by buffer overflow or some other SW bug. Design not matching the SW is frequent cause, for example having non-matching linker script and using more memory than your target really has, see:</p>
-<p><a class="reference internal" href="../using_softconsole/projects.html#liberoword"><span class="std std-ref">Libero's Word is 16-bit</span></a></p>
+<p><a class="reference internal" href="../using_softconsole/projects.html#liberoword"><span class="std std-ref">Libero’s Word is 16-bit</span></a></p>
 <p><a class="reference internal" href="project.html#shrinking"><span class="std std-ref">Application shrinking</span></a></p>
 </div>
 <p>If <code class="docutils literal notranslate"><span class="pre">mtval</span></code> is valid opcode and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> valid range, then open the listing file (<code class="docutils literal notranslate"><span class="pre">.lst</span></code>) and search for <code class="docutils literal notranslate"><span class="pre">mepc</span></code> address, this should point a specific instruction, validate if the instruction is valid. If it has compressed syntax (instructions have c. prefix and the opcodes are only 16-bit), then check if your HW has support for the C extension and if the project settings have correctly configured the CPU/arch/ABI. A similar situation is with F and D floating-point extensions. The listing file will show symbol to which C function the instructions belongs and opening the function from the C editor might reveal a potential issue or narrow down the scope of potential causes. <strong>It is easier to ask for assistance when the possible causes are narrowed down.</strong></p>
-<div class="section" id="troubleshooting-flow-for-mcause-2">
-<h3>Troubleshooting flow for mcause==2<a class="headerlink" href="#troubleshooting-flow-for-mcause-2" title="Permalink to this headline">¶</a></h3>
-<div class="graphviz"><img src="../_images/graphviz-a2801c224efb439f87b1431dbc8952fc1de5ba02.png" alt="digraph {
+<section id="troubleshooting-flow-for-mcause-2">
+<h3>Troubleshooting flow for mcause==2<a class="headerlink" href="#troubleshooting-flow-for-mcause-2" title="Link to this heading"></a></h3>
+    digraph {
         graph [bgcolor=transparent]
         node  [fontname=&quot;Handlee&quot; shape=rect]
         edge  [fontname=&quot;Handlee&quot;]
@@ -406,87 +326,86 @@
             rank=same;
             opcodeYes; opcode; start
         }
-    }" class="graphviz" /></div>
-</div>
-<div class="section" id="real-life-example-of-mcause-2-on-a-non-f-target">
-<h3>Real-life example of mcause==2 on a non-F target<a class="headerlink" href="#real-life-example-of-mcause-2-on-a-non-f-target" title="Permalink to this headline">¶</a></h3>
+    }</section>
+<section id="real-life-example-of-mcause-2-on-a-non-f-target">
+<h3>Real-life example of mcause==2 on a non-F target<a class="headerlink" href="#real-life-example-of-mcause-2-on-a-non-f-target" title="Link to this heading"></a></h3>
 <p>Application halted in a trap handler:</p>
 <p><img alt="screenshot" src="../_images/step0010.png" /></p>
 <p><img alt="screenshot" src="../_images/step0020.png" /></p>
 <p>The local variable tab should contain the content of the CSRs:</p>
 <p><img alt="screenshot" src="../_images/step0030.png" /></p>
 <p>Usually the CSRs are most useful when they are formatted to the hex format:</p>
-<div class="graphviz"><img src="../_images/graphviz-fcaa503b59aebaa113bbbfb92137b9432017c3c9.png" alt="digraph {
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right-click&quot; -&gt; &quot;Format Number&quot; -&gt; &quot;Hex&quot;
-     }" class="graphviz" /></div>
-<br/><p><img alt="screenshot" src="../_images/step0040.png" /></p>
+     }<br/>
+<p><img alt="screenshot" src="../_images/step0040.png" /></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">mcause</span></code> CSR is 2, the table below shows that it means a <code class="docutils literal notranslate"><span class="pre">Illegal</span> <span class="pre">instruction</span></code>:</p>
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head">Mi-V HAL Exit code</th>
-<th class="head">mcause</th>
-<th class="head">Cause of the exit code</th>
+<tr class="row-odd"><th class="head"><p>Mi-V HAL Exit code</p></th>
+<th class="head"><p>mcause</p></th>
+<th class="head"><p>Cause of the exit code</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td>0x00000001</td>
-<td>0x00000000</td>
-<td>Instruction address misaligned</td>
+<tr class="row-even"><td><p>0x00000001</p></td>
+<td><p>0x00000000</p></td>
+<td><p>Instruction address misaligned</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000002</td>
-<td>0x00000001</td>
-<td>Instruction access fault</td>
+<tr class="row-odd"><td><p>0x00000002</p></td>
+<td><p>0x00000001</p></td>
+<td><p>Instruction access fault</p></td>
 </tr>
-<tr class="row-even"><td>0x00000003</td>
-<td>0x00000002</td>
-<td>Illegal instruction</td>
+<tr class="row-even"><td><p>0x00000003</p></td>
+<td><p>0x00000002</p></td>
+<td><p>Illegal instruction</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000004</td>
-<td>0x00000003</td>
-<td>Breakpoint</td>
+<tr class="row-odd"><td><p>0x00000004</p></td>
+<td><p>0x00000003</p></td>
+<td><p>Breakpoint</p></td>
 </tr>
-<tr class="row-even"><td>0x00000005</td>
-<td>0x00000004</td>
-<td>Load address misaligned</td>
+<tr class="row-even"><td><p>0x00000005</p></td>
+<td><p>0x00000004</p></td>
+<td><p>Load address misaligned</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000006</td>
-<td>0x00000005</td>
-<td>Load access fault</td>
+<tr class="row-odd"><td><p>0x00000006</p></td>
+<td><p>0x00000005</p></td>
+<td><p>Load access fault</p></td>
 </tr>
-<tr class="row-even"><td>0x00000007</td>
-<td>0x00000006</td>
-<td>Store/AMO address misaligned</td>
+<tr class="row-even"><td><p>0x00000007</p></td>
+<td><p>0x00000006</p></td>
+<td><p>Store/AMO address misaligned</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000008</td>
-<td>0x00000007</td>
-<td>Store/AMO access fault</td>
+<tr class="row-odd"><td><p>0x00000008</p></td>
+<td><p>0x00000007</p></td>
+<td><p>Store/AMO access fault</p></td>
 </tr>
-<tr class="row-even"><td>0x00000009</td>
-<td>0x00000008</td>
-<td>Environment call from U-mode</td>
+<tr class="row-even"><td><p>0x00000009</p></td>
+<td><p>0x00000008</p></td>
+<td><p>Environment call from U-mode</p></td>
 </tr>
-<tr class="row-odd"><td>0x0000000A</td>
-<td>0x00000009</td>
-<td>Environment call from S-mode</td>
+<tr class="row-odd"><td><p>0x0000000A</p></td>
+<td><p>0x00000009</p></td>
+<td><p>Environment call from S-mode</p></td>
 </tr>
-<tr class="row-even"><td>0x0000000C</td>
-<td>0x0000000B</td>
-<td>Environment call from M-mode</td>
+<tr class="row-even"><td><p>0x0000000C</p></td>
+<td><p>0x0000000B</p></td>
+<td><p>Environment call from M-mode</p></td>
 </tr>
-<tr class="row-odd"><td>0x0000000D</td>
-<td>0x0000000C</td>
-<td>Instruction page fault</td>
+<tr class="row-odd"><td><p>0x0000000D</p></td>
+<td><p>0x0000000C</p></td>
+<td><p>Instruction page fault</p></td>
 </tr>
-<tr class="row-even"><td>0x0000000E</td>
-<td>0x0000000D</td>
-<td>Load page fault</td>
+<tr class="row-even"><td><p>0x0000000E</p></td>
+<td><p>0x0000000D</p></td>
+<td><p>Load page fault</p></td>
 </tr>
-<tr class="row-odd"><td>0x00000010</td>
-<td>0x0000000F</td>
-<td>Store/AMO page fault</td>
+<tr class="row-odd"><td><p>0x00000010</p></td>
+<td><p>0x0000000F</p></td>
+<td><p>Store/AMO page fault</p></td>
 </tr>
 </tbody>
 </table>
@@ -517,40 +436,36 @@ This issue can be solved by any of the following:</p>
 <li><p>Remove the floating-point math and replace it with <strong>fixed-point</strong> arithmetic (if that is viable)</p></li>
 <li><p>Switch to <strong>soft-float</strong> implementation, this will increase the code size and decrease the performance significantly as all IEEE754 functionality will be emulated in software.
 To switch to soft-float <strong>both</strong> <code class="docutils literal notranslate"><span class="pre">Floating</span> <span class="pre">point</span></code> and <code class="docutils literal notranslate"><span class="pre">Floating</span> <span class="pre">point</span> <span class="pre">ABI</span></code> have to be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> in the following:</p>
-<div class="graphviz"><img src="../_images/graphviz-b2ecfc868eaba1d6ed77ad8abc7c789ee961a654.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;; }" class="graphviz" /></div>
-<p><img alt="F ABI matching" src="../_images/float-match-abi-rv32ima.png" /></p>
+digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;; }<p><img alt="F ABI matching" src="../_images/float-match-abi-rv32ima.png" /></p>
 </li>
 <li><p>Switch to a target that has <strong>hardware</strong> <code class="docutils literal notranslate"><span class="pre">F</span></code> support.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="typical-causes-of-mcause-0-4-or-6">
-<h2>Typical causes of mcause==0,4 or 6<a class="headerlink" href="#typical-causes-of-mcause-0-4-or-6" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="typical-causes-of-mcause-0-4-or-6">
+<h2>Typical causes of mcause==0,4 or 6<a class="headerlink" href="#typical-causes-of-mcause-0-4-or-6" title="Link to this heading"></a></h2>
 <p>When mcause==0, 4, or 6, then this might indicate <strong>misaligned</strong> address access, the <code class="docutils literal notranslate"><span class="pre">mtval/mbadaddr</span></code> show the address itself (if it’s not aligned to 32-bit alignment then it’s misaligned) and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> should point to the location in the code where this misalignment happened, evaluate the listing file to confirm the issue. Double-check project settings: Use strict alignment If the target is Renode, then it is possible to use symbols to resolve the addresses such as MEPC which can sometimes help
 troubleshoot a trap without even opening the listing file, see Symbols and simple trace functionality</p>
 <p>See: <a class="reference internal" href="../using_softconsole/projects.html#alignstrict"><span class="std std-ref">Use strict alignment</span></a></p>
-</div>
-</div>
+</section>
+</section>
 <span class="target" id="riscvtrapexception"></span>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="renode.html" class="btn btn-neutral float-right" title="Renode troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="riscv.html" class="btn btn-neutral float-left" title="RISC-V" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="renode.html" class="btn btn-neutral float-right" title="Renode troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2022 Microchip.
+    <p>&#169; Copyright 2025 Microchip.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 <script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
 
@@ -593,9 +508,7 @@ troubleshoot a trap without even opening the listing file, see Symbols and simpl
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
   
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
@@ -618,32 +531,21 @@ troubleshoot a trap without even opening the listing file, see Symbols and simpl
 
       
       
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
-      
-      
-      
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
        <strong> 
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
        </strong> 
       
 
     </dl>
   </div>
-</div>
-
-  <script type="text/javascript">
+</div><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

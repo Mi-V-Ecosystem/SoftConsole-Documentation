@@ -1,100 +1,60 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Renode simulation platform &mdash; SoftConsole v2022.2-747-RISC-V documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/myRtdOverrides.css?v=775951b6" />
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
-
-  
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=ce9ecd98"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Other features" href="other.html" />
     <link rel="prev" title="PolarFire SoC" href="mpfs.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> SoftConsole
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            SoftConsole
           </a>
-
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Using SoftConsole</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using SoftConsole</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
@@ -121,7 +81,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
@@ -132,72 +92,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">SoftConsole</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Renode simulation platform</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Renode simulation platform</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
 
-  <div class="section" id="renode-simulation-platform">
-<h1>Renode simulation platform<a class="headerlink" href="#renode-simulation-platform" title="Permalink to this headline">¶</a></h1>
+  <section id="renode-simulation-platform">
+<h1>Renode simulation platform<a class="headerlink" href="#renode-simulation-platform" title="Link to this heading"></a></h1>
 <p><img alt="Renode logo" src="../_images/renode_logo1.png" /></p>
 <p>Renode™ is an open-source software development framework with commercial support from Antmicro that lets you develop, debug and test multi-node device systems reliably, scalably and effectively. If all installation dependencies are met (see installation section), then the RISC-V examples can be run in the emulator.</p>
 <p>To debug SoftConsole example project in the emulator, Renode must be run with the correct platform model. Bundled external launchers with platforms models are:</p>
@@ -212,13 +132,13 @@
 </div>
 <p>After the target platform is running the GDB launcher can be used to connect the GDB client to the Renode platform GDB server. To simplify this process, the examples contain a separate group launcher which invokes the platform first, waits for it to be loaded and ready and then invokes the GDB launcher.</p>
 <p>The sequence of execution of a group launcher is:</p>
-<div class="graphviz"><img src="../_images/graphviz-acbc3c918d838149a727d4bc3b05695877cf5268.png" alt="digraph {
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Group launcher&quot; -&gt; &quot;Starts Renode with its GDB server first&quot; -&gt; &quot;Then starts debug launcher with GDB client&quot;
-     }" class="graphviz" /></div>
-<br/><p>They are located in their own dedicated section in the <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">Configurations</span></code> dialog:</p>
+     }<br/>
+<p>They are located in their own dedicated section in the <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">Configurations</span></code> dialog:</p>
 <p><img alt="group launchers" src="../_images/group-launchers.png" /></p>
 <p>The bundled examples shipped with the example workspace have these group launchers:</p>
 <ul>
@@ -250,93 +170,98 @@
 </li>
 </ul>
 <p>After the GDB client connection the Renode needs to start the simulation. In a case of Mi-V RV32 models the simulation will automatically start on the GDB launcher connection. While with the MPFS launcher the simulation doesn’t start automatically on connection, the launcher has to invoke a monitor command to start simulation <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">start</span></code> explicitly. Examples usually have this already set up inside Pre-Run/Restart section:</p>
-<div class="graphviz"><img src="../_images/graphviz-0a72c01cdcd03d103982e7ccec6ae38792a65ef9.png" alt="digraph {
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for \&lt;YOUR_PROJECT\&gt;&quot;
-     }" class="graphviz" /></div>
-<br/><p>Then inside the dialog:</p>
-<div class="graphviz"><img src="../_images/graphviz-d8db08f66f03e3125fb3e4c46381814bc6291008.png" alt="digraph {
+     }<br/>
+<p>Then inside the dialog:</p>
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Startup&quot; -&gt; &quot;Pre-Run/Restart commands&quot;
-     }" class="graphviz" /></div>
-<br/><div class="admonition note">
+     }<br/>
+<div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Some edge-case launchers might not be starting the simulation, if they are designed to attach to a running target. They might have other differences, such as load the symbols file (elf), but not load the executable (elf). And they might not set the PCs of the harts with the <code class="docutils literal notranslate"><span class="pre">thread</span> <span class="pre">apply</span> <span class="pre">all</span> <span class="pre">set</span> <span class="pre">$pc=_start</span></code>.</p>
 </div>
 <p>The debug launchers for Renode are almost identical to the launchers for real RISC-V hardware targets except:</p>
 <ul>
 <li><p>Disabled/uncheck “Start OpenOCD locally” as Renode debugging does not use OpenOCD/JTAG but connects GDB directly to the Renode GDB Remote Serial Protocol interface.</p>
-<div class="graphviz"><img src="../_images/graphviz-cc07c7dcc6ceebb08add3cf1500011b81e0078fd.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Start OpenOCD locally&quot;; }" class="graphviz" /></div>
-</li>
+digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Start OpenOCD locally&quot;; }</li>
 <li><p>RISC-V 32-bit targets need the following commands:</p>
-<div class="graphviz"><img src="../_images/graphviz-83839a180d94385294ded83427d951661e1e541a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
-<p>Have set the architecture and symbols:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>set architecture riscv:rv32
+digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }<p>Have set the architecture and symbols:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Edge case issues can be avoided when providing a symbol file here making the connection to the target:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>file ${config_name:&lt;YOUR_PROJECT_NAME&gt;}/&lt;YOUR_PROJECT_NAME&gt;.elf`
+</li>
+</ul>
+<p>set architecture riscv:rv32</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>````{note}
+  Edge case issues can be avoided when providing a symbol file here making the connection to the target:
+
+  ```{code-block} text
+  file ${config_name:&lt;YOUR_PROJECT_NAME&gt;}/&lt;YOUR_PROJECT_NAME&gt;.elf`
+  ```
+
+  This helps to recognize the 32-bit and 64-bit architectures apart when the 
+  `set architecture riscv:rv32` fails to set the architecture correctly. Loading symbols after connection might be too late to detect the architecture correctly. As this needs to be handled correctly before the connection happens.
 </pre></div>
-</div>
-<p>This helps to recognize the 32-bit and 64-bit architectures apart when the
-<code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">architecture</span> <span class="pre">riscv:rv32</span></code> fails to set the architecture correctly. Loading symbols after connection might be too late to detect the architecture correctly. As this needs to be handled correctly before the connection happens.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv32</span></code> used instead of <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">architecture</span> <span class="pre">riscv:rv32</span></code>, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
 </div>
-</li>
+<ul>
 <li><p>For PolarFire SoC targets (mpfs examples) the launcher must contain:</p>
 <ul>
 <li><p>The Startup -&gt; Run/Restart Commands needs to contain the following code:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>thread apply all set $pc=_start
-monitor start
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </li>
 </ul>
 </li>
 </ul>
-<div class="section" id="two-rv32-platforms">
-<h2>Two RV32 platforms<a class="headerlink" href="#two-rv32-platforms" title="Permalink to this headline">¶</a></h2>
+<p>thread apply all set $pc=_start
+monitor start
+```</p>
+<section id="two-rv32-platforms">
+<h2>Two RV32 platforms<a class="headerlink" href="#two-rv32-platforms" title="Link to this heading"></a></h2>
 <p>The bundled example <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code> project supports the new soft processor (<code class="docutils literal notranslate"><span class="pre">MIV_RV32</span></code>) and legacy soft processor too (<code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AHB</span></code>, <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AXI</span></code> and <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMAF_L1_AHB</span></code>). This requires extra attention to what build configuration can be used with what target and with what launcher:</p>
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head">Configuration</th>
-<th class="head">Target</th>
-<th class="head">Launcher to debug with Renode</th>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Target</p></th>
+<th class="head"><p>Launcher to debug with Renode</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td>miv32i-Debug</td>
-<td><strong>new RV32</strong></td>
-<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+<tr class="row-even"><td><p>miv32i-Debug</p></td>
+<td><p><strong>new RV32</strong></p></td>
+<td><p>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</p></td>
 </tr>
-<tr class="row-odd"><td>miv32i-Release</td>
-<td><strong>new RV32</strong></td>
-<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+<tr class="row-odd"><td><p>miv32i-Release</p></td>
+<td><p><strong>new RV32</strong></p></td>
+<td><p>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</p></td>
 </tr>
-<tr class="row-even"><td>miv32ima-Debug</td>
-<td>legacy RV32</td>
-<td>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</td>
+<tr class="row-even"><td><p>miv32ima-Debug</p></td>
+<td><p>legacy RV32</p></td>
+<td><p>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</p></td>
 </tr>
-<tr class="row-odd"><td>miv32ima-Release</td>
-<td>legacy RV32</td>
-<td>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</td>
+<tr class="row-odd"><td><p>miv32ima-Release</p></td>
+<td><p>legacy RV32</p></td>
+<td><p>miv-rv32i-systick-blinky Renode-legacy-rv32 Start-platform-and-debug</p></td>
 </tr>
-<tr class="row-even"><td>miv32imc-Debug</td>
-<td><strong>new RV32</strong></td>
-<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+<tr class="row-even"><td><p>miv32imc-Debug</p></td>
+<td><p><strong>new RV32</strong></p></td>
+<td><p>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</p></td>
 </tr>
-<tr class="row-odd"><td>miv32imc-Release</td>
-<td><strong>new RV32</strong></td>
-<td>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</td>
+<tr class="row-odd"><td><p>miv32imc-Release</p></td>
+<td><p><strong>new RV32</strong></p></td>
+<td><p>miv-rv32i-systick-blinky Renode-rv32i Start-platform-and-debug</p></td>
 </tr>
 </tbody>
 </table>
@@ -344,31 +269,31 @@ monitor start
 <p class="admonition-title">Note</p>
 <p>When targeting real Hardware, then all the configurations are using the same launcher <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span> <span class="pre">Hw</span> <span class="pre">Debug</span></code>. However the connected board must have matching design. For the new core it needs to be 2022.1 release of <code class="docutils literal notranslate"><span class="pre">MIV_RV32</span></code> with ESS memory map (such as <code class="docutils literal notranslate"><span class="pre">DGC2</span></code> config). And for the legacy core it needs to be 2022.1 release of <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AHB</span></code>, <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMA_L1_AXI</span></code> or <code class="docutils literal notranslate"><span class="pre">MIV_RV32IMAF_L1_AHB</span></code> (for example <code class="docutils literal notranslate"><span class="pre">CFG1</span></code> config). The reset vector for legacy core changed in this release and using older builds of this core is not recomended.</p>
 </div>
-</div>
-<div class="section" id="embedded-monitor-window">
-<span id="embddedrenodewindow"></span><h2>Embedded monitor window<a class="headerlink" href="#embedded-monitor-window" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="embedded-monitor-window">
+<span id="embddedrenodewindow"></span><h2>Embedded monitor window<a class="headerlink" href="#embedded-monitor-window" title="Link to this heading"></a></h2>
 <p>From SoftConsole 2022.2 the Renode’s monitor is embedded inside SoftConsole as a terminal,
 the terminal can’t handle colors well (so colors are disabled) and many features
 such as auto-complete are not working well.</p>
 <p>Users who interact with Renode’s monitor frequently might want to revert back to the
 standalone monitor. Which can be done by editing the external launchers and
 removing the <code class="docutils literal notranslate"><span class="pre">--plain</span> <span class="pre">--console</span></code> from them.</p>
-<div class="graphviz"><img src="../_images/graphviz-b8d7972affa9b2b4a179c8183bfccd6cba06e114.png" alt="digraph {
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;External Tools&quot; -&gt; &quot;External Tools Configurations...&quot; -&gt; &quot;&lt;RENODE_LAUNCHER&gt;&quot; -&gt; &quot;Main&quot;
-     }" class="graphviz" /></div>
-<br/><p><img alt="Getting standalone monitor window" src="../_images/get_standalone_monitor.png" /></p>
-</div>
-<div class="section" id="fixed-configuration-of-a-gpio-peripheral">
-<span id="renodefixedgpio"></span><h2>Fixed configuration of a GPIO peripheral<a class="headerlink" href="#fixed-configuration-of-a-gpio-peripheral" title="Permalink to this headline">¶</a></h2>
+     }<br/>
+<p><img alt="Getting standalone monitor window" src="../_images/get_standalone_monitor.png" /></p>
+</section>
+<section id="fixed-configuration-of-a-gpio-peripheral">
+<span id="renodefixedgpio"></span><h2>Fixed configuration of a GPIO peripheral<a class="headerlink" href="#fixed-configuration-of-a-gpio-peripheral" title="Link to this heading"></a></h2>
 <p>In hardware the GPIOs can be configured on runtime by the application, or have fixed configuration from within Libero.
 Use monitor commands <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">sysbus.gpioOutputs</span> <span class="pre">ConfigureFixedPinDirection</span> <span class="pre">&lt;PinNumber&gt;</span> <span class="pre">&lt;Input/Output&gt;</span></code> inside the debug launcher to achieve the same effect from within Renode:</p>
 <p><img alt="Fixed GPIO" src="../_images/fixed_gpio.png" /></p>
-</div>
-<div class="section" id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="useful-links">
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/documentation/renode/index.html</span></code> (contains version of the documentation which is matching with the bundled Renode)</p></li>
 <li><p><a class="reference external" href="https://renode.readthedocs.io/en/latest/">Renode’s online documentation</a></p></li>
@@ -378,26 +303,26 @@ Use monitor commands <code class="docutils literal notranslate"><span class="pre
 <p class="admonition-title">Note</p>
 <p>The Renode which is shipped inside SoftConsole might be ahead (or behind) Antmicro’s official releases and therefore Antmicro’s released information might not always apply to Renode shipped with SoftConsole.</p>
 </div>
-</div>
-<div class="section" id="windows-firewall">
-<h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="windows-firewall">
+<h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Link to this heading"></a></h2>
 <p>On Windows if there is a firewall in use then the first time that a debug session is run the firewall may prompt that it is blocking
 OpenOCD, <code class="docutils literal notranslate"><span class="pre">fpServer.exe</span></code> and/or <code class="docutils literal notranslate"><span class="pre">renode.exe</span></code>. Allow the firewall to unblock these and save this as the default setting if
 necessary.</p>
-</div>
-<div class="section" id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
-<h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
+<h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Link to this heading"></a></h2>
 <p>Something is keeping the port <code class="docutils literal notranslate"><span class="pre">3333</span></code> opened, it could be some other application, but in most cases it’s just a previous instance
 of the Renode. Close it by pressing X on the window or stop the group launcher which should stop the Renode and the gdb
 client as well.</p>
-</div>
-<div class="section" id="other-troubleshooting">
-<h2>Other troubleshooting<a class="headerlink" href="#other-troubleshooting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="other-troubleshooting">
+<h2>Other troubleshooting<a class="headerlink" href="#other-troubleshooting" title="Link to this heading"></a></h2>
 <p>See sections:</p>
 <p><a class="reference internal" href="../troubleshooting/renode.html"><span class="doc">Renode troubleshooting</span></a></p>
-</div>
-<div class="section" id="macros">
-<span id="macrosrenode"></span><h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="macros">
+<span id="macrosrenode"></span><h2>Macros<a class="headerlink" href="#macros" title="Link to this heading"></a></h2>
 <p>Macros are useful in many scenarios:</p>
 <ul class="simple">
 <li><p>When using common and frequently used calls to remove code duplication (maintaining one macro is easier than maintaining all instances where it is used)</p></li>
@@ -440,9 +365,9 @@ client as well.</p>
 <p class="admonition-title">Note</p>
 <p>Be aware when tracking MCAUSE and the IRQ is triggered (not a trap exception) that the mcause values can be greater than 0x8000000000000000 on 64-bit platforms and greater than 0x80000000 on 32-bit platforms.</p>
 </div>
-</div>
-<div class="section" id="symbols-and-simple-trace-functionality">
-<h2>Symbols and simple trace functionality<a class="headerlink" href="#symbols-and-simple-trace-functionality" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="symbols-and-simple-trace-functionality">
+<h2>Symbols and simple trace functionality<a class="headerlink" href="#symbols-and-simple-trace-functionality" title="Link to this heading"></a></h2>
 <p>When debugging the debugging-client connects to debugging-server which then talks to the target. With HW targets the GDB-client connects to OpenOCD (which implements and behaves as GDB server) and with FlasPro programmer talks through JTAG with the target.</p>
 <p>However, Renode is overlapping slightly with the debugging-client task even when SoftConsole treats Renode only as
 the GDB server and target.</p>
@@ -495,8 +420,7 @@ as needed.</p>
 <ul>
 <li><p>pressing <code class="docutils literal notranslate"><span class="pre">Resume</span></code> icon button in the main toolbar</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">F8</span></code> key shortcut</p></li>
-<li><div class="graphviz"><img src="../_images/graphviz-e2175bd303c5c89939e0f3a55c64e165aeace2c7.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Resume&quot;; }" class="graphviz" /></div>
-</li>
+<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Resume&quot;; }</li>
 </ul>
 <p>And it should start outputting simplified trace information. The SoftConsole’s Console tab should show when and what parts of the code was the CPU
 executing:</p>
@@ -545,29 +469,29 @@ displayed then <code class="docutils literal notranslate"><span class="pre">Resu
 <p class="admonition-title">Note</p>
 <p>The user can make their own macros for Mi-V targets and use this feature however there are no macros bundled. Or use the commands directly without encapsulating them into macros.</p>
 </div>
-</div>
-<div class="section" id="creating-bridge-tunnel-to-the-emulation">
-<h2>Creating bridge/tunnel to the emulation<a class="headerlink" href="#creating-bridge-tunnel-to-the-emulation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="creating-bridge-tunnel-to-the-emulation">
+<h2>Creating bridge/tunnel to the emulation<a class="headerlink" href="#creating-bridge-tunnel-to-the-emulation" title="Link to this heading"></a></h2>
 <p>The following section will cover necessary steps to access the emulated network from within host OS, however in
 SoftConsole v2022.2-RISC-V this feature is accessible only from Linux hosts.</p>
 <p>To access the emulated network the following macro must be added (there might be already preexisting monitor commands) to the debug launcher’s section</p>
-<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
-     }" class="graphviz" /></div>
-<br/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>monitor runMacro $BridgeNetworkMac0
+     }<br/>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>monitor runMacro $BridgeNetworkMac0
 </pre></div>
 </div>
 <p>The bridge is sensitive if it was invoked before or after the emulation started and therefore keeping it in section</p>
-<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
-     }" class="graphviz" /></div>
-<br/><p>will be the most reliable way to use it:</p>
+     }<br/>
+<p>will be the most reliable way to use it:</p>
 <p><img alt="monitor bridge" src="../_images/monitor-bridge.png" /></p>
 <p>When creating the bridge for the first time it might display error:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Could</span> <span class="ow">not</span> <span class="nb">set</span> <span class="n">TUNSETIFF</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="mi">2</span>
@@ -590,33 +514,33 @@ bridge …)</p>
 <p>If the application is using these IP settings <code class="docutils literal notranslate"><span class="pre">172.16.0.3</span> <span class="pre">/</span> <span class="pre">255.255.255.0</span></code> then running ping <code class="docutils literal notranslate"><span class="pre">172.16.0.3</span></code> should start responding, however this might not be true for other applications, as they might have ICMP or even ARP disabled (see all troubleshooting sections related to networking).</p>
 <p>The emulation is not as fast as the real hardware therefore the ping response times might vary:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ping 172.16.0.3</span>
-PING <span class="m">172</span>.16.0.3 <span class="o">(</span><span class="m">172</span>.16.0.3<span class="o">)</span> <span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span> bytes of data.
-<span class="m">64</span> bytes from <span class="m">172</span>.16.0.3: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">255</span> <span class="nv">time</span><span class="o">=</span><span class="m">202</span> ms
-<span class="m">64</span> bytes from <span class="m">172</span>.16.0.3: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">255</span> <span class="nv">time</span><span class="o">=</span><span class="m">3</span>.13 ms
-<span class="m">64</span> bytes from <span class="m">172</span>.16.0.3: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">255</span> <span class="nv">time</span><span class="o">=</span><span class="m">2</span>.43 ms
-<span class="m">64</span> bytes from <span class="m">172</span>.16.0.3: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">255</span> <span class="nv">time</span><span class="o">=</span><span class="m">4</span>.74 ms
+PING<span class="w"> </span><span class="m">172</span>.16.0.3<span class="w"> </span><span class="o">(</span><span class="m">172</span>.16.0.3<span class="o">)</span><span class="w"> </span><span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span><span class="w"> </span>bytes<span class="w"> </span>of<span class="w"> </span>data.
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">172</span>.16.0.3:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">255</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">202</span><span class="w"> </span>ms
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">172</span>.16.0.3:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">255</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">3</span>.13<span class="w"> </span>ms
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">172</span>.16.0.3:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">255</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">2</span>.43<span class="w"> </span>ms
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">172</span>.16.0.3:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">255</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">4</span>.74<span class="w"> </span>ms
 ^C
---- <span class="m">172</span>.16.0.3 ping statistics ---
-<span class="m">4</span> packets transmitted, <span class="m">4</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> 3004ms
-rtt min/avg/max/mdev <span class="o">=</span> <span class="m">2</span>.432/53.206/202.517/86.208 ms
+---<span class="w"> </span><span class="m">172</span>.16.0.3<span class="w"> </span>ping<span class="w"> </span>statistics<span class="w"> </span>---
+<span class="m">4</span><span class="w"> </span>packets<span class="w"> </span>transmitted,<span class="w"> </span><span class="m">4</span><span class="w"> </span>received,<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>packet<span class="w"> </span>loss,<span class="w"> </span><span class="nb">time</span><span class="w"> </span>3004ms
+rtt<span class="w"> </span>min/avg/max/mdev<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>.432/53.206/202.517/86.208<span class="w"> </span>ms
 </pre></div>
 </div>
 <p>The first ping might be extra long as other tasks had to be finished first (such as ARP address exchange)
 Then with a generic webserver browser opening the location: <a class="reference external" href="http://172.16.0.3">http://172.16.0.3</a></p>
-</div>
-<div class="section" id="using-wireshark-to-monitor-the-network-traffic-inside-the-emulation">
-<h2>Using Wireshark to monitor the network traffic inside the emulation<a class="headerlink" href="#using-wireshark-to-monitor-the-network-traffic-inside-the-emulation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="using-wireshark-to-monitor-the-network-traffic-inside-the-emulation">
+<h2>Using Wireshark to monitor the network traffic inside the emulation<a class="headerlink" href="#using-wireshark-to-monitor-the-network-traffic-inside-the-emulation" title="Link to this heading"></a></h2>
 <p>In SoftConsole v2022.2-RISC-V release this feature is accessible only from Linux hosts. The following steps are mainly covered
 from Ubuntu perspective, for other distributions contact your system administrator or execute the equivalent steps for
 your distribution yourself.</p>
 <p>To startup Wireshark with each debug session, edit the GDB debug launcher and in the <code class="docutils literal notranslate"><span class="pre">Initialization</span> <span class="pre">Commands</span></code> text-box area:</p>
-<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
-     }" class="graphviz" /></div>
-<br/><p>Append the following command</p>
+     }<br/>
+<p>Append the following command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>monitor runMacro $WiresharkRun
 </pre></div>
 </div>
@@ -625,15 +549,15 @@ $WiresharkRun command from within Renode’s monitor window. If Renode prints er
 is not available in the default path”, if the Wireshark is installed by the package manager (and not built from source)
 then it should be in the path already. Double-check if Wireshark is installed on the system and where it is by typing on
 the Linux console terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>whereis wireshark
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>whereis<span class="w"> </span>wireshark
 </pre></div>
 </div>
 <p>If Wireshark is found but it’s not in the path, then add it to the path temporary with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>&lt;WIRESHARK_PATH&gt;:<span class="nv">$PATH</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>&lt;WIRESHARK_PATH&gt;:<span class="nv">$PATH</span>
 </pre></div>
 </div>
 <p>And then start SoftConsole from the same terminal. If it’s not installed, then type the following to install it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install wireshark
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>wireshark
 </pre></div>
 </div>
 <p>Answer <strong>YES</strong>, if user will be asked if <code class="docutils literal notranslate"><span class="pre">Should</span> <span class="pre">non-superusers</span> <span class="pre">be</span> <span class="pre">able</span> <span class="pre">to</span> <span class="pre">capture</span> <span class="pre">packets?</span></code>.</p>
@@ -641,37 +565,37 @@ the Linux console terminal:</p>
 uninstalled. Proceed to completely remove the package with its settings. The ‘remove’ option only removes the
 application and leaves configurations files untouched, while the ‘purge’ option removes configuration as well. Invoke
 the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get purge wireshark
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>purge<span class="w"> </span>wireshark
 </pre></div>
 </div>
 <p>After a complete removal, proceed to install it back again, now the dialog question should be displayed.
 If Wireshark now when launching the launcher opens but displays popup error</p>
 <p><code class="docutils literal notranslate"><span class="pre">Couldn’t</span> <span class="pre">run</span> <span class="pre">/usr/bin/dumpcap</span> <span class="pre">in</span> <span class="pre">child</span> <span class="pre">process:</span> <span class="pre">Permission</span> <span class="pre">denied</span></code></p>
 <p>Then verify the file privileges:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -la /usr/bin/dumpcap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-la<span class="w"> </span>/usr/bin/dumpcap
 </pre></div>
 </div>
 <p>If it is accessible to root user and Wireshark group, then most likely the current user is not added inside the Wireshark
 group. The following command should add user to Wireshark group:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo usermod -a -G wireshark &lt;YOUR_USER&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>wireshark<span class="w"> </span>&lt;YOUR_USER&gt;
 </pre></div>
 </div>
 <p>For the group changes to take effect typically logging out and logging back to the user’s account should be enough,
 however sometimes reboot is necessary.</p>
 <p>If everything is configured properly now the Wireshark should work and run automatically on each launch. The
 Wireshark is sensitive if it was invoked before or after the emulation started and therefore keeping it in section <code class="docutils literal notranslate"><span class="pre">Initialization</span></code> will be most reliable.</p>
-<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
+     digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
-     }" class="graphviz" /></div>
-<br/><p>As mention in other sections, the emulation is not running at full speed of real hardware and under heavy load, some
+     }<br/>
+<p>As mention in other sections, the emulation is not running at full speed of real hardware and under heavy load, some
 packets might be dropped/timeout. Depending on the application/protocols (and firmware’s IP stack) the packets might
 get retransmitted transparently</p>
-</div>
-<div class="section" id="emulation-time">
-<h2>Emulation time<a class="headerlink" href="#emulation-time" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="emulation-time">
+<h2>Emulation time<a class="headerlink" href="#emulation-time" title="Link to this heading"></a></h2>
 <p>The host’s real time and the emulation time might not be passing at the same speed, read more about it in the “Time framework” chapter of Renode’s documentation.</p>
 <p>How many instructions per second can be emulated depends on the host’s performance, OS, target application and the settings. The emulation time speed is mostly depending on the performance of the host and the guest’s MIPS rating. There are other factors such as the amount of the cores the emulated platform has. A very significant factor is how the application is written and how much time cores spend in sleep or are halted (See chapter Tweaking the emulation performance). In a case where emulator can spend most of the time in sleep will not require as many instructions to emulate for given time to pass, it’s easier to wait for the next interrupt instead of looping inside an infinite loop. The RISC-V CPUs (32-bit and 64-bit) have default 64MIPS rating, if required this can be changed from Renode’s platform script or SoftConsole debug launcher (in launcher scrip the commands need monitor prefix).</p>
 <p>See: <tweakrenodeperf></p>
@@ -709,9 +633,9 @@ get retransmitted transparently</p>
 <p class="admonition-title">Note</p>
 <p>If any of these needs to be part of a debug launcher then be aware of the monitor command string length limitation. If there is need to invoke longer commands from the launcher then using variables and making custom macros could be a workaround. See section: <macrosrenode></p>
 </div>
-</div>
-<div class="section" id="tweaking-the-emulation-performance">
-<span id="tweakrenodeperf"></span><h2>Tweaking the emulation performance<a class="headerlink" href="#tweaking-the-emulation-performance" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="tweaking-the-emulation-performance">
+<span id="tweakrenodeperf"></span><h2>Tweaking the emulation performance<a class="headerlink" href="#tweaking-the-emulation-performance" title="Link to this heading"></a></h2>
 <p>If emulating multi-node (multi-board) platform then the time ratio between the nodes will not be affected. When there are server and client set up in the platform and a network request with a 1second timeout is sent. Then the timeout in the emulation will be timed as expected no matter if that took on the host 5seconds or 0.5 seconds to emulate it.</p>
 <p>If there is the need to run real-time communication with host’s network then some tweaks to the platform and application need to be made. When overloading the slower emulated target with many requests then the target might not be able to respond within the required time, however few steps could improve this situation:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Tweaking the emulation performance
@@ -724,7 +648,7 @@ get retransmitted transparently</p>
 <li><p>If latencies are not critical then do not pool peripherals constantly in a loop, give it a delay or put the core into the sleep (if there will be timer interrupt happening soon).</p></li>
 <li><p>If using custom models, do refactor them and apply good coding guidelines to make them more efficient. For example, do not use many “if” conditions on register reads/writes, instead use the DoubleWordRegisterCollection lookup table.</p></li>
 <li><p>Spend as much time as possible in a wait-for-irq state, put CPU into with WFI instruction, use inline assembly:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;wfi&quot;</span><span class="p">);</span>  
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;wfi&quot;</span><span class="p">);</span><span class="w">  </span>
 </pre></div>
 </div>
 </li>
@@ -742,35 +666,32 @@ get retransmitted transparently</p>
 <p>For example, by default the FreeRTOS idle task is just a infinite loop, but there is a way to implement own idle task:
 <a class="reference external" href="https://www.freertos.org/RTOS-idle-task.html">https://www.freertos.org/RTOS-idle-task.html</a></p>
 <p>Set config <code class="docutils literal notranslate"><span class="pre">USE_IDLE_HOOK</span></code> to 1 in <code class="docutils literal notranslate"><span class="pre">FreeRTOSConfig.h</span></code> and implement sleep in the idle hook:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">vApplicationIdleHook</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">vApplicationIdleHook</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
-   <span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;wfi&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;wfi&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>This change can show even 20-fold difference between the FreeRTOS with sleep and without sleep. Meaning that fewer instructions were needed to be emulated for the same time on the guess to pass.</p>
-</div>
-</div>
+</section>
+</section>
 
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="other.html" class="btn btn-neutral float-right" title="Other features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="mpfs.html" class="btn btn-neutral float-left" title="PolarFire SoC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="other.html" class="btn btn-neutral float-right" title="Other features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2022 Microchip.
+    <p>&#169; Copyright 2025 Microchip.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 <script type = "text/javascript" src = "/_static/jquery-3.6.0.min.js"></script>
 
@@ -813,9 +734,7 @@ get retransmitted transparently</p>
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
   
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
@@ -838,32 +757,21 @@ get retransmitted transparently</p>
 
       
       
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
-      
-      
-      
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
        <strong> 
-      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
        </strong> 
       
 
     </dl>
   </div>
-</div>
-
-  <script type="text/javascript">
+</div><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
