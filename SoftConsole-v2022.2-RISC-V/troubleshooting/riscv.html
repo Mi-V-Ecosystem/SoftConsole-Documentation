@@ -273,12 +273,13 @@ Warn : keep_alive() was not invoked in the 1000ms timelimit. GDB alive packet no
 </div>
 <p>Possibly using the Mi-V RISC-V or PolarFire SoC startup code while the compiler is trying to use its own startup code.
 Possible fix is to not use the compiler startup code. Check the following checkbox:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-395c59643e413a12e198f9d41157c764a73d3d1d.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;-nostartfiles option&quot;
-     }</section>
+     }" class="graphviz" /></div>
+</section>
 <section id="error-got-exception-when-reading-some-risc-v-registers">
 <h2>“Error: Got exception …” when reading some RISC-V registers<a class="headerlink" href="#error-got-exception-when-reading-some-risc-v-registers" title="Link to this heading"></a></h2>
 <p>Not all RISC-V registers are implemented in all RISC-V targets. For example, RISC-V targets with no hardware floating point
@@ -295,7 +296,8 @@ then OpenOCD may display a message of the form:</p>
 <p>Possibly caused when project settings which affect floating point section changed without doing a clean rebuild.</p>
 <ul>
 <li><p>Clean the project</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Project&quot; -&gt; &quot;Clean&quot; -&gt; &quot;Check 'Clean all'&quot; -&gt; &quot;Click 'Clean' button&quot;; }<p>Sometimes this is not enough and deleting the build folders is enecesary, for example: Debug/Release configurations (however configuration names might differ between projects).</p>
+<div class="graphviz"><img src="../_images/graphviz-a78f65eae7b1f01885efc81c053fb3b6cb93ab99.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Project&quot; -&gt; &quot;Clean&quot; -&gt; &quot;Check 'Clean all'&quot; -&gt; &quot;Click 'Clean' button&quot;; }" class="graphviz" /></div>
+<p>Sometimes this is not enough and deleting the build folders is enecesary, for example: Debug/Release configurations (however configuration names might differ between projects).</p>
 </li>
 <li><p>Also check that the <code class="docutils literal notranslate"><span class="pre">RVF</span></code> floating point configuration options and select matching <code class="docutils literal notranslate"><span class="pre">arch/abi</span></code>.</p>
 <div class="sphinx-tabs docutils container">
@@ -329,31 +331,34 @@ digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node
 </div>
 <p>This indicates a mismatch between target architecture and what is expected. This can happen when debugging RISC-V 64-bit software on a RISC-V 32-bit target (or vice versa) and in general it is critical that the selected architecture and ABI match the target platform.</p>
 <p>Close attention needs to be paid to the selected architecture and ABI in the project settings. If floating-point extension and floating-point ABI is set correctly. And if the debug launcher is not setting wrong arch, found in the launcher properties:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-f5115034efe0c9bda963ba5f12780365679c95c5.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>On RV-32 should be set to <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">architecture</span> <span class="pre">riscv:rv32</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv32</span></code> used, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
 </div>
 <p>In an edge case this problem might be present even when all settings are correct, but using a Makefile non-managed project on Linux SoftConsole. This happens when the cross compiler is incorrectly detected and the native tools are used instead (which are x86 and they do not match the RISC-V registers).</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-e3a7d8ca5c6ffe0b69077cb8236bb2dac3fb3e43.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Executable name&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Should contains <code class="docutils literal notranslate"><span class="pre">${cross_prefix}gdb${cross_suffix}</span></code> as tool name, it uses macros and should be resolved into correct actual target name. The actual name:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-78bf5be157a3ec23a22480304bef602712215203.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Actual name&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>should be <code class="docutils literal notranslate"><span class="pre">riscv64-unknown-elf-gdb</span></code>. In case this actual name got resolved into gdb only then the issue can be fixed by hardcoding full name <code class="docutils literal notranslate"><span class="pre">riscv64-unknown-elf-gdb</span></code> without using the <code class="docutils literal notranslate"><span class="pre">${cross_prefix}</span></code> and <code class="docutils literal notranslate"><span class="pre">${cross_suffix}</span></code> macros.</p>
 </section>
 <section id="debug-launch-configuration-settings-differ-for-cortex-m-and-risc-v">
@@ -383,13 +388,15 @@ Truncated register 16 in remote &#39;g&#39; packet
 <p>This issue can be resolved in two ways:</p>
 <ol class="arabic">
 <li><p>The recommended way: give the debugger access to the debugging symbols file by going to:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug launch configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }<p>and making sure that this command is included where <code class="docutils literal notranslate"><span class="pre">&lt;proj-name&gt;</span></code> represents the project name</p>
+<div class="graphviz"><img src="../_images/graphviz-0fb94f2ff0a5f5ca747f802326acdcd1eaa23ee2.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug launch configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<p>and making sure that this command is included where <code class="docutils literal notranslate"><span class="pre">&lt;proj-name&gt;</span></code> represents the project name</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>file ${config_name:&lt;proj-name&gt;}/&lt;proj-name&gt;.elf
 </pre></div>
 </div>
 </li>
 <li><p>The alternative way: by using an older GDB and explicitly specifying the target RISC-V architecture. Go to</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug launch configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }<p>and make sure that the following command is present:</p>
+<div class="graphviz"><img src="../_images/graphviz-0fb94f2ff0a5f5ca747f802326acdcd1eaa23ee2.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug launch configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<p>and make sure that the following command is present:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">architecture</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv32</span>
 </pre></div>
 </div>
@@ -398,7 +405,8 @@ digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node
 <p>If in previous documents and projects was <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">arch</span> <span class="pre">riscv:rv32</span></code> used, then it can be considered as analogous. The <code class="docutils literal notranslate"><span class="pre">arch</span></code> is an abbreviation for <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and does the same function.</p>
 </div>
 <p>And then, go to:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug launch configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Executable name&quot;; }<p>and change</p>
+<div class="graphviz"><img src="../_images/graphviz-a1ff95b8a42406b78986137b1de2a0191045c9d5.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug launch configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Executable name&quot;; }" class="graphviz" /></div>
+<p>and change</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${cross_prefix}gdb${cross_suffix}
 </pre></div>
 </div>
@@ -429,12 +437,13 @@ digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node
 </pre></div>
 </div>
 <p>When valid, but unsupported multilib combination is selected, then RV64G is used as fallback, this can cause misleading error messages about mixing floats, mixing 32-but/64-bit, but it’s only symptoms of misconfiguring multilibs. The used multilib is compound together from the selections made in the</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-4c395b47eedff281e595e793d092072027bfc8d2.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 Delete existing build folder (sometimes make clean is not enough), double check if the Project Properties are correct (if in doubt compare side by side with similar existing working project) and rebuild the project. Many cryptic looking errors can be caused using invalid or unsupported combinations in the Project Properties.
 </section>
 <section id="requested-abi-requires-march-to-subsume-the-d-extension">
@@ -447,20 +456,22 @@ Delete existing build folder (sometimes make clean is not enough), double check 
 section for listed <a class="reference internal" href="../introduction/tools_resources.html#multilibs"><span class="std std-ref">supported multilibs</span></a> combinations.</p>
 <p>Enabling <code class="docutils literal notranslate"><span class="pre">D</span></code> by unintentionally can be caused by using <code class="docutils literal notranslate"><span class="pre">RV64G</span></code> without realizing it, this can happen when the target processor is set to <code class="docutils literal notranslate"><span class="pre">Toolchain</span> <span class="pre">default</span></code>. The toolchain default then will use <code class="docutils literal notranslate"><span class="pre">march=rv64gc/mabi=lp64</span></code> even if the application is meant for other targets such as Mi-V RV32.</p>
 <p>Make sure the following is <strong>NOT</strong> set to <code class="docutils literal notranslate"><span class="pre">Toolchain</span> <span class="pre">default</span></code>:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-a69badc009bcecab8263195965dcb240e8d02b82.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Another cause is when selected architecture/ABI combination is not supported and the default RV64G is used instead. Double check if the selected Architecture and ABI combination is supported by our <a class="reference internal" href="../introduction/tools_resources.html#multilibs"><span class="std std-ref">multilibs</span></a>.</p>
 <p>Examples of supported architecture/ABI settings of the:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-a69badc009bcecab8263195965dcb240e8d02b82.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">RV32IMAF</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">RV32IMA</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">RV64GC</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p><img alt="F ABI matching" src="../_images/float-match-abi-rv32imaf.png" /></p>
 </div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p><img alt="F ABI matching" src="../_images/float-match-abi-rv32ima.png" /></p>
@@ -477,12 +488,13 @@ used</p>
 <p>Possibly it can be caused when selected RISC-V architecture/ABI does not have a matching multilib and the default
 RV64GC is used instead. On RV32 targets the problem is obvious, however on RV64 target this problem might surface in more subtle way.</p>
 <p>Examples of supported architecture/ABI settings of the:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-a69badc009bcecab8263195965dcb240e8d02b82.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">RV32IMAF</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">RV32IMA</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">RV64GC</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p><img alt="F ABI matching" src="../_images/float-match-abi-rv32imaf.png" /></p>
 </div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p><img alt="F ABI matching" src="../_images/float-match-abi-rv32ima.png" /></p>
@@ -706,12 +718,16 @@ RV64GC is used instead. On RV32 targets the problem is obvious, however on RV64 
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>

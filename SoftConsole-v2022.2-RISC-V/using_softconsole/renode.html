@@ -132,12 +132,13 @@
 </div>
 <p>After the target platform is running the GDB launcher can be used to connect the GDB client to the Renode platform GDB server. To simplify this process, the examples contain a separate group launcher which invokes the platform first, waits for it to be loaded and ready and then invokes the GDB launcher.</p>
 <p>The sequence of execution of a group launcher is:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-acbc3c918d838149a727d4bc3b05695877cf5268.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Group launcher&quot; -&gt; &quot;Starts Renode with its GDB server first&quot; -&gt; &quot;Then starts debug launcher with GDB client&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>They are located in their own dedicated section in the <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">Configurations</span></code> dialog:</p>
 <p><img alt="group launchers" src="../_images/group-launchers.png" /></p>
 <p>The bundled examples shipped with the example workspace have these group launchers:</p>
@@ -170,19 +171,21 @@
 </li>
 </ul>
 <p>After the GDB client connection the Renode needs to start the simulation. In a case of Mi-V RV32 models the simulation will automatically start on the GDB launcher connection. While with the MPFS launcher the simulation doesn’t start automatically on connection, the launcher has to invoke a monitor command to start simulation <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">start</span></code> explicitly. Examples usually have this already set up inside Pre-Run/Restart section:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-0a72c01cdcd03d103982e7ccec6ae38792a65ef9.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for \&lt;YOUR_PROJECT\&gt;&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Then inside the dialog:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-d8db08f66f03e3125fb3e4c46381814bc6291008.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Startup&quot; -&gt; &quot;Pre-Run/Restart commands&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Some edge-case launchers might not be starting the simulation, if they are designed to attach to a running target. They might have other differences, such as load the symbols file (elf), but not load the executable (elf). And they might not set the PCs of the harts with the <code class="docutils literal notranslate"><span class="pre">thread</span> <span class="pre">apply</span> <span class="pre">all</span> <span class="pre">set</span> <span class="pre">$pc=_start</span></code>.</p>
@@ -190,9 +193,11 @@
 <p>The debug launchers for Renode are almost identical to the launchers for real RISC-V hardware targets except:</p>
 <ul>
 <li><p>Disabled/uncheck “Start OpenOCD locally” as Renode debugging does not use OpenOCD/JTAG but connects GDB directly to the Renode GDB Remote Serial Protocol interface.</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Start OpenOCD locally&quot;; }</li>
+<div class="graphviz"><img src="../_images/graphviz-cc07c7dcc6ceebb08add3cf1500011b81e0078fd.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Start OpenOCD locally&quot;; }" class="graphviz" /></div>
+</li>
 <li><p>RISC-V 32-bit targets need the following commands:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }<p>Have set the architecture and symbols:</p>
+<div class="graphviz"><img src="../_images/graphviz-83839a180d94385294ded83427d951661e1e541a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<p>Have set the architecture and symbols:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
@@ -278,12 +283,13 @@ such as auto-complete are not working well.</p>
 <p>Users who interact with Renode’s monitor frequently might want to revert back to the
 standalone monitor. Which can be done by editing the external launchers and
 removing the <code class="docutils literal notranslate"><span class="pre">--plain</span> <span class="pre">--console</span></code> from them.</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-b8d7972affa9b2b4a179c8183bfccd6cba06e114.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;External Tools&quot; -&gt; &quot;External Tools Configurations...&quot; -&gt; &quot;&lt;RENODE_LAUNCHER&gt;&quot; -&gt; &quot;Main&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p><img alt="Getting standalone monitor window" src="../_images/get_standalone_monitor.png" /></p>
 </section>
 <section id="fixed-configuration-of-a-gpio-peripheral">
@@ -420,7 +426,8 @@ as needed.</p>
 <ul>
 <li><p>pressing <code class="docutils literal notranslate"><span class="pre">Resume</span></code> icon button in the main toolbar</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">F8</span></code> key shortcut</p></li>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Resume&quot;; }</li>
+<li><div class="graphviz"><img src="../_images/graphviz-e2175bd303c5c89939e0f3a55c64e165aeace2c7.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Resume&quot;; }" class="graphviz" /></div>
+</li>
 </ul>
 <p>And it should start outputting simplified trace information. The SoftConsole’s Console tab should show when and what parts of the code was the CPU
 executing:</p>
@@ -475,22 +482,24 @@ displayed then <code class="docutils literal notranslate"><span class="pre">Resu
 <p>The following section will cover necessary steps to access the emulated network from within host OS, however in
 SoftConsole v2022.2-RISC-V this feature is accessible only from Linux hosts.</p>
 <p>To access the emulated network the following macro must be added (there might be already preexisting monitor commands) to the debug launcher’s section</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>monitor runMacro $BridgeNetworkMac0
 </pre></div>
 </div>
 <p>The bridge is sensitive if it was invoked before or after the emulation started and therefore keeping it in section</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>will be the most reliable way to use it:</p>
 <p><img alt="monitor bridge" src="../_images/monitor-bridge.png" /></p>
 <p>When creating the bridge for the first time it might display error:</p>
@@ -534,12 +543,13 @@ Then with a generic webserver browser opening the location: <a class="reference 
 from Ubuntu perspective, for other distributions contact your system administrator or execute the equivalent steps for
 your distribution yourself.</p>
 <p>To startup Wireshark with each debug session, edit the GDB debug launcher and in the <code class="docutils literal notranslate"><span class="pre">Initialization</span> <span class="pre">Commands</span></code> text-box area:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Append the following command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>monitor runMacro $WiresharkRun
 </pre></div>
@@ -584,12 +594,13 @@ group. The following command should add user to Wireshark group:</p>
 however sometimes reboot is necessary.</p>
 <p>If everything is configured properly now the Wireshark should work and run automatically on each launch. The
 Wireshark is sensitive if it was invoked before or after the emulation started and therefore keeping it in section <code class="docutils literal notranslate"><span class="pre">Initialization</span></code> will be most reliable.</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-3d8f813631328d0da6dbeedbd4eed892947094b6.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Initialization&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>As mention in other sections, the emulation is not running at full speed of real hardware and under heavy load, some
 packets might be dropped/timeout. Depending on the application/protocols (and firmware’s IP stack) the packets might
 get retransmitted transparently</p>
@@ -757,12 +768,16 @@ get retransmitted transparently</p>
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>

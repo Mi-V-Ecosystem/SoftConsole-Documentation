@@ -75,7 +75,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-new-project">Creating a new project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#project-settings">Project Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-settings">Project Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-xpack-risc-v-gcc-14-2-0-2-with-softconsole-v2022-2">Using xPack RISC-V GCC 14.2.0-2 with SoftConsole v2022.2</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#all-cpu-targets">All CPU targets</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#target-processor">Target Processor</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#architecture">Architecture</a></li>
@@ -190,9 +193,12 @@
 <span id="importgeneralprojects"></span><h3>Importing general projects<a class="headerlink" href="#importing-general-projects" title="Link to this heading"></a></h3>
 <p>Any one of the following steps will reach the import dialog for general project which is just a folder on the file system or a zipped archive of the project:</p>
 <ul>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;Existing Projects into Workspace&quot;; }</li>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;Existing Projects into Workspace&quot;; }</li>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Press 'CTRL + SHIFT + P'&quot; -&gt; &quot;Type 'import existing project'&quot;; }</li>
+<li><div class="graphviz"><img src="../_images/graphviz-19e186edd40b1a5dde3a54c9193ec9a5baba46df.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;Existing Projects into Workspace&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-ebc82715aa12c647535e987aeff44682cd78b606.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;Existing Projects into Workspace&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-7f26bf5788f28024c11286b9ca8c929874a57af6.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Press 'CTRL + SHIFT + P'&quot; -&gt; &quot;Type 'import existing project'&quot;; }" class="graphviz" /></div>
+</li>
 <li><p>If it’s an empty workspace then <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">projects...</span></code> is accessible directly from the workspace:</p>
 <p><img alt="import projects" src="../_images/import-project.png" /></p>
 </li>
@@ -265,9 +271,12 @@
 </div>
 <p>For the first time-users one of the following:</p>
 <ul>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Clone URI&quot;; }</li>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Clone URI&quot;; }</li>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Press 'CTRL + SHIFT + P'&quot; -&gt; &quot;Type 'import git'&quot; -&gt; &quot;Clone URI&quot;; }</li>
+<li><div class="graphviz"><img src="../_images/graphviz-3dcb210ce0510415811017aa2e49abf94fbd55a1.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Clone URI&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-0dca8a725d86b980ff7d9c6ba9117f537cd6ebde.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Clone URI&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-ea5ce1bd17de0970c4dcb93c1893134782f9aee2.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Press 'CTRL + SHIFT + P'&quot; -&gt; &quot;Type 'import git'&quot; -&gt; &quot;Clone URI&quot;; }" class="graphviz" /></div>
+</li>
 </ul>
 <p>The import dialog has the following steps:</p>
 <ol class="arabic">
@@ -295,9 +304,12 @@
 <h4>Importing Git projects - Subsequent imports<a class="headerlink" href="#importing-git-projects-subsequent-imports" title="Link to this heading"></a></h4>
 <p>After the initial import, the subsequent imports can skip the clone part of the process.</p>
 <ul>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Existing local repository&quot;; }</li>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Existing local repository&quot;; }</li>
-<li>digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Press 'CTRL + SHIFT + P'&quot; -&gt; &quot;Type 'import git'&quot; -&gt; &quot;Existing local repository&quot;; }</li>
+<li><div class="graphviz"><img src="../_images/graphviz-c6a900f8a7a8345f85c748b5ea33da47f90fdfa7.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Existing local repository&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-1093e9b5e63e58af620606afb6ab8419f9c1a505.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;Git&quot; -&gt; &quot;Projects from Git&quot; -&gt; &quot;Existing local repository&quot;; }" class="graphviz" /></div>
+</li>
+<li><div class="graphviz"><img src="../_images/graphviz-b4cfed514b08ab288be9bdab3df44cc42b61264a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Press 'CTRL + SHIFT + P'&quot; -&gt; &quot;Type 'import git'&quot; -&gt; &quot;Existing local repository&quot;; }" class="graphviz" /></div>
+</li>
 </ul>
 <p>The selection of previously cloned repositories should be displayed:</p>
 <p><img alt="Cloned repos" src="../_images/select-repository.png" /></p>
@@ -313,9 +325,11 @@
 <h2>Creating a new project<a class="headerlink" href="#creating-a-new-project" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Depending on the type of project required select:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;New&quot; -&gt; &quot;'C Project' or 'C++ Project'&quot;; }</li>
+<div class="graphviz"><img src="../_images/graphviz-b2ac91da8acb2b55f5d446a1c6590490cce9293f.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;New&quot; -&gt; &quot;'C Project' or 'C++ Project'&quot;; }" class="graphviz" /></div>
+</li>
 <li><p>In the C/C++ Project page of the wizard enter the Project name, select</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project type = Executable (or Static Library)&quot; -&gt; &quot;Empty Project&quot;; }</li>
+<div class="graphviz"><img src="../_images/graphviz-bb5a6e934e82ab09d33c7b44c16c6c2d09f6230e.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project type = Executable (or Static Library)&quot; -&gt; &quot;Empty Project&quot;; }" class="graphviz" /></div>
+</li>
 <li><p>Select the appropriate toolchain.</p>
 <ul class="simple">
 <li><p>For a RISC-V project select Toolchains = RISC-V Cross GCC.</p></li>
@@ -350,28 +364,69 @@ mind that these are just simple functional examples and a real application may b
 many other configuration options and command line options that the underlying GCC tools support.</p>
 <p>To modify the project settings right click on the project in the Project Explorer and select Properties from the context
 menu. Then navigate to:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-007b45d025b7d99fbc9ef69b8cad07c4ae40c202.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; 
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Select Configuration = <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">configurations</span></code> to configure settings applicable to all build targets (by default Debug and
 Release) or else select a specific configuration (e.g. Configuration = Debug or Configuration = Release) to configure
 settings applicable only to that build target.</p>
-<p>Except where noted the settings below can be configured for all [All Configurations].</p>
+<p>Except where noted, the settings below can be configured for All Configurations.</p>
+<section id="using-xpack-risc-v-gcc-14-2-0-2-with-softconsole-v2022-2">
+<span id="xpack-14-2-toolchain"></span><h3>Using xPack RISC-V GCC 14.2.0-2 with SoftConsole v2022.2<a class="headerlink" href="#using-xpack-risc-v-gcc-14-2-0-2-with-softconsole-v2022-2" title="Link to this heading"></a></h3>
+<p>This section explains how to use xPack GNU RISC-V Embedded GCC v14.2.0-2 with SoftConsole v2022.2 (RISC-V). This toolchain updates binutils and multi-lib packages; follow the steps below to install and select it.</p>
+<p><strong>Download</strong> (official release page: <a class="reference external" href="https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/tag/v14.2.0-2">xPack GNU RISC-V Embedded GCC v14.2.0-2</a>)</p>
+<ul class="simple">
+<li><p><strong>Windows:</strong> download the <code class="docutils literal notranslate"><span class="pre">*-win32-x64.zip</span></code> asset from that page.</p></li>
+<li><p><strong>Linux:</strong> download the <code class="docutils literal notranslate"><span class="pre">*-linux-x64.tar.gz</span></code> asset.</p></li>
+</ul>
+<p>Extract and merge the contents of <code class="docutils literal notranslate"><span class="pre">xpack-riscv-none-elf-gcc-14.2.0-2/</span></code> into your
+SoftConsole <code class="docutils literal notranslate"><span class="pre">build_tools/</span></code> directory. (The <code class="docutils literal notranslate"><span class="pre">bin/</span></code> folder can be merged; you may be
+prompted about a README.)</p>
+<p><strong>Configure the project</strong></p>
+<ul class="simple">
+<li><p><em>Project → Properties → C/C++ Build → Toolchains</em></p>
+<ul>
+<li><p><strong>First, set Toolchain Name:</strong> xPack RISC-V Embedded GCC</p></li>
+<li><p><strong>Then set Prefix:</strong> <code class="docutils literal notranslate"><span class="pre">riscv-none-elf-</span></code></p></li>
+<li><p><strong>Finally set paths:</strong></p>
+<ul>
+<li><p><strong>Toolchain path:</strong> the <strong>toolchain <code class="docutils literal notranslate"><span class="pre">bin/</span></code></strong> directory (global/workspace or absolute)</p></li>
+<li><p><strong>Build tools path:</strong> SoftConsole <strong><code class="docutils literal notranslate"><span class="pre">build_tools/bin</span></code></strong></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/toolchains-xpack-14-2.png"><img alt="Toolchains dialog with xPack selected, prefix riscv-none-elf-, and paths set" src="../_images/toolchains-xpack-14-2.png" style="width: 900px;" />
+</a>
+</figure>
+<p><strong>Target flags (Tool Settings tab)</strong><br />
+Path: <em>Project → Properties → C/C++ Build → Settings → Tool Settings → RISC-V GCC Compiler → Target processor</em>.</p>
+<ul class="simple">
+<li><p><strong>Other target flags:</strong> <code class="docutils literal notranslate"><span class="pre">-march=rv32imc_zicsr_zifencei</span> <span class="pre">-mcmodel=large</span></code></p></li>
+<li><p><em>(Optional, for consistency)</em> <strong>RISC-V GCC Assembler → Target processor → Other target flags:</strong> <code class="docutils literal notranslate"><span class="pre">-march=rv32imc_zicsr_zifencei</span></code></p></li>
+</ul>
+<p><strong>Verify</strong><br />
+Clean &amp; build; the console should show <code class="docutils literal notranslate"><span class="pre">riscv-none-elf-gcc</span> <span class="pre">(xPack)</span> <span class="pre">14.2.0-2</span></code>.</p>
+</section>
 </section>
 <section id="all-cpu-targets">
 <h2>All CPU targets<a class="headerlink" href="#all-cpu-targets" title="Link to this heading"></a></h2>
 <section id="target-processor">
 <h3>Target Processor<a class="headerlink" href="#target-processor" title="Link to this heading"></a></h3>
 <p>The characteristics of the target CPU are configured in the:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-8b505d07ba4f3eed615bcbefb86c5d6ba767c3ff.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>For RISC-V projects the settings must be configured to match the target CPU characteristics so that the underlying
 compiler tools are passed the correct <code class="docutils literal notranslate"><span class="pre">-march=&lt;arch&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">-mabi=&lt;abi&gt;</span></code> options, code is generated in line with
 the supported and used extensions and the appropriate multilibs are linked. Note that the RISC-V toolchain defaults
@@ -550,19 +605,21 @@ PSE_HAL and <code class="docutils literal notranslate"><span class="pre">-Os</sp
 linker scripts bundled with the relevant CMSIS/HAL firmware core which has been generated and imported/copied
 into the project.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0">     digraph {
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="graphviz"><img src="../_images/graphviz-15637dc4124400098b704823a91b356241d9b0c6.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot;
-     }</div></div>
+     }" class="graphviz" /></div>
+</div></div>
 <p>Then:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-e80763f06b6c2d7c456c3b8edc8756bdbb2c4971.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Script files (-T)&quot; -&gt; &quot;Add...&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>and enter the linker script name into the Add file path dialog – e.g.:</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">PolarFire SoC</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Mi-V RISC-V</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>Please refer to the PolarFire SoC PSE_HAL documentation and PolarFire SoC/PSE example project(s)
@@ -588,12 +645,13 @@ necessary because using newlib-nano can significantly reduce the compiled and li
 standard library features.</p>
 <p>To use newlib-nano check the following option:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0">     digraph {
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="graphviz"><img src="../_images/graphviz-2dde41363230a5e8f1edd13967d1a5e2a6272b90.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Use newlib-nano (--specs=nano.specs)&quot;
-     }</div></div>
+     }" class="graphviz" /></div>
+</div></div>
 </section>
 <section id="create-extended-listing">
 <h3>Create Extended Listing<a class="headerlink" href="#create-extended-listing" title="Link to this heading"></a></h3>
@@ -604,18 +662,20 @@ To enable generation of this file, check the Toolchains &gt; Create extended lis
 <h3>Preprocessor Defines and Includes<a class="headerlink" href="#preprocessor-defines-and-includes" title="Link to this heading"></a></h3>
 <p>If any preprocessor defines/symbols or includes are needed, then they can be specified under:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0">     digraph {
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><div class="graphviz"><img src="../_images/graphviz-796d9db065e7e11a252e86cd8dc92acec3061f94.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Preprocessor&quot; -&gt; &quot;Defined symbols (-D)&quot;
-     }<br/>
-     digraph {
+     }" class="graphviz" /></div>
+<br/>
+<div class="graphviz"><img src="../_images/graphviz-81ba498db370e6366f32060c69350b3c6ac62e67.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Include paths (-I) or Include files (-include)&quot;
-     }</div></div>
+     }" class="graphviz" /></div>
+</div></div>
 <p>Depending on the target CPU and CMSIS/HAL used additional CMSIS/HAL related include paths may be required.
 Refer to the relevant CMSIS/HAL documentation for more information.</p>
 </section>
@@ -625,20 +685,22 @@ Refer to the relevant CMSIS/HAL documentation for more information.</p>
 Other optimization settings, including Language standard (which defaults to GNU ISO C11 (<code class="docutils literal notranslate"><span class="pre">-std=gnu11</span></code>) or GNU
 ISO 2011 C++ (<code class="docutils literal notranslate"><span class="pre">-std=gnu++11</span></code>), can be specified under</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0">     digraph {
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><div class="graphviz"><img src="../_images/graphviz-26732c9e0526e65b51e9a62097005bc227448749.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Optimization&quot;
-     }</div></div>
+     }" class="graphviz" /></div>
+</div></div>
 <p>“Fine grained” linking using <code class="docutils literal notranslate"><span class="pre">-fdata-sections</span></code> <code class="docutils literal notranslate"><span class="pre">-ffunction-sections</span></code> and <code class="docutils literal notranslate"><span class="pre">-gc-sections</span></code> is enabled by default here and under</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0">     digraph {
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><div class="graphviz"><img src="../_images/graphviz-749d8a27965b85fb1d00c13a1dc89e804c887905.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Remove unused sections (-Xlinker --gc-sections)&quot;
-     }</div></div>
+     }" class="graphviz" /></div>
+</div></div>
 </section>
 <section id="library-dependencies">
 <h3>Library Dependencies<a class="headerlink" href="#library-dependencies" title="Link to this heading"></a></h3>
@@ -648,12 +710,13 @@ and up to date if necessary.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For this to work the same configuration/build target (e.g. Debug or Release) must be selected for both projects: e.g.</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-3a333bcc61155c99dca14dc17a075c4ac5fc98f8.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;select the required configuration&quot;
-     }</div>
+     }" class="graphviz" /></div>
+</div>
 <p>To configure such an application/library project dependency right click on the application project in Project Explorer
 and from the context menu select Properties then Project References and check the library project(s) on which the
 application project depends.</p>
@@ -664,12 +727,13 @@ application project depends.</p>
 “SysV” format is often more informative and useful. To change this option right click on the project in Project
 Explorer and from the context menu select</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0">     digraph {
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">RISC-V project</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><div class="graphviz"><img src="../_images/graphviz-21587c1825edc5b65b9e38de63825f11ed305b86.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross Print Size&quot; -&gt; &quot;General&quot;
-     }</div></div>
+     }" class="graphviz" /></div>
+</div></div>
 <p>and select <code class="docutils literal notranslate"><span class="pre">Size</span> <span class="pre">format</span> <span class="pre">=</span> <span class="pre">SysV</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Berkeley</span></code>.</p>
 </section>
 <section id="other-options">
@@ -689,36 +753,39 @@ select Configuration = [ All Configurations] before specifying the relevant opti
 <h3>Do not use standard start files (-nostartfiles)<a class="headerlink" href="#do-not-use-standard-start-files-nostartfiles" title="Link to this heading"></a></h3>
 <p>For RISC-V targets this option must be checked when using the Microsemi Mi-V RISC-V HAL (Hardware
 Abstraction Layer) to avoid link errors:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-6f9e1ee02172c67c6322fc3e684ce88a5bc9f931.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Do not use
 standard start files (-nostartfiles)&quot;
-     }</section>
+     }" class="graphviz" /></div>
+</section>
 <section id="use-strict-alignment">
 <span id="alignstrict"></span><h3>Use strict alignment<a class="headerlink" href="#use-strict-alignment" title="Link to this heading"></a></h3>
 <p>Generally, and particularly when using the Microsemi RISC-V Hardware Abstraction Layer (HAL) strict alignment
 should be used to avoid unaligned memory access trap exceptions (mcause = 4 or 6) when the program is
 optimized for size using <code class="docutils literal notranslate"><span class="pre">-Os</span></code>:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-7d464a0a33b98182ecd64b007a1377dd929cf822.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Align = Strict (-mstrict-align)&quot;
-     }</section>
+     }" class="graphviz" /></div>
+</section>
 </section>
 <section id="parallel-builds">
 <span id="parallelbuilds"></span><h2>Parallel builds<a class="headerlink" href="#parallel-builds" title="Link to this heading"></a></h2>
 <p>Projects which do not use elaborate pre-build steps (all non PolarFire SoC) should be compatible with parallel compilation.</p>
 <p>Instead of compile one source file at the time, the toolchain can utilize all cores to compile the source files in parallel. Then they are linked in a single thread and overall improve the build time almost linearly depending on how many cores were used. In simpler terms, enabling parallel build on a quad core CPU can improve the build speeds by almost 4x.</p>
 <p>Bundled <code class="docutils literal notranslate"><span class="pre">miv-rv32imaf-cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code> example projects have parallel build enabled because they do not execute any pre-build steps. The parallel build setting can easily be enabled and disabled from the project properties:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-56f0babc77598c08a310c93fac3d2ce38436f452.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Behavior&quot; -&gt; &quot;Build settings&quot; -&gt; &quot;checkbox `Enable parallel build`&quot;
-     }<p><img alt="parallel builds" src="../_images/paraller.png" /></p>
+     }" class="graphviz" /></div>
+<p><img alt="parallel builds" src="../_images/paraller.png" /></p>
 </section>
 <section id="mismatching-mi-v-rv32-project-configuration-and-the-target">
 <h2>Mismatching Mi-V RV32 project configuration and the target<a class="headerlink" href="#mismatching-mi-v-rv32-project-configuration-and-the-target" title="Link to this heading"></a></h2>
@@ -833,12 +900,13 @@ by adding an additional flag into the SoftConsole’s Project Properties which w
 <p>Depending on the linker script the following snippet <code class="docutils literal notranslate"><span class="pre">change-section-lma</span> <span class="pre">*-0x80000000</span></code> might need to be adjusted before it’s copy/pasted to correctly match the base address offset of the linker script.</p>
 </div>
 <p>Inside your project do the following:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-a38429bd948dbe08bf559c9154f4ab687b6bb492.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross Create Flash Image&quot; -&gt; &quot;General&quot; -&gt; &quot;Other flags enter&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>And copy this section:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="hll">--change-section-lma *-0x80000000
 </span></pre></div>
@@ -909,12 +977,13 @@ generated by Libero SoC or the Firmware Catalog cannot be used with SoftConsole 
 <p>When importing/copying firmware files generated by/exported from Libero SoC or the Firmware Catalog it is safest to first manually delete all relevant folders from the SoftConsole project (e.g. <code class="docutils literal notranslate"><span class="pre">CMSIS</span></code>, <code class="docutils literal notranslate"><span class="pre">hal</span></code>, <code class="docutils literal notranslate"><span class="pre">pse_hal</span></code>, <code class="docutils literal notranslate"><span class="pre">mpfs_hal</span></code>, <code class="docutils literal notranslate"><span class="pre">drivers</span></code>, <code class="docutils literal notranslate"><span class="pre">drivers_config</span></code>) and retain only the custom source files created for the project itself.</p>
 <p>Firmware folders/files can be copied by dragging and dropping from a file manager on Windows or Linux or by using
 the SoftConsole import facility:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-d09d901e916b248814ef9586c316f2e7d30abd31.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right click on the project in the Project Explorer&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;File System&quot; -&gt; &quot;click 'Next'&quot; -&gt; &quot;Browse&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>And select the directory from which the firmware files are to be imported (e.g. the firmware directory below a Libero SoC project directory), select the
 required folders/files and click Finish to import the files.</p>
 </section>
@@ -922,12 +991,13 @@ required folders/files and click Finish to import the files.</p>
 <h2>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading"></a></h2>
 <p>Once a project has been correctly configured and populated with the required firmware it can be built.
 The quickest way to build a project is to click the ‘Hammer’ icon in the SoftConsole menu toolbar.</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-3a333bcc61155c99dca14dc17a075c4ac5fc98f8.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;select the required configuration&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Typical build configurations are Debug and Release, but projects can have many other configurations.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -946,19 +1016,21 @@ The quickest way to build a project is to click the ‘Hammer’ icon in the Sof
 <p>Therefore the <code class="docutils literal notranslate"><span class="pre">Debug</span></code> build configuration and <code class="docutils literal notranslate"><span class="pre">Debug</span></code> launchers have to be considered as two separate concepts, which they are.</p>
 </div>
 <p>With the project still selected in the:</p>
-   digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for &lt;YOUR_PROJECT&gt;&quot;; }<br/>
+<div class="graphviz"><img src="../_images/graphviz-d24cbdb1c1c15a5add448f40eac3c8109c283140.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for &lt;YOUR_PROJECT&gt;&quot;; }" class="graphviz" /></div>
+<br/>
 <p>Project Explorer select Project &gt; Build Project. The results of the build process
 can be viewed in the Console view and the Problems view if there are any problems (e.g. errors or warnings)</p>
 </section>
 <section id="long-paths-on-windows">
 <h2>Long paths on Windows<a class="headerlink" href="#long-paths-on-windows" title="Link to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> inside Windows file I/O API is restricted to 260 characters, but the usable path is even more constrained. The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> must contain the drive letter and the NULL character to terminate the string correctly:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-6e9abb0770b36e84a475d07f785ec2c033045590.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Drive letter&quot; -&gt; &quot;:\\&quot; -&gt; &quot;Path&quot; -&gt; &quot;NULL termination character&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Effectively this shrinks the limit of the usable path to 256 characters for files. While the limit for directories is 244 (256-12) because they need to be capable to append DOS style filename <code class="docutils literal notranslate"><span class="pre">8.3</span></code> at the end of the path.</p>
 <p>Users are encouraged to place the projects at the shortest feasible paths because not just the root of the project is important, but its <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> and its <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> as well. For example if the <code class="docutils literal notranslate"><span class="pre">WORKSPACE_PATH</span></code> is short, then still there is possibility to create long path when addressing the ELF file. On top of the project’s root, the current <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> impacts the path and the <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> impacts it twice:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;WORKSPACE_PATH&gt;/&lt;PROJECT_NAME&gt;/&lt;CONFIGURATION&gt;/&lt;PROJECT_NAME&gt;.elf</span></code></p>
@@ -1067,12 +1139,16 @@ make all
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>

@@ -185,28 +185,35 @@ Where this is mentioned substitute the actual SoftConsole install directory name
 <section id="breadcrumbs">
 <h2>Breadcrumbs<a class="headerlink" href="#breadcrumbs" title="Link to this heading"></a></h2>
 <p>Often in this document steps are described in ‘breadcrumbs’ form such as this:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-abc5ab7bbb71728455148a5a9ae4ce8bc5b8a364.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Do A first&quot; -&gt; &quot;Then do B&quot; -&gt; &quot;Finally do C&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>These breadcrumbs usually reference a GUI location where to click or how to navigate the menus, submenus, their tabs/dialogs.
 There are few common places where these breadcrumbs start:</p>
 <ul>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">SoftConsole</span> <span class="pre">Menu</span> <span class="pre">toolbar</span></code> as starting location, example:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot;; }<p>Which is located under the Window’s title:</p>
+<div class="graphviz"><img src="../_images/graphviz-d8d1ddc9c8f7599e659116b61a1dd2cfb51bc644.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot;; }" class="graphviz" /></div>
+<p>Which is located under the Window’s title:</p>
 <p><img alt="board image" src="../_images/menu_toolbar.png" /></p>
 </li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Project's</span> <span class="pre">properties</span></code> as starting location, example:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }<p>Which requires the user to first go into Project’s settings/properties by following these steps:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on &lt;your_project&gt; in the Project Explorer&quot; -&gt; &quot;Properties&quot;; }<p><img alt="board image" src="../_images/project_properties.png" /></p>
+<div class="graphviz"><img src="../_images/graphviz-0d3696fe041bc72717b173aa6185503c9aee2318.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
+<p>Which requires the user to first go into Project’s settings/properties by following these steps:</p>
+<div class="graphviz"><img src="../_images/graphviz-d27acdb4e917268e3d9eb49672aa8b3e5d28b012.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on &lt;your_project&gt; in the Project Explorer&quot; -&gt; &quot;Properties&quot;; }" class="graphviz" /></div>
+<p><img alt="board image" src="../_images/project_properties.png" /></p>
 <p>This opens the following menu and can be navigated with the breadcrumbs:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }<p><img alt="board image" src="../_images/project_properties_menu2.png" /></p>
+<div class="graphviz"><img src="../_images/graphviz-0d3696fe041bc72717b173aa6185503c9aee2318.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
+<p><img alt="board image" src="../_images/project_properties_menu2.png" /></p>
 </li>
 <li><p>The launchers <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">configuration</span></code> as starting location, example:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }<p>Which requires the user to open the corresponding debug launcher associated with your project:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for \&lt;YOUR_PROJECT\&gt;&quot;; }<div class="admonition note">
+<div class="graphviz"><img src="../_images/graphviz-549b3d8d84b073cc27b3972b52ac6b84c938420d.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<p>Which requires the user to open the corresponding debug launcher associated with your project:</p>
+<div class="graphviz"><img src="../_images/graphviz-33532b4e905734e070842d54137f2ae0216bb283.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for \&lt;YOUR_PROJECT\&gt;&quot;; }" class="graphviz" /></div>
+<div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Each project might have multiple Debug Launchers associated with the project, for example one <code class="docutils literal notranslate"><span class="pre">hw</span></code> for Hardware targets and one <code class="docutils literal notranslate"><span class="pre">Renode</span></code> for Renode emulated targets. User needs to select the coresponding launcher within the context of the SoftConsole chapter. Renode troubleshooting guide will expect users to select the Renode variants of the launchers.</p>
 </div>
@@ -1084,12 +1091,16 @@ The following table below summarizes the FlashPro support in SoftConsole v6.5 an
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>

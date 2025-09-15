@@ -222,12 +222,13 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Converting these values to HEX should give more meaningful representation:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-fcaa503b59aebaa113bbbfb92137b9432017c3c9.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right-click&quot; -&gt; &quot;Format Number&quot; -&gt; &quot;Hex&quot;
-     }</div>
+     }" class="graphviz" /></div>
+</div>
 <p>These CSRs have the following meanings which should help troubleshoot the cause of why the exception happened:</p>
 <section id="mcause">
 <h3>mcause<a class="headerlink" href="#mcause" title="Link to this heading"></a></h3>
@@ -264,7 +265,7 @@
 <section id="mstatus">
 <h3>mstatus<a class="headerlink" href="#mstatus" title="Link to this heading"></a></h3>
 <p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
-<img alt="../_images/wavedrom-c1f39546-cff3-42ad-942e-959f66c15bcb.svg" src="../_images/wavedrom-c1f39546-cff3-42ad-942e-959f66c15bcb.svg" style="width: 840px; height: 300px;" />
+<img alt="../_images/wavedrom-ca055a04-1674-422e-ac24-ab5bddb3ec6f.svg" src="../_images/wavedrom-ca055a04-1674-422e-ac24-ab5bddb3ec6f.svg" style="width: 840px; height: 300px;" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
@@ -288,7 +289,7 @@
 <p>If <code class="docutils literal notranslate"><span class="pre">mtval</span></code> is valid opcode and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> valid range, then open the listing file (<code class="docutils literal notranslate"><span class="pre">.lst</span></code>) and search for <code class="docutils literal notranslate"><span class="pre">mepc</span></code> address, this should point a specific instruction, validate if the instruction is valid. If it has compressed syntax (instructions have c. prefix and the opcodes are only 16-bit), then check if your HW has support for the C extension and if the project settings have correctly configured the CPU/arch/ABI. A similar situation is with F and D floating-point extensions. The listing file will show symbol to which C function the instructions belongs and opening the function from the C editor might reveal a potential issue or narrow down the scope of potential causes. <strong>It is easier to ask for assistance when the possible causes are narrowed down.</strong></p>
 <section id="troubleshooting-flow-for-mcause-2">
 <h3>Troubleshooting flow for mcause==2<a class="headerlink" href="#troubleshooting-flow-for-mcause-2" title="Link to this heading"></a></h3>
-    digraph {
+<div class="graphviz"><img src="../_images/graphviz-a2801c224efb439f87b1431dbc8952fc1de5ba02.png" alt="digraph {
         graph [bgcolor=transparent]
         node  [fontname=&quot;Handlee&quot; shape=rect]
         edge  [fontname=&quot;Handlee&quot;]
@@ -326,7 +327,8 @@
             rank=same;
             opcodeYes; opcode; start
         }
-    }</section>
+    }" class="graphviz" /></div>
+</section>
 <section id="real-life-example-of-mcause-2-on-a-non-f-target">
 <h3>Real-life example of mcause==2 on a non-F target<a class="headerlink" href="#real-life-example-of-mcause-2-on-a-non-f-target" title="Link to this heading"></a></h3>
 <p>Application halted in a trap handler:</p>
@@ -335,12 +337,13 @@
 <p>The local variable tab should contain the content of the CSRs:</p>
 <p><img alt="screenshot" src="../_images/step0030.png" /></p>
 <p>Usually the CSRs are most useful when they are formatted to the hex format:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-fcaa503b59aebaa113bbbfb92137b9432017c3c9.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right-click&quot; -&gt; &quot;Format Number&quot; -&gt; &quot;Hex&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p><img alt="screenshot" src="../_images/step0040.png" /></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">mcause</span></code> CSR is 2, the table below shows that it means a <code class="docutils literal notranslate"><span class="pre">Illegal</span> <span class="pre">instruction</span></code>:</p>
 <table class="docutils align-default">
@@ -436,7 +439,8 @@ This issue can be solved by any of the following:</p>
 <li><p>Remove the floating-point math and replace it with <strong>fixed-point</strong> arithmetic (if that is viable)</p></li>
 <li><p>Switch to <strong>soft-float</strong> implementation, this will increase the code size and decrease the performance significantly as all IEEE754 functionality will be emulated in software.
 To switch to soft-float <strong>both</strong> <code class="docutils literal notranslate"><span class="pre">Floating</span> <span class="pre">point</span></code> and <code class="docutils literal notranslate"><span class="pre">Floating</span> <span class="pre">point</span> <span class="pre">ABI</span></code> have to be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> in the following:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;; }<p><img alt="F ABI matching" src="../_images/float-match-abi-rv32ima.png" /></p>
+<div class="graphviz"><img src="../_images/graphviz-b2ecfc868eaba1d6ed77ad8abc7c789ee961a654.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;; }" class="graphviz" /></div>
+<p><img alt="F ABI matching" src="../_images/float-match-abi-rv32ima.png" /></p>
 </li>
 <li><p>Switch to a target that has <strong>hardware</strong> <code class="docutils literal notranslate"><span class="pre">F</span></code> support.</p></li>
 </ul>
@@ -531,12 +535,16 @@ troubleshoot a trap without even opening the listing file, see Symbols and simpl
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>

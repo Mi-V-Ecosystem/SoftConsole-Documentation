@@ -154,12 +154,13 @@ may be lost.</p>
 <p>If the opening of older workspaces would be permitted, then many bundled features would either be missing or not behave as documented. All documentation assumes that only the correct workspaces are used. Trying to circumvent these constraints and creating own ad-hoc workspaces or reusing older workspaces might on the surface seem like working at first glance but it <strong>will</strong> eventually causes various problems. These issues might not seem to be relevant to the workspace and might be non-trivial to resolve.</p>
 <p>When sharing projects with other users, it’s preferable to share exported projects instead of workspaces, even when using the same machine and dual-booting (do not run the same workspace from different OSes). If the process of exporting and importing projects breaks them, then the projects are not in good shape. Hardcoding absolute paths, not using macros in launchers and settings, and ignoring the case sensitivity (even on Windows), might issues when the project will be imported to a different SoftConsole instance running on a different system. Observe the bundled projects and how they use macros and relative paths, following these conventions will make sharable projects. Projects which are easy to share can be achieved without the need to transport them inside workspaces.</p>
 <p>To migrate projects from a previous release, users can create an empty workspace (by selecting an empty folder) through the launcher dialog and import existing projects into it:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-91354c24495b20d83c45144daf81be33c3d57203.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Import&quot; -&gt; &quot;General&quot; -&gt; &quot;Existing Projects into Workspace&quot;
-     }<p>Make sure the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace</span></code> is checked so the project files will be physically copied into the new workspace and not just referencing them to the original workspace.</p>
+     }" class="graphviz" /></div>
+<p>Make sure the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">projects</span> <span class="pre">into</span> <span class="pre">workspace</span></code> is checked so the project files will be physically copied into the new workspace and not just referencing them to the original workspace.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Copying/sharing workspaces between hosts and especially different OSs is not supported and can cause various and hard to debug problems.</p>
@@ -248,12 +249,16 @@ may be lost.</p>
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>

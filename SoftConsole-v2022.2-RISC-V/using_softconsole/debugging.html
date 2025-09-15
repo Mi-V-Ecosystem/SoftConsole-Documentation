@@ -145,7 +145,8 @@ configuration can be left as they are but a few needs to be manually configured.
 debug launch configurations as a guide to creating new debug launch configurations.</p>
 <ol class="arabic">
 <li><p>Select the project in the Project Explorer and from the:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot;; }</li>
+<div class="graphviz"><img src="../_images/graphviz-0fc3bd0b2230060abc572338136b145064ec8e8a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot;; }" class="graphviz" /></div>
+</li>
 <li><p>In the Debug Configurations dialog select GDB OpenOCD Debugging and click on the New launch configuration button which will create a new debug launch configuration for the previously selected project.</p></li>
 <li><p>For PolarFire SoC Renode emulation please refer to the README provided with the PolarFire SoC/PSE example project(s) in the example workspace.</p></li>
 <li><p>On the Main tab ensure that the <code class="docutils literal notranslate"><span class="pre">C/C++</span> <span class="pre">Application</span></code> field contains the correct executable name.</p>
@@ -170,7 +171,8 @@ size designator). Further details about these options are provided elsewhere in 
 <p><img alt="debugger" src="../_images/debug-sf2-config.png" /></p>
 </li>
 <li><p>For a RISC-V target the Debugger tab settings must be configured as follows:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Config options&quot;; }<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span>
+<div class="graphviz"><img src="../_images/graphviz-511c55f377b13c926f8eb3c07a7a9d60175faa17.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Config options&quot;; }" class="graphviz" /></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">riscv</span><span class="o">.</span><span class="n">cfg</span>
 </pre></div>
 </div>
 <p>or when targeting the HiFive Unleashed Platform using the integrated FTDI JTAG debug probe (rather than
@@ -178,7 +180,8 @@ FlashPro):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">sifive</span><span class="o">-</span><span class="n">hifive</span><span class="o">-</span><span class="n">unleashed</span><span class="o">.</span><span class="n">cfg</span>
 </pre></div>
 </div>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>set mem inaccessible-by-default off
+<div class="graphviz"><img src="../_images/graphviz-205a597968cdcf74701f4e44595341c990f06c2d.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>set mem inaccessible-by-default off
 set $target_riscv = 1
 </pre></div>
 </div>
@@ -212,10 +215,14 @@ suppress these the timeout can be changed:</p>
 </li>
 <li><p>On the <code class="docutils literal notranslate"><span class="pre">Startup</span></code> tab the default settings should be configured as shown below and these are the default
 settings so do not change them unless necessary and you understand what effect these changes will have.</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Initialization Commands&quot; -&gt; &quot;check 'Initial Reset'&quot;; }digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Initialization Commands&quot; -&gt; &quot;set type to 'init'&quot;; }<p>Load symbols/executable should be configured as shown.</p>
+<div class="graphviz"><img src="../_images/graphviz-bcd06702ab72f8ed70caade39b7720eb44249753.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Initialization Commands&quot; -&gt; &quot;check 'Initial Reset'&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-2b6e81f3d8f59917738fcd0777b17a1381faa122.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Initialization Commands&quot; -&gt; &quot;set type to 'init'&quot;; }" class="graphviz" /></div>
+<p>Load symbols/executable should be configured as shown.</p>
 <p>Even when targeting embedded or external RAM:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Runtime Options&quot; -&gt; &quot;'Debug in RAM' should always be disabled&quot;; }<p>In the section:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Run/Restart Commands&quot; -&gt; &quot;Pre-run/Restart&quot;; }<p>set breakpoint at main and <code class="docutils literal notranslate"><span class="pre">Continue</span></code> should normally be checked although can be
+<div class="graphviz"><img src="../_images/graphviz-e9f92113614b9947a013803b1d4721d202507d63.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Runtime Options&quot; -&gt; &quot;'Debug in RAM' should always be disabled&quot;; }" class="graphviz" /></div>
+<p>In the section:</p>
+<div class="graphviz"><img src="../_images/graphviz-295c82f29076b56cceffce180033848637b94124.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Run/Restart Commands&quot; -&gt; &quot;Pre-run/Restart&quot;; }" class="graphviz" /></div>
+<p>set breakpoint at main and <code class="docutils literal notranslate"><span class="pre">Continue</span></code> should normally be checked although can be
 modified if, for example, an initial breakpoint somewhere other than main() is required or startup code
 executed before <code class="docutils literal notranslate"><span class="pre">main()</span></code> needs to be debugged.</p>
 <p>For PolarFire SoC Renode emulation please refer to the README provided with the PolarFire SoC/PSE
@@ -223,20 +230,23 @@ example project(s) in the example workspace.</p>
 <p><img alt="startup" src="../_images/startup-raw.png" /></p>
 </li>
 <li><p>By default the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">as</span></code> is set to:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Common&quot; -&gt; &quot;Save as&quot; -&gt; &quot;Local file&quot;; }<p><code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">file</span></code> causes the debug launch configuration to be saved <strong>into the workspace</strong>. However, if the <code class="docutils literal notranslate"><span class="pre">Shared</span> <span class="pre">file</span></code> option is selected (the default name can be accepted) then the debug launch configuration instead gets saved <strong>into the project</strong> which aids portability as it means that the debug launch configuration moves in tandem with the project (e.g. when copying or exporting/importing the project).</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Common&quot; -&gt; &quot;Save as&quot; -&gt; &quot;Shared file&quot;; }<p><img alt="common" src="../_images/common-project.png" /></p>
+<div class="graphviz"><img src="../_images/graphviz-f091a9047096a4db0a8e6e827b70590ad151d9b6.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Common&quot; -&gt; &quot;Save as&quot; -&gt; &quot;Local file&quot;; }" class="graphviz" /></div>
+<p><code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">file</span></code> causes the debug launch configuration to be saved <strong>into the workspace</strong>. However, if the <code class="docutils literal notranslate"><span class="pre">Shared</span> <span class="pre">file</span></code> option is selected (the default name can be accepted) then the debug launch configuration instead gets saved <strong>into the project</strong> which aids portability as it means that the debug launch configuration moves in tandem with the project (e.g. when copying or exporting/importing the project).</p>
+<div class="graphviz"><img src="../_images/graphviz-3cb3c3ea7e5747e113da515ba857171e3c0db80d.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Common&quot; -&gt; &quot;Save as&quot; -&gt; &quot;Shared file&quot;; }" class="graphviz" /></div>
+<p><img alt="common" src="../_images/common-project.png" /></p>
 </li>
 </ol>
 </section>
 <section id="openocd-command-line-options-and-scripts">
 <h2>OpenOCD command line options and scripts<a class="headerlink" href="#openocd-command-line-options-and-scripts" title="Link to this heading"></a></h2>
 <p>As explained above, it is important that the correct command line options/scripts are passed to OpenOCD via the:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-23327ae9e7189ab79dd50602f4de810df455c6a6.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;Config&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>This section explains these settings.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -519,12 +529,13 @@ Suspend “pause” button can be used to halt it and thereafter normal debuggin
 <h2>Call stack<a class="headerlink" href="#call-stack" title="Link to this heading"></a></h2>
 <p>Normally call stacks can be ignored, but they are very useful when troubleshooting pre-existing conditions. When using the recommended workspace and its <code class="docutils literal notranslate"><span class="pre">Develop</span> <span class="pre">and</span> <span class="pre">Debug</span></code> perspective then this should be in the bottom-left section of
 the screen. It can be opened (if it got previously closed) with :</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-ffffad17a2f14987122d1b446b96b6e6663f2f5f.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Window&quot; -&gt; &quot;Show view&quot; -&gt; &quot;Debug&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p><img alt="Call stack" src="../_images/call_stack.png" /></p>
 <p>The figure above shows how nested the calls are, clicking on each will jump to the exact line of code from where the
 child stack was invoked and it will even show the content of local variables at that given time. This is very useful when
@@ -736,12 +747,16 @@ was updated to match the target hardware by having the Libero SoC generated firm
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>
