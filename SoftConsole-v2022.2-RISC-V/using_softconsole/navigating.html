@@ -239,45 +239,49 @@
 <h3>Save all<a class="headerlink" href="#save-all" title="Link to this heading"></a></h3>
 <p><img alt="toolbar" src="../_images/save_all.png" /></p>
 <p>Will save all changes in all editors/tabs. Can be triggered with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">S</span></code> keyboard shortcut or with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-4f2ca6b5a5b13e53889e182be44355ff241240c8.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;File&quot; -&gt; &quot;Save All&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 </section>
 <section id="build-the-current-project">
 <span id="toolbarbuild"></span><h3>Build the current project<a class="headerlink" href="#build-the-current-project" title="Link to this heading"></a></h3>
 <p><img alt="toolbar" src="../_images/hammer.png" /></p>
 <p>The ‘hammer’ icon will build the currently selected project with its active configuration. The dropdown arrow can be used to quickly switch between configurations and triggering a build in one action. The build can be triggered with <code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">B</span></code> keyboard shortcut or with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-c5df6283f4ff65b5380db87553564f3eec223293.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Project&quot; -&gt; &quot;Build Project&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Similar shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">B</span></code> will compile all opened projects in the workspace.</p>
 </div>
 <p>If it’s necessary to switch the build configuration without triggering a build, then this can be achieved with:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-703fb496213e1204330dc354130857ca52033064.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;select the required configuration&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 </section>
 <section id="skip-all-breakpoints">
 <h3>Skip all breakpoints<a class="headerlink" href="#skip-all-breakpoints" title="Link to this heading"></a></h3>
 <p><img alt="toolbar" src="../_images/skip_breakpoints.png" /></p>
 <p>It’s very useful when troubleshooting code and requiring to something similar to a <code class="docutils literal notranslate"><span class="pre">Run</span></code> launcher without having to make the <code class="docutils literal notranslate"><span class="pre">Run</span></code> launcher. This will disable all breakpoints without removing them (so they can be used later). It can be triggered with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">B</span></code> keyboard shortcut or with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-3d76f94acf7dfe405b8fb3edce43fa8586638fc9.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Skip All Breakpoints&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Even when it’s not explicitly named as a ‘Toggle’ this feature is a toggle.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -296,12 +300,13 @@
 <h4>Resume<a class="headerlink" href="#resume" title="Link to this heading"></a></h4>
 <p><img alt="toolbar" src="../_images/resume.png" /></p>
 <p>When debugging the target which is halted, then Resume will continue the execution (until the next breakpoint). It can be triggered with <code class="docutils literal notranslate"><span class="pre">F8</span></code> keyboard shortcut or with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-595f4898ec89755b76bb78dde8de6be878269c19.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Resume&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When a debug launcher is invoked and the target is initialising the ‘Resume’ icon might show as colored (active/enabled), however the UX is more reliable when waiting slightly for the target to break a main and not invoke the ‘Resume’ while the target is initialising for the debug session.</p>
@@ -316,23 +321,25 @@
 <p><img alt="toolbar" src="../_images/suspend.png" /></p>
 <p>When there are no breakpoints and the target is running, the debugger can halt the target. Because of the ad-hoc nature of the Suspend, the target might be in various location and very deeply nested inside the firmware, often Step out (shown below) can be used to get outside deeply nested functions.</p>
 <p>It has no keyboard shortcut but can be invoked with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-4afbc7d33de1ef8c216ccd01db12e6d4ad4f8b10.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Suspend&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 </section>
 <section id="terminate">
 <h4>Terminate<a class="headerlink" href="#terminate" title="Link to this heading"></a></h4>
 <p><img alt="toolbar" src="../_images/terminate.png" /></p>
 <p>It will terminate currently selected session, in case of Renode sessions, it’s important to select the group launcher so the whole Renode is terminated, and not just the GDB connection. It can be triggered with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">F2</span></code> keyboard shortcut and with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-fb07395296e433730c1106e6b30c03b16b9b3251.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Terminate&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There are other “Red Stop” buttons in the GUI and some might act in a similar manner (terminating GDB console will terminate the GDB which terminate the debug sessions). However, user should use the toolbar terminate button to properly terminate the sessions, because in some cases there are differences (such as Renode group launchers).</p>
@@ -342,12 +349,13 @@
 <h4>Step Into<a class="headerlink" href="#step-into" title="Link to this heading"></a></h4>
 <p><img alt="toolbar" src="../_images/step_in.png" /></p>
 <p>Will step inside a function and go deeper in the call-stack. It can be triggered with <code class="docutils literal notranslate"><span class="pre">F5</span></code> keyboard shortcut and with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-c6dde12469d31d2de91c184c0f0ef2dac6f98c17.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Step Into&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The functionality can change depending on the “Instruction Stepping Mode” which will be explained below.
@@ -358,12 +366,13 @@ In the “Instruction Stepping Mode” it will go deeper into the callstack and 
 <h4>Step Over<a class="headerlink" href="#step-over" title="Link to this heading"></a></h4>
 <p><img alt="toolbar" src="../_images/step_over.png" /></p>
 <p>Will step over the function and continue debugging after the function finishes. It can be triggered with <code class="docutils literal notranslate"><span class="pre">F6</span></code> keyboard shortcut and with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-70551fd4825b749f68796aaf0b87d28612716502.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Step Over&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The functionality can change depending on the “Instruction Stepping Mode” which will be explained below.
@@ -374,12 +383,13 @@ In the “Instruction Stepping Mode” when call instruction such as <code class
 <h4>Step Return<a class="headerlink" href="#step-return" title="Link to this heading"></a></h4>
 <p><img alt="toolbar" src="../_images/step_out.png" /></p>
 <p>Will return back out from the function. It can be triggered with <code class="docutils literal notranslate"><span class="pre">F7</span></code> keyboard shortcut and with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-e1da9dfec00dcbdf51d5570c7ffa856968b2602c.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Step Return&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The functionality can change depending on the “Instruction Stepping Mode” which will be explained below.
@@ -390,23 +400,25 @@ In the “Instruction Stepping Mode” the CPU will execute all the instructions
 <h4>Run to Line<a class="headerlink" href="#run-to-line" title="Link to this heading"></a></h4>
 <p><img alt="toolbar" src="../_images/run_to_line.png" /></p>
 <p>It can be seen as making a temporary one-off breakpoint and the invoking “Resume”. Some users out of habit might still create breakpoints and resume to them, just to delete them later, however this is a faster way to achieve the same. It has no direct keyboard shortcut, but can triggered with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">P</span></code> and then typing <code class="docutils literal notranslate"><span class="pre">rtl</span></code> or with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-a3278d3a619f8c2ff3397b7f7592126a77c23648.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Run to Line&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 </section>
 <section id="instruction-stepping">
 <h4>Instruction stepping<a class="headerlink" href="#instruction-stepping" title="Link to this heading"></a></h4>
 <p><img alt="toolbar" src="../_images/instruction_stepping.png" /></p>
 <p>It will switch to instruction stepping mode, and the step action will go over a single instruction instead of going over the whole C functions. It has no direct keyboard shortcut, but can be used with the menu:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-765bf2ce3a1fb291722e65d3c6dfef1155ba6460.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Instruction Stepping&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 </section>
 </section>
 <section id="git">
@@ -422,12 +434,13 @@ In the “Instruction Stepping Mode” the CPU will execute all the instructions
 <li><p>Git Commit</p></li>
 </ul>
 <p>All of these and many more can be accessed via:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-9ee8b1f2dc38a356bb636e49dba58e30c7d06a76.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Git&quot; 
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 </section>
 <section id="debug-and-run-launchers">
 <h3>Debug and Run launchers<a class="headerlink" href="#debug-and-run-launchers" title="Link to this heading"></a></h3>
@@ -437,38 +450,42 @@ In the “Instruction Stepping Mode” the CPU will execute all the instructions
 If there are too many projects opened there may be multiple Debug launchers.
 Closing all unrelated projects will reduce the amount of Debug launchers making it easier to navigate..</p>
 <p><img alt="toolbar" src="../_images/debug_configurations.png" /></p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-41ec00cd8ec7fe5cbe8eb4278ab6ba6a13cec27a.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Close Unrelated Projects&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>And it should decrease the amount of noise/distractions in the Debug Launcher Configuration dialog:</p>
 <p><img alt="toolbar" src="../_images/debug_configurations_closed.png" /></p>
 <p>Other way to close projects selectively, one by one, can be done with:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-da58179eddf5dd2eae9b2e652e4d984c684c9249.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Right click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot; -&gt; &quot;Close Project&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Or even faster with:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-42d68b6bcb2004bfd1b84c14503d7769946cf9ec.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Middle click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>To open the closed projects, just double-click on their name in the Project Explorer.</p>
 <section id="run-launchers">
 <h4>Run Launchers<a class="headerlink" href="#run-launchers" title="Link to this heading"></a></h4>
 <p>Similar to Debug launchers are the Run launchers, usually our examples are not shipping with Run launchers. They could be used to run applications locally (not useful in embedded IDE), however they can be used on remote/embedded targets like the Debug launchers do, in fact the logic behind Run and Debug launchers is the same, only difference between the Debug and Run launchers is that they have separate ‘favorites’ and ‘history’ so they can trigger their own ‘run most recent launcher’ and the Run launchers have implied <code class="docutils literal notranslate"><span class="pre">Skip</span> <span class="pre">all</span> <span class="pre">breakpoints</span></code>. Users can feel free to make their own Run launchers by duplicating the Debug launcher, renaming it to Run Launcher and then:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-b5a54387cb9b70567d1448dec25d4983c2b57bf0.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Run/Restart Commands&quot; -&gt; &quot;Uncheck 'Set breakpoint at'&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p><img alt="toolbar" src="../_images/run_launcher.png" /></p>
 <p>It will make the launcher to NOT break at main function and together with the <code class="docutils literal notranslate"><span class="pre">Run</span></code> launchers implied <code class="docutils literal notranslate"><span class="pre">Skip</span> <span class="pre">all</span> <span class="pre">breakpoints</span></code> will allow user to just run the applications on the target without debugger halting it.</p>
 </section>
@@ -597,12 +614,16 @@ Closing all unrelated projects will reduce the amount of Debug launchers making 
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>

@@ -138,8 +138,10 @@ couple of ways to reduce the overhead:</p>
 <ul>
 <li><p>Integer only *iprintf() APIs (e.g. <code class="docutils literal notranslate"><span class="pre">iprintf()</span></code>, <code class="docutils literal notranslate"><span class="pre">siprintf()</span></code>, <code class="docutils literal notranslate"><span class="pre">fiprintf()</span></code> etc.) that avoid the significant additional overhead of floating point support, and formats <code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code>, <code class="docutils literal notranslate"><span class="pre">G</span></code>, <code class="docutils literal notranslate"><span class="pre">e</span></code>, and <code class="docutils literal notranslate"><span class="pre">F</span></code> are not supported. Refer to the newlib documentation for more information.</p></li>
 <li><p>Nano newlib which is a cut down version of the standard newlib library. To use newlib-nano go to the linker settings of your project properties:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross RISC-V GNU C/C++ Linker&quot;; }<p>and check the <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">newlib-nano</span></code> option:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Cross RISC-V GNU C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Use newlib-nano (--specs=nano.specs)&quot; ; }</li>
+<div class="graphviz"><img src="../_images/graphviz-5a12a6daab51b2cfd463a600aa0999572e73a26f.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross RISC-V GNU C/C++ Linker&quot;; }" class="graphviz" /></div>
+<p>and check the <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">newlib-nano</span></code> option:</p>
+<div class="graphviz"><img src="../_images/graphviz-5c4ba803d34463581bcb78c764776c9456e34dec.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Cross RISC-V GNU C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Use newlib-nano (--specs=nano.specs)&quot; ; }" class="graphviz" /></div>
+</li>
 </ul>
 </section>
 <section id="static-stack-profiling">
@@ -191,12 +193,13 @@ stack allocations as much as possible.</p>
 into the Eclipse/CDT SoftConsole IDE. Using cppcheck/cppcheclipse projects can be scanned for common source
 code issues and bugs each time the project is built or on demand. The configuration options for cppcheck/cppcheclipse
 are accessible via:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-8a0b3ac128c52076f770ec1002b0dbef66958e49.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Project Properties&quot; -&gt; &quot;cppchecklipse&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>For more information on using cppcheck/cppcheclipse source code static analysis capabilities refer to these links:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://mcuoneclipse.com/2015/07/02/open-source-static-code-analysis-cppcheck-with-eclipse/">https://mcuoneclipse.com/2015/07/02/open-source-static-code-analysis-cppcheck-with-eclipse/</a></p></li>
@@ -2834,12 +2837,16 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>

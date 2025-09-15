@@ -113,12 +113,13 @@
 <section id="long-paths-on-windows">
 <h2>Long paths on Windows<a class="headerlink" href="#long-paths-on-windows" title="Link to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> inside Windows file I/O API is restricted to 260 characters, but the usable path is even more constrained. The <code class="docutils literal notranslate"><span class="pre">MAX_PATH</span></code> must contain the drive letter and the NULL character to terminate the string correctly:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-236f371e5f6903acc11e466b48af8ad707339baa.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Drive letter&quot; -&gt; &quot;:\\&quot; -&gt; &quot;Path&quot; -&gt; &quot;NULL termination character&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 <p>Effectively this shrinks the limit of the usable path to 256 characters for files. While the limit for directories is 244 (256-12) because they need to be capable to append DOS style filename <code class="docutils literal notranslate"><span class="pre">8.3</span></code> at the end of the path.</p>
 <p>Users are encouraged to place the projects at the shortest feasible paths because not just the root of the project is important, but its <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> and its <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> as well. For example if the <code class="docutils literal notranslate"><span class="pre">WORKSPACE_PATH</span></code> is short, then still there is possibility to create long path when addressing the ELF file. On top of the project’s root, the current <code class="docutils literal notranslate"><span class="pre">CONFIGURATION</span></code> impacts the path and the <code class="docutils literal notranslate"><span class="pre">PROJECT_NAME</span></code> impacts it twice:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;WORKSPACE_PATH&gt;/&lt;PROJECT_NAME&gt;/&lt;CONFIGURATION&gt;/&lt;PROJECT_NAME&gt;.elf</span></code></p>
@@ -169,9 +170,12 @@ make all
 <li><p>On Windows (Internet Explorer)</p>
 <ul>
 <li><p>Make sure you have enabled images inside Internet Explorer:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Internet Options&quot; -&gt; &quot;Advanced&quot; -&gt; &quot;Multimedia&quot; -&gt; &quot;Check 'Show pictures'&quot;; }digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Internet Options&quot; -&gt; &quot;Advanced&quot; -&gt; &quot;Multimedia&quot; -&gt; &quot;Check 'Enable automatic image resizing'&quot;; }</li>
+<div class="graphviz"><img src="../_images/graphviz-1a5a3e76138bf68851180b7797288754b1675792.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Internet Options&quot; -&gt; &quot;Advanced&quot; -&gt; &quot;Multimedia&quot; -&gt; &quot;Check 'Show pictures'&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-cde5ae64325cb07eebe13ed8035bdb0d82d8b8d4.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Internet Options&quot; -&gt; &quot;Advanced&quot; -&gt; &quot;Multimedia&quot; -&gt; &quot;Check 'Enable automatic image resizing'&quot;; }" class="graphviz" /></div>
+</li>
 <li><p>In case of having issues with GPU and its driver, switch to software rendering inside Internet Explorer:</p>
-digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Internet Options&quot; -&gt; &quot;Advanced&quot; -&gt; &quot;Accelerated graphics&quot; -&gt; &quot;Check 'Use software rendering instead of GPU rendering'&quot;; }</li>
+<div class="graphviz"><img src="../_images/graphviz-22de36c34e0e2e85d3e69e4288a223ef6b61e7cb.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Internet Options&quot; -&gt; &quot;Advanced&quot; -&gt; &quot;Accelerated graphics&quot; -&gt; &quot;Check 'Use software rendering instead of GPU rendering'&quot;; }" class="graphviz" /></div>
+</li>
 <li><p>Go to your Add-on manager and disable all Internet Explorer extensions</p></li>
 <li><p>There are many other reasons why Internet Explorer doesn’t render images, search on google: <code class="docutils literal notranslate"><span class="pre">Internet</span> <span class="pre">Explorer</span> <span class="pre">images</span> <span class="pre">not</span> <span class="pre">showing</span></code></p></li>
 </ul>
@@ -191,12 +195,13 @@ digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node
 <p>Before loading the elf to the target it might be executing something which is not resolved. Sometimes it is possible to resolve the issue by specifying the sysroot, but this is not reliable as the target might be executing the previous project. Or in case of Renode no project at all.</p>
 <p><a class="reference external" href="https://visualgdb.com/gdbreference/commands/set_sysroot">https://visualgdb.com/gdbreference/commands/set_sysroot</a></p>
 <p>When the following checkbox:</p>
-     digraph {
+<div class="graphviz"><img src="../_images/graphviz-0bb9f4b783118ec211f1c33363beeabe66076ab4.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Window&quot; -&gt; &quot;Preferences&quot; -&gt; &quot;C/C++&quot; -&gt; &quot;Debug&quot; -&gt; &quot;Source Not Found&quot; -&gt; &quot;Only if source file name is known but not found&quot;
-     }<br/>
+     }" class="graphviz" /></div>
+<br/>
 Is checked then error message/tab can be suppressed.
 <br/>
 <br/>
@@ -284,12 +289,16 @@ Is checked then error message/tab can be suppressed.
 
       
       
-      <dd><a href="../SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
       
       
-       <strong> 
-      <dd><a href="../SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
-       </strong> 
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
       
 
     </dl>
