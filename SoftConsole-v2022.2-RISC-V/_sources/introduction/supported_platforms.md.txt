@@ -29,6 +29,8 @@
  - Ubuntu 20.04.1 LTS 64-bit
  - Debian 11 64-bit
  - CentOS 7 64-bit and RHEL 7 64-bit
+ - RHEL 8 (64-bit)
+ - AlmaLinux 8 (64-bit)
 ````
 {% endif %}
 
