@@ -1,0 +1,35 @@
+    {
+        "reg": [
+            {"bits": 1,  "name": "UIE"},
+            {"bits": 1,  "name": "SIE"},
+            {"bits": 1,  "name": "WPRI", type: 3},
+
+            {"bits": 1,  "name": "MIE"},
+            {"bits": 1,  "name": "UPIE"},
+            {"bits": 1,  "name": "SPIE"},
+            {"bits": 1,  "name": "WPRI", type: 3},
+
+            {"bits": 1,  "name": "MPIE"},
+            {"bits": 1,  "name": "SPP"},
+            {"bits": 2,  "name": "WPRI", type: 3},
+
+            {"bits": 2,  "name": "MPP"},
+            {"bits": 2,  "name": "FS"},
+            {"bits": 2,  "name": "XS"},
+            {"bits": 1,  "name": "MPRV"},
+            {"bits": 1,  "name": "SUM"},
+            {"bits": 1,  "name": "MXR"},
+            {"bits": 1,  "name": "TVM"},
+            {"bits": 1,  "name": "TW"},
+            {"bits": 1,  "name": "TSR"},
+
+            {"bits": 8,  "name": "WPRI", type: 3},
+            {"bits": 1,  "name": "SD"}
+        ], 
+        "config":{
+            "bits": 32, 
+            lanes: 2,
+            hspace: 800,
+            vspace: 75
+        }
+    }
