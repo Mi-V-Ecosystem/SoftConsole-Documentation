@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Migrating existing projects to SoftConsole v2022.2-RISC-V - SoftConsole v2022.2-728-RISC-V documentation</title>
+<title>Migrating existing projects to SoftConsole v2026.1 - SoftConsole v2026.1 documentation</title>
 
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/documentation_options.js?v=9308526a"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,7 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Migrating existing projects to SoftConsole v2022.2-RISC-V</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Migrating existing projects to SoftConsole v2026.1</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#before-you-start">Before you start</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#how-this-chapter-separates-the-two-kinds-of-change">How this chapter separates the two kinds of change</a></li>
 </ul>
@@ -132,7 +132,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Migrating existing projects to SoftConsole v2022.2-RISC-V</li>
+      <li class="breadcrumb-item active">Migrating existing projects to SoftConsole v2026.1</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -142,11 +142,11 @@
            <div itemprop="articleBody">
              
 
-  <section id="migrating-existing-projects-to-softconsole-v2022-2-risc-v">
-<h1>Migrating existing projects to SoftConsole v2022.2-RISC-V<a class="headerlink" href="#migrating-existing-projects-to-softconsole-v2022-2-risc-v" title="Link to this heading"></a></h1>
+  <section id="migrating-existing-projects-to-softconsole-v2026-1">
+<h1>Migrating existing projects to SoftConsole v2026.1<a class="headerlink" href="#migrating-existing-projects-to-softconsole-v2026-1" title="Link to this heading"></a></h1>
 <section id="before-you-start">
 <h2>Before you start<a class="headerlink" href="#before-you-start" title="Link to this heading"></a></h2>
-<p>SoftConsole v2022.2-RISC-V ships two generations of toolchains. The GCC 15.2 toolchains are the
+<p>SoftConsole v2026.1 ships two generations of toolchains. The GCC 15.2 toolchains are the
 recommended ones for new work, and the toolchains used by earlier SoftConsole
 releases are still included, so a project can keep the compiler generation it
 was written for. Imported toolchain paths and project settings may still need
@@ -204,7 +204,7 @@ source code.</p></li>
 <h2>Importing a project from an earlier SoftConsole release<a class="headerlink" href="#importing-a-project-from-an-earlier-softconsole-release" title="Link to this heading"></a></h2>
 <p>Projects from earlier SoftConsole releases are imported in the normal way, see
 <a class="reference internal" href="projects.html#importgeneralprojects"><span class="std std-ref">Importing general projects</span></a> for the dialogs and the
-options. Nothing about the import itself is specific to SoftConsole v2022.2-RISC-V.</p>
+options. Nothing about the import itself is specific to SoftConsole v2026.1.</p>
 <p>Two points are worth attention when the project comes from an older release:</p>
 <ul class="simple">
 <li><p>Import into a new workspace rather than reusing a workspace created by an
@@ -227,7 +227,7 @@ itself was fine, and it gives you a baseline to compare against.</p>
 <p>A project created by an older release may record an absolute path to the
 toolchain it was built with, pointing into the old installation directory. If
 that installation is still present the project keeps using it, which can be
-confusing because the build then does not use SoftConsole v2022.2-RISC-V at all.</p>
+confusing because the build then does not use SoftConsole v2026.1 at all.</p>
 <p>Check the configured toolchain path in:</p>
 <div class="graphviz"><img src="../_images/graphviz-8008723f679c13176846ebaf530c065c5c61a7c6.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
@@ -237,13 +237,13 @@ confusing because the build then does not use SoftConsole v2022.2-RISC-V at all.
      }" class="graphviz" /></div>
 <br/>
 <p>The next section describes how to point the project at one of the toolchains
-that ship with SoftConsole v2022.2-RISC-V.</p>
+that ship with SoftConsole v2026.1.</p>
 </section>
 </section>
 <section id="choosing-a-toolchain">
 <span id="migratingchoosing"></span><h2>Choosing a toolchain<a class="headerlink" href="#choosing-a-toolchain" title="Link to this heading"></a></h2>
 <p>This is a SoftConsole setting. It does not change the project’s source code.</p>
-<p>SoftConsole v2022.2-RISC-V bundles both toolchain generations:</p>
+<p>SoftConsole v2026.1 bundles both toolchain generations:</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Architecture</p></th>
@@ -629,7 +629,7 @@ affected one C++ application source file.</p>
 <span id="migratingdebugconfig"></span><h2>Hardware debug configuration changes<a class="headerlink" href="#hardware-debug-configuration-changes" title="Link to this heading"></a></h2>
 <p>These are SoftConsole settings stored in the launch configuration. They do not
 change the project’s source code.</p>
-<p>SoftConsole v2022.2-RISC-V debugs FlashPro attached targets through fpServer, which owns the
+<p>SoftConsole v2026.1 debugs FlashPro attached targets through fpServer, which owns the
 connection to the programmer, with OpenOCD connecting to it. Launch
 configurations created by earlier SoftConsole releases predate this and drive
 the programmer differently, so an imported launch configuration usually needs
@@ -646,7 +646,7 @@ attention.</p>
 <br/>
 <p>Check the following on the Debugger tab:</p>
 <ul class="simple">
-<li><p><strong>fpServer startup.</strong> SoftConsole v2022.2-RISC-V can start fpServer automatically as part of the
+<li><p><strong>fpServer startup.</strong> SoftConsole v2026.1 can start fpServer automatically as part of the
 launch. An imported configuration does not have this enabled, because the
 option did not exist when it was created.</p></li>
 <li><p><strong>Programmer selection commands.</strong> Older configurations issue commands in the
@@ -679,7 +679,7 @@ programmer any programming tool uses.</p>
 <h3>Scope of the fpServer integration in this release<a class="headerlink" href="#scope-of-the-fpserver-integration-in-this-release" title="Link to this heading"></a></h3>
 <p>fpServer runs on the same machine as SoftConsole and connects to a locally
 attached FlashPro programmer. Debugging a programmer attached to a different
-machine is not part of SoftConsole v2022.2-RISC-V.</p>
+machine is not part of SoftConsole v2026.1.</p>
 </section>
 </section>
 <section id="if-a-project-still-does-not-build">
@@ -746,7 +746,7 @@ if you intend to migrate.</p></li>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     <span class="fa fa-book"> Other Versions</span>
-    v2022.2-RISC-V
+    v2026.1
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">

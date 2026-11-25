@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Project settings - SoftConsole v2022.2-728-RISC-V documentation</title>
+<title>Project settings - SoftConsole v2026.1 documentation</title>
 
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/documentation_options.js?v=9308526a"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,7 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/migrating.html">Migrating existing projects to SoftConsole v2022.2-RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/migrating.html">Migrating existing projects to SoftConsole v2026.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
@@ -138,7 +138,7 @@
 <div class="graphviz"><img src="../_images/graphviz-75b5246cef3b9ab46ff8880930f52f4f83a23fdb.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;No use startup or default libs (-nostdlib)&quot;; }" class="graphviz" /></div>
 <p>[https://hackaday.com/2021/07/19/the-newlib-embedded-c-standard-library-and-how-to-use-it/](More info about newlib nano).</p>
 </li>
-<li><p>The newlib doesn’t have fully ported floating point support for RISC-V and is not utilizing some floating point instructions even if they are supported by the hardware (fmin/fmax/fsqrt…) and some functions might accidentally include soft double support. This can lead to the application footprint growing unexpectedly. If really needed, it’s possible to avoid these newlib functions and replace them with own implementations using inline assembly. Earlier releases bundled a <code class="docutils literal notranslate"><span class="pre">miv-rv32imaf-cpp</span></code> example showing how to use inline assembly and how to switch between newlib and inline assembly implementations with defines, in its <code class="docutils literal notranslate"><span class="pre">common.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">common.hpp</span></code> files. That example is not bundled in SoftConsole v2022.2-RISC-V.</p></li>
+<li><p>The newlib doesn’t have fully ported floating point support for RISC-V and is not utilizing some floating point instructions even if they are supported by the hardware (fmin/fmax/fsqrt…) and some functions might accidentally include soft double support. This can lead to the application footprint growing unexpectedly. If really needed, it’s possible to avoid these newlib functions and replace them with own implementations using inline assembly. Earlier releases bundled a <code class="docutils literal notranslate"><span class="pre">miv-rv32imaf-cpp</span></code> example showing how to use inline assembly and how to switch between newlib and inline assembly implementations with defines, in its <code class="docutils literal notranslate"><span class="pre">common.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">common.hpp</span></code> files. That example is not bundled in SoftConsole v2026.1.</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">printf()</span></code> style functions are being used and the program is still too large even when using newlib-nano then it may be possible to use a standalone small printf() implementation instead. Most such implementations may have limitations compared to a “full” standard library <code class="docutils literal notranslate"><span class="pre">printf()</span></code> implementation but often these limitations are acceptable in an embedded context. Examples of such “small” printf() implementations include:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/mpaland/printf">https://github.com/mpaland/printf</a> (minimalistic <code class="docutils literal notranslate"><span class="pre">printf()</span></code> that supports floats)</p></li>
@@ -408,7 +408,7 @@ make: *** [makefile:65: miv-rv32i-systick-blinky.elf] Error 1
 </section>
 <section id="debugger-console-view-is-not-working-or-gdb-is-misbehaving">
 <h2>Debugger Console View is not working or GDB is misbehaving<a class="headerlink" href="#debugger-console-view-is-not-working-or-gdb-is-misbehaving" title="Link to this heading"></a></h2>
-<p>SoftConsole v2022.2-RISC-V debugger version detection can fail and not show <code class="docutils literal notranslate"><span class="pre">Debugger</span> <span class="pre">Console</span></code>. The <code class="docutils literal notranslate"><span class="pre">Debugger</span> <span class="pre">Console</span></code> will work when macros are not used in the debug launcher, copy content of the</p>
+<p>SoftConsole v2026.1 debugger version detection can fail and not show <code class="docutils literal notranslate"><span class="pre">Debugger</span> <span class="pre">Console</span></code>. The <code class="docutils literal notranslate"><span class="pre">Debugger</span> <span class="pre">Console</span></code> will work when macros are not used in the debug launcher, copy content of the</p>
 <div class="graphviz"><img src="../_images/graphviz-398d52da05447994fbee9b590f802178532d6af4.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
@@ -532,7 +532,7 @@ RISC-V projects:</p>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     <span class="fa fa-book"> Other Versions</span>
-    v2022.2-RISC-V
+    v2026.1
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">

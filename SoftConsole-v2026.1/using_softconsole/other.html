@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Other features - SoftConsole v2022.2-728-RISC-V documentation</title>
+<title>Other features - SoftConsole v2026.1 documentation</title>
 
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/documentation_options.js?v=9308526a"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,7 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating existing projects to SoftConsole v2022.2-RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating existing projects to SoftConsole v2026.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
@@ -157,7 +157,7 @@ See here for more on this and add the relevant options to the project settings a
 <p><a class="reference external" href="https://gcc.gnu.org/onlinedocs/gnat_ugn/Static-Stack-Usage-Analysis.html">https://gcc.gnu.org/onlinedocs/gnat_ugn/Static-Stack-Usage-Analysis.html</a></p>
 <p><a class="reference external" href="https://stackoverflow.com/questions/6387614">https://stackoverflow.com/questions/6387614</a></p>
 <p><a class="reference external" href="https://www.adacore.com/uploads/technical-papers/Stack_Analysis.pdf">https://www.adacore.com/uploads/technical-papers/Stack_Analysis.pdf</a></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">-fstack-usage</span></code> can show what parts consume how much stuck. The output below comes from the <code class="docutils literal notranslate"><span class="pre">mpfs-mustein-julia</span></code> example, which earlier releases bundled and SoftConsole v2022.2-RISC-V does not. In its file fractal_display.su (the static usage has <code class="docutils literal notranslate"><span class="pre">.su</span></code> extension) one function is allocating a non-negledable amount on the stack (64KiB):</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-fstack-usage</span></code> can show what parts consume how much stuck. The output below comes from the <code class="docutils literal notranslate"><span class="pre">mpfs-mustein-julia</span></code> example, which earlier releases bundled and SoftConsole v2026.1 does not. In its file fractal_display.su (the static usage has <code class="docutils literal notranslate"><span class="pre">.su</span></code> extension) one function is allocating a non-negledable amount on the stack (64KiB):</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">fractal_display</span><span class="p">.</span><span class="n">c</span><span class="o">:</span><span class="mi">70</span><span class="o">:</span><span class="mi">6</span><span class="o">:</span><span class="n">transition</span><span class="w"> </span><span class="mi">160</span><span class="w"> </span><span class="k">static</span>
 <span class="linenos">2</span><span class="n">fractal_display</span><span class="p">.</span><span class="n">c</span><span class="o">:</span><span class="mi">84</span><span class="o">:</span><span class="mi">6</span><span class="o">:</span><span class="n">fractalLoop</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="k">static</span>
 <span class="hll"><span class="linenos">3</span><span class="n">fractal_display</span><span class="p">.</span><span class="n">c</span><span class="o">:</span><span class="mi">115</span><span class="o">:</span><span class="mi">6</span><span class="o">:</span><span class="n">juliaMain</span><span class="w"> </span><span class="mi">65568</span><span class="w"> </span><span class="k">static</span>
@@ -2786,7 +2786,7 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     <span class="fa fa-book"> Other Versions</span>
-    v2022.2-RISC-V
+    v2026.1
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">

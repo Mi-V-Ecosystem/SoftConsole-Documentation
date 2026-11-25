@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Post Installation - SoftConsole v2022.2-728-RISC-V documentation</title>
+<title>Post Installation - SoftConsole v2026.1 documentation</title>
 
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/documentation_options.js?v=9308526a"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -85,7 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating existing projects to SoftConsole v2022.2-RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating existing projects to SoftConsole v2026.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
@@ -137,7 +137,7 @@
 32-bit component, so it needs the 32-bit Microsoft Visual C++ runtime present on
 the machine.</p>
 <p>The Windows installer is configured to install this runtime for you. After the
-files are copied, it runs the redistributable included with SoftConsole v2022.2-RISC-V quietly and
+files are copied, it runs the redistributable included with SoftConsole v2026.1 quietly and
 without restarting the machine:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">SoftConsole</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;/</span><span class="n">extras</span><span class="o">/</span><span class="n">vcredist</span><span class="o">/</span><span class="n">vc_redist</span><span class="o">.</span><span class="n">x86</span><span class="o">-</span><span class="mf">14.51.36247</span><span class="o">.</span><span class="n">exe</span>
 </pre></div>
@@ -158,7 +158,7 @@ directory above and try again. Administrator rights may be required.</p>
 <section id="renode-dependencies">
 <h3>Renode dependencies<a class="headerlink" href="#renode-dependencies" title="Link to this heading"></a></h3>
 <p>The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode’s dependencies.</p>
-<p>The Renode build bundled with SoftConsole v2022.2-RISC-V carries its own .NET runtime and is started
+<p>The Renode build bundled with SoftConsole v2026.1 carries its own .NET runtime and is started
 from a native executable, so the separate .NET Framework step that earlier
 releases described is no longer needed.</p>
 <div class="admonition note">
@@ -208,14 +208,14 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 </section>
 <section id="id1">
 <h3>Renode dependencies<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>The Renode build bundled with SoftConsole v2022.2-RISC-V is the portable .NET build and carries its own
+<p>The Renode build bundled with SoftConsole v2026.1 is the portable .NET build and carries its own
 .NET runtime inside the installation’s <code class="docutils literal notranslate"><span class="pre">renode</span></code> folder. No Mono framework and no separate
 .NET installation are required.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Earlier SoftConsole releases bundled a Renode build that ran on the Mono framework, so
 their setup instructions asked for Mono to be installed from the mono-project repository.
-Those instructions no longer apply to SoftConsole v2022.2-RISC-V.</p>
+Those instructions no longer apply to SoftConsole v2026.1.</p>
 </div>
 <p>The bundled runtime is self-contained, but like any native application Renode still links
 against libraries provided by the host. These are ordinary system libraries rather than a
@@ -422,7 +422,7 @@ sudo<span class="w"> </span>udevadm<span class="w"> </span>trigger<span class="w
 <p>If <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code> already exists then make sure to overwrite it with the new version in this release as it contains additional rules that are not included in the earlier version.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The location of this file changed in SoftConsole v2022.2-RISC-V. Earlier releases kept it in
+<p>The location of this file changed in SoftConsole v2026.1. Earlier releases kept it in
 <code class="docutils literal notranslate"><span class="pre">openocd/share/openocd/contrib</span></code>. If you are following instructions from an
 older release and that directory does not exist, use the path above.</p>
 </div>
@@ -433,7 +433,7 @@ older release and that directory does not exist, use the path above.</p>
 <p>In some cases it may be necessary to reboot for the changes to take effect. Some distributions do not create the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group and/or may not add users to it automatically. In that case the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group must be created manually and the user added to the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In SoftConsole v2022.2-RISC-V the FlashPro rules grant access with <code class="docutils literal notranslate"><span class="pre">MODE=&quot;666&quot;</span></code> as well as naming
+<p>In SoftConsole v2026.1 the FlashPro rules grant access with <code class="docutils literal notranslate"><span class="pre">MODE=&quot;666&quot;</span></code> as well as naming
 the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group, so membership of <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> is normally not required. The
 group steps below are still worth following if your site policy restricts
 device permissions, or if another tool installs stricter rules for the same
@@ -526,7 +526,7 @@ installation for the configuration details and for how to undo the change.</p>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     <span class="fa fa-book"> Other Versions</span>
-    v2022.2-RISC-V
+    v2026.1
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Debugging - SoftConsole v2022.2-728-RISC-V documentation</title>
+<title>Debugging - SoftConsole v2026.1 documentation</title>
 
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/documentation_options.js?v=9308526a"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PolarFire SoC" href="mpfs.html" />
-    <link rel="prev" title="Migrating existing projects to SoftConsole v2022.2-RISC-V" href="migrating.html" /> 
+    <link rel="prev" title="Migrating existing projects to SoftConsole v2026.1" href="migrating.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -64,7 +64,7 @@
 <li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating existing projects to SoftConsole v2022.2-RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating existing projects to SoftConsole v2026.1</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Debugging</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#debug-launch-configurations">Debug launch configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#selecting-which-flashpro-programmer-to-debug-with">Selecting which FlashPro programmer to debug with</a><ul>
@@ -263,7 +263,7 @@ see
 </section>
 <section id="selecting-which-flashpro-programmer-to-debug-with">
 <span id="flashproselector"></span><h2>Selecting which FlashPro programmer to debug with<a class="headerlink" href="#selecting-which-flashpro-programmer-to-debug-with" title="Link to this heading"></a></h2>
-<p>For FlashPro hardware debugging, SoftConsole v2022.2-RISC-V starts fpServer before OpenOCD. fpServer
+<p>For FlashPro hardware debugging, SoftConsole v2026.1 starts fpServer before OpenOCD. fpServer
 manages the connection to the locally attached programmer.</p>
 <p>Select the programmer from the FlashPro selector in the toolbar or the OpenOCD
 debug configuration. Use <code class="docutils literal notranslate"><span class="pre">Refresh</span></code> after connecting or disconnecting programmers.
@@ -271,7 +271,7 @@ A single detected programmer is selected automatically; when several are
 connected, select the one attached to the target you intend to debug.</p>
 <p><img alt="FlashPro programmer selector" src="../_images/programmer-selector.png" /></p>
 <p>The selection is remembered for the workspace and is not stored in shared project
-launch files. SoftConsole v2022.2-RISC-V passes the selected programmer to fpServer and OpenOCD
+launch files. SoftConsole v2026.1 passes the selected programmer to fpServer and OpenOCD
 automatically. Do not add a programmer serial number to the OpenOCD configuration
 options for this workflow.</p>
 <p>If a programmer is missing from the list, check its USB connection,
@@ -301,7 +301,7 @@ used by programming tools.</p>
 </section>
 <section id="scope-in-this-release">
 <h3>Scope in this release<a class="headerlink" href="#scope-in-this-release" title="Link to this heading"></a></h3>
-<p>fpServer runs on the same machine as SoftConsole v2022.2-RISC-V and connects to a locally attached
+<p>fpServer runs on the same machine as SoftConsole v2026.1 and connects to a locally attached
 FlashPro programmer. Debugging with a programmer attached to a different machine
 is not supported in this release.</p>
 </section>
@@ -364,7 +364,7 @@ following list enumerates these and outlines the context in which each of them c
 target device must also be correctly specified in the debug launch configuration.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The OpenOCD directory layout changed in SoftConsole v2022.2-RISC-V. The scripts are now in
+<p>The OpenOCD directory layout changed in SoftConsole v2026.1. The scripts are now in
 <code class="docutils literal notranslate"><span class="pre">openocd/openocd/scripts</span></code>; earlier releases kept them in
 <code class="docutils literal notranslate"><span class="pre">openocd/share/openocd/scripts</span></code>. Configuration files that select a FlashPro
 programmer now reach the target through fpServer, see
@@ -392,7 +392,7 @@ Curiosity board.</p></li>
 <li><p>Debugging from MDDR needs a board script that initialises the external
 memory controller for the specific MDDR configuration of the board in use.
 The example MDDR board scripts supplied with earlier releases are not
-included in SoftConsole v2022.2-RISC-V. Base a board script for MDDR on
+included in SoftConsole v2026.1. Base a board script for MDDR on
 <code class="docutils literal notranslate"><span class="pre">board/microsemi-cortex-m3.cfg</span></code> and add the MDDR initialisation for the
 board, see the <code class="docutils literal notranslate"><span class="pre">extras/smartfusion2-mddr</span></code> folder in the installation.</p></li>
 </ul>
@@ -603,9 +603,9 @@ variants, including FlashPro6.</p>
 <p class="admonition-title">Note</p>
 <p>Some boards expose more than one FlashPro connection, and not all of them can be
 used for debugging. On the M2S090 Security Evaluation Kit, for example, J5 is the
-FlashPro connector normally used for programming the FPGA and for SoftConsole v2022.2-RISC-V
+FlashPro connector normally used for programming the FPGA and for SoftConsole v2026.1
 debugging, while J18 is an on-board SPI-only FlashPro5 programmer that can
-program the FPGA but cannot be used for SoftConsole v2022.2-RISC-V debugging. If both are connected,
+program the FPGA but cannot be used for SoftConsole v2026.1 debugging. If both are connected,
 select the J5 programmer in the FlashPro selector.</p>
 </div>
 </section>
@@ -863,7 +863,7 @@ was updated to match the target hardware by having the Libero SoC generated firm
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="migrating.html" class="btn btn-neutral float-left" title="Migrating existing projects to SoftConsole v2022.2-RISC-V" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="migrating.html" class="btn btn-neutral float-left" title="Migrating existing projects to SoftConsole v2026.1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="mpfs.html" class="btn btn-neutral float-right" title="PolarFire SoC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -885,7 +885,7 @@ was updated to match the target hardware by having the Libero SoC generated firm
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     <span class="fa fa-book"> Other Versions</span>
-    v2022.2-RISC-V
+    v2026.1
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">

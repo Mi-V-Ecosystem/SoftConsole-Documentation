@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Projects - SoftConsole v2022.2-728-RISC-V documentation</title>
+<title>Projects - SoftConsole v2026.1 documentation</title>
 
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/documentation_options.js?v=9308526a"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -28,7 +28,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Migrating existing projects to SoftConsole v2022.2-RISC-V" href="migrating.html" />
+    <link rel="next" title="Migrating existing projects to SoftConsole v2026.1" href="migrating.html" />
     <link rel="prev" title="Workspaces" href="workspace.html" /> 
 </head>
 
@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#long-paths-on-windows">Long paths on Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating existing projects to SoftConsole v2022.2-RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating existing projects to SoftConsole v2026.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
@@ -429,7 +429,7 @@ and are now a separate <code class="docutils literal notranslate"><span class="p
 not enable from GCC 12 onwards. A project that reads or writes CSRs therefore has
 to request the extension, so that an architecture such as <code class="docutils literal notranslate"><span class="pre">rv32i</span></code> becomes
 <code class="docutils literal notranslate"><span class="pre">rv32i_zicsr</span></code> on the command line.</p>
-<p>SoftConsole v2022.2-RISC-V exposes this as a checkbox alongside the other extension settings:</p>
+<p>SoftConsole v2026.1 exposes this as a checkbox alongside the other extension settings:</p>
 <div class="graphviz"><img src="../_images/graphviz-5c7863fd683e80bbfb35ce5d602d644120d60fc4.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
@@ -841,7 +841,7 @@ command line or a Makefile then the <code class="docutils literal notranslate"><
 <span id="parallelbuilds"></span><h2>Parallel builds<a class="headerlink" href="#parallel-builds" title="Link to this heading"></a></h2>
 <p>Projects which do not use elaborate pre-build steps (all non PolarFire SoC) should be compatible with parallel compilation.</p>
 <p>Instead of compile one source file at the time, the toolchain can utilize all cores to compile the source files in parallel. Then they are linked in a single thread and overall improve the build time almost linearly depending on how many cores were used. In simpler terms, enabling parallel build on a quad core CPU can improve the build speeds by almost 4x.</p>
-<p>In SoftConsole v2022.2-RISC-V the bundled <code class="docutils literal notranslate"><span class="pre">smartfusion2-cortex-m3-blinky</span></code> example has parallel build enabled, because it does not execute any pre-build steps. The parallel build setting can easily be enabled and disabled from the project properties:</p>
+<p>In SoftConsole v2026.1 the bundled <code class="docutils literal notranslate"><span class="pre">smartfusion2-cortex-m3-blinky</span></code> example has parallel build enabled, because it does not execute any pre-build steps. The parallel build setting can easily be enabled and disabled from the project properties:</p>
 <div class="graphviz"><img src="../_images/graphviz-56f0babc77598c08a310c93fac3d2ce38436f452.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
@@ -1152,7 +1152,7 @@ make all
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="workspace.html" class="btn btn-neutral float-left" title="Workspaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="migrating.html" class="btn btn-neutral float-right" title="Migrating existing projects to SoftConsole v2022.2-RISC-V" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="migrating.html" class="btn btn-neutral float-right" title="Migrating existing projects to SoftConsole v2026.1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -1173,7 +1173,7 @@ make all
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     <span class="fa fa-book"> Other Versions</span>
-    v2022.2-RISC-V
+    v2026.1
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">

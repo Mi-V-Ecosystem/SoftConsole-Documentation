@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RISC-V Trap Exceptions - SoftConsole v2022.2-728-RISC-V documentation</title>
+<title>RISC-V Trap Exceptions - SoftConsole v2026.1 documentation</title>
 
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/documentation_options.js?v=9308526a"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,7 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/migrating.html">Migrating existing projects to SoftConsole v2022.2-RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/migrating.html">Migrating existing projects to SoftConsole v2026.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
@@ -243,7 +243,7 @@
 </section>
 <section id="mtval-mbadaddr">
 <h3>mtval/mbadaddr<a class="headerlink" href="#mtval-mbadaddr" title="Link to this heading"></a></h3>
-<p>Depending on the assembler version the name of this CSR might be either <code class="docutils literal notranslate"><span class="pre">mtval</span></code> or <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code>. In the current SoftConsole v2022.2-RISC-V these can be freely interchanged, however the <code class="docutils literal notranslate"><span class="pre">mtval</span></code> is the newer <strong>correct</strong> name. If the exit code is 1,2, 5, 6, 7, 8, 0xE or 0x10 (mcause 0,1,4,5,6,7,0xD,0xF) then this CSR points to the memory address which caused this fault. If the exit code is 3 (mcause=2) then this CSR contains the opcode of the instruction which triggered the trap. Together with the exit code (mcause+1) and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> this can point to what happened and where it happened.</p>
+<p>Depending on the assembler version the name of this CSR might be either <code class="docutils literal notranslate"><span class="pre">mtval</span></code> or <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code>. In the current SoftConsole v2026.1 these can be freely interchanged, however the <code class="docutils literal notranslate"><span class="pre">mtval</span></code> is the newer <strong>correct</strong> name. If the exit code is 1,2, 5, 6, 7, 8, 0xE or 0x10 (mcause 0,1,4,5,6,7,0xD,0xF) then this CSR points to the memory address which caused this fault. If the exit code is 3 (mcause=2) then this CSR contains the opcode of the instruction which triggered the trap. Together with the exit code (mcause+1) and <code class="docutils literal notranslate"><span class="pre">mepc</span></code> this can point to what happened and where it happened.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">mcause</span></code> and exit code are almost identical except the exit code is offset by 1.</p>
@@ -268,7 +268,7 @@
 <section id="mstatus">
 <h3>mstatus<a class="headerlink" href="#mstatus" title="Link to this heading"></a></h3>
 <p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
-<img alt="../_images/wavedrom-f643bfce-c98e-4bae-a7b8-39f77c4d14aa.svg" src="../_images/wavedrom-f643bfce-c98e-4bae-a7b8-39f77c4d14aa.svg" style="width: 840px; height: 300px;" />
+<img alt="../_images/wavedrom-6db27f7f-67bf-4491-8b36-787776db2347.svg" src="../_images/wavedrom-6db27f7f-67bf-4491-8b36-787776db2347.svg" style="width: 840px; height: 300px;" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
@@ -487,7 +487,7 @@ troubleshoot a trap without even opening the listing file, see Symbols and simpl
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     <span class="fa fa-book"> Other Versions</span>
-    v2022.2-RISC-V
+    v2026.1
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">
