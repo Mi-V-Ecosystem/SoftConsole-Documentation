@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Renode troubleshooting - SoftConsole v2022.2-728-RISC-V documentation</title>
+
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/myRtdOverrides.css?v=775951b6" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Eclipse" href="eclipse.html" />
+    <link rel="prev" title="Arm" href="arm.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SoftConsole
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using SoftConsole</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/migrating.html">Migrating existing projects to SoftConsole v2022.2-RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arm.html">Arm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Renode troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code">Using OSS tool such as Renode will contaminate my proprietary code?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-id-13802-was-not-found-when-attempting-to-remove-it">Source ID 13802 was not found when attempting to remove it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#renode-source-code">Renode source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uart-analyzer-not-responding">UART analyzer not responding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#no-gui-when-starting-the-renode-platform">No GUI when starting the Renode platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#networking">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#could-not-set-tunsetiff-error-2"><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">set</span> <span class="pre">TUNSETIFF,</span> <span class="pre">error:</span> <span class="pre">2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cant-see-the-interface-after-invoking-bridgenetworkmac0-macro">Can’t see the interface after invoking BridgeNetworkMac0 macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cant-ping-my-target">Can’t ping my target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#my-target-doesnt-respond-to-packets">My target doesn’t respond to packets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wireshark-shows-a-significant-amount-of-traffic-and-overloads-my-target">Wireshark shows a significant amount of traffic and overloads my target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wireshark-constantly-shows-dialog-about-unsaved-packets">Wireshark constantly shows dialog about unsaved packets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-delete-renodes-bridge-tap-networking-interface">How do I delete Renode’s bridge TAP networking interface?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deeply-nested-code-causes-crashes-and-glitches">Deeply nested code causes crashes and glitches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-the-robot-references-in-softconsole">What are the Robot references in SoftConsole?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#renode-on-startup-crashes-with-an-unhandled-exception">Renode on startup crashes with an unhandled exception</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Renode troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+  <section id="renode-troubleshooting">
+<h1>Renode troubleshooting<a class="headerlink" href="#renode-troubleshooting" title="Link to this heading"></a></h1>
+<p><img alt="Renode logo" src="../_images/renode_logo.png" /></p>
+<section id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
+<h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Link to this heading"></a></h2>
+<p>Something is keeping the port <code class="docutils literal notranslate"><span class="pre">3333</span></code> opened, it could be some other application, but in most cases it’s just a previous instance
+of the Renode. Close it by pressing X on the window or stop the group launcher which should stop the Renode and the gdb
+client as well.</p>
+</section>
+<section id="using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code">
+<h2>Using OSS tool such as Renode will contaminate my proprietary code?<a class="headerlink" href="#using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code" title="Link to this heading"></a></h2>
+<p>Using the Renode (Open Source Software) will not impose any obligations or restrictions on the user’s code, his license or his IP. In an edge case where the user would copy part of the Renode’s source code, modify it and redistribute its binaries, then there are obligations to meet, however Renode has MIT license and allows wide use (including commercial, private use and sublicensing it with a more restrictive license):</p>
+<p><a class="reference external" href="https://tldrlegal.com/license/mit-license">https://tldrlegal.com/license/mit-license</a></p>
+<p>If in doubt consult with a legal team.</p>
+</section>
+<section id="source-id-13802-was-not-found-when-attempting-to-remove-it">
+<h2>Source ID 13802 was not found when attempting to remove it<a class="headerlink" href="#source-id-13802-was-not-found-when-attempting-to-remove-it" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Renode</span><span class="p">:</span><span class="mi">5523</span><span class="p">):</span> <span class="n">GLib</span><span class="o">-</span><span class="n">CRITICAL</span> <span class="o">**</span><span class="p">:</span> <span class="n">Source</span> <span class="n">ID</span> <span class="mi">13802</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">found</span> <span class="n">when</span> <span class="n">attempting</span> <span class="n">to</span> <span class="n">remove</span> <span class="n">it</span>
+</pre></div>
+</div>
+<p>This was reported with the Mono-based Renode builds used by earlier releases,
+where Renode required Mono v5 or later together with <code class="docutils literal notranslate"><span class="pre">mono-complete</span></code>,
+<code class="docutils literal notranslate"><span class="pre">gtk-sharp2</span></code> and <code class="docutils literal notranslate"><span class="pre">libcanberra-gtk</span></code>.</p>
+<p>The Renode build bundled with SoftConsole v2022.2-RISC-V is a portable build that carries its own
+.NET runtime, so a separate Mono installation is not required. If messages like
+the one above appear, check that the bundled Renode launcher is being used
+rather than a separately installed Renode.</p>
+</section>
+<section id="renode-source-code">
+<h2>Renode source code<a class="headerlink" href="#renode-source-code" title="Link to this heading"></a></h2>
+<p>Upstream sources can be found <a class="reference external" href="https://github.com/renode/">on GitHub</a>, while the version of source code matching with the bundled binary is supplied in the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/renode-source-code</span></code>.</p>
+<p>Installation of Renode sources is an optional SoftConsole installation step, if the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/renode-source-code</span></code> is not present, then reinstall SoftConsole.</p>
+</section>
+<section id="uart-analyzer-not-responding">
+<span id="uartanalyzernotresponding"></span><h2>UART analyzer not responding<a class="headerlink" href="#uart-analyzer-not-responding" title="Link to this heading"></a></h2>
+<p>This can happen on Linux when UART is heavily loaded with rapid messages and when Renode is running on a low-end machine (or small VM).</p>
+<p>Application could be rewritten to reduce the amount of UART messages, faster machine (or VM) could be used. Or more efficient analyzer can be used.
+XTerm is significantly faster and more optimized (at a cost aesthetics) terminal emulator which can be used for UART analyzer.</p>
+<p>Edit the following file in a text editor:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/.config/renode/config</span></code></p>
+<p>And edit the <code class="docutils literal notranslate"><span class="pre">terminal</span></code> line and point to the XTerm: <code class="docutils literal notranslate"><span class="pre">terminal</span> <span class="pre">=</span> <span class="pre">XTerm</span></code></p>
+</section>
+<section id="no-gui-when-starting-the-renode-platform">
+<h2>No GUI when starting the Renode platform<a class="headerlink" href="#no-gui-when-starting-the-renode-platform" title="Link to this heading"></a></h2>
+<p>When seeing the following error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">Couldn</span><span class="s1">&#39;t start UI - falling back to telnet mode</span>
+</pre></div>
+</div>
+<p>Then it might be an indication of missing dependencies, read the <a class="reference internal" href="../using_softconsole/post_installation.html#additionalrenodedeps"><span class="std std-ref">Additional dependencies</span></a> section.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Renode’s Monitor is now embedded into the console intentionally, if this is undesired then read the <a class="reference internal" href="../using_softconsole/renode.html#embddedrenodewindow"><span class="std std-ref">Embedded monitor window</span></a> section.</p>
+</div>
+</section>
+<section id="networking">
+<h2>Networking<a class="headerlink" href="#networking" title="Link to this heading"></a></h2>
+<p>Renode’s host networking bridge is a Linux feature, so these entries apply on
+Linux only. See the Renode chapter for how to set the bridge up.</p>
+</section>
+<section id="could-not-set-tunsetiff-error-2">
+<span id="renodecantcreatetap"></span><h2><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">set</span> <span class="pre">TUNSETIFF,</span> <span class="pre">error:</span> <span class="pre">2</span></code><a class="headerlink" href="#could-not-set-tunsetiff-error-2" title="Link to this heading"></a></h2>
+<p>When creating a networking bridge from the Renode emulation a TUN/TAP interface on the host must be created. Renode
+probes if the interface is already present and when it’s not, it will try if a current user has privileges to create such interface. In
+most cases, the current user doesn’t have privileges to do so and will invoke this error message. In general, it should be safe to
+ignore this error as it is sometimes expected.</p>
+<p>When the user has no privileges to create the tap, then Renode will invoke polkit to elevate users privileges for this command
+to succeed. Behavior differs between distributions and how polkit/sudo is configured. It might request for user’s password, it
+might continue without prompt or it might wait for a fingerprint scan.</p>
+<p>If the tap interface already is present on the system, Renode should continue without error message even when previously it
+was displaying the message.
+Related topics in Renode’s documentation:</p>
+<p><a class="reference external" href="https://renode.readthedocs.io/en/latest/networking/host-network.html">https://renode.readthedocs.io/en/latest/networking/host-network.html</a>
+<a class="reference external" href="https://renode.readthedocs.io/en/latest/networking/wireshark.html">https://renode.readthedocs.io/en/latest/networking/wireshark.html</a></p>
+</section>
+<section id="cant-see-the-interface-after-invoking-bridgenetworkmac0-macro">
+<h2>Can’t see the interface after invoking BridgeNetworkMac0 macro<a class="headerlink" href="#cant-see-the-interface-after-invoking-bridgenetworkmac0-macro" title="Link to this heading"></a></h2>
+<p>The behavior strongly depends on the distribution’s settings.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">CentOS/RHEL</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Ubuntu/Debian</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Configuration of <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/network-scripts/</span></code> file</p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Configuration of  <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> file.</p>
+</div></div>
+<p>However, in many cases the interface is by default down and will only show in the list when <code class="docutils literal notranslate"><span class="pre">ifconfig</span> <span class="pre">-a</span></code> is invoked. The interfaces needs to be brought up and probably with a
+specific IP, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>ifconfig<span class="w"> </span>renode-tap0<span class="w"> </span><span class="m">172</span>.16.0.1/24<span class="w"> </span>up
+</pre></div>
+</div>
+<p>The host IP shouldn’t be in conflict in any IPs on the network. Preferably your host IP should be guest’s gateway IP. The mask
+settings should match with mask settings of your target. The <code class="docutils literal notranslate"><span class="pre">/24</span></code> is an equivalent representation of the <code class="docutils literal notranslate"><span class="pre">255.255.255.0</span></code> mask</p>
+</section>
+<section id="cant-ping-my-target">
+<h2>Can’t ping my target<a class="headerlink" href="#cant-ping-my-target" title="Link to this heading"></a></h2>
+<p>There might be a networking issue (go over the other existing networking related sections), or it might be because the target
+doesn’t have ICMP (ping) service/support. Not all targets do implement ping and the networking might be working correctly even
+without working ping.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mpfs-freertos-lwip</span></code> example does support ping and ICMP protocol and it’s by default enabled with the <code class="docutils literal notranslate"><span class="pre">LWIP_ICMP</span></code>
+define in the <code class="docutils literal notranslate"><span class="pre">/src/modules/config/lwip-2.0.0-wip/lwipopts.h</span></code> file.</p>
+<p>Check the section “My target doesn’t respond to packets” below to troubleshoot if the target is responding to any packets at all.</p>
+</section>
+<section id="my-target-doesnt-respond-to-packets">
+<h2>My target doesn’t respond to packets<a class="headerlink" href="#my-target-doesnt-respond-to-packets" title="Link to this heading"></a></h2>
+<p>It can be caused by many various reasons and might be different between the host’s settings and as well different between the
+applications themselves as they can have different IP stacks (which can be configured differently).</p>
+<ul>
+<li><p>A firewall is blocking the packets, temporarily disable the firewall. In case your distribution does save iptables on the reboot, then it’s preferable to save the rules before deleting and then restoring the rules before rebooting:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>iptables-save<span class="w"> </span>&gt;<span class="w"> </span>&lt;TEMPORARY_FILE&gt;
+</pre></div>
+</div>
+<p>And to restore them back:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>iptables-save<span class="w"> </span>&lt;<span class="w"> </span>&lt;TEMPORARY_FILE&gt;
+</pre></div>
+</div>
+<p>If a <code class="docutils literal notranslate"><span class="pre">netfilter-persistent</span></code> package is installed, then the following should work:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>service<span class="w"> </span>netfilter-persistent<span class="w"> </span>save
+</pre></div>
+</div>
+<p>Package such as iptables-persistent might be restoring the settings every single time. To delete all existing firewall rules and have only “accept” policy issue as super user the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>iptables<span class="w"> </span>-P<span class="w"> </span>INPUT<span class="w"> </span>ACCEPT
+iptables<span class="w"> </span>-P<span class="w"> </span>FORWARD<span class="w"> </span>ACCEPT
+iptables<span class="w"> </span>-P<span class="w"> </span>OUTPUT<span class="w"> </span>ACCEPT
+iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-F
+iptables<span class="w"> </span>-t<span class="w"> </span>mangle<span class="w"> </span>-F
+iptables<span class="w"> </span>-F
+iptables<span class="w"> </span>-X
+iptables<span class="w"> </span>-S
+</pre></div>
+</div>
+</li>
+<li><p>The target is not capable to respond to ARP messages. When using cut-down IP stack without ARP feature, then on the host the target’s HW address has to manually inserted into the ARP table:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>arp<span class="w"> </span>-s<span class="w"> </span>&lt;TARGET_IP&gt;<span class="w"> </span>&lt;TARGET_MAC&gt;
+sudo<span class="w"> </span>arp<span class="w"> </span>-s<span class="w"> </span><span class="m">172</span>.16.0.2<span class="w"> </span><span class="m">00</span>:fc:00:12:34:56
+</pre></div>
+</div>
+</li>
+<li><p>Browsers might overwhelm the target as they can query many requests concurrently (such as favicon), instead of a browser try <code class="docutils literal notranslate"><span class="pre">wget</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>http://172.16.0.2
+</pre></div>
+</div>
+<p>Or use curl which is more flexible and allows to control headers of POST/PUT requests as well.</p>
+</li>
+<li><p>If all other interfaces were put down, then the renode-tap0 can be made to the default gateway:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>route<span class="w"> </span>del<span class="w"> </span>default<span class="w">                     </span><span class="c1"># delete previous default gateway</span>
+sudo<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span>default<span class="w"> </span>gw<span class="w"> </span><span class="m">172</span>.16.0.1<span class="w">       </span><span class="c1"># add your default gateway</span>
+sudo<span class="w"> </span>route<span class="w"> </span>-n<span class="w">                              </span><span class="c1"># show routing table</span>
+</pre></div>
+</div>
+</li>
+<li><p>The Renode’s networking tunnel is similar to a tap, for some users this might be useful:</p>
+<p><a class="reference external" href="http://www.shakthimaan.com/installs/debian-tun-tap-setup.html">http://www.shakthimaan.com/installs/debian-tun-tap-setup.html</a></p>
+</li>
+</ul>
+</section>
+<section id="wireshark-shows-a-significant-amount-of-traffic-and-overloads-my-target">
+<h2>Wireshark shows a significant amount of traffic and overloads my target<a class="headerlink" href="#wireshark-shows-a-significant-amount-of-traffic-and-overloads-my-target" title="Link to this heading"></a></h2>
+<p>It is important to distinguish between really lost packets (for example when buffer overflow happened) and packets which just
+took too long for a response that they were considered lost and re-transmitting was triggered.
+In the case of PolarFire SoC model a Warning level logger can be enabled on the CadenceGEM peripheral by using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logLevel</span> <span class="mi">2</span> <span class="n">sysbus</span><span class="o">.</span><span class="n">mac0</span>
+</pre></div>
+</div>
+<p>If a buffer overflow occurs, then Renode will print the following message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Receive</span> <span class="n">DMA</span> <span class="n">buffer</span> <span class="n">overflow</span>
+</pre></div>
+</div>
+<p>Because Renode will not emulate the PolarFire SoC model at full speed, therefore the performance cannot be compared with
+the real hardware. Processing packets on Renode and sending responses will take longer than they would on the real hardware.
+Networking is very latency-sensitive and many protocols can timeout and send a retransmission of the request while the target
+was processing the response, causing the target to have even more requests to process. Therefore extra care should be made
+to not overload the target with unnecessary packets.</p>
+<p>It’s recommended either not to bridge the renode-tap0 with the host’s interface to keep away unnecessary traffic and keep the
+interfaces separate with their own, non-overlapping IP networks. Even if the interfaces are not bridged there might be daemons
+running which queries and discovery requests to all networks. For example, NTP time sync service might at some cases start
+querying the network range and produce frequent packets. Temporarily disable the daemon to see if it does improve the issue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">ntp</span> <span class="n">stop</span>
+</pre></div>
+</div>
+<p>Monitoring what process do on the network might give indications of what services/tools might be causing unnecessary packets.
+Use <code class="docutils literal notranslate"><span class="pre">netstat</span></code> to print networking connections and disable unneeded services which flood the Renode’s network with
+unnecessary packets and requests.</p>
+</section>
+<section id="wireshark-constantly-shows-dialog-about-unsaved-packets">
+<h2>Wireshark constantly shows dialog about unsaved packets<a class="headerlink" href="#wireshark-constantly-shows-dialog-about-unsaved-packets" title="Link to this heading"></a></h2>
+<p>Wait for the Renode’s Wireshark to open and then go to:</p>
+<div class="graphviz"><img src="../_images/graphviz-fc5e1cb17b6696b59fde5cb05f3efbdc7d9d6343.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Edit&quot; -&gt; &quot;Preferences&quot; -&gt; &quot;Uncheck the 'Confirm unsaved capture files'&quot; -&gt; &quot;Click 'OK'&quot;
+     }" class="graphviz" /></div>
+<br/>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User’s Wireshark settings are not affected as these settings are for Renode’s Wireshark</p>
+</div>
+</section>
+<section id="how-do-i-delete-renodes-bridge-tap-networking-interface">
+<h2>How do I delete Renode’s bridge TAP networking interface?<a class="headerlink" href="#how-do-i-delete-renodes-bridge-tap-networking-interface" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">As super user</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">As a regular user</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ip<span class="w"> </span>link<span class="w"> </span>del<span class="w"> </span>tap0
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span>del<span class="w"> </span>tap0
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="deeply-nested-code-causes-crashes-and-glitches">
+<span id="renodestack"></span><h2>Deeply nested code causes crashes and glitches<a class="headerlink" href="#deeply-nested-code-causes-crashes-and-glitches" title="Link to this heading"></a></h2>
+<p>Experiencing a CPU abort message inside Renode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">ERROR</span><span class="p">]</span> <span class="n">u54_1</span><span class="p">:</span> <span class="n">CPU</span> <span class="n">abort</span> <span class="p">[</span><span class="n">PC</span><span class="o">=</span><span class="mh">0x0</span><span class="p">]:</span> <span class="n">Trying</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">code</span> <span class="n">outside</span> <span class="n">RAM</span> <span class="ow">or</span> <span class="n">ROM</span> <span class="n">at</span>
+<span class="mh">0x0000000000000000</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Or causing reboots, glitches or failures (continuous or intermittent) can be a sign of a small stack and a stack overflow, adjust the stack sizes in the linker script or refactor code to conserve the limited stack. See sections:</p>
+<p>See:</p>
+<p><a class="reference internal" href="../using_softconsole/other.html#stackprofiling"><span class="std std-ref">Stack profiling</span></a></p>
+<p><a class="reference internal" href="../using_softconsole/renode.html"><span class="doc">Renode simulation platform</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This error can happen on any hart and is not limited to u54_1, nor PolarFireSoC. Stack overflow can be triggered on any platform and thus the error messages or observed behavior might be slightly different.</p>
+</div>
+</section>
+<section id="what-are-the-robot-references-in-softconsole">
+<h2>What are the Robot references in SoftConsole?<a class="headerlink" href="#what-are-the-robot-references-in-softconsole" title="Link to this heading"></a></h2>
+<p>SoftConsole v2022.2-RISC-V is bundled with Nokia’s RED (Robot EDitor) plugin. Robot can be used for automated testing of Renode and real hardware targets. Currently the RED is not supported SoftConsole feature and requires additional manual steps to work (which are not documented yet), however users might try to experiment with it at their own risks.</p>
+<p><a class="reference external" href="https://robotframework.org/">https://robotframework.org/</a></p>
+<p><a class="reference external" href="https://github.com/nokia/RED">https://github.com/nokia/RED</a></p>
+<p><a class="reference external" href="https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html#prerequisites">https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html#prerequisites</a></p>
+<p><a class="reference external" href="https://renode.readthedocs.io/en/latest/tutorials/zephyr-ptp-testing.html">https://renode.readthedocs.io/en/latest/tutorials/zephyr-ptp-testing.html</a></p>
+</section>
+<section id="renode-on-startup-crashes-with-an-unhandled-exception">
+<h2>Renode on startup crashes with an unhandled exception<a class="headerlink" href="#renode-on-startup-crashes-with-an-unhandled-exception" title="Link to this heading"></a></h2>
+<p>If the exception message contains the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Could not find a part of the path &quot;/&lt;YOUR_PATH&gt;/.renode/history&quot;
+</pre></div>
+</div>
+<p>Then it could have been caused by moving the SoftConsole installation and the config pointing to the old (and nonexistent) location of the history file. Correct the path inside the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/.renode/config</span></code> or just delete the config and let Renode to re-create it.</p>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="arm.html" class="btn btn-neutral float-left" title="Arm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eclipse.html" class="btn btn-neutral float-right" title="Eclipse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Microchip.</p>
+  </div>
+
+  
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="../_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="../_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="../_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2026.1/">SoftConsole-v2026.1</a></dd><br/>
+      
+      
+
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

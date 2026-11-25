@@ -1,0 +1,36 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Renode troubleshooting
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+![Renode logo](renode/images/renode_logo.png)
+
+{% include 'main/troubleshooting/renode/_cant_open_port.inc' %}
+{% include 'main/troubleshooting/renode/_license.inc' %}
+{% include 'main/troubleshooting/renode/_mono.inc' %}
+{% include 'main/troubleshooting/renode/_source_code.inc' %}
+{% if linux is defined %}
+{% include 'main/troubleshooting/renode/_uart_analyzer_freeze.inc' %}
+{% include 'main/troubleshooting/renode/_no_gui.inc' %}
+
+## Networking
+
+Renode's host networking bridge is a Linux feature, so these entries apply on
+Linux only. See the Renode chapter for how to set the bridge up.
+
+{% include 'main/troubleshooting/renode_networking/_tunsetiff.inc' %}
+{% include 'main/troubleshooting/renode_networking/_cant_see_interface.inc' %}
+{% include 'main/troubleshooting/renode_networking/_cant_ping.inc' %}
+{% include 'main/troubleshooting/renode_networking/_no_packet_response.inc' %}
+{% include 'main/troubleshooting/renode_networking/_wireshark_traffic.inc' %}
+{% include 'main/troubleshooting/renode_networking/_unsaved_wireshark.inc' %}
+{% include 'main/troubleshooting/renode_networking/_delete_tap.inc' %}
+{% endif %}
+{% include 'main/troubleshooting/renode/_stack.inc' %}
+{% include 'main/troubleshooting/renode/_robot.inc' %}
+{% include 'main/troubleshooting/renode/_crash_on_startup.inc' %}
+
+
+```````

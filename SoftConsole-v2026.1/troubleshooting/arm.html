@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Arm - SoftConsole v2022.2-728-RISC-V documentation</title>
+
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/myRtdOverrides.css?v=775951b6" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Renode troubleshooting" href="renode.html" />
+    <link rel="prev" title="RISC-V Trap Exceptions" href="riscv_trap.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SoftConsole
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using SoftConsole</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/migrating.html">Migrating existing projects to SoftConsole v2022.2-RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Arm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#debug-launch-configuration-settings-differ-for-cortex-m-and-risc-v">Debug launch configuration settings differ for Cortex-M and RISC-V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debug-launcher-is-not-connecting-to-arm-target">Debug launcher is not connecting to ARM target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#no-installed-packages">“No installed packages”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smartfusion2-dpk-unlocking">SmartFusion2 DPK unlocking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cmsis-needs-environment-variable">CMSIS needs environment variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dap-transaction-stalled-wait-messages-when-debugging-smartfusion2-cortex-m3">“DAP transaction stalled (WAIT)” messages when debugging SmartFusion2 Cortex-M3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Arm</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+  <section id="arm">
+<h1>Arm<a class="headerlink" href="#arm" title="Link to this heading"></a></h1>
+<section id="debug-launch-configuration-settings-differ-for-cortex-m-and-risc-v">
+<h2>Debug launch configuration settings differ for Cortex-M and RISC-V<a class="headerlink" href="#debug-launch-configuration-settings-differ-for-cortex-m-and-risc-v" title="Link to this heading"></a></h2>
+<p>Be aware that the debug launch configuration settings are different for Cortex-M and RISC-V targets as explained above. The default settings may not automatically match the target CPU. Care must be taken to ensure that the correct configuration settings are applied especially on the Debugger tab. The easiest way to avoid problems is to use the example workspace debug launch configurations as a guide or copy the appropriate one and then customize and specific settings.</p>
+</section>
+<section id="debug-launcher-is-not-connecting-to-arm-target">
+<h2>Debug launcher is not connecting to ARM target<a class="headerlink" href="#debug-launcher-is-not-connecting-to-arm-target" title="Link to this heading"></a></h2>
+<p>Getting following error:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info : Listening on port 6666 for tcl connections
+Info : Listening on port 4444 for telnet connections
+Info : clock speed 6000 kHz
+<span class="hll">Info : JTAG tap: M2S090.tap tap/device found: 0x0f8031cf (mfg: 0x0e7 (GateField), part: 0xf803, ver: 0x0)
+</span><span class="hll">Warn : JTAG tap: M2S090.tap UNEXPECTED: 0x0f8031cf (mfg: 0x0e7 (GateField), part: 0xf803, ver: 0x0)
+</span><span class="hll">Error: JTAG tap: M2S090.tap expected 1 of 1: 0x0f8071cf (mfg: 0x0e7 (GateField), part: 0xf807, ver: 0x0)
+</span>Error: Trying to use configured scan chain anyway...
+Warn : Bypassing JTAG setup events due to errors
+Info : Listening on port 3333 for gdb connections
+Started by GNU MCU Eclipse
+Info : accepting &#39;gdb&#39; connection on tcp/3333
+Error: Target not examined yet
+undefined debug reason 7 - target needs reset
+Error: Target not examined yet
+Error: Target not examined yet
+Error: Target not examined yet
+</pre></div>
+</div>
+<p><strong>Possible cause:</strong> Using different target while having different target launcher.</p>
+<p><strong>Fix:</strong> As mentioned in the beginning of the release notes the launchers must be changed depending on the target. Check exactly
+what target you have and change it so the debug launcher is matching the target HW:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set DEVICE M2S090&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="no-installed-packages">
+<h2>“No installed packages”<a class="headerlink" href="#no-installed-packages" title="Link to this heading"></a></h2>
+<p>Messages of the following form can be safely ignored. They relate to the GNU MCU Eclipse (CMSIS) Packs support which
+SoftConsole does not use at this point in time.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">26</span> <span class="mi">12</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">36</span>
+<span class="n">Extracting</span> <span class="n">devices</span> <span class="o">&amp;</span> <span class="n">boards</span><span class="o">...</span>
+<span class="n">Loading</span> <span class="n">repos</span> <span class="n">summaries</span><span class="o">...</span>
+<span class="n">Parsing</span> <span class="n">cached</span> <span class="n">content</span> <span class="n">file</span>
+<span class="s2">&quot;...\extras\Packages\.cache\.content_www_keil_com_pack_index_pidx.xml&quot;</span><span class="o">...</span>
+<span class="n">File</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">ignored</span><span class="o">.</span>
+<span class="n">Identifying</span> <span class="n">installed</span> <span class="n">packages</span><span class="o">...</span>
+<span class="n">Found</span> <span class="n">no</span> <span class="n">installed</span> <span class="n">packages</span><span class="o">.</span>
+<span class="n">Completed</span> <span class="ow">in</span> <span class="mi">1</span><span class="n">ms</span><span class="o">.</span>
+<span class="n">No</span> <span class="n">installed</span> <span class="n">packages</span><span class="o">.</span>
+<span class="n">Completed</span> <span class="ow">in</span> <span class="mi">1</span><span class="n">ms</span><span class="o">.</span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">26</span> <span class="mi">13</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">54</span>
+<span class="n">Extracting</span> <span class="n">devices</span> <span class="o">&amp;</span> <span class="n">boards</span><span class="o">...</span>
+<span class="n">No</span> <span class="n">installed</span> <span class="n">packages</span><span class="o">.</span>
+<span class="n">Completed</span> <span class="ow">in</span> <span class="mi">1</span><span class="n">ms</span>
+</pre></div>
+</div>
+</section>
+<section id="smartfusion2-dpk-unlocking">
+<h2>SmartFusion2 DPK unlocking<a class="headerlink" href="#smartfusion2-dpk-unlocking" title="Link to this heading"></a></h2>
+<p>SmartFusion2 provides an option to lock down Cortex-M3 debug access using a DPK (Debug PassKey). If this is enabled in
+the Libero design, then SoftConsole/OpenOCD needs to specify the DPK for debugging to work. To do this the 256-bit DPK
+must be passed to OpenOCD as a 64-hex digit string as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set DPK 0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF&quot;</span>
+<span class="o">--</span><span class="n">command</span> <span class="s2">&quot;set DEVICE M2S090&quot;</span>
+<span class="o">--</span><span class="n">file</span> <span class="n">board</span><span class="o">/</span><span class="n">microsemi</span><span class="o">-</span><span class="n">cortex</span><span class="o">-</span><span class="n">m3</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<p>DPK unlocking only works if the MSS is reset after the DPK unlock operation has been executed and this does not happen
+automatically. For DPK unlocking to work reliably some additional logic should be added to the FPGA design to reset the MSS
+on detection of the DPK unlock operation at the UJTAG level. This logic and Verilog implementation is outlined below.</p>
+<p><img alt="libero" src="../_images/dpk_unlock.png" /></p>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">trigger1</span><span class="p">(</span><span class="w"> </span><span class="n">UDRCK</span><span class="p">,</span><span class="w"> </span><span class="n">URSTB</span><span class="p">,</span><span class="w"> </span><span class="n">UDRUPD</span><span class="p">,</span><span class="w"> </span><span class="n">MSSRESET_N</span><span class="p">,</span><span class="w"> </span><span class="n">UIREG</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">UDRCK</span><span class="p">,</span><span class="w"> </span><span class="n">URSTB</span><span class="p">,</span><span class="w"> </span><span class="n">UDRUPD</span><span class="p">;</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">MSSRESET_N</span><span class="p">;</span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">UIREG</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">MSSRESET_N</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">CHECK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b01</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@</span><span class="w"> </span><span class="p">(</span><span class="k">posedge</span><span class="w"> </span><span class="n">UDRCK</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">URSTB</span><span class="p">)</span>
+<span class="w">    </span><span class="k">begin</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">URSTB</span><span class="p">)</span>
+<span class="w">            </span><span class="k">begin</span>
+<span class="w">                </span><span class="n">MSSRESET_N</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<span class="w">                </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">CHECK</span><span class="p">;</span>
+<span class="w">            </span><span class="k">end</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="k">begin</span>
+<span class="w">        </span>
+<span class="w">            </span><span class="k">case</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="w">                </span><span class="nl">CHECK:</span>
+<span class="w">                </span><span class="k">begin</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">UIREG</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">8&#39;h0A</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">UDRUPD</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">1</span><span class="p">))</span>
+<span class="w">                    </span><span class="k">begin</span>
+<span class="w">                        </span><span class="n">MSSRESET_N</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">end</span>
+<span class="w">                    </span><span class="k">else</span>
+<span class="w">                    </span><span class="k">begin</span>
+<span class="w">                        </span><span class="n">MSSRESET_N</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">CHECK</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">end</span>
+<span class="w">                </span><span class="k">end</span>
+
+<span class="w">                </span><span class="nl">HIGH:</span>
+<span class="w">                </span><span class="k">begin</span>
+<span class="w">                    </span><span class="n">MSSRESET_N</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">CHECK</span><span class="p">;</span>
+<span class="w">                </span><span class="k">end</span>
+
+<span class="w">                </span><span class="k">default</span><span class="o">:</span>
+<span class="w">                </span><span class="k">begin</span>
+<span class="w">                    </span><span class="n">MSSRESET_N</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">CHECK</span><span class="p">;</span>
+<span class="w">                </span><span class="k">end</span>
+<span class="w">            </span><span class="k">endcase</span>
+
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</section>
+<section id="cmsis-needs-environment-variable">
+<h2>CMSIS needs environment variable<a class="headerlink" href="#cmsis-needs-environment-variable" title="Link to this heading"></a></h2>
+<p>If an ARM project is built with a Makefile or any other unmanaged process, then the SoftConsole install location needs to be
+exported for the CMSIS to work:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">SC_INSTALL_DIR</span><span class="o">=</span>&lt;INSTALL_PATH&gt;
+</pre></div>
+</div>
+<p>When SoftConsole is run from the provided launcher script (<code class="docutils literal notranslate"><span class="pre">softconsole.cmd</span></code> on Windows and <code class="docutils literal notranslate"><span class="pre">softconsole.sh</span></code> on Linux) then the
+script configures this environment variable so that the Arm GCC toolchain can find the CMSIS toolchain header files. If, when
+compiling a Cortex-M project, the CMSIS toolchain header files are not found then make sure that SoftConsole is launched via
+the script or that the <code class="docutils literal notranslate"><span class="pre">SC_INSTALL_DIR</span></code> environment variable is configured correctly on the system. In the past SoftConsole
+could be run by simply running <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/eclipse/eclipse.exe</span></code> but if this is done in SoftConsole
+v6.0 or later then the <code class="docutils literal notranslate"><span class="pre">SC_INSTALL_DIR</span></code> environment variable will not be set by default.</p>
+</section>
+<section id="dap-transaction-stalled-wait-messages-when-debugging-smartfusion2-cortex-m3">
+<h2>“DAP transaction stalled (WAIT)” messages when debugging SmartFusion2 Cortex-M3<a class="headerlink" href="#dap-transaction-stalled-wait-messages-when-debugging-smartfusion2-cortex-m3" title="Link to this heading"></a></h2>
+<p>When debugging a SmartFusion2 Cortex-M3 target where the SmartFusion2 envm boot area does not contain a valid CortexM3 program (for example zeroized or garbage envm contents), one or more instances of the following message may appear in
+the OpenOCD log:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span> <span class="p">:</span> <span class="n">DAP</span> <span class="n">transaction</span> <span class="n">stalled</span> <span class="p">(</span><span class="n">WAIT</span><span class="p">)</span> <span class="o">-</span> <span class="n">slowing</span> <span class="n">down</span>
+</pre></div>
+</div>
+<p>This arises because if the Cortex-M3 boots from zeroized or garbage envm it can end up in a double fault/lockup/reset cycle
+and the debugger may experience delays while trying to reset it. However, the debugger will reset the target and these
+messages can be safely ignored</p>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="riscv_trap.html" class="btn btn-neutral float-left" title="RISC-V Trap Exceptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="renode.html" class="btn btn-neutral float-right" title="Renode troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Microchip.</p>
+  </div>
+
+  
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="../_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="../_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="../_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2026.1/">SoftConsole-v2026.1</a></dd><br/>
+      
+      
+
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

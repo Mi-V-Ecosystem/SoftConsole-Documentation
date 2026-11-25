@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Post Installation - SoftConsole v2022.2-728-RISC-V documentation</title>
+
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/myRtdOverrides.css?v=775951b6" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Navigating the IDE" href="navigating.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SoftConsole
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Post Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#microsoft-visual-c-runtime-for-flashpro-debugging">Microsoft Visual C++ runtime for FlashPro debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polarfire-soc-boot-mode-programming">PolarFire SoC boot mode programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renode-dependencies">Renode dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-firewall">Windows firewall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#program-and-debug-polarfire-soc">Program and Debug PolarFire SoC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Renode dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-dependencies">Additional dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-models-for-renode">Writing models for Renode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-targets-flashpro">Hardware targets (FlashPro)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#check-that-flashpro-can-be-used-without-root-privileges">Check that FlashPro can be used without root privileges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-non-root-user-to-access-flashpro">Enabling non-root user to access FlashPro</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating existing projects to SoftConsole v2022.2-RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/arm.html">Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Post Installation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+  <section id="post-installation">
+<h1>Post Installation<a class="headerlink" href="#post-installation" title="Link to this heading"></a></h1>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h2>
+<section id="microsoft-visual-c-runtime-for-flashpro-debugging">
+<h3>Microsoft Visual C++ runtime for FlashPro debugging<a class="headerlink" href="#microsoft-visual-c-runtime-for-flashpro-debugging" title="Link to this heading"></a></h3>
+<p>The fpServer process that owns the connection to a FlashPro programmer is a
+32-bit component, so it needs the 32-bit Microsoft Visual C++ runtime present on
+the machine.</p>
+<p>The Windows installer is configured to install this runtime for you. After the
+files are copied, it runs the redistributable included with SoftConsole v2022.2-RISC-V quietly and
+without restarting the machine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">SoftConsole</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;/</span><span class="n">extras</span><span class="o">/</span><span class="n">vcredist</span><span class="o">/</span><span class="n">vc_redist</span><span class="o">.</span><span class="n">x86</span><span class="o">-</span><span class="mf">14.51.36247</span><span class="o">.</span><span class="n">exe</span>
+</pre></div>
+</div>
+<p>This step is configured to continue without reporting an error if the
+redistributable does not complete, so installation is not interrupted. That
+means a failure here is not surfaced at install time.</p>
+<p>If a debug session fails to start and the fpServer console reports a missing
+DLL, the runtime is most likely not present. Run the redistributable from the
+directory above and try again. Administrator rights may be required.</p>
+</section>
+<section id="polarfire-soc-boot-mode-programming">
+<h3>PolarFire SoC boot mode programming<a class="headerlink" href="#polarfire-soc-boot-mode-programming" title="Link to this heading"></a></h3>
+<p>When using PolarFire SoC boot mode programming tool from within SoftConsole then Program and debug, or Libero has to be installed. This is a separate installation from SoftConsole, and the release installed must support the target device and the programming operation. For the RT PolarFire SoC devices RTPFS460ZT/ZTS/ZTL/ZTLS and RTPFS160ZT/TS/TL/TLS, programming support was added in v2025.1:</p>
+<p><a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/4970-programming">https://www.microsemi.com/product-directory/dev-tools/4970-programming</a></p>
+<p><a class="reference external" href="https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions">https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions</a></p>
+</section>
+<section id="renode-dependencies">
+<h3>Renode dependencies<a class="headerlink" href="#renode-dependencies" title="Link to this heading"></a></h3>
+<p>The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode’s dependencies.</p>
+<p>The Renode build bundled with SoftConsole v2022.2-RISC-V carries its own .NET runtime and is started
+from a native executable, so the separate .NET Framework step that earlier
+releases described is no longer needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Earlier releases asked for .NET Framework 4.8 to be enabled through the Windows
+features dialog. That step does not apply to this release.</p>
+</div>
+</section>
+</section>
+<section id="windows-firewall">
+<h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Link to this heading"></a></h2>
+<p>On Windows if there is a firewall in use then the first time that a debug session is run the firewall may prompt that it is blocking
+OpenOCD, <code class="docutils literal notranslate"><span class="pre">fpServer.exe</span></code> and/or <code class="docutils literal notranslate"><span class="pre">renode.exe</span></code>. Allow the firewall to unblock these and save this as the default setting if
+necessary.</p>
+</section>
+<section id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h2>
+<p>Many of the commands below require root privileges using <code class="docutils literal notranslate"><span class="pre">su</span></code>, <code class="docutils literal notranslate"><span class="pre">sudo</span></code> or by logging in as root.</p>
+<ol class="arabic">
+<li><p>Many platforms have <code class="docutils literal notranslate"><span class="pre">gcc</span></code> and <code class="docutils literal notranslate"><span class="pre">make</span></code> packages installed by default, but it is advisable to make sure that these are installed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Renode is using <code class="docutils literal notranslate"><span class="pre">gcc</span></code> for compiling just in time models. While <code class="docutils literal notranslate"><span class="pre">make</span></code> is used by Eclipse CDT to compile projects.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Ubuntu/Debian</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">CentOS/RHEL</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>build-essential
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libwebkit2gtk-4.0-37<span class="w"> </span><span class="c1"># To enable SoftConsole embedded web-browser</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>yum<span class="w"> </span>groupinstall<span class="w"> </span><span class="s1">&#39;Development Tools&#39;</span>
+</pre></div>
+</div>
+</div></div>
+</li>
+<li><p>It is recommended that the Linux platform used to run SoftConsole has all available updates installed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may be possible to install and run SoftConsole on other Linux distributions or versions once the required packages are installed. However, some earlier distributions (for example, CentOS/RHEL 5.x and 6.x) may not work and are not recommended or supported.</p>
+</div>
+</li>
+</ol>
+<section id="program-and-debug-polarfire-soc">
+<h3>Program and Debug PolarFire SoC<a class="headerlink" href="#program-and-debug-polarfire-soc" title="Link to this heading"></a></h3>
+<p>If you want to use mpfs programmer you need to install Program and debug, or Libero. This is a separate installation from SoftConsole, and the release installed must support the target device and the programming operation. For the RT PolarFire SoC devices RTPFS460ZT/ZTS/ZTL/ZTLS and RTPFS160ZT/TS/TL/TLS, programming support was added in v2025.1:</p>
+<p><a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/4970-programming">https://www.microsemi.com/product-directory/dev-tools/4970-programming</a></p>
+<p><a class="reference external" href="https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions">https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions</a></p>
+</section>
+<section id="id1">
+<h3>Renode dependencies<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>The Renode build bundled with SoftConsole v2022.2-RISC-V is the portable .NET build and carries its own
+.NET runtime inside the installation’s <code class="docutils literal notranslate"><span class="pre">renode</span></code> folder. No Mono framework and no separate
+.NET installation are required.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Earlier SoftConsole releases bundled a Renode build that ran on the Mono framework, so
+their setup instructions asked for Mono to be installed from the mono-project repository.
+Those instructions no longer apply to SoftConsole v2022.2-RISC-V.</p>
+</div>
+<p>The bundled runtime is self-contained, but like any native application Renode still links
+against libraries provided by the host. These are ordinary system libraries rather than a
+framework to install, and the set required depends on the distribution and on which Renode
+features are used, so no package list is given here. If Renode does not start, run it
+directly to see the loader’s own error, which names the missing library:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&lt;install-dir&gt;/renode/renode&quot;</span><span class="w"> </span>--version
+</pre></div>
+</div>
+<p>A successful run prints the Renode version and the bundled runtime, for example
+<code class="docutils literal notranslate"><span class="pre">Renode</span> <span class="pre">v1.16.1.4403</span></code> and <code class="docutils literal notranslate"><span class="pre">runtime:</span> <span class="pre">.NET</span> <span class="pre">8.0.12</span></code>. Install whichever library the error
+names using the host’s package manager, and refer to the Renode documentation bundled with
+the installation for emulation-specific requirements.</p>
+</section>
+<section id="additional-dependencies">
+<span id="additionalrenodedeps"></span><h3>Additional dependencies<a class="headerlink" href="#additional-dependencies" title="Link to this heading"></a></h3>
+<p>The bundled Renode carries its own .NET runtime, so no framework has to be installed for it to run. The packages below are needed only for additional activities such as Robot testing or building Renode from its sources, and several are likely already present with a generic GUI desktop environment. Most users can skip this step. The list is inherited from the upstream Renode build instructions and includes items, such as the Mono GTK bindings, that the bundled build itself does not use.</p>
+<p>On Ubuntu they can be installed with the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>automake<span class="w"> </span>autoconf<span class="w"> </span>libtool<span class="w"> </span>g++<span class="w"> </span>realpath<span class="w"> </span>gcc<span class="w"> </span>libc6-dev
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>policykit-1<span class="w"> </span>libgtk2.0-0<span class="w"> </span>screen<span class="w"> </span>uml-utilities<span class="w"> </span>gtk-sharp2<span class="w"> </span>rpm<span class="w"> </span>libarchive-tools
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>python3-setuptools<span class="w"> </span>python3-dev<span class="w"> </span>ruby<span class="w"> </span>ruby-dev<span class="w"> </span>
+sudo<span class="w"> </span>gem<span class="w"> </span>install<span class="w"> </span>fpm
+</pre></div>
+</div>
+</section>
+<section id="writing-models-for-renode">
+<h3>Writing models for Renode<a class="headerlink" href="#writing-models-for-renode" title="Link to this heading"></a></h3>
+<p>Users, wishing to write Renode models can use <a class="reference external" href="https://www.monodevelop.com/">Mono Develop IDE</a> as their C# editor. Renode is made as a Mono Develop project, therefore it should be able to open Renode’s sources without any extra manual steps.</p>
+</section>
+<section id="hardware-targets-flashpro">
+<span id="linuxpostinstallhw"></span><h3>Hardware targets (FlashPro)<a class="headerlink" href="#hardware-targets-flashpro" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When accessing FlashPro devices then native Windows/Linux host machines are recommended as there might be issues with Virtual Machines accessing the FlashPro.</p>
+</div>
+<section id="check-that-flashpro-can-be-used-without-root-privileges">
+<h4>Check that FlashPro can be used without root privileges<a class="headerlink" href="#check-that-flashpro-can-be-used-without-root-privileges" title="Link to this heading"></a></h4>
+<p>Connect a FlashPro5/6 JTAG programmer to a native Linux host machine (this might not work on a VM) and check that it is visible to the operating system:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsusb
+Bus<span class="w"> </span><span class="m">001</span><span class="w"> </span>Device<span class="w"> </span><span class="m">004</span>:<span class="w"> </span>ID<span class="w"> </span><span class="m">1514</span>:2008<span class="w"> </span>Actel
+Bus<span class="w"> </span><span class="m">001</span><span class="w"> </span>Device<span class="w"> </span><span class="m">004</span>:<span class="w"> </span>ID<span class="w"> </span><span class="m">1514</span>:2009<span class="w"> </span>Actel
+Bus<span class="w"> </span><span class="m">002</span><span class="w"> </span>Device<span class="w"> </span><span class="m">002</span>:<span class="w"> </span>ID<span class="w"> </span><span class="m">1514</span>:200b<span class="w"> </span>Actel
+</pre></div>
+</div>
+<p>If the FlashPro5 (VID=1514 PID=2008) or FlashPro6 (VID=1514 PID=2009) or embedded FlashPro6 Rev B (VID=1514 PID=200b) does not appear then double check that the previous steps were carried out correctly.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you will see VID=1514 PID=200a then that is embedded FlashPro6 Rev A and to use it with SoftConsole or Libero, it needs to be upgraded to Rev B.</p>
+</div>
+<ul class="simple">
+<li><p>To the JTAG end of the FlashPro connect a suitable board containing a Cortex-M1, SmartFusion or SmartFusion2 Cortex-M3, or RISC-V CPU based SoC design.</p></li>
+<li><p>To the JTAG end of the FlashPro connect a suitable board containing a RISC-V CPU based SoC design.</p>
+<ul>
+<li><p>Make sure you are connecting to the right JTAG connector (in case of Icicle board it’s <strong>J23</strong> and not J10, the J10 is used <strong>only</strong> to reprogram the embedded JTAG)</p></li>
+</ul>
+</li>
+<li><p>Power the board on.</p></li>
+<li><p>Make sure that the board is configured for FlashPro JTAG debugging of the target CPU (depending on the board and CPU/SoC in use some board switches/jumpers configuration may be required).</p></li>
+<li><p>Make sure that it has correct and matching Libero design (if you are going to connect to Mi-V RV-32 then you need working Mi-V design on the device)</p></li>
+<li><p>Run OpenOCD from the command line to ensure that the debug connection can be established to the target CPU/SoC:</p></li>
+</ul>
+<p>First go to the correct directory (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;SoftConsole-install-dir&gt;/openocd/bin
+</pre></div>
+</div>
+<p>And then execute the following:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">PolarFire SoC</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Mi-V RISCV</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Cortex-M1</button><button aria-controls="panel-1-1-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-3" name="1-3" role="tab" tabindex="-1">Cortex-M3</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;set DEVICE MPFS&quot;</span><span class="w"> </span>-f<span class="w"> </span>board/microsemi-riscv.cfg
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd<span class="w"> </span>-f<span class="w"> </span>board/microsemi-riscv.cfg
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd<span class="w"> </span>-f<span class="w"> </span>board/microsemi-cortex-m1.cfg
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-3" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-3" name="1-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;set DEVICE M2S090&quot;</span><span class="w"> </span>-f<span class="w"> </span>board/microsemi-cortex-m3.cfg
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">M2S090</span></code> target is needed in the example above.</p>
+<p><strong>For example:</strong> When using Trenz <a class="reference external" href="https://shop.trenz-electronic.de/en/TEM0001-01A-010C-SMF2000-FPGA-Module-with-Microsemi-SmartFusion2-8-MByte-SDRAM?c=486">SMF2000</a> board, it needs to be changed to <code class="docutils literal notranslate"><span class="pre">M2S010</span></code>.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">DEVICE</span> <span class="pre">M2S090</span></code> needs to be changed to match the target.</p>
+</div>
+</div></div>
+<p>The output should be similar to the following:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Mi-V RISC-V</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Cortex-M1</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Cortex-M3</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
+Licensed under GNU GPL v2
+For bug reports, read
+http://openocd.org/doc/doxygen/bugs.html
+Info : only one transport option; autoselect &#39;jtag&#39;
+adapter speed: 6000 kHz
+microsemi_flashpro tunnel_jtag_via_ujtag off
+trst_only separate trst_push_pull
+do_board_reset_init
+<span class="hll">Info : FlashPro ports available: S201Z7LB20, E200X3ID7
+</span>Info : FlashPro port used: S201Z7LB20
+Info : clock speed 6000 kHz
+<span class="hll">Info : JTAG tap: FPGA.tap tap/device found: 0x1f8071cf (mfg: 0x0e7
+</span><span class="hll">(GateField), part: 0xf807, ver: 0x1)
+</span>microsemi_flashpro tunnel_jtag_via_ujtag on
+Info : JTAG tap: FPGA.tap disabled
+Info : JTAG tap: FPGA.dap enabled
+<span class="hll">Info : RISC-V IDCODE = 0x10e31913
+</span>Info : Examined RISCV core; XLEN=32, misa=0x40902223
+halted at 0x80000b60 due to debug interrupt
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice from the log above, the following was recognized correctly</p>
+<ul class="simple">
+<li><p>The FlashPro ports</p></li>
+<li><p>The ID code of the JTAG tap</p></li>
+<li><p>And the RISC-V IDCODE</p></li>
+</ul>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
+Licensed under GNU GPL v2
+For bug reports, read
+http://openocd.org/doc/doxygen/bugs.html
+Info : only one transport option; autoselect &#39;jtag&#39;
+adapter speed: 6000 kHz
+microsemi_flashpro tunnel_jtag_via_ujtag off
+cortex_m reset_config sysresetreq
+trst_only separate trst_push_pull
+do_board_reset_init
+<span class="hll">Info : FlashPro ports available: usb50266
+</span>Info : FlashPro port used: usb50266
+Info : clock speed 6000 kHz
+<span class="hll">Info : JTAG tap: FPGA.tap tap/device found: 0x2353a1cf (mfg: 0x0e7
+</span><span class="hll">(GateField), part: 0x353a, ver: 0x2)
+</span>microsemi_flashpro tunnel_jtag_via_ujtag on
+Info : JTAG tap: FPGA.tap disabled
+Info : JTAG tap: FPGA.dap enabled
+<span class="hll">Info : Cortex-M1 IDCODE = 0x4ba00477
+</span>Info : FPGA.cpu: hardware has 2 breakpoints, 1 watchpoints
+cortex_m auto_bp_type off
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice from the log above, the following was recognized correctly</p>
+<ul class="simple">
+<li><p>The FlashPro ports</p></li>
+<li><p>The ID code of the JTAG tap</p></li>
+<li><p>And the Cortex-M1 IDCODE</p></li>
+</ul>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
+Licensed under GNU GPL v2
+For bug reports, read
+http://openocd.org/doc/doxygen/bugs.html
+M2S090
+Info : only one transport option; autoselect &#39;jtag&#39;
+adapter speed: 6000 kHz
+cortex_m reset_config sysresetreq
+trst_only separate trst_push_pull
+do_board_reset_init
+<span class="hll">Info : FlashPro ports available: S201Z7LB20, E200X3ID7
+</span>Info : FlashPro port used: S201Z7LB20
+Info : clock speed 6000 kHz
+<span class="hll">Info : JTAG tap: M2S090.tap tap/device found: 0x1f8071cf (mfg: 0x0e7
+</span><span class="hll">(GateField), part: 0xf807, ver: 0x1)
+</span>Info : JTAG tap: M2S090.tap disabled
+Info : JTAG tap: M2S090.dap enabled
+<span class="hll">Info : Cortex-M3 IDCODE = 0x4ba00477
+</span>Info : M2S090.cpu: hardware has 6 breakpoints, 4 watchpoints
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice from the log above, the following was recognized correctly</p>
+<ul class="simple">
+<li><p>The FlashPro ports</p></li>
+<li><p>The ID code of the JTAG tap</p></li>
+<li><p>And the Cortex-M3 IDCODE</p></li>
+</ul>
+</div>
+</div></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If seeing output similar to the snippet below (or any other errors excluding documented issues) then that indicates a problem. In that case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: FlashPro ports available: none
+Info: FlashPro port used: usb
+<span class="hll">Error: InitializeProgrammer(usb) failed: Can not connect to the programmer
+</span></pre></div>
+</div>
+</div>
+</section>
+<section id="enabling-non-root-user-to-access-flashpro">
+<h4>Enabling non-root user to access FlashPro<a class="headerlink" href="#enabling-non-root-user-to-access-flashpro" title="Link to this heading"></a></h4>
+<p>By default, USB devices are only accessible to users with root privileges. To debug using SoftConsole and FlashPro5/6 as a
+non-root user some additional steps must be taken.</p>
+<ul>
+<li><p>Copy the OpenOCD udev rules file and tell the udev subsystem to load it. This rules file describes all USB JTAG devices supported by OpenOCD to the system and makes them accessible by non-root users (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;SoftConsole-install-dir&gt;/openocd/openocd/contrib
+sudo<span class="w"> </span>cp<span class="w"> </span><span class="m">60</span>-openocd.rules<span class="w"> </span>/etc/udev/rules.d
+sudo<span class="w"> </span>udevadm<span class="w"> </span>trigger<span class="w"> </span><span class="c1"># Or reboot the PC for the changes to take effect</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code> already exists then make sure to overwrite it with the new version in this release as it contains additional rules that are not included in the earlier version.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The location of this file changed in SoftConsole v2022.2-RISC-V. Earlier releases kept it in
+<code class="docutils literal notranslate"><span class="pre">openocd/share/openocd/contrib</span></code>. If you are following instructions from an
+older release and that directory does not exist, use the path above.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If SoftConsole is installed alongside other tools which affect the udev rules (for example Libero, Program and Debug), then make sure their rules/scripts do not override the rules from the <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code> file.</p>
+</div>
+<p>In some cases it may be necessary to reboot for the changes to take effect. Some distributions do not create the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group and/or may not add users to it automatically. In that case the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group must be created manually and the user added to the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In SoftConsole v2022.2-RISC-V the FlashPro rules grant access with <code class="docutils literal notranslate"><span class="pre">MODE=&quot;666&quot;</span></code> as well as naming
+the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group, so membership of <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> is normally not required. The
+group steps below are still worth following if your site policy restricts
+device permissions, or if another tool installs stricter rules for the same
+devices.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>groupadd<span class="w"> </span>plugdev
+sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>plugdev<span class="w"> </span>&lt;username&gt;
+</pre></div>
+</div>
+<p>Log out and then log in (or reboot the PC) for the <code class="docutils literal notranslate"><span class="pre">usermod</span></code> changes to be applied.</p>
+</li>
+<li><p>Provision the FlashPro CYUSB configuration. fpServer reads <code class="docutils literal notranslate"><span class="pre">/etc/cyusb.conf</span></code>
+when it initialises; if that file is missing, FlashPro programmer
+enumeration fails and the Debugger tab reports “Enumeration failed”. An
+administrator runs (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your
+installation path):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span><span class="s2">&quot;&lt;SoftConsole-install-dir&gt;/fpServer/fpserver-setup.sh&quot;</span><span class="w"> </span>--install
+</pre></div>
+</div>
+<p>This creates <code class="docutils literal notranslate"><span class="pre">/etc/cyusb.conf</span></code> and <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/88-cyusb.rules</span></code> if they
+are not already present, by running the bundled, unmodified Microchip
+<code class="docutils literal notranslate"><span class="pre">fp6_env_install</span></code> script, then reloads the udev rules for you. Unplug and
+replug the FlashPro programmer so the new rule applies to it. If the
+command reports that reloading udev failed, reload it manually or reboot.</p>
+<p>If either file already exists it is validated first. A supported existing
+configuration is preserved: the FlashPro6 entry is merged into it, other
+device entries are kept, and a timestamped backup is taken before the file is
+modified. If a file is present but its contents are not in the expected form,
+the command reports what it found and what to add instead of changing it.
+If setup reports an error, read it and resolve its cause before continuing,
+and follow any recovery instructions it prints. Recovery from a failed
+installation is best effort, using the backups taken of files that already
+existed.</p>
+<p>To validate the configuration without changing anything:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&lt;SoftConsole-install-dir&gt;/fpServer/fpserver-setup.sh&quot;</span><span class="w"> </span>--check
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--check</span></code> inspects the configuration files only. It does not test hardware
+connectivity and does not confirm that a programmer is attached. To check
+that a programmer is enumerated:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&lt;SoftConsole-install-dir&gt;/fpServer/run_fpserver.sh&quot;</span><span class="w"> </span>--list
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These files are shared with other Microchip tools. If Libero or Program and
+Debug Tools is installed they may already exist, and uninstalling SoftConsole
+does not remove them. See <code class="docutils literal notranslate"><span class="pre">fpServer/FLASHPRO-SETUP-README.txt</span></code> in the
+installation for the configuration details and for how to undo the change.</p>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you previously used SoftConsole v4.x or 5.0 and installed the <code class="docutils literal notranslate"><span class="pre">99-openocd.rules</span></code> file into <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d</span></code> then you can delete that file as it is now redundant and superseded by <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code>. Then run again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>udevadm<span class="w"> </span>trigger<span class="w"> </span><span class="c1"># Or reboot the PC for the changes to take effect</span>
+</pre></div>
+</div>
+</div>
+<p>For all other common issues read the troubleshooting section. Or at least search for the error messages.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="navigating.html" class="btn btn-neutral float-right" title="Navigating the IDE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Microchip.</p>
+  </div>
+
+  
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="../_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="../_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="../_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2026.1/">SoftConsole-v2026.1</a></dd><br/>
+      
+      
+
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

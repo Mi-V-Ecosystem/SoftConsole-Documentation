@@ -1,0 +1,13 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Other features
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+{% include 'main/using_softconsole/other/_terminal.inc' %}
+{% include 'main/using_softconsole/other/_integer_only_newlib.inc' %}
+{% include 'main/using_softconsole/other/_stack_profiling.inc' %}
+{% include 'main/using_softconsole/other/_cppcheck.inc' %}
+
+```````

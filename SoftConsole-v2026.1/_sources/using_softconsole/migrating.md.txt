@@ -1,0 +1,17 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+(migratingprojects)=
+# Migrating existing projects to {{sc}}
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+{% include 'main/using_softconsole/migrating/_overview.inc' %}
+{% include 'main/using_softconsole/migrating/_importing.inc' %}
+{% include 'main/using_softconsole/migrating/_choosing_toolchain.inc' %}
+{% include 'main/using_softconsole/migrating/_build_settings.inc' %}
+{% include 'main/using_softconsole/migrating/_source_changes.inc' %}
+{% include 'main/using_softconsole/migrating/_debug_configuration.inc' %}
+{% include 'main/using_softconsole/migrating/_still_failing.inc' %}
+
+```````

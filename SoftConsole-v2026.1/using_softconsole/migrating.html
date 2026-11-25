@@ -1,0 +1,791 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Migrating existing projects to SoftConsole v2022.2-RISC-V - SoftConsole v2022.2-728-RISC-V documentation</title>
+
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/myRtdOverrides.css?v=775951b6" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e7652c95"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Debugging" href="debugging.html" />
+    <link rel="prev" title="Projects" href="projects.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SoftConsole
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages, Tools and Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using SoftConsole</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Migrating existing projects to SoftConsole v2022.2-RISC-V</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#before-you-start">Before you start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-this-chapter-separates-the-two-kinds-of-change">How this chapter separates the two kinds of change</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-a-project-from-an-earlier-softconsole-release">Importing a project from an earlier SoftConsole release</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#projects-that-reference-an-absolute-toolchain-path">Projects that reference an absolute toolchain path</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#choosing-a-toolchain">Choosing a toolchain</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#continuing-with-a-legacy-toolchain">Continuing with a legacy toolchain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-a-project-to-gcc-15-2">Moving a project to GCC 15.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switching-back">Switching back</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#build-settings-that-may-need-updating">Build settings that may need updating</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#control-and-status-register-instructions-zicsr">Control and status register instructions (Zicsr)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assembler-listings-on-windows">Assembler listings on Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#excluded-driver-folders">Excluded driver folders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#include-paths-and-file-names-on-linux">Include paths and file names on Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#source-changes-that-may-be-needed">Source changes that may be needed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#csr-renamed-from-mbadaddr-to-mtval">CSR renamed from mbadaddr to mtval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interrupt-enumeration-causing-multiple-definition-errors">Interrupt enumeration causing multiple definition errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bootrom-helper-compiled-for-a-legacy-core">BootROM helper compiled for a legacy core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#include-paths-written-with-backslashes">Include paths written with backslashes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#missing-standard-includes">Missing standard includes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-debug-configuration-changes">Hardware debug configuration changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reviewing-an-imported-launch-configuration">Reviewing an imported launch configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-which-programmer-to-debug-with">Selecting which programmer to debug with</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scope-of-the-fpserver-integration-in-this-release">Scope of the fpServer integration in this release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#if-a-project-still-does-not-build">If a project still does not build</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode simulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/arm.html">Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SoftConsole</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Migrating existing projects to SoftConsole v2022.2-RISC-V</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+  <section id="migrating-existing-projects-to-softconsole-v2022-2-risc-v">
+<h1>Migrating existing projects to SoftConsole v2022.2-RISC-V<a class="headerlink" href="#migrating-existing-projects-to-softconsole-v2022-2-risc-v" title="Link to this heading"></a></h1>
+<section id="before-you-start">
+<h2>Before you start<a class="headerlink" href="#before-you-start" title="Link to this heading"></a></h2>
+<p>SoftConsole v2022.2-RISC-V ships two generations of toolchains. The GCC 15.2 toolchains are the
+recommended ones for new work, and the toolchains used by earlier SoftConsole
+releases are still included, so a project can keep the compiler generation it
+was written for. Imported toolchain paths and project settings may still need
+adjustment, and a debug launch configuration carried over from an earlier
+release needs review whichever compiler you build with.</p>
+<p>This means an existing project has two routes for the <strong>build</strong>:</p>
+<ul class="simple">
+<li><p>Keep using the toolchain generation the project was written for. This is the
+smallest change and a reasonable choice for a project that is already released
+or frozen.</p></li>
+<li><p>Move the project to GCC 15.2. Newer compilers diagnose more problems and
+enforce rules that older compilers accepted silently, so a project may need a
+small number of build setting or source changes before it builds again.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Keep two things separate when planning a migration.</p>
+<p><strong>Building</strong> and <strong>debugging</strong> migrate independently. Selecting a legacy
+toolchain addresses the build, and it does not carry a debug launch
+configuration forward. Launch configurations created by earlier SoftConsole
+releases predate the fpServer based debug flow and usually need attention
+whichever toolchain you build with, see
+<a class="reference internal" href="#migratingdebugconfig"><span class="std std-ref">Hardware debug configuration changes</span></a>.</p>
+<p>Selecting a legacy toolchain is also not a guarantee that a project builds
+untouched. It removes the compiler change as a cause, which is the most common
+one, but a project can still need attention for unrelated reasons such as an
+absolute toolchain path recorded in the project, stale excluded folders, or
+paths that only ever worked on one host operating system.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The rest of this chapter describes problems that <em>may</em> appear. None of them
+applies to every project. Each section states the symptom first, so a change is
+only made where the matching symptom is actually seen.</p>
+</div>
+<section id="how-this-chapter-separates-the-two-kinds-of-change">
+<h3>How this chapter separates the two kinds of change<a class="headerlink" href="#how-this-chapter-separates-the-two-kinds-of-change" title="Link to this heading"></a></h3>
+<p>Two different kinds of change are described, and it is worth keeping them
+apart when deciding what to do with your own code:</p>
+<ul class="simple">
+<li><p><strong>Source changes.</strong> These are changes in the project’s own source files, in
+a hardware abstraction layer or in a driver. They are usually worth making
+in the upstream project as well, because the old code depends on behaviour
+that current compilers no longer provide.</p></li>
+<li><p><strong>SoftConsole settings.</strong> These are project settings stored in the
+SoftConsole project files, such as the selected toolchain, target processor
+options, excluded folders or launch configuration entries. They belong to
+the project as it is used in SoftConsole and are not changes to the upstream
+source code.</p></li>
+</ul>
+<p>Sections below are marked accordingly.</p>
+</section>
+</section>
+<section id="importing-a-project-from-an-earlier-softconsole-release">
+<h2>Importing a project from an earlier SoftConsole release<a class="headerlink" href="#importing-a-project-from-an-earlier-softconsole-release" title="Link to this heading"></a></h2>
+<p>Projects from earlier SoftConsole releases are imported in the normal way, see
+<a class="reference internal" href="projects.html#importgeneralprojects"><span class="std std-ref">Importing general projects</span></a> for the dialogs and the
+options. Nothing about the import itself is specific to SoftConsole v2022.2-RISC-V.</p>
+<p>Two points are worth attention when the project comes from an older release:</p>
+<ul class="simple">
+<li><p>Import into a new workspace rather than reusing a workspace created by an
+older SoftConsole release. A new workspace avoids carrying over stale
+metadata and indexes, and it leaves the old workspace untouched so you can
+go back to it.</p></li>
+<li><p>Use a copy of the project, or make sure the original is in version control
+before you start. The changes described later in this chapter are small, but
+being able to compare against the unmodified project makes it much easier to
+see what actually had to change.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Build the project once, without changing anything, before starting any
+migration work. A clean build with the original toolchain confirms the import
+itself was fine, and it gives you a baseline to compare against.</p>
+</div>
+<section id="projects-that-reference-an-absolute-toolchain-path">
+<h3>Projects that reference an absolute toolchain path<a class="headerlink" href="#projects-that-reference-an-absolute-toolchain-path" title="Link to this heading"></a></h3>
+<p>A project created by an older release may record an absolute path to the
+toolchain it was built with, pointing into the old installation directory. If
+that installation is still present the project keeps using it, which can be
+confusing because the build then does not use SoftConsole v2022.2-RISC-V at all.</p>
+<p>Check the configured toolchain path in:</p>
+<div class="graphviz"><img src="../_images/graphviz-8008723f679c13176846ebaf530c065c5c61a7c6.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Toolchains&quot;
+     }" class="graphviz" /></div>
+<br/>
+<p>The next section describes how to point the project at one of the toolchains
+that ship with SoftConsole v2022.2-RISC-V.</p>
+</section>
+</section>
+<section id="choosing-a-toolchain">
+<span id="migratingchoosing"></span><h2>Choosing a toolchain<a class="headerlink" href="#choosing-a-toolchain" title="Link to this heading"></a></h2>
+<p>This is a SoftConsole setting. It does not change the project’s source code.</p>
+<p>SoftConsole v2022.2-RISC-V bundles both toolchain generations:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Architecture</p></th>
+<th class="head"><p>Recommended for new projects</p></th>
+<th class="head"><p>Legacy toolchain also included</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RISC-V</p></td>
+<td><p>GCC 15.2</p></td>
+<td><p>GCC 8.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Arm</p></td>
+<td><p>GCC 15.2</p></td>
+<td><p>GCC 10.3</p></td>
+</tr>
+</tbody>
+</table>
+<p>The toolchain used by a build configuration is selected in:</p>
+<div class="graphviz"><img src="../_images/graphviz-3282097aaf568717fee5d6f0564922d12270b64b.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Toolchains&quot; -&gt; &quot;Name&quot;
+     }" class="graphviz" /></div>
+<br/>
+<p>The recommended entries are named so that they can be told apart at a glance,
+for example <code class="docutils literal notranslate"><span class="pre">SoftConsole</span> <span class="pre">RISC-V</span> <span class="pre">GCC</span> <span class="pre">15.2</span> <span class="pre">(Recommended)</span></code>. The list also holds the
+legacy entry, <code class="docutils literal notranslate"><span class="pre">SoftConsole</span> <span class="pre">RISC-V</span> <span class="pre">GCC</span> <span class="pre">8.3</span> <span class="pre">(Legacy)</span></code>:</p>
+<p><img alt="toolchain selection" src="../_images/toolchain-selection.png" /></p>
+<section id="continuing-with-a-legacy-toolchain">
+<h3>Continuing with a legacy toolchain<a class="headerlink" href="#continuing-with-a-legacy-toolchain" title="Link to this heading"></a></h3>
+<p>Select the legacy toolchain entry for the architecture. The project then builds
+with the same compiler generation as before, so the compiler related items in
+<a class="reference internal" href="#migratingbuildsettings"><span class="std std-ref">Build settings</span></a> and
+<a class="reference internal" href="#migratingsourcechanges"><span class="std std-ref">Source changes</span></a> do not apply.</p>
+<p>This is a supported configuration, not a workaround. It is the right choice when
+a project must not change, for example because its binary has already been
+qualified.</p>
+<p>Two points to keep in mind:</p>
+<ul class="simple">
+<li><p>It does not carry a debug launch configuration forward. See
+<a class="reference internal" href="#migratingdebugconfig"><span class="std std-ref">Hardware debug configuration changes</span></a>.</p></li>
+<li><p>It does not rule out every build problem. Project level issues such as an
+absolute toolchain path, stale excluded folders or host specific include paths
+are independent of the compiler version.</p></li>
+</ul>
+</section>
+<section id="moving-a-project-to-gcc-15-2">
+<h3>Moving a project to GCC 15.2<a class="headerlink" href="#moving-a-project-to-gcc-15-2" title="Link to this heading"></a></h3>
+<p>Select the recommended toolchain entry for the architecture, then rebuild the
+project from clean:</p>
+<div class="graphviz"><img src="../_images/graphviz-a505192f0d847887bf4a95977045209fa51c5d3e.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project&quot; -&gt; &quot;Clean...&quot; -&gt; &quot;Build&quot;
+     }" class="graphviz" /></div>
+<br/>
+<p>A clean build matters here. Object files and dependency files left from a build
+with a different compiler generation can produce confusing compile or link
+errors, so rebuild from clean after changing the toolchain.</p>
+<p>If the build succeeds, continue by validating the application: run it on the
+target or in emulation, and check a debug session, as appropriate for the
+project. A successful build does not by itself confirm that the application
+behaves as before. If the build does not succeed, work through the sections
+below and match the actual error message against the symptoms described. Do not
+apply the changes speculatively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each build configuration carries its own toolchain setting. A project with
+Debug and Release configurations, or with several board configurations, has to
+be switched for each configuration that you intend to build. It is valid to
+move one configuration to GCC 15.2 and leave another on the legacy toolchain
+while you work through the migration.</p>
+</div>
+</section>
+<section id="switching-back">
+<h3>Switching back<a class="headerlink" href="#switching-back" title="Link to this heading"></a></h3>
+<p>The toolchain setting can be changed back at any time. Switch the setting to
+the legacy entry and clean build again. Source changes described in the next
+sections are written so that they also build with the older compilers, so a
+project does not become dependent on GCC 15.2 by being migrated.</p>
+</section>
+</section>
+<section id="build-settings-that-may-need-updating">
+<span id="migratingbuildsettings"></span><h2>Build settings that may need updating<a class="headerlink" href="#build-settings-that-may-need-updating" title="Link to this heading"></a></h2>
+<p>These are SoftConsole settings. They do not change the project’s source code.</p>
+<section id="control-and-status-register-instructions-zicsr">
+<span id="migratingzicsr"></span><h3>Control and status register instructions (Zicsr)<a class="headerlink" href="#control-and-status-register-instructions-zicsr" title="Link to this heading"></a></h3>
+<p><strong>Symptom.</strong> Assembling or compiling code that accesses a CSR fails with a
+message similar to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Error: unrecognized opcode `csrrs a5,mstatus,8&#39;, extension `zicsr&#39; required
+</pre></div>
+</div>
+<p><strong>Why.</strong> The CSR instructions used to be part of the RISC-V base integer
+instruction set. They were separated into their own <code class="docutils literal notranslate"><span class="pre">Zicsr</span></code> extension, and
+since GCC 12 the base architecture alone no longer enables them. The
+architecture string has to ask for the extension, for example <code class="docutils literal notranslate"><span class="pre">rv32i_zicsr</span></code>
+instead of <code class="docutils literal notranslate"><span class="pre">rv32i</span></code>.</p>
+<p><strong>Which projects.</strong> RISC-V projects that read or write CSRs, which includes
+anything using the Mi-V HAL interrupt or timer code. It is not specific to any
+one base architecture.</p>
+<p><strong>Fix.</strong> Enable the CSR extension for each affected build configuration:</p>
+<div class="graphviz"><img src="../_images/graphviz-934ad829bf08b2d44be4928e5c164b8d07bf65dc.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot; -&gt; &quot;Control and status register instructions (Zicsr)&quot;
+     }" class="graphviz" /></div>
+<br/>
+<p>The generated architecture string can be confirmed in the build console output,
+where <code class="docutils literal notranslate"><span class="pre">-march=</span></code> should now include <code class="docutils literal notranslate"><span class="pre">_zicsr</span></code>.</p>
+</section>
+<section id="assembler-listings-on-windows">
+<span id="migratingasmlisting"></span><h3>Assembler listings on Windows<a class="headerlink" href="#assembler-listings-on-windows" title="Link to this heading"></a></h3>
+<p><strong>Symptom.</strong> On Windows, a build that previously worked fails at the link step
+with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">collect2</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">ld</span> <span class="n">returned</span> <span class="mi">5</span> <span class="n">exit</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>There is usually no compiler error before it, which makes the failure look like
+a linker problem in the project.</p>
+<p><strong>Why.</strong> The listing option passes <code class="docutils literal notranslate"><span class="pre">-Wa,-adhlns=&quot;$&#64;.lst&quot;</span></code> to the toolchain, which
+makes the assembler write a listing file next to each object file. With the
+Windows toolchain build this can fail at the final link step. The listing is a
+diagnostic aid and is not needed to produce a working binary.</p>
+<p><strong>Which projects.</strong> Windows hosts only, and only configurations that have the
+listing enabled. The same project builds correctly on Linux with the option left
+on.</p>
+<p><strong>Fix.</strong> The assembler and the compiler each have their own copy of this option,
+so clear both for the configuration:</p>
+<div class="graphviz"><img src="../_images/graphviz-f553cd651441b9bd4b4f0cc49f0334dab0e91e4f.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross Assembler&quot; -&gt; &quot;Generate assembler listing (-Wa,-adhlns=&amp;quot;$&#64;.lst&amp;quot;)&quot;
+     }" class="graphviz" /></div>
+<br/>
+<div class="graphviz"><img src="../_images/graphviz-eb7362314482252a83a41818cce915c66e5aaaf2.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C Compiler&quot; -&gt; &quot;Generate assembler listing (-Wa,-adhlns=&amp;quot;$&#64;.lst&amp;quot;)&quot;
+     }" class="graphviz" /></div>
+<br/>
+<p>Repeat for every configuration you intend to build on Windows. Clearing only one
+of the two leaves the option in effect for the other tool.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a host side toolchain packaging issue rather than a defect in the
+project. If you need a listing, build on Linux or produce one afterwards with
+<code class="docutils literal notranslate"><span class="pre">objdump</span></code> instead of during the build.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the bundled example projects this is set in the project files themselves, so
+the shipped examples build on Windows without any change. Three of the four carry
+the setting: <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code>, <code class="docutils literal notranslate"><span class="pre">mpfs-blank-baremetal</span></code> and
+<code class="docutils literal notranslate"><span class="pre">mpfs-gpio-interrupt</span></code>. For the corresponding upstream projects the suggested
+change is to set <code class="docutils literal notranslate"><span class="pre">option.c.compiler.asmlisting</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code> in <code class="docutils literal notranslate"><span class="pre">.cproject</span></code> for
+every configuration, and <code class="docutils literal notranslate"><span class="pre">option.assembler.asmlisting</span></code> as well where the
+configuration defines it, which is how the bundled copies are configured.</p>
+</div>
+</section>
+<section id="excluded-driver-folders">
+<span id="migratingexclusions"></span><h3>Excluded driver folders<a class="headerlink" href="#excluded-driver-folders" title="Link to this heading"></a></h3>
+<p><strong>Symptom.</strong> After importing an older project, the build fails because a driver
+source file cannot be found, or because a driver that should have been excluded
+is compiled and fails. In Project Explorer, folders that are meant to be
+excluded are not marked as excluded.</p>
+<p><strong>Why.</strong> SoftConsole projects exclude the driver folders that a particular
+build does not need, and the exclusion list is stored as a list of paths in the
+project file. If the driver tree has been reorganised since the project was
+created, the stored paths no longer match the folders that are actually there.
+Paths that match nothing are silently ignored, so the exclusion quietly stops
+working.</p>
+<p><strong>Which projects.</strong> Projects carried forward from an older release whose
+platform or driver directory layout has since been renamed or restructured.</p>
+<p><strong>Fix.</strong> Check the exclusions against the current source tree and set them
+again where they no longer match. A folder is excluded from a configuration
+with:</p>
+<div class="graphviz"><img src="../_images/graphviz-5993dfdb47ca0199f90693b3860adaff16475cf3.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Right click on the folder in the Project Explorer&quot; -&gt; &quot;Resource Configurations&quot; -&gt; &quot;Exclude from Build...&quot;
+     }" class="graphviz" /></div>
+<br/>
+<p>Select the configurations the exclusion should apply to. Repeat for each folder
+the build does not need.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is easier to confirm this from the build output than from the project file.
+If a driver you believe is excluded appears in the compile lines, its exclusion
+is not taking effect.</p>
+</div>
+</section>
+<section id="include-paths-and-file-names-on-linux">
+<h3>Include paths and file names on Linux<a class="headerlink" href="#include-paths-and-file-names-on-linux" title="Link to this heading"></a></h3>
+<p><strong>Symptom.</strong> A project that builds on Windows fails on Linux with a missing
+header, even though the header is present in the source tree.</p>
+<p><strong>Why.</strong> Two differences between the hosts cause this. Windows file names are
+not case sensitive and Linux file names are, and a path written with backslash
+separators is a valid file name character on Linux rather than a directory
+separator. A header reference that works on Windows can therefore fail on
+Linux.</p>
+<p><strong>Which projects.</strong> Projects moved between hosts, or projects that were only
+ever built on Windows. See
+<a class="reference internal" href="#migratingbackslash"><span class="std std-ref">Include paths written with backslashes</span></a> for the source
+side of the same problem.</p>
+<p><strong>Fix.</strong> Correct the include path so that the case matches the file on disk and
+forward slashes are used as separators. Include paths configured in the project
+are set in:</p>
+<div class="graphviz"><img src="../_images/graphviz-fb980828eb68d62d70b19f3f8b034e0b3f652795.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Includes&quot;
+     }" class="graphviz" /></div>
+<br/>
+</section>
+</section>
+<section id="source-changes-that-may-be-needed">
+<span id="migratingsourcechanges"></span><h2>Source changes that may be needed<a class="headerlink" href="#source-changes-that-may-be-needed" title="Link to this heading"></a></h2>
+<p>These are changes in the project’s own source, in a HAL or in a driver. Where a
+project is maintained upstream, the same change is usually worth making there,
+because the existing code relies on behaviour that current compilers no longer
+provide.</p>
+<section id="csr-renamed-from-mbadaddr-to-mtval">
+<span id="migratingmtval"></span><h3>CSR renamed from mbadaddr to mtval<a class="headerlink" href="#csr-renamed-from-mbadaddr-to-mtval" title="Link to this heading"></a></h3>
+<p><strong>Symptom.</strong> Assembling startup code fails on a line that reads the faulting
+address CSR, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">csrr</span> <span class="n">a1</span><span class="p">,</span> <span class="n">mbadaddr</span>
+</pre></div>
+</div>
+<p><strong>Why.</strong> The RISC-V privileged specification renamed this CSR to <code class="docutils literal notranslate"><span class="pre">mtval</span></code>. The
+old name <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code> was accepted by older assemblers and is not recognised by
+the current one.</p>
+<p><strong>Which projects.</strong> Code that reads the faulting address in a trap handler or
+in startup code. In the bundled examples this appeared in the PolarFire SoC HAL
+startup file <code class="docutils literal notranslate"><span class="pre">mss_entry.S</span></code>.</p>
+<p><strong>Fix.</strong> Use the current CSR name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">csrr</span> <span class="n">a1</span><span class="p">,</span> <span class="n">mtval</span>
+</pre></div>
+</div>
+<p>The register is the same, only the name changed, so the surrounding code does
+not need adjusting.</p>
+</section>
+<section id="interrupt-enumeration-causing-multiple-definition-errors">
+<span id="migratingirqtypedef"></span><h3>Interrupt enumeration causing multiple definition errors<a class="headerlink" href="#interrupt-enumeration-causing-multiple-definition-errors" title="Link to this heading"></a></h3>
+<p><strong>Symptom.</strong> The build compiles but the link fails with multiple definition
+errors naming <code class="docutils literal notranslate"><span class="pre">MRV_LOCAL_IRQn_Type</span></code>, once for each source file that includes the
+HAL header, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>multiple definition of `MRV_LOCAL_IRQn_Type&#39;; ./src/main.o:(.bss+0x0): first defined here
+</pre></div>
+</div>
+<p><strong>Why.</strong> The declaration in the header was written as:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">MIE_0_IRQn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mh">0x01u</span><span class="p">),</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span><span class="w"> </span><span class="n">MRV_LOCAL_IRQn_Type</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Without <code class="docutils literal notranslate"><span class="pre">typedef</span></code> this does not name a type. It declares a <strong>variable</strong> called
+<code class="docutils literal notranslate"><span class="pre">MRV_LOCAL_IRQn_Type</span></code> of an anonymous enum type, so every translation unit that
+includes the header defines its own copy. Older toolchains merged those
+tentative definitions because they defaulted to <code class="docutils literal notranslate"><span class="pre">-fcommon</span></code>. GCC 10 and later
+default to <code class="docutils literal notranslate"><span class="pre">-fno-common</span></code>, so the duplicates are now reported at link time.</p>
+<p><strong>Which projects.</strong> Mi-V projects using the Mi-V RISC-V HAL header. Of the
+bundled examples this affected <code class="docutils literal notranslate"><span class="pre">miv-rv32i-systick-blinky</span></code>, in
+<code class="docutils literal notranslate"><span class="pre">src/platform/miv_rv32_hal/miv_rv32_hal.h</span></code>.</p>
+<p><strong>Fix.</strong> Add the missing <code class="docutils literal notranslate"><span class="pre">typedef</span></code> so the name becomes a type rather than a
+variable:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">MIE_0_IRQn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mh">0x01u</span><span class="p">),</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span><span class="w"> </span><span class="n">MRV_LOCAL_IRQn_Type</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>That is the whole change, one keyword. No other code needs adjusting, because
+the enumerator names and values are unchanged and the name was not being used
+as a variable anywhere.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">-fcommon</span></code> to the compiler options also makes the link succeed, but it
+restores the older behaviour rather than fixing the declaration. The <code class="docutils literal notranslate"><span class="pre">typedef</span></code>
+is preferred, and it still builds with the legacy toolchains.</p>
+</div>
+</section>
+<section id="bootrom-helper-compiled-for-a-legacy-core">
+<span id="migratingbootrom"></span><h3>BootROM helper compiled for a legacy core<a class="headerlink" href="#bootrom-helper-compiled-for-a-legacy-core" title="Link to this heading"></a></h3>
+<p><strong>Symptom.</strong> Compiling the Mi-V HAL fails in <code class="docutils literal notranslate"><span class="pre">MRV_BootROM_reconfigure()</span></code>, on the
+<code class="docutils literal notranslate"><span class="pre">BOOTROM_START</span></code>, <code class="docutils literal notranslate"><span class="pre">BOOTROM_END</span></code> or <code class="docutils literal notranslate"><span class="pre">BOOTROM_DEST</span></code> register definitions, which the
+legacy core’s headers do not provide.</p>
+<p><strong>Why.</strong> The BootROM reconfiguration registers exist on current MIV_RV32 cores
+and not on the older legacy RV32 cores. The HAL distinguishes the two with the
+<code class="docutils literal notranslate"><span class="pre">MIV_LEGACY_RV32</span></code> symbol, which a project defines when it targets a legacy core.
+If the helper is compiled unconditionally it fails for those projects.</p>
+<p><strong>Which projects.</strong> Mi-V projects that define <code class="docutils literal notranslate"><span class="pre">MIV_LEGACY_RV32</span></code>. In the bundled
+examples the guard is in <code class="docutils literal notranslate"><span class="pre">src/platform/miv_rv32_hal/miv_rv32_hal.c</span></code>.</p>
+<p><strong>Fix.</strong> Guard the helper so it is only compiled when the project is not
+targeting a legacy core:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef MIV_LEGACY_RV32</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">MRV_BootROM_reconfigure</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">start_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">end_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">destination_addr</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">HW_set_32bit_reg</span><span class="p">(</span><span class="n">BOOTROM_START</span><span class="p">,</span><span class="w"> </span><span class="n">start_addr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">HW_set_32bit_reg</span><span class="p">(</span><span class="n">BOOTROM_END</span><span class="p">,</span><span class="w"> </span><span class="n">end_addr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">HW_set_32bit_reg</span><span class="p">(</span><span class="n">BOOTROM_DEST</span><span class="p">,</span><span class="w"> </span><span class="n">destination_addr</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#endif </span><span class="cm">/* MIV_LEGACY_RV32 */</span>
+</pre></div>
+</div>
+<p>The same <code class="docutils literal notranslate"><span class="pre">MIV_LEGACY_RV32</span></code> symbol already guards other sections of the HAL, so
+this follows the pattern the file uses elsewhere rather than introducing a new
+one.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">MIV_LEGACY_RV32</span></code> is set in the project’s build settings, under</p>
+<div class="graphviz"><img src="../_images/graphviz-bb952c1547dd17795d2ae6a2d0eebd27634f201c.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C Compiler&quot; -&gt; &quot;Preprocessor&quot; -&gt; &quot;Defined Symbols&quot;; }" class="graphviz" /></div>
+</div>
+<p>Check whether your project defines it before deciding that this section applies.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(migratinglibero)=
+### Code that depends on a Libero configuration symbol
+
+**Symptom.** A build fails in PolarFire SoC HAL I/O configuration code because
+a Libero setting the code expects is not defined by the project&#39;s configuration
+headers.
+
+**Why.** The HAL adapts to the design through generated configuration headers.
+When a project&#39;s generated configuration does not define a particular setting,
+code that uses it unconditionally does not compile.
+
+**Which projects.** PolarFire SoC projects whose generated configuration does
+not contain the setting. In the bundled examples this affected the I/O
+configuration in `mss_io.c`.
+
+**Fix.** Wrap the dependent code so that the alternative path is used when the
+setting is absent, for example:
+
+```c
+#ifdef LIBERO_SETTING_ALT_IOMUX1_CR
+    /* configuration that uses the alternate setting */
+#else
+    io_mux_and_bank_config();
+#endif
+</pre></div>
+</div>
+</section>
+<section id="include-paths-written-with-backslashes">
+<span id="migratingbackslash"></span><h3>Include paths written with backslashes<a class="headerlink" href="#include-paths-written-with-backslashes" title="Link to this heading"></a></h3>
+<p><strong>Symptom.</strong> A header include fails on Linux while the same project builds on
+Windows.</p>
+<p><strong>Why.</strong> A backslash is a normal file name character on Linux, not a directory
+separator, so <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;hal\hal.h&quot;</span></code> asks for a file whose name contains a
+backslash.</p>
+<p><strong>Which projects.</strong> Drivers and HAL headers written on Windows. In the bundled
+examples this appeared in several Mi-V fabric IP driver headers.</p>
+<p><strong>Fix.</strong> Use forward slashes, which work on both hosts:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hal/hal.h&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="missing-standard-includes">
+<h3>Missing standard includes<a class="headerlink" href="#missing-standard-includes" title="Link to this heading"></a></h3>
+<p><strong>Symptom.</strong> A compile error about an unknown fixed width integer type such as
+<code class="docutils literal notranslate"><span class="pre">uint32_t</span></code>, in a file that previously compiled.</p>
+<p><strong>Why.</strong> Standard library headers include each other less than they used to, so
+a file that relied on getting a type indirectly now has to include the header
+that defines it.</p>
+<p><strong>Which projects.</strong> Any project, C or C++. In the bundled examples this
+affected one C++ application source file.</p>
+<p><strong>Fix.</strong> Include the header explicitly:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="hardware-debug-configuration-changes">
+<span id="migratingdebugconfig"></span><h2>Hardware debug configuration changes<a class="headerlink" href="#hardware-debug-configuration-changes" title="Link to this heading"></a></h2>
+<p>These are SoftConsole settings stored in the launch configuration. They do not
+change the project’s source code.</p>
+<p>SoftConsole v2022.2-RISC-V debugs FlashPro attached targets through fpServer, which owns the
+connection to the programmer, with OpenOCD connecting to it. Launch
+configurations created by earlier SoftConsole releases predate this and drive
+the programmer differently, so an imported launch configuration usually needs
+attention.</p>
+<section id="reviewing-an-imported-launch-configuration">
+<h3>Reviewing an imported launch configuration<a class="headerlink" href="#reviewing-an-imported-launch-configuration" title="Link to this heading"></a></h3>
+<p>Open the launch configuration in:</p>
+<div class="graphviz"><img src="../_images/graphviz-24ac957f625ddcd37be529d2fe81e3131db2aa41.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Run&quot; -&gt; &quot;Debug Configurations...&quot;
+     }" class="graphviz" /></div>
+<br/>
+<p>Check the following on the Debugger tab:</p>
+<ul class="simple">
+<li><p><strong>fpServer startup.</strong> SoftConsole v2022.2-RISC-V can start fpServer automatically as part of the
+launch. An imported configuration does not have this enabled, because the
+option did not exist when it was created.</p></li>
+<li><p><strong>Programmer selection commands.</strong> Older configurations issue commands in the
+startup sequence to list the available programmers and select one by serial
+number. These belong to the earlier programmer handling and should be removed,
+because the programmer is now selected before the session starts.</p></li>
+<li><p><strong>OpenOCD configuration files.</strong> Confirm the interface and target
+configuration files named in the launch still exist in this release.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The quickest route for a project that has an equivalent bundled example is to
+start from the example’s launch configuration and point it at your own ELF file,
+rather than repairing an old launch configuration entry by entry.</p>
+</div>
+</section>
+<section id="selecting-which-programmer-to-debug-with">
+<h3>Selecting which programmer to debug with<a class="headerlink" href="#selecting-which-programmer-to-debug-with" title="Link to this heading"></a></h3>
+<p>When more than one FlashPro programmer is attached, the one used for debugging
+is selected from the SoftConsole toolbar. The selector lists the programmers
+that were found and remembers the choice for the workspace, and <code class="docutils literal notranslate"><span class="pre">Refresh</span></code>
+re-runs the detection after a programmer is attached or removed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The toolbar selection applies to <strong>debugging</strong>. It does not change which
+programmer any programming tool uses.</p>
+</div>
+</section>
+<section id="scope-of-the-fpserver-integration-in-this-release">
+<h3>Scope of the fpServer integration in this release<a class="headerlink" href="#scope-of-the-fpserver-integration-in-this-release" title="Link to this heading"></a></h3>
+<p>fpServer runs on the same machine as SoftConsole and connects to a locally
+attached FlashPro programmer. Debugging a programmer attached to a different
+machine is not part of SoftConsole v2022.2-RISC-V.</p>
+</section>
+</section>
+<section id="if-a-project-still-does-not-build">
+<h2>If a project still does not build<a class="headerlink" href="#if-a-project-still-does-not-build" title="Link to this heading"></a></h2>
+<p>Work through these in order. They are ordered so that the cheapest checks that
+rule out whole classes of problem come first.</p>
+<ol class="arabic">
+<li><p><strong>Clean build.</strong> Object and dependency files left from a build with a
+different compiler generation can cause misleading errors. Run</p>
+<div class="graphviz"><img src="../_images/graphviz-27c0628a26c390455b734e3816e1c5cdf3ed7560.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project&quot; -&gt; &quot;Clean...&quot;; }" class="graphviz" /></div>
+<p>and build again before investigating anything else.</p>
+</li>
+<li><p><strong>Confirm which toolchain was actually used.</strong> The build console prints the
+compiler that ran. If it is not the one you selected, the configuration you
+changed is not the configuration you built, or the project still points at an
+absolute toolchain path.</p></li>
+<li><p><strong>Read the first error, not the last.</strong> A single early error often produces a
+long tail of unrelated messages.</p>
+<p>On Windows a link error can be the only visible symptom of an assembler
+setting, see
+<a class="reference internal" href="#migratingasmlisting"><span class="std std-ref">Assembler listings on Windows</span></a> where that applies.</p>
+</li>
+<li><p><strong>Check the architecture string.</strong> For RISC-V, confirm the <code class="docutils literal notranslate"><span class="pre">-march=</span></code> value in
+the build output matches the target, including <code class="docutils literal notranslate"><span class="pre">_zicsr</span></code> if CSRs are used, see
+<a class="reference internal" href="#migratingzicsr"><span class="std std-ref">Control and status register instructions (Zicsr)</span></a>.</p></li>
+<li><p><strong>Compare against a bundled example.</strong> If a bundled example targets the same
+device and builds correctly, compare its target processor and toolchain
+settings with your project. This is usually faster than reasoning about the
+settings in isolation.</p></li>
+<li><p><strong>Fall back to the legacy toolchain.</strong> Switching the configuration back to
+the legacy toolchain tells you whether the failure is caused by the compiler
+change or by something else in the project. This is a useful diagnostic even
+if you intend to migrate.</p></li>
+</ol>
+<p>If a problem remains after these steps, see
+<a class="reference internal" href="../troubleshooting/support.html#gettingsupport"><span class="std std-ref">Getting support</span></a> for what to collect and where to report it.</p>
+</section>
+</section>
+<span class="target" id="migratingprojects"></span>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="projects.html" class="btn btn-neutral float-left" title="Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="debugging.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Microchip.</p>
+  </div>
+
+  
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v2022.2-RISC-V
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Download offline variant</dt>
+      <dd><a href="../_static/offline/sc-doc-all.zip">Both Windows and Linux</a></dd><br/>
+      <dd><a href="../_static/offline/sc-doc-win.zip">Windows</a></dd><br/>
+      <dd><a href="../_static/offline/sc-doc-linux.zip">Linux</a></dd><br/>
+    </dl>
+    <br/>
+
+    <dl>
+      <dt>Versions</dt>
+
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.1/">SoftConsole-v2021.1</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2021.3/">SoftConsole-v2021.3</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2022.2-RISC-V/">SoftConsole-v2022.2-RISC-V</a></dd><br/>
+      
+      
+      
+      <dd><a href="/SoftConsole-Documentation/SoftConsole-v2026.1/">SoftConsole-v2026.1</a></dd><br/>
+      
+      
+
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
